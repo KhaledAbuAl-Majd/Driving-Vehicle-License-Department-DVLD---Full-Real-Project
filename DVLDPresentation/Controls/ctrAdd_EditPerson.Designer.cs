@@ -61,8 +61,6 @@
             this.gcmCountry = new Guna.UI2.WinForms.Guna2ComboBox();
             this.gtxtAddress = new Guna.UI2.WinForms.Guna2TextBox();
             this.gbtnSave = new Guna.UI2.WinForms.Guna2Button();
-            this.pictureBox9 = new System.Windows.Forms.PictureBox();
-            this.pictureBox10 = new System.Windows.Forms.PictureBox();
             this.gbtnClose = new Guna.UI2.WinForms.Guna2Button();
             this.llblRemoveImage = new System.Windows.Forms.LinkLabel();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
@@ -77,8 +75,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).BeginInit();
             this.SuspendLayout();
@@ -348,6 +344,7 @@
             // 
             this.gtxtNationalNo.AutoRoundedCorners = true;
             this.gtxtNationalNo.BorderColor = System.Drawing.Color.Black;
+            this.gtxtNationalNo.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.gtxtNationalNo.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.gtxtNationalNo.DefaultText = "";
             this.gtxtNationalNo.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -517,6 +514,7 @@
             this.gtxtAddress.ForeColor = System.Drawing.Color.Black;
             this.gtxtAddress.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.gtxtAddress.Location = new System.Drawing.Point(174, 192);
+            this.gtxtAddress.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.gtxtAddress.MaxLength = 300;
             this.gtxtAddress.Multiline = true;
             this.gtxtAddress.Name = "gtxtAddress";
@@ -533,7 +531,7 @@
             this.gbtnSave.Animated = true;
             this.gbtnSave.AutoRoundedCorners = true;
             this.gbtnSave.BackColor = System.Drawing.Color.Transparent;
-            this.gbtnSave.BorderThickness = 2;
+            this.gbtnSave.BorderThickness = 1;
             this.gbtnSave.Cursor = System.Windows.Forms.Cursors.Hand;
             this.gbtnSave.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.gbtnSave.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
@@ -543,6 +541,9 @@
             this.gbtnSave.FocusedColor = System.Drawing.SystemColors.MenuHighlight;
             this.gbtnSave.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbtnSave.ForeColor = System.Drawing.Color.Black;
+            this.gbtnSave.Image = ((System.Drawing.Image)(resources.GetObject("gbtnSave.Image")));
+            this.gbtnSave.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.gbtnSave.ImageSize = new System.Drawing.Size(35, 35);
             this.gbtnSave.Location = new System.Drawing.Point(547, 312);
             this.gbtnSave.Name = "gbtnSave";
             this.gbtnSave.Size = new System.Drawing.Size(154, 45);
@@ -550,32 +551,12 @@
             this.gbtnSave.Text = "Save";
             this.gbtnSave.Click += new System.EventHandler(this.gbtnSave_Click);
             // 
-            // pictureBox9
-            // 
-            this.pictureBox9.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox9.Image")));
-            this.pictureBox9.Location = new System.Drawing.Point(554, 322);
-            this.pictureBox9.Name = "pictureBox9";
-            this.pictureBox9.Size = new System.Drawing.Size(40, 27);
-            this.pictureBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox9.TabIndex = 76;
-            this.pictureBox9.TabStop = false;
-            // 
-            // pictureBox10
-            // 
-            this.pictureBox10.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox10.Image")));
-            this.pictureBox10.Location = new System.Drawing.Point(386, 322);
-            this.pictureBox10.Name = "pictureBox10";
-            this.pictureBox10.Size = new System.Drawing.Size(40, 27);
-            this.pictureBox10.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox10.TabIndex = 78;
-            this.pictureBox10.TabStop = false;
-            // 
             // gbtnClose
             // 
             this.gbtnClose.Animated = true;
             this.gbtnClose.AutoRoundedCorners = true;
             this.gbtnClose.BackColor = System.Drawing.Color.Transparent;
-            this.gbtnClose.BorderThickness = 2;
+            this.gbtnClose.BorderThickness = 1;
             this.gbtnClose.Cursor = System.Windows.Forms.Cursors.Hand;
             this.gbtnClose.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.gbtnClose.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
@@ -585,11 +566,15 @@
             this.gbtnClose.FocusedColor = System.Drawing.SystemColors.MenuHighlight;
             this.gbtnClose.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbtnClose.ForeColor = System.Drawing.Color.Black;
+            this.gbtnClose.Image = ((System.Drawing.Image)(resources.GetObject("gbtnClose.Image")));
+            this.gbtnClose.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.gbtnClose.ImageSize = new System.Drawing.Size(35, 35);
             this.gbtnClose.Location = new System.Drawing.Point(379, 312);
             this.gbtnClose.Name = "gbtnClose";
             this.gbtnClose.Size = new System.Drawing.Size(154, 45);
             this.gbtnClose.TabIndex = 13;
             this.gbtnClose.Text = "Close";
+            this.gbtnClose.Click += new System.EventHandler(this.gbtnClose_Click);
             // 
             // llblRemoveImage
             // 
@@ -629,9 +614,7 @@
             this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.pictureBox11);
             this.Controls.Add(this.llblRemoveImage);
-            this.Controls.Add(this.pictureBox10);
             this.Controls.Add(this.gbtnClose);
-            this.Controls.Add(this.pictureBox9);
             this.Controls.Add(this.gbtnSave);
             this.Controls.Add(this.gtxtAddress);
             this.Controls.Add(this.gcmCountry);
@@ -675,8 +658,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).EndInit();
             this.ResumeLayout(false);
@@ -717,8 +698,6 @@
         private Guna.UI2.WinForms.Guna2ComboBox gcmCountry;
         private Guna.UI2.WinForms.Guna2TextBox gtxtAddress;
         private Guna.UI2.WinForms.Guna2Button gbtnSave;
-        private System.Windows.Forms.PictureBox pictureBox9;
-        private System.Windows.Forms.PictureBox pictureBox10;
         private Guna.UI2.WinForms.Guna2Button gbtnClose;
         private System.Windows.Forms.LinkLabel llblRemoveImage;
         private System.Windows.Forms.ErrorProvider errorProvider1;

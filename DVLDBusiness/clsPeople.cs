@@ -15,7 +15,7 @@ namespace DVLDBusiness
     {
         public enum enMode { AddNew = 0, Update = 1 };
 
-         enMode _Mode = enMode.AddNew;
+         public enMode _Mode { get; private set; } = enMode.AddNew;
         public int PersonID { get; private set; }
         public string FirstName { get; set; }
         public string SecondName { get; set; }
@@ -48,7 +48,7 @@ namespace DVLDBusiness
             this.ImagePath = "";
         }
         private clsPeople(int PersonID,string FirstName, string SecondName, string ThirdName, string LastName, string NationalNO, DateTime DateOfBirth
-            , short Gendor, string Address, string Phone, string Email, int NationalCoutnryID, string ImagePath)
+            , short Gendor, string Address, string Phone, string Email, int NationalityCountryID, string ImagePath)
         {
             this.PersonID = PersonID;
             _Mode = enMode.Update;
@@ -138,7 +138,7 @@ namespace DVLDBusiness
                 return null;
         }
 
-        public static DataTable GetAllPersons()
+        public static DataTable GetAllPeople()
         {
             return clsPeopleData.GetAllPeople();
         }

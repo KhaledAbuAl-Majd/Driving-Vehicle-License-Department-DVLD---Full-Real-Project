@@ -9,12 +9,15 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DVLDPresentation.Properties;
 using DVLDBusiness;
+using DVLDPresentation.People;
 
 namespace DVLDPresentation
 {
     public partial class ctrPersonCard : UserControl
     {
-        int _PersonID = -1;
+        public event Action OnClose;
+
+        public int _PersonID = -1;
         clsPeople _Person;
         public ctrPersonCard()
         {
@@ -49,7 +52,7 @@ namespace DVLDPresentation
                 lblEmail.Text = _Person.Email;
 
             lblAddress.Text = _Person.Address;
-            lblDateOfBirth.Text = _Person.DateOfBirth.ToString();
+            lblDateOfBirth.Text = _Person.DateOfBirth.ToShortDateString();
             lblPhone.Text = _Person.Phone;
 
             clsCountries Country = clsCountries.Find(_Person.NationalityCountryID);
@@ -57,13 +60,36 @@ namespace DVLDPresentation
             if (Country != null)
                 lblCountry.Text = Country.CountryName;
         }
+        void _RefreshPersonData()
+        {
+            _Person = clsPeople.Find(_Person.PersonID);
 
+            if (_Person != null)
+                _FillData();
+        }
         private void UserControl1_Load(object sender, EventArgs e)
         {
             _Person = clsPeople.Find(_PersonID);
 
             if (_Person != null)
                 _FillData();
+        }
+
+        private void llblEditPersonInfo_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            frmAdd_EditPerson frm = new frmAdd_EditPerson(Convert.ToInt32(lblPersonID.Text));
+
+            frm.OnClose += FrmEdit_OnClose;
+            frm.ShowDialog();
+
+        }
+
+        private void FrmEdit_OnClose()
+        {
+            _RefreshPersonData();
+
+            if (OnClose != null)
+                OnClose();
         }
     }
 }

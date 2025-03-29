@@ -79,9 +79,11 @@ namespace DVLDDataAccess
 
             string Query = @"UPDATE People
                              SET FirstName=@FirstName,SecondName=@SecondName,ThirdName=@ThirdName,LastName=@LastName,NationalNo=@NationalNo
-                  ,DateOfBirth=@DateOfBirth,Gendor=@Gendor,Address=@Address  ,Phone=@Phone,Email=@Email,NationalityCountryID=@NationalityCountryID,ImagePath=@ImagePath";
+                  ,DateOfBirth=@DateOfBirth,Gendor=@Gendor,Address=@Address  ,Phone=@Phone,Email=@Email,NationalityCountryID=@NationalityCountryID,ImagePath=@ImagePath
+                    Where PersonID = @PersonID";
 
             SqlCommand Command = new SqlCommand(Query, connection);
+            Command.Parameters.AddWithValue("@PersonID", PersonID);
             Command.Parameters.AddWithValue("@FirstName", FirstName);
             Command.Parameters.AddWithValue("@SecondName", SecondName);
             Command.Parameters.AddWithValue("@ThirdName", ThirdName);
@@ -106,7 +108,7 @@ namespace DVLDDataAccess
 
             try
             {
-                connection.Close();
+                connection.Open();
 
                 int RowsAffected = Command.ExecuteNonQuery();
 
@@ -142,7 +144,7 @@ namespace DVLDDataAccess
 
             try
             {
-                connection.Close();
+                connection.Open();
 
                 int RowsAffected = command.ExecuteNonQuery();
 
@@ -193,7 +195,7 @@ namespace DVLDDataAccess
                     LastName = (string)reader["LastName"];
                     NationalNo = (string)reader["NationalNo"];
                     DateOfBirth = (DateTime)reader["DateOfBirth"];
-                    Gendor = (short)reader["Gendor"];
+                    Gendor = Convert.ToInt16(reader["Gendor"]);
                     Address = (string)reader["Address"];
                     Phone = (string)reader["Phone"];
 
@@ -202,7 +204,7 @@ namespace DVLDDataAccess
                     else
                         Email = "";
 
-                    NationalityCountryID = (int)reader["NationalityCountryID"];
+                    NationalityCountryID = Convert.ToInt32(reader["NationalityCountryID"]);
 
                     if (reader["ImagePath"] != System.DBNull.Value)
                         ImagePath = (string)reader["ImagePath"];
@@ -254,7 +256,7 @@ namespace DVLDDataAccess
                     ThirdName = (string)reader["ThirdName"];
                     LastName = (string)reader["LastName"];
                     DateOfBirth = (DateTime)reader["DateOfBirth"];
-                    Gendor = (short)reader["Gendor"];
+                    Gendor = Convert.ToInt16(reader["Gendor"]);
                     Address = (string)reader["Address"];
                     Phone = (string)reader["Phone"];
 
@@ -263,7 +265,7 @@ namespace DVLDDataAccess
                     else
                         Email = "";
 
-                    NationalityCountryID = (int)reader["NationalityCountryID"];
+                    NationalityCountryID = Convert.ToInt32(reader["NationalityCountryID"]);
 
                     if (reader["ImagePath"] != System.DBNull.Value)
                         ImagePath = (string)reader["ImagePath"];
@@ -396,181 +398,6 @@ namespace DVLDDataAccess
             return People;
         }
 
-        //public DataTable GetAllPeopleByFirstName(string FirstName)
-        //{
-        //    DataTable People = new DataTable();
-
-        //    SqlConnection connection = new SqlConnection(clsDataAccessSetings.ConnectionString);
-
-        //    string query = "SELECT * FROM People WHERE FirstName LIKE '' + @FirstName + '%'";
-
-        //    SqlCommand command = new SqlCommand(query, connection);
-        //    command.Parameters.AddWithValue("@FirstName", FirstName);
-
-        //    try
-        //    {
-        //        connection.Open();
-
-        //        SqlDataReader reader = command.ExecuteReader();
-
-        //        while (reader.Read())
-        //        {
-        //            People.Load(reader);
-        //        }
-
-        //        reader.Close();
-        //    }
-        //    catch (Exception ex)
-        //    {
-
-        //    }
-        //    finally
-        //    {
-        //        connection.Close();
-        //    }
-
-        //    return People;
-        //}
-
-        //public DataTable GetAllPeopleBySecondName(string SecondName)
-        //{
-        //    DataTable People = new DataTable();
-
-        //    SqlConnection connection = new SqlConnection(clsDataAccessSetings.ConnectionString);
-
-        //    string query = "SELECT * FROM People WHERE SecondName LIKE '' + @SecondName + '%'";
-
-        //    SqlCommand command = new SqlCommand(query, connection);
-        //    command.Parameters.AddWithValue("@SecondName", SecondName);
-
-        //    try
-        //    {
-        //        connection.Open();
-
-        //        SqlDataReader reader = command.ExecuteReader();
-
-        //        while (reader.Read())
-        //        {
-        //            People.Load(reader);
-        //        }
-
-        //        reader.Close();
-        //    }
-        //    catch (Exception ex)
-        //    {
-
-        //    }
-        //    finally
-        //    {
-        //        connection.Close();
-        //    }
-
-        //    return People;
-        //}
-        //public DataTable GetAllPeopleByThirdName(string ThirdName)
-        //{
-        //    DataTable People = new DataTable();
-
-        //    SqlConnection connection = new SqlConnection(clsDataAccessSetings.ConnectionString);
-
-        //    string query = "SELECT * FROM People WHERE ThirdName LIKE '' + @ThirdName + '%'";
-
-        //    SqlCommand command = new SqlCommand(query, connection);
-        //    command.Parameters.AddWithValue("@ThirdName", ThirdName);
-
-        //    try
-        //    {
-        //        connection.Open();
-
-        //        SqlDataReader reader = command.ExecuteReader();
-
-        //        while (reader.Read())
-        //        {
-        //            People.Load(reader);
-        //        }
-
-        //        reader.Close();
-        //    }
-        //    catch (Exception ex)
-        //    {
-
-        //    }
-        //    finally
-        //    {
-        //        connection.Close();
-        //    }
-
-        //    return People;
-        //}
-        //public DataTable GetAllPeopleByLastName(string LastName)
-        //{
-        //    DataTable People = new DataTable();
-
-        //    SqlConnection connection = new SqlConnection(clsDataAccessSetings.ConnectionString);
-
-        //    string query = "SELECT * FROM People WHERE LastName LIKE '' + @LastName + '%'";
-
-        //    SqlCommand command = new SqlCommand(query, connection);
-        //    command.Parameters.AddWithValue("@LastName", LastName);
-
-        //    try
-        //    {
-        //        connection.Open();
-
-        //        SqlDataReader reader = command.ExecuteReader();
-
-        //        while (reader.Read())
-        //        {
-        //            People.Load(reader);
-        //        }
-
-        //        reader.Close();
-        //    }
-        //    catch (Exception ex)
-        //    {
-
-        //    }
-        //    finally
-        //    {
-        //        connection.Close();
-        //    }
-
-        //    return People;
-        //}
-        //public DataTable GetAllPeopleByNationality(int NationalityCountryID)
-        //{
-        //    DataTable People = new DataTable();
-
-        //    SqlConnection connection = new SqlConnection(clsDataAccessSetings.ConnectionString);
-
-        //    string query = @"SELECT * From People  WHERE NationalityCountryID =@NationalityCountryID ";
-
-        //    SqlCommand command = new SqlCommand(query, connection);
-        //    command.Parameters.AddWithValue("@NationalityCountryID", NationalityCountryID);
-
-        //    try
-        //    {
-        //        connection.Open();
-
-        //        SqlDataReader reader = command.ExecuteReader();
-
-        //        while (reader.Read())
-        //        {
-        //            People.Load(reader);
-        //        }
-
-        //        reader.Close();
-        //    }
-        //    catch (Exception ex)
-        //    {
-
-        //    }
-        //    finally
-        //    {
-        //        connection.Close();
-        //    }
-
-        //    return People;
-        //}
+       
     }
 }

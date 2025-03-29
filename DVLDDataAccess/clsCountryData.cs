@@ -28,7 +28,7 @@ namespace DVLDDataAccess
 
                 SqlDataReader reader = command.ExecuteReader();
 
-                if (reader.HasRows)
+                if (reader.Read())
                 {
                     IsFound = true;
                     CountryName = (string)reader["CountryName"];

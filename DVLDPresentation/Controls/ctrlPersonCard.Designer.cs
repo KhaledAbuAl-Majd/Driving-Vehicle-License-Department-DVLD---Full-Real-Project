@@ -72,6 +72,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.BackColor = System.Drawing.Color.White;
             this.groupBox1.Controls.Add(this.llblEditPersonInfo);
             this.groupBox1.Controls.Add(this.pictureBox7);
             this.groupBox1.Controls.Add(this.pictureBox6);
@@ -119,6 +120,7 @@
             this.llblEditPersonInfo.TabIndex = 27;
             this.llblEditPersonInfo.TabStop = true;
             this.llblEditPersonInfo.Text = "Edit Person Info";
+            this.llblEditPersonInfo.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llblEditPersonInfo_LinkClicked);
             // 
             // pictureBox7
             // 
@@ -354,11 +356,11 @@
             // lblName
             // 
             this.lblName.AutoSize = true;
-            this.lblName.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.lblName.Location = new System.Drawing.Point(160, 71);
             this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(48, 18);
+            this.lblName.Size = new System.Drawing.Size(53, 20);
             this.lblName.TabIndex = 3;
             this.lblName.Text = "[????]";
             // 

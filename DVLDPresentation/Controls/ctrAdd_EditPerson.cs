@@ -16,13 +16,30 @@ namespace DVLDPresentationTier.Controls
 {
     public partial class ctrAdd_EditPerson : UserControl
     {
-        public int _PersonID = -1;
+        public delegate void SaveDataBackEventHandler(object sender, int PersonID);
+
+        public event SaveDataBackEventHandler SaveDataBack;
+        private void _InvokeRelatedEventSaveDataBack()
+        {
+            SaveDataBack.Invoke(this, _Person.PersonID);
+        }
+
+        public event Action OnClose;
+
+        private void _CloseForm()
+        {
+            Action handler = OnClose;
+
+            if (handler != null)
+                handler();
+        }
+
+        public int PersonID = -1;
         clsPeople _Person;
         public bool _IsSave { get; private set; }
         public ctrAdd_EditPerson()
         {
             InitializeComponent();
-            _PersonID = -1;
             _VisibleOfLLRemove(false);
         }
         public void _RemoveImage()
@@ -42,11 +59,16 @@ namespace DVLDPresentationTier.Controls
         }
         private void _UpdatePersonMode()
         {
-            _Person = clsPeople.Find(_PersonID);
+            _Person = clsPeople.Find(PersonID);
 
             if(_Person != null)
             {
                 _FillDataFromObjectPersonToForm();
+
+                if (!string.IsNullOrEmpty(pbImage.ImageLocation))
+                {
+                    _VisibleOfLLRemove(true);
+                }
             }
         }
         private void _FillCountryCbAndChooseDefaultCountry(string DefaultCountryName)
@@ -126,7 +148,7 @@ namespace DVLDPresentationTier.Controls
             }
             else
             {
-                rbFemale.Checked = false;
+                rbFemale.Checked = true;
             }
 
             gtxtPhone.Text = _Person.Phone;
@@ -171,7 +193,7 @@ namespace DVLDPresentationTier.Controls
 
         private void ctrAdd_EditPerson_Load(object sender, EventArgs e)
         {
-            if(_PersonID == -1)
+            if(PersonID == -1)
             {
                 _AddNewPersonMode();
             }
@@ -211,7 +233,7 @@ namespace DVLDPresentationTier.Controls
 
             if (!_CheckErrorProviderForAllTextBoxs(NationalNo, e,"NationalNo must have a value!"))
             {
-                if (clsPeople.IsPersonExist(NationalNo.Text))
+                if (clsPeople.IsPersonExist(NationalNo.Text) && _Person.NationalNo.ToUpper() != NationalNo.Text.ToUpper())
                 {
                     e.Cancel = true;
                     errorProvider1.SetError(NationalNo, "NationalNo must be unique value!");
@@ -260,15 +282,25 @@ namespace DVLDPresentationTier.Controls
 
             _FillDataFromFormToObjectPerson();
             _IsSave = true;
+            clsPeople.enMode prevMode = _Person._Mode;
+
             if (_Person.Save())
             {
-                MessageBox.Show($"Person Addess Successfuly With ID = {_Person.PersonID}", "Result"
-                    , MessageBoxButtons.OK, MessageBoxIcon.Information);
+                if (prevMode == clsPeople.enMode.Update)
+                    MessageBox.Show($"Person Updated Successfuly", "Result"
+                   , MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                else
+                    MessageBox.Show($"Person Addess Successfuly With ID = {_Person.PersonID}", "Result"
+                        , MessageBoxButtons.OK, MessageBoxIcon.Information);
+                _IsSave = true;
+                _InvokeRelatedEventSaveDataBack();
             }
             else
             {
                 MessageBox.Show("Faild To Save", "Result"
                    , MessageBoxButtons.OK, MessageBoxIcon.Information);
+                _IsSave = false;
             }
         }
 
@@ -299,6 +331,14 @@ namespace DVLDPresentationTier.Controls
         private void gtxtAddress_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void gbtnClose_Click(object sender, EventArgs e)
+        {
+            if (!this._IsSave)
+                this._RemoveImage();
+
+            _CloseForm();
         }
     }
 }
