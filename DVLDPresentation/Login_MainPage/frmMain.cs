@@ -39,7 +39,7 @@ namespace DVLDPresentation.Login_HomePage
 
         private void frmMain_Load(object sender, EventArgs e)
         {
-          
+           
         }
 
         private void usersToolStripMenuItem_Click(object sender, EventArgs e)
@@ -47,6 +47,25 @@ namespace DVLDPresentation.Login_HomePage
             frmManageUsers frm = new frmManageUsers();
 
             frm.ShowDialog();
+        }
+
+        private void currentUserInfoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmUserInfo frm = new frmUserInfo(clsGlobalSettings.LoginedInUserID);
+
+            frm.ShowDialog();
+        }
+
+        private void changePasswordToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmChangePassword frm = new frmChangePassword(clsGlobalSettings.LoginedInUserID);
+
+            frm.ShowDialog();
+        }
+
+        private void signOutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

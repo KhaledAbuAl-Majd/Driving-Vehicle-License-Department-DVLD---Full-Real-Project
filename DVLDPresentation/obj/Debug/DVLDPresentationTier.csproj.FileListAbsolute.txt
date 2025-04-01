@@ -24,3 +24,4 @@ E:\Visual Studio\source\Projects\Course19\DVLDProject\DVLDPresentation\obj\Debug
 E:\Visual Studio\source\Projects\Course19\DVLDProject\DVLDPresentation\obj\Debug\DVLDPresentation.Users.frmAdd_EditNewUser.resources
 E:\Visual Studio\source\Projects\Course19\DVLDProject\DVLDPresentation\obj\Debug\DVLDPresentation.Users.frmUserInfo.resources
 E:\Visual Studio\source\Projects\Course19\DVLDProject\DVLDPresentation\obj\Debug\DVLDPresentation.Users.frmChangePassword.resources
+E:\Visual Studio\source\Projects\Course19\DVLDProject\DVLDPresentation\obj\Debug\DVLDPresentation.Login_MainPage.frmLogin.resources

@@ -54,6 +54,7 @@ namespace DVLDPresentation.People
             {
                 _Show_HideTextFilter(false);
                 _Show_HideCBGendorFilter(false);
+                _FilterData("");
             }
             else if(gcbFilterBy.Text == "Gendor")
             {
@@ -65,6 +66,7 @@ namespace DVLDPresentation.People
             {
                 _Show_HideTextFilter(true);
                 _Show_HideCBGendorFilter(false);
+                _FilterData("");
             }
 
             _GetTextFilterEmpty();

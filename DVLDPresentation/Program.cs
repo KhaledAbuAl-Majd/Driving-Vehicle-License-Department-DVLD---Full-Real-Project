@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DVLDPresentation.Login_HomePage;
+using DVLDPresentation.Login_MainPage;
 
 namespace DVLDPresentation
 {
@@ -17,7 +18,7 @@ namespace DVLDPresentation
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmMain());
+            Application.Run(new frmLogin());
         }
     }
 }

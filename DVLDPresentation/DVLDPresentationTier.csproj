@@ -205,5 +205,11 @@
       <Name>DVLDBusiness</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\eye_icon_256043.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\crossed_eye_icon_256370.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
