@@ -101,6 +101,10 @@ namespace DVLDPresentation.People
                 _People = dt2.DefaultView;
                 lblNumOfRecords.Text = dt2.DefaultView.Count.ToString();
             }
+            else
+            {
+                lblNumOfRecords.Text = "0";
+            }
         }
         private void _DeletePerson()
         {

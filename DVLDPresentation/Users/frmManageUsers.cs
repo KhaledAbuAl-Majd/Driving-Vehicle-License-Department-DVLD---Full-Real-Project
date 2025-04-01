@@ -78,7 +78,7 @@ namespace DVLDPresentation.Users
         {
             DataTable dt = clsUsers.GetAllUsers();
 
-            if (dt.Rows.Count != 0)
+            if (dt.Rows.Count > 0)
             {
                 dt.Columns.Add("Full Name", typeof(string));
 
@@ -94,10 +94,19 @@ namespace DVLDPresentation.Users
 
                 DataTable dt2 = dt.DefaultView.ToTable(false, "UserID", "PersonID", "Full Name", "UserName", "IsActive");
 
-                dgvUsers.DataSource = dt2;
                 _Users = dt2.DefaultView;
+                dgvUsers.DataSource = dt2;
+                dgvUsers.Columns["UserID"].FillWeight = 10;
+                dgvUsers.Columns["PersonID"].FillWeight = 10;
+                dgvUsers.Columns["Full Name"].FillWeight = 50;
+                dgvUsers.Columns["UserName"].FillWeight = 15;
+                dgvUsers.Columns["IsActive"].FillWeight = 15;
 
                 lblNumOfRecords.Text = _Users.Count.ToString();
+            }
+            else
+            {
+                lblNumOfRecords.Text = "0";
             }
         }
         private void _DeleteUser()

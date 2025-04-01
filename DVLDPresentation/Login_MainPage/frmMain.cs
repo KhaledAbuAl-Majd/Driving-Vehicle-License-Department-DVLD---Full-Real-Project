@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DVLDPresentation.Applications;
 using DVLDPresentation.People;
 using DVLDPresentation.Users;
 
@@ -66,6 +67,18 @@ namespace DVLDPresentation.Login_HomePage
         private void signOutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void drivingLicenseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void manageApplicationTypesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmManageApplicationTypes frm = new frmManageApplicationTypes();
+
+            frm.ShowDialog();
         }
     }
 }
