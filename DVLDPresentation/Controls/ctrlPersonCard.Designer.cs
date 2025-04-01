@@ -102,7 +102,7 @@
             this.groupBox1.Controls.Add(this.lblPersonID);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(829, 271);
@@ -116,7 +116,7 @@
             this.llblEditPersonInfo.Cursor = System.Windows.Forms.Cursors.Hand;
             this.llblEditPersonInfo.Location = new System.Drawing.Point(685, 58);
             this.llblEditPersonInfo.Name = "llblEditPersonInfo";
-            this.llblEditPersonInfo.Size = new System.Drawing.Size(113, 18);
+            this.llblEditPersonInfo.Size = new System.Drawing.Size(123, 20);
             this.llblEditPersonInfo.TabIndex = 27;
             this.llblEditPersonInfo.TabStop = true;
             this.llblEditPersonInfo.Text = "Edit Person Info";

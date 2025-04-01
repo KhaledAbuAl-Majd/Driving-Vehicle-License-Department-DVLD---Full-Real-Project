@@ -36,20 +36,21 @@ namespace DVLDPresentationTier.Controls
 
         public int PersonID = -1;
         clsPeople _Person;
-        public bool _IsSave { get; private set; }
+        public bool IsSave { get; private set; }
         public ctrAdd_EditPerson()
         {
             InitializeComponent();
             _VisibleOfLLRemove(false);
         }
-        public void _RemoveImage()
+        private void _RemoveImageFromPictureBox()
         {
-            string DestenationFile = pbImage.ImageLocation;
-
+            pbImage.ImageLocation = "";
+        }
+        void _RemoveImageFromFile(string DestenationFile)
+        {
             if (File.Exists(DestenationFile))
             {
                 File.Delete(DestenationFile);
-                pbImage.ImageLocation = "";
             }
         }
 
@@ -106,6 +107,10 @@ namespace DVLDPresentationTier.Controls
             _Person.Email = gtxtEmail.Text;
             _Person.NationalityCountryID = clsCountries.Find(gcmCountry.Text).CountryID;
             _Person.Address = gtxtAddress.Text;
+
+            if (_Person.ImagePath != "" && pbImage.ImageLocation == "")
+                _RemoveImageFromFile(_Person.ImagePath);
+
             _Person.ImagePath = pbImage.ImageLocation;
         }
         private void _SetImage()
@@ -128,7 +133,7 @@ namespace DVLDPresentationTier.Controls
             string DestanationFile = Path.Combine(AppDomain.CurrentDomain.BaseDirectory,
                 "DVLD-People-Image", guid.ToString() + Extension);
 
-            _RemoveImage();
+            _RemoveImageFromFile(pbImage.ImageLocation);
             File.Copy(SourceFile, DestanationFile);
             _VisibleOfLLRemove(true);
             pbImage.ImageLocation = DestanationFile;
@@ -171,118 +176,104 @@ namespace DVLDPresentationTier.Controls
                 pbImage.Image = Resources.Female_512;
             }
         }
-        bool _CheckErrorProviderForAllTextBoxs(Guna2TextBox txtbox,CancelEventArgs e,string ErrorString)
+        bool _CheckErrorProviderForAllTextBoxs(Guna2TextBox txtbox,string ErrorString)
         {
             bool IsErrorFound = false;
 
             if (string.IsNullOrWhiteSpace(txtbox.Text))
             {
-                e.Cancel = true;
+                txtbox.Tag = false;
                 errorProvider1.SetError(txtbox, ErrorString); 
                 IsErrorFound = true;
             }
             else
             {
-                e.Cancel = false;
+                txtbox.Tag = true;
                 errorProvider1.SetError(txtbox, "");
                 IsErrorFound = false;
             }
 
             return IsErrorFound;
         }
-
-        private void ctrAdd_EditPerson_Load(object sender, EventArgs e)
+        private void _GiveTextBoxesInitialValueForValidating(bool Value)
         {
-            if(PersonID == -1)
+            gtxtFirstName.Tag = Value;
+            gtxtSecondName.Tag = Value;
+            gtxtThirdName.Tag = Value;
+            gtxtLastName.Tag = Value;
+            gtxtNationalNo.Tag = Value;
+            gtxtPhone.Tag = Value;
+            gtxtAddress.Tag = Value;
+            gtxtEmail.Tag = true;
+        }
+        private void _IfTxtFailedInValidating(Guna2TextBox txt)
+        {
+            txt.Focus();
+            MessageBox.Show("Please enter correct values!", "Validation Error",
+                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        }
+        private void _Save()
+        {
+            bool FirstNameValidateResult = (bool)gtxtFirstName.Tag;
+            bool SecondNameValidateResult = (bool)gtxtSecondName.Tag;
+            bool ThirdNameValidateResult = (bool)gtxtThirdName.Tag;
+            bool LastNameValidateResult = (bool)gtxtLastName.Tag;
+            bool NationalNoValidateResult = (bool)gtxtNationalNo.Tag;
+            bool PhoneValidateResult = (bool)gtxtPhone.Tag;
+            bool EmailValidateResult = (bool)gtxtEmail.Tag;
+            bool AddressValidateResult = (bool)gtxtAddress.Tag;
+
+            if (!FirstNameValidateResult)
             {
-                _AddNewPersonMode();
-            }
-            else
-            {
-                _UpdatePersonMode();
-            }
-                //to make the max date Today - 18
-                gDTPDateOfBirth.MaxDate = DateTime.Today.AddYears(-18);
-            _FillCountryCbAndChooseDefaultCountry("Egypt");
-            //_VisibleOfLLRemove(false);
-        }
-
-        private void gtxtFirstName_Validating(object sender, CancelEventArgs e)
-        {
-            _CheckErrorProviderForAllTextBoxs((Guna2TextBox)sender, e,"FirstName must have a value!");
-        }
-
-        private void gtxtSecondName_Validating(object sender, CancelEventArgs e)
-        {
-            _CheckErrorProviderForAllTextBoxs((Guna2TextBox)sender, e, "SecondName must have a value!");
-        }
-
-        private void gtxtThirdName_Validating(object sender, CancelEventArgs e)
-        {
-            _CheckErrorProviderForAllTextBoxs((Guna2TextBox)sender, e, "ThirdName must have a value!");
-        }
-
-        private void gtxtLastName_Validating(object sender, CancelEventArgs e)
-        {
-            _CheckErrorProviderForAllTextBoxs((Guna2TextBox)sender, e, "LastName must have a value!");
-        }
-
-        private void gtxtNationalNo_Validating(object sender, CancelEventArgs e)
-        {
-            Guna2TextBox NationalNo = (Guna2TextBox)sender;
-
-            if (!_CheckErrorProviderForAllTextBoxs(NationalNo, e,"NationalNo must have a value!"))
-            {
-                if (clsPeople.IsPersonExist(NationalNo.Text) && _Person.NationalNo.ToUpper() != NationalNo.Text.ToUpper())
-                {
-                    e.Cancel = true;
-                    errorProvider1.SetError(NationalNo, "NationalNo must be unique value!");
-                }
-                else
-                {
-                    e.Cancel = false;
-                    errorProvider1.SetError(NationalNo, "");
-                }
-            }
-        }
-
-        private void gtxtPhone_Validating(object sender, CancelEventArgs e)
-        {
-            _CheckErrorProviderForAllTextBoxs((Guna2TextBox)sender, e, "Phone must have a value!");
-        }
-
-        private void gtxtAddress_Validating(object sender, CancelEventArgs e)
-        {
-            _CheckErrorProviderForAllTextBoxs((Guna2TextBox)sender, e, "Address must have a value!");
-        }
-
-        private void gtxtEmail_Validating(object sender, CancelEventArgs e)
-        {
-            Guna2TextBox Email = (Guna2TextBox)sender;
-
-            if (!string.IsNullOrWhiteSpace(Email.Text) && !Email.Text.Contains("@gmail.com") )
-            {
-                errorProvider1.SetError(Email, "Email must have @gmail.com");
-                e.Cancel = true;
-            }
-            else
-            {
-                e.Cancel = false;
-                errorProvider1.SetError(Email, "");
-            }
-        }
-
-        private void gbtnSave_Click(object sender, EventArgs e)
-        {
-            if (!ValidateChildren())
-            {
-                MessageBox.Show("Please enter correct values!", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                _IfTxtFailedInValidating(gtxtFirstName);
                 return;
             }
 
-            _FillDataFromFormToObjectPerson();
-            _IsSave = true;
-            clsPeople.enMode prevMode = _Person._Mode;
+            if (!SecondNameValidateResult)
+            {
+                _IfTxtFailedInValidating(gtxtSecondName);
+                return;
+            }
+
+            if (!ThirdNameValidateResult)
+            {
+                _IfTxtFailedInValidating(gtxtThirdName);
+                return;
+            }
+
+            if (!LastNameValidateResult)
+            {
+                _IfTxtFailedInValidating(gtxtLastName);
+                return;
+            }
+
+            if (!NationalNoValidateResult)
+            {
+                _IfTxtFailedInValidating(gtxtNationalNo);
+                return;
+            }
+
+            if (!PhoneValidateResult)
+            {
+                _IfTxtFailedInValidating(gtxtPhone);
+                return;
+            }
+
+            if (!EmailValidateResult)
+            {
+                _IfTxtFailedInValidating(gtxtEmail);
+                return;
+            }
+
+            if (!AddressValidateResult)
+            {
+                _IfTxtFailedInValidating(gtxtAddress);
+                return;
+            }
+
+        
+                _FillDataFromFormToObjectPerson();
+                clsPeople.enMode prevMode = _Person._Mode;
 
             if (_Person.Save())
             {
@@ -293,15 +284,106 @@ namespace DVLDPresentationTier.Controls
                 else
                     MessageBox.Show($"Person Addess Successfuly With ID = {_Person.PersonID}", "Result"
                         , MessageBoxButtons.OK, MessageBoxIcon.Information);
-                _IsSave = true;
+                IsSave = true;
                 _InvokeRelatedEventSaveDataBack();
             }
             else
             {
                 MessageBox.Show("Faild To Save", "Result"
                    , MessageBoxButtons.OK, MessageBoxIcon.Information);
-                _IsSave = false;
+                IsSave = false;
             }
+
+         
+
+         
+        }
+
+        private void ctrAdd_EditPerson_Load(object sender, EventArgs e)
+        {
+            if(PersonID == -1)
+            {
+                _AddNewPersonMode();
+                _GiveTextBoxesInitialValueForValidating(false);
+            }
+            else
+            {
+                _UpdatePersonMode();
+                _GiveTextBoxesInitialValueForValidating(true);
+            }
+                //to make the max date Today - 18
+                gDTPDateOfBirth.MaxDate = DateTime.Today.AddYears(-18);
+            _FillCountryCbAndChooseDefaultCountry("Egypt");
+        }
+
+        private void gtxtFirstName_Validating(object sender, CancelEventArgs e)
+        {
+            _CheckErrorProviderForAllTextBoxs((Guna2TextBox)sender,"FirstName must have a value!");
+        }
+
+        private void gtxtSecondName_Validating(object sender, CancelEventArgs e)
+        {
+            _CheckErrorProviderForAllTextBoxs((Guna2TextBox)sender, "SecondName must have a value!");
+        }
+
+        private void gtxtThirdName_Validating(object sender, CancelEventArgs e)
+        {
+            _CheckErrorProviderForAllTextBoxs((Guna2TextBox)sender,"ThirdName must have a value!");
+        }
+
+        private void gtxtLastName_Validating(object sender, CancelEventArgs e)
+        {
+            _CheckErrorProviderForAllTextBoxs((Guna2TextBox)sender, "LastName must have a value!");
+        }
+
+        private void gtxtNationalNo_Validating(object sender, CancelEventArgs e)
+        {
+            Guna2TextBox NationalNo = (Guna2TextBox)sender;
+
+            if (!_CheckErrorProviderForAllTextBoxs(NationalNo,"NationalNo must have a value!"))
+            {
+                if (clsPeople.IsPersonExist(NationalNo.Text) && _Person.NationalNo.ToUpper() != NationalNo.Text.ToUpper())
+                {
+                    NationalNo.Tag = false;
+                    errorProvider1.SetError(NationalNo, "NationalNo must be unique value!");
+                }
+                else
+                {
+                    NationalNo.Tag = true; 
+                    errorProvider1.SetError(NationalNo, "");
+                }
+            }
+        }
+
+        private void gtxtPhone_Validating(object sender, CancelEventArgs e)
+        {
+            _CheckErrorProviderForAllTextBoxs((Guna2TextBox)sender, "Phone must have a value!");
+        }
+
+        private void gtxtAddress_Validating(object sender, CancelEventArgs e)
+        {
+            _CheckErrorProviderForAllTextBoxs((Guna2TextBox)sender, "Address must have a value!");
+        }
+
+        private void gtxtEmail_Validating(object sender, CancelEventArgs e)
+        {
+            Guna2TextBox Email = (Guna2TextBox)sender;
+
+            if (!string.IsNullOrWhiteSpace(Email.Text) && !Email.Text.Contains("@gmail.com") )
+            {
+                errorProvider1.SetError(Email, "Email must have @gmail.com");
+                Email.Tag = false; ;
+            }
+            else
+            {
+                Email.Tag = true;
+                errorProvider1.SetError(Email, "");
+            }
+        }
+
+        private void gbtnSave_Click(object sender, EventArgs e)
+        {
+            _Save();
         }
 
         private void llblEditPersonInfo_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -319,7 +401,7 @@ namespace DVLDPresentationTier.Controls
 
         private void llblRemoveImage_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            _RemoveImage();
+            _RemoveImageFromPictureBox();
             _ChangeImageAccordingToGendor();
         }
 
@@ -335,8 +417,8 @@ namespace DVLDPresentationTier.Controls
 
         private void gbtnClose_Click(object sender, EventArgs e)
         {
-            if (!this._IsSave)
-                this._RemoveImage();
+            if (!this.IsSave)
+                this._RemoveImageFromFile(pbImage.ImageLocation);
 
             _CloseForm();
         }

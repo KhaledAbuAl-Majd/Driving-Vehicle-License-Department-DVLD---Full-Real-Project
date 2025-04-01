@@ -36,7 +36,7 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.gcmFilterBy = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.gcbFilterBy = new Guna.UI2.WinForms.Guna2ComboBox();
             this.btnAddPerson = new System.Windows.Forms.Button();
             this.gtxtFilterValue = new Guna.UI2.WinForms.Guna2TextBox();
             this.dgvPeople = new System.Windows.Forms.DataGridView();
@@ -47,6 +47,10 @@
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sendEmailToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.phoneCallToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.label3 = new System.Windows.Forms.Label();
+            this.lblNumOfRecords = new System.Windows.Forms.Label();
+            this.gbtnClose = new Guna.UI2.WinForms.Guna2Button();
+            this.gcbFilterByGendor = new Guna.UI2.WinForms.Guna2ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPeople)).BeginInit();
             this.cmpPeopleOptoins.SuspendLayout();
@@ -83,20 +87,20 @@
             this.label2.TabIndex = 3;
             this.label2.Text = "Filter By";
             // 
-            // gcmFilterBy
+            // gcbFilterBy
             // 
-            this.gcmFilterBy.AutoRoundedCorners = true;
-            this.gcmFilterBy.BackColor = System.Drawing.Color.Transparent;
-            this.gcmFilterBy.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.gcmFilterBy.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.gcmFilterBy.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.gcmFilterBy.DropDownWidth = 150;
-            this.gcmFilterBy.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.gcmFilterBy.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.gcmFilterBy.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gcmFilterBy.ForeColor = System.Drawing.Color.Black;
-            this.gcmFilterBy.ItemHeight = 30;
-            this.gcmFilterBy.Items.AddRange(new object[] {
+            this.gcbFilterBy.AutoRoundedCorners = true;
+            this.gcbFilterBy.BackColor = System.Drawing.Color.Transparent;
+            this.gcbFilterBy.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.gcbFilterBy.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.gcbFilterBy.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.gcbFilterBy.DropDownWidth = 150;
+            this.gcbFilterBy.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.gcbFilterBy.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.gcbFilterBy.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gcbFilterBy.ForeColor = System.Drawing.Color.Black;
+            this.gcbFilterBy.ItemHeight = 30;
+            this.gcbFilterBy.Items.AddRange(new object[] {
             "None",
             "Person ID",
             "National No",
@@ -108,11 +112,11 @@
             "Gendor",
             "Phone",
             "Email"});
-            this.gcmFilterBy.Location = new System.Drawing.Point(112, 270);
-            this.gcmFilterBy.Name = "gcmFilterBy";
-            this.gcmFilterBy.Size = new System.Drawing.Size(157, 36);
-            this.gcmFilterBy.TabIndex = 4;
-            this.gcmFilterBy.SelectedIndexChanged += new System.EventHandler(this.gcmFilterBy_SelectedIndexChanged);
+            this.gcbFilterBy.Location = new System.Drawing.Point(112, 270);
+            this.gcbFilterBy.Name = "gcbFilterBy";
+            this.gcbFilterBy.Size = new System.Drawing.Size(157, 36);
+            this.gcbFilterBy.TabIndex = 4;
+            this.gcbFilterBy.SelectedIndexChanged += new System.EventHandler(this.gcmFilterBy_SelectedIndexChanged);
             // 
             // btnAddPerson
             // 
@@ -204,14 +208,14 @@
             this.sendEmailToolStripMenuItem,
             this.phoneCallToolStripMenuItem});
             this.cmpPeopleOptoins.Name = "cmpPeopleOptoins";
-            this.cmpPeopleOptoins.Size = new System.Drawing.Size(197, 254);
+            this.cmpPeopleOptoins.Size = new System.Drawing.Size(179, 232);
             // 
             // showDetailsToolStripMenuItem
             // 
             this.showDetailsToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("showDetailsToolStripMenuItem.Image")));
             this.showDetailsToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.showDetailsToolStripMenuItem.Name = "showDetailsToolStripMenuItem";
-            this.showDetailsToolStripMenuItem.Size = new System.Drawing.Size(196, 38);
+            this.showDetailsToolStripMenuItem.Size = new System.Drawing.Size(178, 38);
             this.showDetailsToolStripMenuItem.Text = "Show Details";
             this.showDetailsToolStripMenuItem.Click += new System.EventHandler(this.showDetailsToolStripMenuItem_Click);
             // 
@@ -220,7 +224,7 @@
             this.addNewPersonToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("addNewPersonToolStripMenuItem.Image")));
             this.addNewPersonToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.addNewPersonToolStripMenuItem.Name = "addNewPersonToolStripMenuItem";
-            this.addNewPersonToolStripMenuItem.Size = new System.Drawing.Size(196, 38);
+            this.addNewPersonToolStripMenuItem.Size = new System.Drawing.Size(178, 38);
             this.addNewPersonToolStripMenuItem.Text = "Add New Person";
             this.addNewPersonToolStripMenuItem.Click += new System.EventHandler(this.addNewPersonToolStripMenuItem_Click);
             // 
@@ -229,7 +233,7 @@
             this.editToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("editToolStripMenuItem.Image")));
             this.editToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(196, 38);
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(178, 38);
             this.editToolStripMenuItem.Text = "Edit";
             this.editToolStripMenuItem.Click += new System.EventHandler(this.editToolStripMenuItem_Click);
             // 
@@ -238,7 +242,7 @@
             this.deleteToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("deleteToolStripMenuItem.Image")));
             this.deleteToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(196, 38);
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(178, 38);
             this.deleteToolStripMenuItem.Text = "Delete";
             this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
             // 
@@ -247,7 +251,7 @@
             this.sendEmailToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("sendEmailToolStripMenuItem.Image")));
             this.sendEmailToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.sendEmailToolStripMenuItem.Name = "sendEmailToolStripMenuItem";
-            this.sendEmailToolStripMenuItem.Size = new System.Drawing.Size(196, 38);
+            this.sendEmailToolStripMenuItem.Size = new System.Drawing.Size(178, 38);
             this.sendEmailToolStripMenuItem.Text = "Send Email";
             this.sendEmailToolStripMenuItem.Click += new System.EventHandler(this.sendEmailToolStripMenuItem_Click);
             // 
@@ -256,9 +260,77 @@
             this.phoneCallToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("phoneCallToolStripMenuItem.Image")));
             this.phoneCallToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.phoneCallToolStripMenuItem.Name = "phoneCallToolStripMenuItem";
-            this.phoneCallToolStripMenuItem.Size = new System.Drawing.Size(196, 38);
+            this.phoneCallToolStripMenuItem.Size = new System.Drawing.Size(178, 38);
             this.phoneCallToolStripMenuItem.Text = "Phone Call";
             this.phoneCallToolStripMenuItem.Click += new System.EventHandler(this.phoneCallToolStripMenuItem_Click);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(29, 714);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(96, 24);
+            this.label3.TabIndex = 8;
+            this.label3.Text = "# Records";
+            // 
+            // lblNumOfRecords
+            // 
+            this.lblNumOfRecords.AutoSize = true;
+            this.lblNumOfRecords.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNumOfRecords.Location = new System.Drawing.Point(142, 714);
+            this.lblNumOfRecords.Name = "lblNumOfRecords";
+            this.lblNumOfRecords.Size = new System.Drawing.Size(20, 24);
+            this.lblNumOfRecords.TabIndex = 9;
+            this.lblNumOfRecords.Text = "0";
+            // 
+            // gbtnClose
+            // 
+            this.gbtnClose.Animated = true;
+            this.gbtnClose.AutoRoundedCorners = true;
+            this.gbtnClose.BackColor = System.Drawing.Color.Transparent;
+            this.gbtnClose.BorderThickness = 1;
+            this.gbtnClose.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.gbtnClose.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.gbtnClose.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.gbtnClose.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.gbtnClose.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.gbtnClose.FillColor = System.Drawing.Color.White;
+            this.gbtnClose.FocusedColor = System.Drawing.SystemColors.MenuHighlight;
+            this.gbtnClose.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gbtnClose.ForeColor = System.Drawing.Color.Black;
+            this.gbtnClose.Image = ((System.Drawing.Image)(resources.GetObject("gbtnClose.Image")));
+            this.gbtnClose.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.gbtnClose.ImageSize = new System.Drawing.Size(35, 35);
+            this.gbtnClose.Location = new System.Drawing.Point(1085, 708);
+            this.gbtnClose.Name = "gbtnClose";
+            this.gbtnClose.Size = new System.Drawing.Size(154, 45);
+            this.gbtnClose.TabIndex = 14;
+            this.gbtnClose.Text = "Close";
+            this.gbtnClose.Click += new System.EventHandler(this.gbtnClose_Click);
+            // 
+            // gcbFilterByGendor
+            // 
+            this.gcbFilterByGendor.AutoRoundedCorners = true;
+            this.gcbFilterByGendor.BackColor = System.Drawing.Color.Transparent;
+            this.gcbFilterByGendor.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.gcbFilterByGendor.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.gcbFilterByGendor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.gcbFilterByGendor.DropDownWidth = 150;
+            this.gcbFilterByGendor.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.gcbFilterByGendor.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.gcbFilterByGendor.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gcbFilterByGendor.ForeColor = System.Drawing.Color.Black;
+            this.gcbFilterByGendor.ItemHeight = 30;
+            this.gcbFilterByGendor.Items.AddRange(new object[] {
+            "All",
+            "Male",
+            "Female"});
+            this.gcbFilterByGendor.Location = new System.Drawing.Point(275, 270);
+            this.gcbFilterByGendor.Name = "gcbFilterByGendor";
+            this.gcbFilterByGendor.Size = new System.Drawing.Size(170, 36);
+            this.gcbFilterByGendor.TabIndex = 22;
+            this.gcbFilterByGendor.SelectedIndexChanged += new System.EventHandler(this.gcbFilterByGendor_SelectedIndexChanged);
             // 
             // frmManagePeople
             // 
@@ -266,13 +338,17 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1267, 762);
+            this.Controls.Add(this.gbtnClose);
+            this.Controls.Add(this.lblNumOfRecords);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.dgvPeople);
-            this.Controls.Add(this.gtxtFilterValue);
             this.Controls.Add(this.btnAddPerson);
-            this.Controls.Add(this.gcmFilterBy);
+            this.Controls.Add(this.gcbFilterBy);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.gcbFilterByGendor);
+            this.Controls.Add(this.gtxtFilterValue);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "frmManagePeople";
@@ -293,7 +369,7 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private Guna.UI2.WinForms.Guna2ComboBox gcmFilterBy;
+        private Guna.UI2.WinForms.Guna2ComboBox gcbFilterBy;
         private System.Windows.Forms.Button btnAddPerson;
         private Guna.UI2.WinForms.Guna2TextBox gtxtFilterValue;
         private System.Windows.Forms.DataGridView dgvPeople;
@@ -304,5 +380,9 @@
         private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem sendEmailToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem phoneCallToolStripMenuItem;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lblNumOfRecords;
+        private Guna.UI2.WinForms.Guna2Button gbtnClose;
+        private Guna.UI2.WinForms.Guna2ComboBox gcbFilterByGendor;
     }
 }

@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DVLDPresentation.People;
+using DVLDPresentation.Users;
 
 namespace DVLDPresentation.Login_HomePage
 {
@@ -39,6 +40,13 @@ namespace DVLDPresentation.Login_HomePage
         private void frmMain_Load(object sender, EventArgs e)
         {
           
+        }
+
+        private void usersToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmManageUsers frm = new frmManageUsers();
+
+            frm.ShowDialog();
         }
     }
 }

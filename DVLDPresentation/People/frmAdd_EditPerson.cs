@@ -12,14 +12,14 @@ namespace DVLDPresentation.People
 {
     public partial class frmAdd_EditPerson : Form
     {
-        public event Action OnClose;
+        public delegate void SendDataBackOnFormClose(object sender, int PersonID);
+        public event SendDataBackOnFormClose DataBackOnClose;
         int _PersonID;
         private void _CloseFormAndUpdateData()
         {
-            Action handler = OnClose;
+            int PersonID = int.Parse(lblPersonID.Text);
 
-            if (handler != null)
-                handler();
+            DataBackOnClose?.Invoke(this, PersonID);
         }
         public frmAdd_EditPerson(int PersonID)
         {
@@ -60,8 +60,9 @@ namespace DVLDPresentation.People
 
         private void ctrAdd_EditPerson1_OnClose()
         {
-            if (ctrAdd_EditPerson1._IsSave)
+            if (ctrAdd_EditPerson1.IsSave)
                 _CloseFormAndUpdateData();
+
             this.Close();
         }
 

@@ -17,11 +17,50 @@ namespace DVLDPresentation
     {
         public event Action OnClose;
 
-        public int _PersonID = -1;
-        clsPeople _Person;
+        public int PersonID = -1;
+        public clsPeople _Person { get; private set; }
+        public void RefreshPersonData(int PersonID)
+        {
+            _Person = clsPeople.Find(PersonID);
+            _FillDataAndShow_HideLLEdit();
+        }
+        public void RefreshPersonData(string NationalNo)
+        {
+            _Person = clsPeople.Find(NationalNo);
+            _FillDataAndShow_HideLLEdit();
+        }
+        public void EmptyPersonInformationAtDesign()
+        {
+            lblPersonID.Text = "[????]";
+            lblName.Text = "[????]";
+            lblNationalNo.Text = "[????]";
+            lblGendor.Text = "[????]"; ;
+            lblEmail.Text = "[????]";
+            pbImage.Image = Resources.Male_512;
+            lblAddress.Text = "[????]";
+            lblDateOfBirth.Text = "[????]";
+            lblPhone.Text = "[????]";
+            lblCountry.Text = "[????]";
+        }
         public ctrPersonCard()
         {
             InitializeComponent();
+        }
+
+        void _FillDataAndShow_HideLLEdit()
+        {
+            if (_Person != null)
+            {
+                PersonID = _Person.PersonID;
+                _FillData();
+                _Show_HideLLEditPerosn(true);
+            }
+            else
+                _Show_HideLLEditPerosn(false);
+        }
+        void _Show_HideLLEditPerosn(bool value)
+        {
+            llblEditPersonInfo.Visible = value;
         }
         void _ChangeGendorData(string Gendor, Image GendorIcon, string PersonImagePath)
         {
@@ -60,33 +99,23 @@ namespace DVLDPresentation
             if (Country != null)
                 lblCountry.Text = Country.CountryName;
         }
-        void _RefreshPersonData()
-        {
-            _Person = clsPeople.Find(_Person.PersonID);
-
-            if (_Person != null)
-                _FillData();
-        }
         private void UserControl1_Load(object sender, EventArgs e)
         {
-            _Person = clsPeople.Find(_PersonID);
-
-            if (_Person != null)
-                _FillData();
+            RefreshPersonData(PersonID);
         }
 
         private void llblEditPersonInfo_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             frmAdd_EditPerson frm = new frmAdd_EditPerson(Convert.ToInt32(lblPersonID.Text));
 
-            frm.OnClose += FrmEdit_OnClose;
+            frm.DataBackOnClose += FrmEdit_OnClose;
             frm.ShowDialog();
 
         }
 
-        private void FrmEdit_OnClose()
+        private void FrmEdit_OnClose(object sender,int PersonID)
         {
-            _RefreshPersonData();
+            RefreshPersonData(this.PersonID);
 
             if (OnClose != null)
                 OnClose();

@@ -24,18 +24,25 @@ namespace DVLDPresentation.People
         {
             frmAdd_EditPerson frm = new frmAdd_EditPerson(-1);
 
-            frm.OnClose += OnCloseAddPersonToUpdateData;
+            frm.DataBackOnClose += OnCloseAddPersonToUpdateData;
             frm.ShowDialog();
         }
         private void _Show_HideTextFilter(bool value)
         {
             gtxtFilterValue.Visible = value;
         }
-
+        private void _Show_HideCBGendorFilter(bool value)
+        {
+            gcbFilterByGendor.Visible = value;
+        }
         private void _FilterData(string FilterText)
         {
-            _People.RowFilter = FilterText;
-            dgvPeople.DataSource = _People;
+            if (_People != null)
+            {
+                _People.RowFilter = FilterText;
+                dgvPeople.DataSource = _People;
+                lblNumOfRecords.Text = _People.Count.ToString();
+            }
         }
         private void _GetTextFilterEmpty()
         {
@@ -43,13 +50,21 @@ namespace DVLDPresentation.People
         }
         private void _FilterByAtDesign()
         {
-            if (gcmFilterBy.Text == "None")
+            if (gcbFilterBy.Text == "None")
             {
                 _Show_HideTextFilter(false);
+                _Show_HideCBGendorFilter(false);
+            }
+            else if(gcbFilterBy.Text == "Gendor")
+            {
+                _Show_HideTextFilter(false);
+                _Show_HideCBGendorFilter(true);
+                gcbFilterByGendor.SelectedIndex = 0;
             }
             else
             {
                 _Show_HideTextFilter(true);
+                _Show_HideCBGendorFilter(false);
             }
 
             _GetTextFilterEmpty();
@@ -58,27 +73,32 @@ namespace DVLDPresentation.People
         {
             DataTable dt = clsPeople.GetAllPeople();
 
-            dt.Columns["Gendor"].ColumnName = "NumberGendor";
-            dt.Columns.Add("Gendor", typeof(string));
-            dt.Columns.Add("Nationality", typeof(string));
-
-
-            foreach (DataRow row in dt.Rows)
+            if (dt.Rows.Count > 0)
             {
-                row["Gendor"] = (Convert.ToInt16(row["NumberGendor"]) == 0) ? "Male" : "Female";
 
-                row["Nationality"] = clsCountries.Find((int)row["NationalityCountryID"]).CountryName;
+                dt.Columns["Gendor"].ColumnName = "NumberGendor";
+                dt.Columns.Add("Gendor", typeof(string));
+                dt.Columns.Add("Nationality", typeof(string));
+
+
+                foreach (DataRow row in dt.Rows)
+                {
+                    row["Gendor"] = (Convert.ToInt16(row["NumberGendor"]) == 0) ? "Male" : "Female";
+
+                    row["Nationality"] = clsCountries.Find((int)row["NationalityCountryID"]).CountryName;
+                }
+
+
+                DataTable dt2 = dt.DefaultView.ToTable(false, "PersonID", "NationalNo", "FirstName",
+                    "SecondName", "ThirdName",
+                    "LastName", "Gendor", "Nationality", "DateOfBirth", "Phone", "Email");
+
+
+                dgvPeople.DataSource = dt2;
+
+                _People = dt2.DefaultView;
+                lblNumOfRecords.Text = dt2.DefaultView.Count.ToString();
             }
-
-
-            DataTable dt2 = dt.DefaultView.ToTable(false, "PersonID", "NationalNo", "FirstName",
-                "SecondName", "ThirdName",
-                "LastName", "Gendor", "Nationality", "DateOfBirth", "Phone", "Email");
-
-
-            dgvPeople.DataSource = dt2;
-
-            _People = dt2.DefaultView;
         }
         private void _DeletePerson()
         {
@@ -91,15 +111,22 @@ namespace DVLDPresentation.People
                 MessageBox.Show("Person want not deleted because it has data linked to it.", "Result"
                     , MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
-        private void _FeatureIsNotImplemented()
+      
+        private void _FilterByGendor()
         {
-            MessageBox.Show("This Feature Is Not Implemented Yet!", "Not Ready!",
-                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            if (gcbFilterByGendor.Text == "All")
+                _FilterData("");
+
+            else if (gcbFilterByGendor.Text == "Male")
+                _FilterData("Gendor = 'Male'");
+
+            else if (gcbFilterByGendor.Text == "Female")
+                _FilterData("Gendor = 'Female'");
         }
         private void frmManagePeople_Load(object sender, EventArgs e)
         {
             _Load_RefreshPeopleInDGV();
-            gcmFilterBy.SelectedIndex = 0;
+            gcbFilterBy.SelectedIndex = 0;
             
         }
 
@@ -110,7 +137,7 @@ namespace DVLDPresentation.People
 
         private void gtxtFilterValue_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (gcmFilterBy.Text != "Person ID")
+            if (gcbFilterBy.Text != "Person ID")
                 return;
 
             // السماح بالأرقام فقط +زر المسح(Backspace)
@@ -120,6 +147,7 @@ namespace DVLDPresentation.People
             }
         }
 
+
         private void gtxtFilterValue_TextChanged(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(gtxtFilterValue.Text))
@@ -128,7 +156,7 @@ namespace DVLDPresentation.People
                 _FilterData("");
                 return;
             }
-            switch (gcmFilterBy.Text)
+            switch (gcbFilterBy.Text)
             {
                 case "None":
                     _FilterData("");
@@ -163,9 +191,9 @@ namespace DVLDPresentation.People
                     _FilterData($"Nationality like '{gtxtFilterValue.Text}%'");
                     break;
 
-                case "Gendor":
-                    _FilterData($"Gendor like '{gtxtFilterValue.Text}%'");
-                    break;
+                //case "Gendor":
+                //    _FilterData($"Gendor like '{gtxtFilterValue.Text}%'");
+                //    break;
 
                 case "Phone":
                     _FilterData($"Phone like '{ gtxtFilterValue.Text}%'");
@@ -185,12 +213,17 @@ namespace DVLDPresentation.People
             frm.ShowDialog();
         }
 
+        private void OnCloseAddPersonToUpdateData()
+        {
+            _Load_RefreshPeopleInDGV();
+        }
+
         private void btnAddPerson_Click(object sender, EventArgs e)
         {
             _AddNewPerson();
         }
 
-        private void OnCloseAddPersonToUpdateData()
+        private void OnCloseAddPersonToUpdateData(object sender, int PersonID)
         {
             _Load_RefreshPeopleInDGV();
         }
@@ -203,11 +236,11 @@ namespace DVLDPresentation.People
         private void editToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmAdd_EditPerson frm = new frmAdd_EditPerson(Convert.ToInt32(dgvPeople.SelectedCells[0].Value));
-            frm.OnClose += FrmEdit_OnClose;
+            frm.DataBackOnClose += FrmEdit_OnClose;
             frm.ShowDialog();
         }
 
-        private void FrmEdit_OnClose()
+        private void FrmEdit_OnClose(object sender, int PersonID)
         {
             _Load_RefreshPeopleInDGV();
         }
@@ -219,12 +252,22 @@ namespace DVLDPresentation.People
 
         private void sendEmailToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            _FeatureIsNotImplemented();
+           clsGlobalSettings.FeatureIsNotImplemented();
         }
 
         private void phoneCallToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            _FeatureIsNotImplemented();
+            clsGlobalSettings.FeatureIsNotImplemented();
+        }
+
+        private void gbtnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void gcbFilterByGendor_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            _FilterByGendor();
         }
     }
 }

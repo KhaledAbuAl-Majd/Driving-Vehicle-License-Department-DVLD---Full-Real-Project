@@ -17,7 +17,7 @@ namespace DVLDPresentation.People
         public frmPersonDetails(int PersonID)
         {
             InitializeComponent();
-            ctrPersonCard1._PersonID = PersonID;
+            ctrPersonCard1.PersonID = PersonID;
             ctrPersonCard1.OnClose += CtrPersonCard1_OnClose;
         }
 
