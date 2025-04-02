@@ -3,8 +3,8 @@
   "WorkspaceRootPath": "E:\\Visual Studio\\source\\Projects\\Course19\\DVLDProject\\DVLDPresentation\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{0ED341D7-871B-430D-AF5D-AC132FF6147A}|DVLDPresentationTier.csproj|E:\\Visual Studio\\source\\Projects\\Course19\\DVLDProject\\DVLDPresentation\\login_mainpage\\frmmain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0ED341D7-871B-430D-AF5D-AC132FF6147A}|DVLDPresentationTier.csproj|solutionrelative:login_mainpage\\frmmain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{0ED341D7-871B-430D-AF5D-AC132FF6147A}|DVLDPresentationTier.csproj|e:\\visual studio\\source\\projects\\course19\\dvldproject\\dvldpresentation\\login_mainpage\\frmmain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{0ED341D7-871B-430D-AF5D-AC132FF6147A}|DVLDPresentationTier.csproj|solutionrelative:login_mainpage\\frmmain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
   "DocumentGroupContainers": [
@@ -35,15 +35,14 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "frmMain.cs",
+              "Title": "frmMain.cs [Design]",
               "DocumentMoniker": "E:\\Visual Studio\\source\\Projects\\Course19\\DVLDProject\\DVLDPresentation\\Login_MainPage\\frmMain.cs",
               "RelativeDocumentMoniker": "Login_MainPage\\frmMain.cs",
-              "ToolTip": "E:\\Visual Studio\\source\\Projects\\Course19\\DVLDProject\\DVLDPresentation\\Login_MainPage\\frmMain.cs",
-              "RelativeToolTip": "Login_MainPage\\frmMain.cs",
-              "ViewState": "AgIAADUAAAAAAAAAAAAYwEcAAABDAAAAAAAAAA==",
+              "ToolTip": "E:\\Visual Studio\\source\\Projects\\Course19\\DVLDProject\\DVLDPresentation\\Login_MainPage\\frmMain.cs [Design]",
+              "RelativeToolTip": "Login_MainPage\\frmMain.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-01T18:04:29.308Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-02T00:10:48.016Z",
+              "EditorCaption": " [Design]"
             }
           ]
         }

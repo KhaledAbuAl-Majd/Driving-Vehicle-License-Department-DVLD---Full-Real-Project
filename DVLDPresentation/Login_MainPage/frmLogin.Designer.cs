@@ -233,6 +233,7 @@
             this.gtxtPassword.TabIndex = 1;
             this.gtxtPassword.UseSystemPasswordChar = true;
             this.gtxtPassword.IconRightClick += new System.EventHandler(this.gtxtPassword_IconRightClick);
+            this.gtxtPassword.TextChanged += new System.EventHandler(this.gtxtPassword_TextChanged);
             // 
             // button1
             // 

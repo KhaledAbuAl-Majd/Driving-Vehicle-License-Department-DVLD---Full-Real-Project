@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DVLDPresentation.Applications;
+using DVLDPresentation.Applications.Test_Types;
 using DVLDPresentation.People;
 using DVLDPresentation.Users;
 
@@ -77,6 +78,13 @@ namespace DVLDPresentation.Login_HomePage
         private void manageApplicationTypesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmManageApplicationTypes frm = new frmManageApplicationTypes();
+
+            frm.ShowDialog();
+        }
+
+        private void manageTestTypesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmManageTestTypes frm = new frmManageTestTypes();
 
             frm.ShowDialog();
         }

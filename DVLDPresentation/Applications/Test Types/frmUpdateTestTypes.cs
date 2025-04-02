@@ -10,41 +10,44 @@ using System.Windows.Forms;
 using DVLDBusiness;
 using Guna.UI2.WinForms;
 
-namespace DVLDPresentation.Applications.Application_Types
+namespace DVLDPresentation.Applications.Test_Types
 {
-    public partial class frmUpdateApplicationTypes : Form
+    public partial class frmUpdateTestTypes : Form
     {
         public event Action OnClose;
+        private clsTestTypes _TestType;
         bool _IsSave = false;
-
-        clsApplicationTypes _ApplicationType;
-        public frmUpdateApplicationTypes(int ApplicationTypeID)
+        public frmUpdateTestTypes(int TestTypeID)
         {
             InitializeComponent();
-
-            _ApplicationType = clsApplicationTypes.FindApplicationType(ApplicationTypeID);
+            _TestType = clsTestTypes.FindTestType(TestTypeID);
         }
+
         void _FillDataFromObjectToForm()
         {
-            if (_ApplicationType == null)
-                return;
-
-            lblID.Text = _ApplicationType.ApplicationTypeID.ToString();
-            gtxtTitle.Text = _ApplicationType.ApplicationTypeTitle;
-            gtxtFees.Text = _ApplicationType.ApplicationFees.ToString();
-
+            lblID.Text = _TestType.TestTypeID.ToString();
+            gtxtTitle.Text = _TestType.TestTypeTitle;
+            gtxtDescription.Text = _TestType.TestTypeDescription;
+            gtxtFees.Text = _TestType.TestFees.ToString();
         }
-        private void frmUpdateApplicationTypes_Load(object sender, EventArgs e)
+
+        private void frmUpdateTestTypes_Load(object sender, EventArgs e)
         {
-            if (_ApplicationType != null)
+            if (_TestType != null)
                 _FillDataFromObjectToForm();
         }
-  
+
         private void gbtnSave_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(gtxtTitle.Text))
             {
                 MessageBox.Show("Title Cannot be empty !", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(gtxtDescription.Text))
+            {
+                MessageBox.Show("Description Cannot be empty !", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -54,10 +57,11 @@ namespace DVLDPresentation.Applications.Application_Types
                 return;
             }
 
-            _ApplicationType.ApplicationTypeTitle = gtxtTitle.Text;
-            _ApplicationType.ApplicationFees = Convert.ToSingle(gtxtFees.Text);
+            _TestType.TestTypeTitle = gtxtTitle.Text;
+            _TestType.TestTypeDescription = gtxtDescription.Text;
+            _TestType.TestFees = Convert.ToSingle(gtxtFees.Text);
 
-            if (_ApplicationType.Save())
+            if (_TestType.Save())
             {
                 MessageBox.Show("Data Saved successfully", "Suscced", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 _IsSave = true;
@@ -76,7 +80,7 @@ namespace DVLDPresentation.Applications.Application_Types
                 e.Handled = true;
             }
 
-            if(e.KeyChar == '.' && ((Guna2TextBox)sender).Text.Contains('.'))
+            if (e.KeyChar == '.' && ((Guna2TextBox)sender).Text.Contains('.'))
             {
                 e.Handled = true;
             }

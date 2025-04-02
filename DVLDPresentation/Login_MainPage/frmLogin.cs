@@ -150,5 +150,14 @@ namespace DVLDPresentation.Login_MainPage
         {
             _RemeberMeLoadDataFromFile();
         }
+
+        private void gtxtPassword_TextChanged(object sender, EventArgs e)
+        {
+            if(string.IsNullOrWhiteSpace(gtxtPassword.Text) && (gtxtPassword.IconRight == null))
+            {
+                gtxtPassword.UseSystemPasswordChar = true;
+                gtxtPassword.IconRight = Resources.eye_icon_256043;
+            }
+        }
     }
 }
