@@ -15,6 +15,8 @@ namespace DVLDPresentation.Controls
 {
     public partial class ctrlPersonCardWithFilter : UserControl
     {
+        //to mark if i add new user or add a new person in another usage
+        public bool IsToAddNewUser = true;
         public ctrlPersonCardWithFilter()
         {
             InitializeComponent();
@@ -45,18 +47,30 @@ namespace DVLDPresentation.Controls
             if (gcbFilterBy.Text == "National No")
             {
                 string NationalNo = gtxtFilterValue.Text;
+
                 if (clsPeople.IsPersonExist(NationalNo))
                 {
-                    ctrlPersonCard1.RefreshPersonData(NationalNo);
-                    this.PersonID = ctrlPersonCard1._Person.PersonID;
-                    if (clsUsers.IsUserExist(ctrlPersonCard1.PersonID))
-                    {
-                        MessageBox.Show("Selected Person already has a user, choose antoher one.",
-                        "Select another Person", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    int PersonID = clsPeople.Find(gtxtFilterValue.Text).PersonID;
 
-                        ctrlPersonCard1.EmptyPersonInformationAtDesign();
+                    if (IsToAddNewUser)
+                        if (clsUsers.IsUserExistByPersonID(PersonID))
+                        {
+                            MessageBox.Show("Selected Person already has a user, choose antoher one.",
+                            "Select another Person", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            gtxtFilterValue.Focus();
+                            ctrlPersonCard1.EmptyPersonInformationAtDesign();
+                        }
+                        else
+                        {
+                            ctrlPersonCard1.RefreshPersonData(PersonID);
+                            this.PersonID = ctrlPersonCard1._Person.PersonID;
+                        }
+                    else
+                    {
+                        ctrlPersonCard1.RefreshPersonData(PersonID);
+                        this.PersonID = ctrlPersonCard1._Person.PersonID;
                     }
-    
+
                 }
                 else
                 {
@@ -75,19 +89,24 @@ namespace DVLDPresentation.Controls
 
                 if (clsPeople.IsPersonExist(PersonID))
                 {
-                    if (clsUsers.IsUserExist(PersonID))
-                    {
-                        MessageBox.Show("Selected Person already has a user, choose antoher one.",
-                        "Select another Person", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                        ctrlPersonCard1.EmptyPersonInformationAtDesign();
-                    }
+                    if (IsToAddNewUser)
+                        if (clsUsers.IsUserExistByPersonID(PersonID))
+                        {
+                            MessageBox.Show("Selected Person already has a user, choose antoher one.",
+                            "Select another Person", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            gtxtFilterValue.Focus();
+                            ctrlPersonCard1.EmptyPersonInformationAtDesign();
+                        }
+                        else
+                        {
+                            ctrlPersonCard1.RefreshPersonData(PersonID);
+                            this.PersonID = ctrlPersonCard1._Person.PersonID;
+                        }
                     else
                     {
                         ctrlPersonCard1.RefreshPersonData(PersonID);
                         this.PersonID = ctrlPersonCard1._Person.PersonID;
                     }
-
                 }
                 else
                 {

@@ -290,6 +290,44 @@ namespace DVLDDataAccess
             return IsFound;
         }
 
+        public static bool IsUserExistByPersonID(int PersonID)
+        {
+            bool IsFound = false;
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSetings.ConnectionString);
+
+            string query = @"SELECT Found = 1 From Users WHERE EXISTS (
+                             SELECT * FROM Users WHERE PersonID = @PersonID )";
+
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@PersonID", PersonID);
+
+            try
+            {
+                connection.Open();
+
+                object result = command.ExecuteScalar();
+
+                if (result != null)
+                {
+                    IsFound = true;
+                }
+                else
+                    IsFound = false;
+            }
+            catch
+            {
+                IsFound = false;
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+
+            return IsFound;
+        }
+
         public  static DataTable GetAllUsers()
         {
             DataTable Users = new DataTable();

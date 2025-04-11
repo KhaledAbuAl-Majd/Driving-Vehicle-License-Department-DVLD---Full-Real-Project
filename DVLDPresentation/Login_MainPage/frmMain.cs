@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DVLDPresentation.Applications;
+using DVLDPresentation.Applications.Driving_License_Services.New_Driving_License;
+using DVLDPresentation.Applications.Manage_Applications;
 using DVLDPresentation.Applications.Test_Types;
 using DVLDPresentation.People;
 using DVLDPresentation.Users;
@@ -20,23 +22,10 @@ namespace DVLDPresentation.Login_HomePage
         {
             InitializeComponent();
         }
-
-
-        //frmManagePeople frm = new frmManagePeople();
         private void peopleToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //if (frm.IsDisposed)
-            //{
-            //    frm = new frmManagePeople();
-            //}
-
-            //frm.MdiParent = this;
-            //frm.Show();
-            //frm.BringToFront();
-
             frmManagePeople frm = new frmManagePeople();
             frm.ShowDialog();
-
         }
 
         private void frmMain_Load(object sender, EventArgs e)
@@ -53,14 +42,14 @@ namespace DVLDPresentation.Login_HomePage
 
         private void currentUserInfoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmUserInfo frm = new frmUserInfo(clsGlobalSettings.LoginedInUserID);
+            frmUserInfo frm = new frmUserInfo(clsGlobalSettings.LoggedInUser.UserID);
 
             frm.ShowDialog();
         }
 
         private void changePasswordToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmChangePassword frm = new frmChangePassword(clsGlobalSettings.LoginedInUserID);
+            frmChangePassword frm = new frmChangePassword(clsGlobalSettings.LoggedInUser.UserID);
 
             frm.ShowDialog();
         }
@@ -85,6 +74,27 @@ namespace DVLDPresentation.Login_HomePage
         private void manageTestTypesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmManageTestTypes frm = new frmManageTestTypes();
+
+            frm.ShowDialog();
+        }
+
+        private void tmslocalLicenseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmNewLocalLicenseApplication frm = new frmNewLocalLicenseApplication(-1);
+
+            frm.ShowDialog();
+        }
+
+        private void localDrivingLicenseApplicationsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmLocalDrivingLicenseApplications frm = new frmLocalDrivingLicenseApplications();
+
+            frm.ShowDialog();
+        }
+
+        private void driversToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmDrivers frm = new frmDrivers();
 
             frm.ShowDialog();
         }

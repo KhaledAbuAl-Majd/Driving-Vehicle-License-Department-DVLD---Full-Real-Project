@@ -5,12 +5,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DVLDBusiness;
 
 namespace DVLDPresentation
 {
     public static class clsGlobalSettings
     {
-        public static int LoginedInUserID { get; set; }
+        public static clsUsers LoggedInUser { get; set; }
 
         public static string PathOfRemeberMeFile
         {

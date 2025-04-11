@@ -59,6 +59,7 @@ namespace DVLDPresentation.Users
             {
                 _Show_HideTextFilter(false);
                 _Show_HideCBIsActiveFilter(false);
+                _FilterData("");
             }
             else if(gcbFilterBy.Text == "Is Active")
             {
@@ -70,9 +71,18 @@ namespace DVLDPresentation.Users
             {
                 _Show_HideTextFilter(true);
                 _Show_HideCBIsActiveFilter(false);
+                _FilterData("");
             }
 
             _GetTextFilterEmpty();
+        }
+        void _EditSizeOfDGVColumns()
+        {
+            dgvUsers.Columns["UserID"].Width = 100;
+            dgvUsers.Columns["PersonID"].Width = 100;
+            dgvUsers.Columns["Full Name"].Width = 350;
+            dgvUsers.Columns["UserName"].Width = 120;
+            dgvUsers.Columns["IsActive"].Width = 100;
         }
         void _Load_RefereshUsersInDGV()
         {
@@ -96,13 +106,10 @@ namespace DVLDPresentation.Users
 
                 _Users = dt2.DefaultView;
                 dgvUsers.DataSource = dt2;
-                dgvUsers.Columns["UserID"].FillWeight = 10;
-                dgvUsers.Columns["PersonID"].FillWeight = 10;
-                dgvUsers.Columns["Full Name"].FillWeight = 50;
-                dgvUsers.Columns["UserName"].FillWeight = 15;
-                dgvUsers.Columns["IsActive"].FillWeight = 15;
-
+                _EditSizeOfDGVColumns();
                 lblNumOfRecords.Text = _Users.Count.ToString();
+                _GetTextFilterEmpty();
+                gcbFilterBy.SelectedIndex = 0;
             }
             else
             {
@@ -138,7 +145,7 @@ namespace DVLDPresentation.Users
         private void frmManageUsers_Load(object sender, EventArgs e)
         {
             _Load_RefereshUsersInDGV();
-            gcbFilterBy.SelectedIndex = 0;
+            //gcbFilterBy.SelectedIndex = 0;
         }
 
         private void gtxtFilterValue_KeyPress(object sender, KeyPressEventArgs e)

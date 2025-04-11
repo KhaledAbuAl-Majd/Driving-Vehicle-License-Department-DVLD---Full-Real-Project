@@ -56,6 +56,8 @@
             this.gbtnClose.FocusedColor = System.Drawing.SystemColors.MenuHighlight;
             this.gbtnClose.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbtnClose.ForeColor = System.Drawing.Color.Black;
+            this.gbtnClose.HoverState.FillColor = System.Drawing.Color.SlateBlue;
+            this.gbtnClose.HoverState.ForeColor = System.Drawing.Color.White;
             this.gbtnClose.Image = ((System.Drawing.Image)(resources.GetObject("gbtnClose.Image")));
             this.gbtnClose.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.gbtnClose.ImageSize = new System.Drawing.Size(35, 35);
@@ -160,6 +162,7 @@
             this.Controls.Add(this.gbtnClose);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.Name = "frmUserInfo";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "User Info";
             this.gbLoginInformation.ResumeLayout(false);
             this.gbLoginInformation.PerformLayout();

@@ -67,7 +67,7 @@
             this.lblHeader.AutoSize = true;
             this.lblHeader.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lblHeader.Location = new System.Drawing.Point(368, 51);
+            this.lblHeader.Location = new System.Drawing.Point(337, 49);
             this.lblHeader.Name = "lblHeader";
             this.lblHeader.Size = new System.Drawing.Size(246, 33);
             this.lblHeader.TabIndex = 24;
@@ -75,22 +75,22 @@
             // 
             // gtabcAddNewPerson
             // 
-            this.gtabcAddNewPerson.Alignment = System.Windows.Forms.TabAlignment.Left;
             this.gtabcAddNewPerson.Controls.Add(this.tpPersonInfo);
             this.gtabcAddNewPerson.Controls.Add(this.tpLoginInfo);
-            this.gtabcAddNewPerson.ItemSize = new System.Drawing.Size(80, 40);
-            this.gtabcAddNewPerson.Location = new System.Drawing.Point(12, 117);
+            this.gtabcAddNewPerson.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.gtabcAddNewPerson.ItemSize = new System.Drawing.Size(140, 50);
+            this.gtabcAddNewPerson.Location = new System.Drawing.Point(27, 133);
             this.gtabcAddNewPerson.Name = "gtabcAddNewPerson";
             this.gtabcAddNewPerson.SelectedIndex = 0;
-            this.gtabcAddNewPerson.Size = new System.Drawing.Size(950, 502);
+            this.gtabcAddNewPerson.Size = new System.Drawing.Size(880, 554);
             this.gtabcAddNewPerson.TabButtonHoverState.BorderColor = System.Drawing.Color.Empty;
-            this.gtabcAddNewPerson.TabButtonHoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(52)))), ((int)(((byte)(70)))));
+            this.gtabcAddNewPerson.TabButtonHoverState.FillColor = System.Drawing.Color.BlueViolet;
             this.gtabcAddNewPerson.TabButtonHoverState.Font = new System.Drawing.Font("Segoe UI Semibold", 10F);
             this.gtabcAddNewPerson.TabButtonHoverState.ForeColor = System.Drawing.Color.White;
             this.gtabcAddNewPerson.TabButtonHoverState.InnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(52)))), ((int)(((byte)(70)))));
             this.gtabcAddNewPerson.TabButtonIdleState.BorderColor = System.Drawing.Color.Empty;
             this.gtabcAddNewPerson.TabButtonIdleState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(42)))), ((int)(((byte)(57)))));
-            this.gtabcAddNewPerson.TabButtonIdleState.Font = new System.Drawing.Font("Segoe UI Semibold", 10F);
+            this.gtabcAddNewPerson.TabButtonIdleState.Font = new System.Drawing.Font("Segoe UI Semibold", 11F);
             this.gtabcAddNewPerson.TabButtonIdleState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(156)))), ((int)(((byte)(160)))), ((int)(((byte)(167)))));
             this.gtabcAddNewPerson.TabButtonIdleState.InnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(42)))), ((int)(((byte)(57)))));
             this.gtabcAddNewPerson.TabButtonSelectedState.BorderColor = System.Drawing.Color.Empty;
@@ -98,9 +98,10 @@
             this.gtabcAddNewPerson.TabButtonSelectedState.Font = new System.Drawing.Font("Segoe UI Semibold", 10F);
             this.gtabcAddNewPerson.TabButtonSelectedState.ForeColor = System.Drawing.Color.White;
             this.gtabcAddNewPerson.TabButtonSelectedState.InnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(132)))), ((int)(((byte)(255)))));
-            this.gtabcAddNewPerson.TabButtonSize = new System.Drawing.Size(80, 40);
+            this.gtabcAddNewPerson.TabButtonSize = new System.Drawing.Size(140, 50);
             this.gtabcAddNewPerson.TabIndex = 25;
             this.gtabcAddNewPerson.TabMenuBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(42)))), ((int)(((byte)(57)))));
+            this.gtabcAddNewPerson.TabMenuOrientation = Guna.UI2.WinForms.TabMenuOrientation.HorizontalTop;
             this.gtabcAddNewPerson.Selecting += new System.Windows.Forms.TabControlCancelEventHandler(this.gtabcAddNewPerson_Selecting);
             // 
             // tpPersonInfo
@@ -109,10 +110,10 @@
             this.tpPersonInfo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tpPersonInfo.Controls.Add(this.gbtnNext);
             this.tpPersonInfo.Controls.Add(this.ctrlPersonCardWithFilter1);
-            this.tpPersonInfo.Location = new System.Drawing.Point(84, 4);
+            this.tpPersonInfo.Location = new System.Drawing.Point(4, 54);
             this.tpPersonInfo.Name = "tpPersonInfo";
             this.tpPersonInfo.Padding = new System.Windows.Forms.Padding(3);
-            this.tpPersonInfo.Size = new System.Drawing.Size(862, 494);
+            this.tpPersonInfo.Size = new System.Drawing.Size(872, 496);
             this.tpPersonInfo.TabIndex = 0;
             this.tpPersonInfo.Text = "Person Info";
             // 
@@ -131,10 +132,12 @@
             this.gbtnNext.FocusedColor = System.Drawing.SystemColors.MenuHighlight;
             this.gbtnNext.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbtnNext.ForeColor = System.Drawing.Color.Black;
+            this.gbtnNext.HoverState.FillColor = System.Drawing.Color.SlateBlue;
+            this.gbtnNext.HoverState.ForeColor = System.Drawing.Color.White;
             this.gbtnNext.Image = ((System.Drawing.Image)(resources.GetObject("gbtnNext.Image")));
             this.gbtnNext.ImageAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.gbtnNext.ImageSize = new System.Drawing.Size(35, 35);
-            this.gbtnNext.Location = new System.Drawing.Point(701, 432);
+            this.gbtnNext.Location = new System.Drawing.Point(697, 432);
             this.gbtnNext.Name = "gbtnNext";
             this.gbtnNext.Size = new System.Drawing.Size(154, 45);
             this.gbtnNext.TabIndex = 5;
@@ -144,10 +147,10 @@
             // ctrlPersonCardWithFilter1
             // 
             this.ctrlPersonCardWithFilter1.BackColor = System.Drawing.Color.White;
-            this.ctrlPersonCardWithFilter1.Location = new System.Drawing.Point(1, 22);
+            this.ctrlPersonCardWithFilter1.Location = new System.Drawing.Point(7, 22);
             this.ctrlPersonCardWithFilter1.Margin = new System.Windows.Forms.Padding(4);
             this.ctrlPersonCardWithFilter1.Name = "ctrlPersonCardWithFilter1";
-            this.ctrlPersonCardWithFilter1.Size = new System.Drawing.Size(854, 403);
+            this.ctrlPersonCardWithFilter1.Size = new System.Drawing.Size(861, 403);
             this.ctrlPersonCardWithFilter1.TabIndex = 0;
             // 
             // tpLoginInfo
@@ -166,10 +169,10 @@
             this.tpLoginInfo.Controls.Add(this.label1);
             this.tpLoginInfo.Controls.Add(this.gtxtUserName);
             this.tpLoginInfo.Controls.Add(this.label2);
-            this.tpLoginInfo.Location = new System.Drawing.Point(84, 4);
+            this.tpLoginInfo.Location = new System.Drawing.Point(4, 54);
             this.tpLoginInfo.Name = "tpLoginInfo";
             this.tpLoginInfo.Padding = new System.Windows.Forms.Padding(3);
-            this.tpLoginInfo.Size = new System.Drawing.Size(862, 494);
+            this.tpLoginInfo.Size = new System.Drawing.Size(872, 496);
             this.tpLoginInfo.TabIndex = 1;
             this.tpLoginInfo.Text = "LoginInfo";
             // 
@@ -372,10 +375,12 @@
             this.gbtnClose.FocusedColor = System.Drawing.SystemColors.MenuHighlight;
             this.gbtnClose.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbtnClose.ForeColor = System.Drawing.Color.Black;
+            this.gbtnClose.HoverState.FillColor = System.Drawing.Color.SlateBlue;
+            this.gbtnClose.HoverState.ForeColor = System.Drawing.Color.White;
             this.gbtnClose.Image = ((System.Drawing.Image)(resources.GetObject("gbtnClose.Image")));
             this.gbtnClose.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.gbtnClose.ImageSize = new System.Drawing.Size(35, 35);
-            this.gbtnClose.Location = new System.Drawing.Point(640, 625);
+            this.gbtnClose.Location = new System.Drawing.Point(591, 693);
             this.gbtnClose.Name = "gbtnClose";
             this.gbtnClose.Size = new System.Drawing.Size(154, 45);
             this.gbtnClose.TabIndex = 27;
@@ -397,10 +402,12 @@
             this.gbtnSave.FocusedColor = System.Drawing.SystemColors.MenuHighlight;
             this.gbtnSave.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbtnSave.ForeColor = System.Drawing.Color.Black;
+            this.gbtnSave.HoverState.FillColor = System.Drawing.Color.SlateBlue;
+            this.gbtnSave.HoverState.ForeColor = System.Drawing.Color.White;
             this.gbtnSave.Image = ((System.Drawing.Image)(resources.GetObject("gbtnSave.Image")));
             this.gbtnSave.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.gbtnSave.ImageSize = new System.Drawing.Size(35, 35);
-            this.gbtnSave.Location = new System.Drawing.Point(808, 625);
+            this.gbtnSave.Location = new System.Drawing.Point(751, 693);
             this.gbtnSave.Name = "gbtnSave";
             this.gbtnSave.Size = new System.Drawing.Size(154, 45);
             this.gbtnSave.TabIndex = 26;
@@ -416,7 +423,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(979, 685);
+            this.ClientSize = new System.Drawing.Size(933, 750);
             this.Controls.Add(this.gbtnClose);
             this.Controls.Add(this.gbtnSave);
             this.Controls.Add(this.gtabcAddNewPerson);

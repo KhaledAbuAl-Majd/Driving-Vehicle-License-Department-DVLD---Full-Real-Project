@@ -71,6 +71,19 @@ namespace DVLDPresentation.People
 
             _GetTextFilterEmpty();
         }
+        void _EditSizeOfDGVColumns()
+        {
+            dgvPeople.Columns["PersonID"].Width = 100;
+            dgvPeople.Columns["NationalNo"].Width = 100;
+            dgvPeople.Columns["FirstName"].Width = 105;
+            dgvPeople.Columns["SecondName"].Width = 105;
+            dgvPeople.Columns["ThirdName"].Width = 105;
+            dgvPeople.Columns["LastName"].Width = 105;
+            dgvPeople.Columns["Gendor"].Width = 100;
+            dgvPeople.Columns["DateOfBirth"].Width = 100;
+            dgvPeople.Columns["Phone"].Width = 100;
+            dgvPeople.Columns["Email"].Width = 230;
+        }
         private void _Load_RefreshPeopleInDGV()
         {
             DataTable dt = clsPeople.GetAllPeople();
@@ -97,8 +110,9 @@ namespace DVLDPresentation.People
 
 
                 dgvPeople.DataSource = dt2;
-
                 _People = dt2.DefaultView;
+                _EditSizeOfDGVColumns();
+                _GetTextFilterEmpty();
                 lblNumOfRecords.Text = dt2.DefaultView.Count.ToString();
             }
             else
@@ -153,9 +167,9 @@ namespace DVLDPresentation.People
             }
         }
 
-
         private void gtxtFilterValue_TextChanged(object sender, EventArgs e)
         {
+            //to avoid error when the text is empty when you filter by int
             if (string.IsNullOrWhiteSpace(gtxtFilterValue.Text))
             {
                 //to make filter is none get all people
@@ -164,9 +178,6 @@ namespace DVLDPresentation.People
             }
             switch (gcbFilterBy.Text)
             {
-                case "None":
-                    _FilterData("");
-                    break;
 
                 case "Person ID":
                     _FilterData("PersonID = " + gtxtFilterValue.Text);

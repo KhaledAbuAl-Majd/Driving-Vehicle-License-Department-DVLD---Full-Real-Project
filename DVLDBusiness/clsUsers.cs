@@ -110,6 +110,10 @@ namespace DVLDBusiness
         {
             return clsUsersData.IsUserExist(UserID);
         }
+        public static bool IsUserExistByPersonID(int PersonID)
+        {
+            return clsUsersData.IsUserExistByPersonID(PersonID);
+        }
 
         public static bool IsUserExist(string UserName)
         {
@@ -120,5 +124,6 @@ namespace DVLDBusiness
         {
             return clsUsersData.GetAllUsers();
         }
+
     }
 }

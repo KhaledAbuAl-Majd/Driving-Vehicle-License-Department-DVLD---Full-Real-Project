@@ -157,5 +157,10 @@ namespace DVLDBusiness
         {
             return clsPeopleData.IsPersonExist(NationalNo);
         }
+
+        public string GetFullName()
+        {
+            return this.FirstName + " " + this.SecondName + " " + this.ThirdName + " " + this.LastName;
+        }
     }
 }

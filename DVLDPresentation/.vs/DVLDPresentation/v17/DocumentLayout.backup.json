@@ -3,12 +3,8 @@
   "WorkspaceRootPath": "E:\\Visual Studio\\source\\Projects\\Course19\\DVLDProject\\DVLDPresentation\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{0ED341D7-871B-430D-AF5D-AC132FF6147A}|DVLDPresentationTier.csproj|e:\\visual studio\\source\\projects\\course19\\dvldproject\\dvldpresentation\\login_mainpage\\frmlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0ED341D7-871B-430D-AF5D-AC132FF6147A}|DVLDPresentationTier.csproj|solutionrelative:login_mainpage\\frmlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0ED341D7-871B-430D-AF5D-AC132FF6147A}|DVLDPresentationTier.csproj|e:\\visual studio\\source\\projects\\course19\\dvldproject\\dvldpresentation\\login_mainpage\\frmlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{0ED341D7-871B-430D-AF5D-AC132FF6147A}|DVLDPresentationTier.csproj|solutionrelative:login_mainpage\\frmlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{0ED341D7-871B-430D-AF5D-AC132FF6147A}|DVLDPresentationTier.csproj|e:\\visual studio\\source\\projects\\course19\\dvldproject\\dvldpresentation\\users\\frmadd_editnewuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{0ED341D7-871B-430D-AF5D-AC132FF6147A}|DVLDPresentationTier.csproj|solutionrelative:users\\frmadd_editnewuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
   "DocumentGroupContainers": [
@@ -39,26 +35,13 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "frmLogin.cs",
-              "DocumentMoniker": "E:\\Visual Studio\\source\\Projects\\Course19\\DVLDProject\\DVLDPresentation\\Login_MainPage\\frmLogin.cs",
-              "RelativeDocumentMoniker": "Login_MainPage\\frmLogin.cs",
-              "ToolTip": "E:\\Visual Studio\\source\\Projects\\Course19\\DVLDProject\\DVLDPresentation\\Login_MainPage\\frmLogin.cs",
-              "RelativeToolTip": "Login_MainPage\\frmLogin.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAwBAAAAABAAAAAAAAAA==",
+              "Title": "frmAdd_EditNewUser.cs [Design]",
+              "DocumentMoniker": "E:\\Visual Studio\\source\\Projects\\Course19\\DVLDProject\\DVLDPresentation\\Users\\frmAdd_EditNewUser.cs",
+              "RelativeDocumentMoniker": "Users\\frmAdd_EditNewUser.cs",
+              "ToolTip": "E:\\Visual Studio\\source\\Projects\\Course19\\DVLDProject\\DVLDPresentation\\Users\\frmAdd_EditNewUser.cs [Design]",
+              "RelativeToolTip": "Users\\frmAdd_EditNewUser.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-02T00:06:32.741Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "frmLogin.cs [Design]",
-              "DocumentMoniker": "E:\\Visual Studio\\source\\Projects\\Course19\\DVLDProject\\DVLDPresentation\\Login_MainPage\\frmLogin.cs",
-              "RelativeDocumentMoniker": "Login_MainPage\\frmLogin.cs",
-              "ToolTip": "E:\\Visual Studio\\source\\Projects\\Course19\\DVLDProject\\DVLDPresentation\\Login_MainPage\\frmLogin.cs [Design]",
-              "RelativeToolTip": "Login_MainPage\\frmLogin.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-02T00:06:29.161Z",
+              "WhenOpened": "2025-04-11T20:37:01.504Z",
               "EditorCaption": " [Design]"
             }
           ]

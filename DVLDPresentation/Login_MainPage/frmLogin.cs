@@ -135,7 +135,7 @@ namespace DVLDPresentation.Login_MainPage
                 return;
             }
 
-            clsGlobalSettings.LoginedInUserID = User.UserID;
+            clsGlobalSettings.LoggedInUser = User;
 
             _RemeberMeAddDataToFile(gchkRemeberMe.Checked);
 

@@ -86,6 +86,7 @@
             // 
             this.gtxtFilterValue.Animated = true;
             this.gtxtFilterValue.AutoRoundedCorners = true;
+            this.gtxtFilterValue.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.gtxtFilterValue.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.gtxtFilterValue.DefaultText = "";
             this.gtxtFilterValue.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -135,9 +136,9 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(15, 47);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(74, 20);
+            this.label1.Size = new System.Drawing.Size(69, 20);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Find By:";
+            this.label1.Text = "FindBy:";
             // 
             // ctrlPersonCard1
             // 

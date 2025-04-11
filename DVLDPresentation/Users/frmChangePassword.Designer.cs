@@ -155,6 +155,8 @@
             this.gbtnClose.FocusedColor = System.Drawing.SystemColors.MenuHighlight;
             this.gbtnClose.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbtnClose.ForeColor = System.Drawing.Color.Black;
+            this.gbtnClose.HoverState.FillColor = System.Drawing.Color.SlateBlue;
+            this.gbtnClose.HoverState.ForeColor = System.Drawing.Color.White;
             this.gbtnClose.Image = ((System.Drawing.Image)(resources.GetObject("gbtnClose.Image")));
             this.gbtnClose.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.gbtnClose.ImageSize = new System.Drawing.Size(35, 35);
@@ -180,6 +182,8 @@
             this.gbtnSave.FocusedColor = System.Drawing.SystemColors.MenuHighlight;
             this.gbtnSave.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbtnSave.ForeColor = System.Drawing.Color.Black;
+            this.gbtnSave.HoverState.FillColor = System.Drawing.Color.SlateBlue;
+            this.gbtnSave.HoverState.ForeColor = System.Drawing.Color.White;
             this.gbtnSave.Image = ((System.Drawing.Image)(resources.GetObject("gbtnSave.Image")));
             this.gbtnSave.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.gbtnSave.ImageSize = new System.Drawing.Size(35, 35);
@@ -348,7 +352,9 @@
             this.Controls.Add(this.gbtnSave);
             this.Controls.Add(this.ctrPersonCard1);
             this.Controls.Add(this.gbLoginInformation);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "frmChangePassword";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Change Password";
             this.Load += new System.EventHandler(this.frmChangePassword_Load);
             this.gbLoginInformation.ResumeLayout(false);
