@@ -36,7 +36,7 @@ namespace DVLDBusiness
         }
         void _SetPassedTests(int LocalDrivingLicenseApplicationID)
         {    
-            clsLocalDrivingApplictions LDLApplication = clsLocalDrivingApplictions.Find(LocalDrivingLicenseApplicationID);
+            clsLocalDrivingApplictions LDLApplication = clsLocalDrivingApplictions.FindByLDLApplicationID(LocalDrivingLicenseApplicationID);
             LDLApplication.PassedTests++;
             LDLApplication.Save();
             _CheckIsBecameADriver(LDLApplication);

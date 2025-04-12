@@ -28,7 +28,7 @@ namespace DVLDPresentation.Applications.Driving_License_Services.New_Driving_Lic
             _ApplicationType = clsApplicationTypes.FindApplicationType(_ApplicationTypeID);
             if(LDLApplicationID != -1)
             {
-                _LDLApplication = clsLocalDrivingApplictions.Find(LDLApplicationID);
+                _LDLApplication = clsLocalDrivingApplictions.FindByLDLApplicationID(LDLApplicationID);
                 _Application = clsApplications.Find(_LDLApplication.ApplicationID);
             }
             else

@@ -24,7 +24,7 @@ namespace DVLDPresentation.Applications.Manage_Applications.LocalDrivingLicenseA
         public frmScheduleTestAdd_Edit(int LDLApplicationID,int TestAppointmentID,int TestType)
         {
             InitializeComponent();
-            _LDLApplication = clsLocalDrivingApplictions.Find(LDLApplicationID);
+            _LDLApplication = clsLocalDrivingApplictions.FindByLDLApplicationID(LDLApplicationID);
             _TestType = (enTestType)TestType;
             _TestAppointment = (TestAppointmentID == -1) ? new clsTestAppointments(LDLApplicationID,Convert.ToInt32(_TestType)) : clsTestAppointments.Find(TestAppointmentID);
         }

@@ -138,6 +138,7 @@
             this.tmsInterantionalLicense.Name = "tmsInterantionalLicense";
             this.tmsInterantionalLicense.Size = new System.Drawing.Size(241, 38);
             this.tmsInterantionalLicense.Text = "International License";
+            this.tmsInterantionalLicense.Click += new System.EventHandler(this.tmsInterantionalLicense_Click);
             // 
             // renewDrivingLicenseToolStripMenuItem
             // 
@@ -203,6 +204,7 @@
             this.internationalLicenseApplicationToolStripMenuItem.Name = "internationalLicenseApplicationToolStripMenuItem";
             this.internationalLicenseApplicationToolStripMenuItem.Size = new System.Drawing.Size(357, 38);
             this.internationalLicenseApplicationToolStripMenuItem.Text = "International License Application";
+            this.internationalLicenseApplicationToolStripMenuItem.Click += new System.EventHandler(this.internationalLicenseApplicationToolStripMenuItem_Click);
             // 
             // toolStripSeparator3
             // 

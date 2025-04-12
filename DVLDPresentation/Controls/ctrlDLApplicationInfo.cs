@@ -25,12 +25,12 @@ namespace DVLDPresentation.Controls
 
         public void _ChangePassedTestsLabel()
         {
-            lblPassedTests.Text = clsLocalDrivingApplictions.Find(LDLApplicationID).PassedTests.ToString() + "/3";
+            lblPassedTests.Text = clsLocalDrivingApplictions.FindByLDLApplicationID(LDLApplicationID).PassedTests.ToString() + "/3";
         }
 
         private void _FillDataInLables()
         {
-            clsLocalDrivingApplictions LDLApplicatoin = clsLocalDrivingApplictions.Find(LDLApplicationID);
+            clsLocalDrivingApplictions LDLApplicatoin = clsLocalDrivingApplictions.FindByLDLApplicationID(LDLApplicationID);
 
             if (LDLApplicatoin != null)
             {

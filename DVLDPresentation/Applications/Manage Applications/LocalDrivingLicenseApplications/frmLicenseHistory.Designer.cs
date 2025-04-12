@@ -46,7 +46,7 @@
             this.gtabInternational = new System.Windows.Forms.TabPage();
             this.label1 = new System.Windows.Forms.Label();
             this.dgvInternationalLicenseHistory = new System.Windows.Forms.DataGridView();
-            this.lblInternationalLicenseHistory = new System.Windows.Forms.Label();
+            this.lblInternationalNumOfRecords = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.ctrlPersonCardWithFilter1 = new DVLDPresentation.Controls.ctrlPersonCardWithFilter();
@@ -94,7 +94,7 @@
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvLocalLicenseHistory.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dgvLocalLicenseHistory.ColumnHeadersHeight = 30;
+            this.dgvLocalLicenseHistory.ColumnHeadersHeight = 35;
             this.dgvLocalLicenseHistory.Cursor = System.Windows.Forms.Cursors.Default;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
@@ -221,7 +221,7 @@
             this.gtabInternational.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.gtabInternational.Controls.Add(this.label1);
             this.gtabInternational.Controls.Add(this.dgvInternationalLicenseHistory);
-            this.gtabInternational.Controls.Add(this.lblInternationalLicenseHistory);
+            this.gtabInternational.Controls.Add(this.lblInternationalNumOfRecords);
             this.gtabInternational.Controls.Add(this.label5);
             this.gtabInternational.Location = new System.Drawing.Point(4, 54);
             this.gtabInternational.Name = "gtabInternational";
@@ -256,7 +256,7 @@
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvInternationalLicenseHistory.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
-            this.dgvInternationalLicenseHistory.ColumnHeadersHeight = 30;
+            this.dgvInternationalLicenseHistory.ColumnHeadersHeight = 35;
             this.dgvInternationalLicenseHistory.Cursor = System.Windows.Forms.Cursors.Default;
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
@@ -284,15 +284,15 @@
             this.dgvInternationalLicenseHistory.Size = new System.Drawing.Size(992, 179);
             this.dgvInternationalLicenseHistory.TabIndex = 29;
             // 
-            // lblInternationalLicenseHistory
+            // lblInternationalNumOfRecords
             // 
-            this.lblInternationalLicenseHistory.AutoSize = true;
-            this.lblInternationalLicenseHistory.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblInternationalLicenseHistory.Location = new System.Drawing.Point(141, 239);
-            this.lblInternationalLicenseHistory.Name = "lblInternationalLicenseHistory";
-            this.lblInternationalLicenseHistory.Size = new System.Drawing.Size(20, 24);
-            this.lblInternationalLicenseHistory.TabIndex = 31;
-            this.lblInternationalLicenseHistory.Text = "0";
+            this.lblInternationalNumOfRecords.AutoSize = true;
+            this.lblInternationalNumOfRecords.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblInternationalNumOfRecords.Location = new System.Drawing.Point(141, 239);
+            this.lblInternationalNumOfRecords.Name = "lblInternationalNumOfRecords";
+            this.lblInternationalNumOfRecords.Size = new System.Drawing.Size(20, 24);
+            this.lblInternationalNumOfRecords.TabIndex = 31;
+            this.lblInternationalNumOfRecords.Text = "0";
             // 
             // label5
             // 
@@ -365,7 +365,7 @@
         private System.Windows.Forms.TabPage gtabInternational;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dgvInternationalLicenseHistory;
-        private System.Windows.Forms.Label lblInternationalLicenseHistory;
+        private System.Windows.Forms.Label lblInternationalNumOfRecords;
         private System.Windows.Forms.Label label5;
         private Controls.ctrlPersonCardWithFilter ctrlPersonCardWithFilter1;
         private System.Windows.Forms.PictureBox pictureBox1;

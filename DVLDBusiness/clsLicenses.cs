@@ -30,7 +30,7 @@ namespace DVLDBusiness
             this.Mode = enMode.AddNew;
             this.LicneseID = -1;
 
-            clsLocalDrivingApplictions LDLApplication = clsLocalDrivingApplictions.Find(LDLApplicationID);
+            clsLocalDrivingApplictions LDLApplication = clsLocalDrivingApplictions.FindByLDLApplicationID(LDLApplicationID);
 
             if (LDLApplication != null)
             {
@@ -93,6 +93,7 @@ namespace DVLDBusiness
                         this.Mode = enMode.Update;
                         clsApplications Application = clsApplications.Find(this.ApplicationID);
                         Application.ApplicationStatusID = clsApplicationStatuses.Find("Completed").ApplicationStatusID;
+                        Application.LastStatusDate = DateTime.Now;
                         Application.Save();
                         return true;
                     }
@@ -155,6 +156,9 @@ namespace DVLDBusiness
         {
             return clsLicensesData.GetNumberOfActiveLicnesesByDriverID(DriverID);
         }
-
+        public static bool IsLicenseExist(int LicenseID)
+        {
+            return clsLicensesData.IsLicenseExist(LicenseID);
+        }
     }
 }

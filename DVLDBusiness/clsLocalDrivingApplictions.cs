@@ -66,12 +66,22 @@ namespace DVLDBusiness
 
             return false;
         }
-        public static clsLocalDrivingApplictions Find(int LocalDrvingApplicationID)
+        public static clsLocalDrivingApplictions FindByLDLApplicationID(int LocalDrvingApplicationID)
         {
             int ApplicationID = -1, LicenseClassID = -1;
             byte PassedTests = 0;
 
-            if (clsLocalDrivingApplictionsData.GetLocalDrivingApplicationsInfoByID(LocalDrvingApplicationID,ref ApplicationID,ref LicenseClassID,ref PassedTests))
+            if (clsLocalDrivingApplictionsData.GetLocalDrivingApplicationsInfoByLDLApplicationID(LocalDrvingApplicationID,ref ApplicationID,ref LicenseClassID,ref PassedTests))
+                return new clsLocalDrivingApplictions(LocalDrvingApplicationID, ApplicationID,LicenseClassID, PassedTests);
+            else
+                return null;
+        }
+        public static clsLocalDrivingApplictions FindByApplicationID(int ApplicationID)
+        {
+            int LocalDrvingApplicationID = -1, LicenseClassID = -1;
+            byte PassedTests = 0;
+
+            if (clsLocalDrivingApplictionsData.GetLocalDrivingApplicationsInfoByApplicationID(ApplicationID, ref LocalDrvingApplicationID, ref LicenseClassID,ref PassedTests))
                 return new clsLocalDrivingApplictions(LocalDrvingApplicationID, ApplicationID,LicenseClassID, PassedTests);
             else
                 return null;

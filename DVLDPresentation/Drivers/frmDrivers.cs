@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DVLDBusiness;
+using DVLDPresentation.Applications.Manage_Applications.LocalDrivingLicenseApplications;
+using DVLDPresentation.People;
 
 namespace DVLDPresentation
 {
@@ -161,6 +163,21 @@ namespace DVLDPresentation
         private void gbtnClose_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void showDetailsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int PersonID = Convert.ToInt32(dgvDrivers.SelectedCells[1].Value);
+            frmPersonDetails frm = new frmPersonDetails(PersonID);
+            frm.OnClose += _Load_RefereshUsersInDGV;
+            frm.ShowDialog();
+        }
+
+        private void showPersonLicenseHistoryToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int PersonID = Convert.ToInt32(dgvDrivers.SelectedCells[1].Value);
+            frmLicenseHistory frm = new frmLicenseHistory(PersonID);
+            frm.ShowDialog();
         }
     }
 }

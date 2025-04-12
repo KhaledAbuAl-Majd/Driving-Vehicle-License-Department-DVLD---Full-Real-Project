@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using DVLDPresentation.Applications;
 using DVLDPresentation.Applications.Driving_License_Services.New_Driving_License;
 using DVLDPresentation.Applications.Manage_Applications;
+using DVLDPresentation.Applications.Manage_Applications.International_Driving_License_Application;
 using DVLDPresentation.Applications.Test_Types;
 using DVLDPresentation.People;
 using DVLDPresentation.Users;
@@ -96,6 +97,18 @@ namespace DVLDPresentation.Login_HomePage
         {
             frmDrivers frm = new frmDrivers();
 
+            frm.ShowDialog();
+        }
+
+        private void tmsInterantionalLicense_Click(object sender, EventArgs e)
+        {
+            frmNewInternationalLicneseApplication frm = new frmNewInternationalLicneseApplication();
+            frm.ShowDialog();
+        }
+
+        private void internationalLicenseApplicationToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmListInternationalDrivingLicenseApplications frm = new frmListInternationalDrivingLicenseApplications();
             frm.ShowDialog();
         }
     }

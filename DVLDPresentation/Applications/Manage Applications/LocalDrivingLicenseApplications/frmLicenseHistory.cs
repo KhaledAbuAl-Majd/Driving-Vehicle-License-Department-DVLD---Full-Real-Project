@@ -46,7 +46,7 @@ namespace DVLDPresentation.Applications.Manage_Applications.LocalDrivingLicenseA
 
                 foreach(DataRow row in dtAllLocalLicenses.Rows)
                 {
-                    row["Class Name"] = clsLicneseClasses.Find(Convert.ToInt32(row["LicenseClassID"])).ClassName;
+                    row["Class Name"] = clsLicneseClasses.Find(Convert.ToInt32(row["Lic.ID"])).ClassName;
                 }
 
                 dgvLocalLicenseHistory.DataSource = dtAllLocalLicenses.DefaultView.ToTable(false, "Lic.ID", "App.ID",
@@ -58,9 +58,36 @@ namespace DVLDPresentation.Applications.Manage_Applications.LocalDrivingLicenseA
             else
                 lblLocalNumOfRecords.Text = "0";
         }
+        void _EditInternationalDGVSize()
+        {
+            dgvInternationalLicenseHistory.Columns["Int.License ID"].Width = 130;
+            dgvInternationalLicenseHistory.Columns["Application ID"].Width = 130;
+            dgvInternationalLicenseHistory.Columns["L.License ID"].Width = 130;
+            dgvInternationalLicenseHistory.Columns["Issue Date"].Width = 190;
+            dgvInternationalLicenseHistory.Columns["Expiration Date"].Width = 170;
+            dgvInternationalLicenseHistory.Columns["Is Acitve"].Width = 100;
+        }
         void _LoadDataInInternationalDGV()
         {
+            DataTable dtAllInternationalLicenses = clsInternationalLicenses.GetAllLicnesesByPersonID(_PersonID);
 
+            if (dtAllInternationalLicenses.Rows.Count > 0)
+            {
+                dtAllInternationalLicenses.Columns["InternationalLicenseID"].ColumnName = "Int.License ID";
+                dtAllInternationalLicenses.Columns["ApplicationID"].ColumnName = "Application ID";
+                dtAllInternationalLicenses.Columns["IssuedUsingLocalLicenseID"].ColumnName = "L.License ID";
+                dtAllInternationalLicenses.Columns["IssueDate"].ColumnName = "Issue Date";
+                dtAllInternationalLicenses.Columns["ExpirationDate"].ColumnName = "Expiration Date";
+                dtAllInternationalLicenses.Columns["IsActive"].ColumnName = "Is Acitve";
+
+                dgvInternationalLicenseHistory.DataSource = dtAllInternationalLicenses.DefaultView.ToTable(false, "Int.License ID", "Application ID",
+                    "L.License ID", "Issue Date", "Expiration Date", "Is Acitve");
+
+                _EditInternationalDGVSize();
+                lblInternationalNumOfRecords.Text = dtAllInternationalLicenses.Rows.Count.ToString();
+            }
+            else
+                lblInternationalNumOfRecords.Text = "0";
         }
         private void frmLicenseHistory_Load(object sender, EventArgs e)
         {
@@ -73,5 +100,6 @@ namespace DVLDPresentation.Applications.Manage_Applications.LocalDrivingLicenseA
         {
             this.Close();
         }
+
     }
 }

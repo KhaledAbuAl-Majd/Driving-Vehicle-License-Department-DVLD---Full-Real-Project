@@ -51,6 +51,47 @@ namespace DVLDDataAccess
 
             return IsFound;
         }
+        public static bool GetLicenseClassByClassName(string ClassName ,ref int LicenseClassID, ref string ClassDiscription,
+            ref byte MinumAllowedAge, ref byte DefaultValidityLength, ref float ClassFees)
+        {
+            bool IsFound = false;
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSetings.ConnectionString);
+
+            string query = "SELECT * FROM LicneseClasses WHERE ClassName = @ClassName;";
+
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@ClassName", ClassName);
+
+            try
+            {
+                connection.Open();
+
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    IsFound = true;
+                    LicenseClassID = Convert.ToInt32(reader["LicenseClassID"]);
+                    ClassDiscription = (string)reader["ClassDiscription"];
+                    MinumAllowedAge = Convert.ToByte(reader["MinumAllowedAge"]);
+                    DefaultValidityLength = Convert.ToByte(reader["DefaultValidityLength"]);
+                    ClassFees = Convert.ToSingle(reader["ClassFees"]);
+                }
+                else
+                    IsFound = false;    
+            }
+            catch
+            {
+                IsFound = false;    
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return IsFound;
+        }
         public static DataTable GetAllLicenseClasses()
         {
             DataTable LicneseClasses = new DataTable();

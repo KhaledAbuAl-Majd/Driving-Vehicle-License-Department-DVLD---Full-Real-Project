@@ -308,5 +308,38 @@ namespace DVLDDataAccess
 
             return Count;
         }
+
+        public static bool IsLicenseExist(int LicneseID)
+        {
+            bool IsFound = false;
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSetings.ConnectionString);
+
+            string query = @"SELECT Found = 1 WHERE EXISTS(
+                            SELECT * FROM Licenses WHERE LicneseID = @LicneseID);";
+
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@LicneseID", LicneseID);
+
+            try
+            {
+                connection.Open();
+
+                object result = command.ExecuteScalar();
+
+                IsFound = (result != null);
+            }
+            catch
+            {
+                IsFound = false;
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return IsFound;
+        }
+
     }
 }

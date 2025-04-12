@@ -63,7 +63,7 @@ namespace DVLDPresentation.Applications.Manage_Applications.LocalDrivingLicenseA
         }
         void _FillDataInLabels()
         {
-            clsLocalDrivingApplictions _LDLApplication = clsLocalDrivingApplictions.Find(_TestAppointment.LocalDrivingLicenseApplicationID);
+            clsLocalDrivingApplictions _LDLApplication = clsLocalDrivingApplictions.FindByLDLApplicationID(_TestAppointment.LocalDrivingLicenseApplicationID);
 
 
             lblLDLApplicationID.Text = _LDLApplication.LocalDrvingApplicationID.ToString();

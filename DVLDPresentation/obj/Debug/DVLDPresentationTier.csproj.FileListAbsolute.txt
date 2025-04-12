@@ -40,3 +40,8 @@ E:\Visual Studio\source\Projects\Course19\DVLDProject\DVLDPresentation\obj\Debug
 E:\Visual Studio\source\Projects\Course19\DVLDProject\DVLDPresentation\obj\Debug\DVLDPresentation.Applications.Manage_Applications.LocalDrivingLicenseApplications.frmLicneseInfo.resources
 E:\Visual Studio\source\Projects\Course19\DVLDProject\DVLDPresentation\obj\Debug\DVLDPresentation.Applications.Manage_Applications.LocalDrivingLicenseApplications.frmLicenseHistory.resources
 E:\Visual Studio\source\Projects\Course19\DVLDProject\DVLDPresentation\obj\Debug\DVLDPresentation.frmDrivers.resources
+E:\Visual Studio\source\Projects\Course19\DVLDProject\DVLDPresentation\obj\Debug\DVLDPresentation.Applications.Driving_License_Services.New_Driving_License.frmNewInternationalLicneseApplication.resources
+E:\Visual Studio\source\Projects\Course19\DVLDProject\DVLDPresentation\obj\Debug\DVLDPresentation.Controls.ctrlDriverLicenseInfo.resources
+E:\Visual Studio\source\Projects\Course19\DVLDProject\DVLDPresentation\obj\Debug\DVLDPresentation.Applications.Manage_Applications.International_Driving_License_Application.frmInternationalLicenseInfo.resources
+E:\Visual Studio\source\Projects\Course19\DVLDProject\DVLDPresentation\obj\Debug\DVLDPresentation.Controls.ctrlInternationalDriverLicensInfo.resources
+E:\Visual Studio\source\Projects\Course19\DVLDProject\DVLDPresentation\obj\Debug\DVLDPresentation.Applications.Manage_Applications.International_Driving_License_Application.frmListInternationalDrivingLicenseApplications.resources

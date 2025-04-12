@@ -55,6 +55,8 @@ namespace DVLDBusiness
         {
             this.ApplicationStatusID = clsApplicationStatuses.Find("New").ApplicationStatusID;
             this.LastStatusDate = this.ApplicationDate;
+            this.PaidFees = clsApplicationTypes.FindApplicationType(this.ApplicationTypeID).ApplicationFees;
+
             this. ApplicationID = clsApplicationsData.AddNewApplication(PersonID, ApplicationDate, ApplicationTypeID,
                 ApplicationStatusID, LastStatusDate, PaidFees, CreatedByUserID);
 

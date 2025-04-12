@@ -119,7 +119,7 @@ namespace DVLDDataAccess
             return Result;
         }
 
-        public static bool GetLocalDrivingApplicationsInfoByID(int LocalDrvingApplicationID,ref int ApplicationID,ref int LicenseClassID,ref byte PassedTests)
+        public static bool GetLocalDrivingApplicationsInfoByLDLApplicationID(int LocalDrvingApplicationID,ref int ApplicationID,ref int LicenseClassID,ref byte PassedTests)
         {
             bool IsFound = false;
 
@@ -140,6 +140,47 @@ namespace DVLDDataAccess
                 {
                     IsFound = true;
                     ApplicationID = Convert.ToInt32(reader["ApplicationID"]);
+                    LicenseClassID = Convert.ToInt32(reader["LicenseClassID"]);
+                    PassedTests = Convert.ToByte(reader["PassedTests"]);
+                }
+                else
+                    IsFound = false;
+
+                reader.Close();
+            }
+            catch
+            {
+                IsFound = false;
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return IsFound;
+        }
+        
+        public static bool GetLocalDrivingApplicationsInfoByApplicationID(int ApplicationID, ref int LocalDrvingApplicationID, ref int LicenseClassID,ref byte PassedTests)
+        {
+            bool IsFound = false;
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSetings.ConnectionString);
+
+            string query = "SELECT * FROM LocalDrivingApplictions WHERE ApplicationID = @ApplicationID";
+
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@ApplicationID", ApplicationID);
+
+            try
+            {
+                connection.Open();
+
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    IsFound = true;
+                    LocalDrvingApplicationID = Convert.ToInt32(reader["LocalDrvingApplicationID"]);
                     LicenseClassID = Convert.ToInt32(reader["LicenseClassID"]);
                     PassedTests = Convert.ToByte(reader["PassedTests"]);
                 }

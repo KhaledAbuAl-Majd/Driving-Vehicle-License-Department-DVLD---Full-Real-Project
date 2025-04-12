@@ -114,6 +114,7 @@ namespace DVLDPresentation.People
                 _EditSizeOfDGVColumns();
                 _GetTextFilterEmpty();
                 lblNumOfRecords.Text = dt2.DefaultView.Count.ToString();
+                gcbFilterBy.SelectedIndex = 0;
             }
             else
             {
@@ -145,9 +146,7 @@ namespace DVLDPresentation.People
         }
         private void frmManagePeople_Load(object sender, EventArgs e)
         {
-            _Load_RefreshPeopleInDGV();
-            gcbFilterBy.SelectedIndex = 0;
-            
+            _Load_RefreshPeopleInDGV();       
         }
 
         private void gcmFilterBy_SelectedIndexChanged(object sender, EventArgs e)

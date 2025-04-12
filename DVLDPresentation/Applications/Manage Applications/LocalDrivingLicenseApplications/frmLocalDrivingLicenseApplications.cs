@@ -83,9 +83,10 @@ namespace DVLDPresentation.Applications.Manage_Applications
         }
         void _CancelApplication()
         {
-            clsLocalDrivingApplictions LDLApplication = clsLocalDrivingApplictions.Find(Convert.ToInt32(dgvLDLApplications.SelectedCells[0].Value));
+            clsLocalDrivingApplictions LDLApplication = clsLocalDrivingApplictions.FindByLDLApplicationID(Convert.ToInt32(dgvLDLApplications.SelectedCells[0].Value));
             clsApplications Application = clsApplications.Find(LDLApplication.ApplicationID);
             Application.ApplicationStatusID = clsApplicationStatuses.Find("Cancelled").ApplicationStatusID;
+            Application.LastStatusDate = DateTime.Now;
 
             if(MessageBox.Show("Are you sure you want to Cancel this application?","Confirm",
                 MessageBoxButtons.OKCancel, MessageBoxIcon.Question,MessageBoxDefaultButton.Button1) == DialogResult.OK)
