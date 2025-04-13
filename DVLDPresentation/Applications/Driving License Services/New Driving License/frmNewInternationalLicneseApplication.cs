@@ -27,9 +27,11 @@ namespace DVLDPresentation.Applications.Driving_License_Services.New_Driving_Lic
         public frmNewInternationalLicneseApplication()
         {
             InitializeComponent();
+            ctrlDriverLicenseInfoCardWithFilter1.Mode = DVLDPresentation.Controls.ctrlDriverLicenseInfoCardWithFilter.enMode.NewInternationalLicense;
+            ctrlDriverLicenseInfoCardWithFilter1.OnErrorAtSearch += _OnErrorAtSearch;
+            ctrlDriverLicenseInfoCardWithFilter1.OnSuccedAtSearch += OnSuccedAtSearch_OnSuccedAtSearch;
         }
 
-        //Application, Issue, Expiration Date, Created By and Fees
         void _ChangeEnaplityOfIssueButton(bool Value)
         {
             gbtnIssue.Enabled = Value;
@@ -47,56 +49,23 @@ namespace DVLDPresentation.Applications.Driving_License_Services.New_Driving_Lic
             lblExpirationDate.Text = DateTime.Now.ToString("dd/MMM/yyyy");
             lblCreatedBy.Text = clsGlobalSettings.LoggedInUser.UserName;
         }
-        void _ErrorAtSearch(string Text,string Caption)
+        void _OnErrorAtSearch()
         {
-            MessageBox.Show(Text, Caption , MessageBoxButtons.OK, MessageBoxIcon.Error);
-            gtxtFilterValue.Focus();
-            ctrlDriverLicenseInfo1._EmptyLabels();
+            //MessageBox.Show(Text, Caption, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //gtxtFilterValue.Focus();
+            //ctrlDriverLicenseInfo1._EmptyLabels();
             _ChangeEnaplityOfLinkLabel(llblShowLicenseHistory, false);
             _ChangeEnaplityOfLinkLabel(llblShowLicenseInfo, false);
             _ChangeEnaplityOfIssueButton(false);
             _IsIssued = false;
+            lblLocalLicenseID.Text = "???";
         }
-        void _SearchAtLicense()
+        private void OnSuccedAtSearch_OnSuccedAtSearch(int PersonID, clsLicenses LocalLicense, object sender)
         {
-            if (string.IsNullOrWhiteSpace((gtxtFilterValue.Text)))
-            {
-                _ErrorAtSearch("Licnese ID Cannot by empty, Please Enter a License ID!", "Error");            
-                return;
-            }
-
-            int EnteredLicenseID = Convert.ToInt32(gtxtFilterValue.Text);
-
-            if (!clsLicenses.IsLicenseExist(EnteredLicenseID))
-            {
-                _ErrorAtSearch($"Not License With Licnese ID  = {EnteredLicenseID}, Please Enter a Correct One!", "Not Exist");
-                return;
-            }
-
-            clsLicenses LocalLicense = clsLicenses.FindByLicenseID(EnteredLicenseID);
-            clsDrivers Driver = clsDrivers.FindByDriverID(LocalLicense.DriverID);
-
-            int SearchedInternationalLicenseID = clsInternationalLicenses.GetInternationalLicenseIfPersonHasActiveOne(Driver.PersonID);
-            if (SearchedInternationalLicenseID != -1)
-            {
-                _ErrorAtSearch($"Person already have an active international license with ID = {SearchedInternationalLicenseID}", "Not allowed");
-                return;
-            }
-
-            //Class 3 - Ordinary Driving License
-            if (LocalLicense.LicenseClassID != 3)
-            {
-                _ErrorAtSearch("License Must be Class 3 - Ordinary Driving License!", "Not Allowed");
-                return;
-            }
-
-            clsLocalDrivingApplictions LDLApplication = clsLocalDrivingApplictions.FindByApplicationID(LocalLicense.ApplicationID);
-
-            ctrlDriverLicenseInfo1.FillDataInLabels(LDLApplication.LocalDrvingApplicationID);
-            lblLocalLicenseID.Text = LocalLicense.LicneseID.ToString();
+            _PersonID = PersonID;
             _LocalLicense = LocalLicense;
+            lblLocalLicenseID.Text = _LocalLicense.LicneseID.ToString();
             _ChangeEnaplityOfLinkLabel(llblShowLicenseHistory, true);
-            _PersonID = Driver.PersonID;
             _ChangeEnaplityOfIssueButton(true);
         }
         private void frmNewInternationalLicneseApplication_Load(object sender, EventArgs e)
@@ -105,16 +74,6 @@ namespace DVLDPresentation.Applications.Driving_License_Services.New_Driving_Lic
             _InitializeDataInLoad();
             _ChangeEnaplityOfLinkLabel(llblShowLicenseHistory, false);
             _ChangeEnaplityOfLinkLabel(llblShowLicenseInfo, false);
-        }
-        private void gtxtFilterValue_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
-                e.Handled = true;
-        }
-
-        private void btnLicenseSearch_Click(object sender, EventArgs e)
-        {
-            _SearchAtLicense();
         }
 
         private void llblShowLicenseHistory_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -125,27 +84,32 @@ namespace DVLDPresentation.Applications.Driving_License_Services.New_Driving_Lic
 
         private void gbtnIssue_Click(object sender, EventArgs e)
         {
-            clsInternationalLicenses NewInternationalLicense = new clsInternationalLicenses
+            if ((MessageBox.Show("Are you sure you want to Issue this License?", "Confirm",
+               MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2)) == DialogResult.Yes)
+            {
+
+                clsInternationalLicenses NewInternationalLicense = new clsInternationalLicenses
                 (_LocalLicense.LicneseID, clsGlobalSettings.LoggedInUser.UserID);
 
-            if (NewInternationalLicense.Save())
-            {
-                _IsIssued = true;
-                MessageBox.Show($"International License Issued Successfully With ID = {NewInternationalLicense.InternationalLicenseID}",
-                    "License Issued", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                if (NewInternationalLicense.Save())
+                {
+                    _IsIssued = true;
+                    MessageBox.Show($"International License Issued Successfully With ID = {NewInternationalLicense.InternationalLicenseID}",
+                        "License Issued", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                _InternationLicenseID = NewInternationalLicense.InternationalLicenseID;
-                _ChangeEnaplityOfIssueButton(false);
-                _ChangeEnaplityOfLinkLabel(llblShowLicenseHistory, true);
-                _ChangeEnaplityOfLinkLabel(llblShowLicenseInfo, true);
-                lblILApplicationID.Text = NewInternationalLicense.ILApplicationID.ToString();
-                lblILLicenseID.Text = NewInternationalLicense.InternationalLicenseID.ToString();
-                gbFilterBy.Enabled = false;
-            }
-            else
-            {
-                _IsIssued = false;
-                MessageBox.Show($"Error To Issue License!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    _InternationLicenseID = NewInternationalLicense.InternationalLicenseID;
+                    _ChangeEnaplityOfIssueButton(false);
+                    _ChangeEnaplityOfLinkLabel(llblShowLicenseHistory, true);
+                    _ChangeEnaplityOfLinkLabel(llblShowLicenseInfo, true);
+                    lblILApplicationID.Text = NewInternationalLicense.ILApplicationID.ToString();
+                    lblILLicenseID.Text = NewInternationalLicense.InternationalLicenseID.ToString();
+                    ctrlDriverLicenseInfoCardWithFilter1.ChangeEnaplityOfGBFilterBy(false);
+                }
+                else
+                {
+                    _IsIssued = false;
+                    MessageBox.Show($"Error To Issue License!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 

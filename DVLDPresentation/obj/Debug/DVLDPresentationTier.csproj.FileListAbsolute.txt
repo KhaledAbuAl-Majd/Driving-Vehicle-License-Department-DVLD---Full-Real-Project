@@ -45,3 +45,5 @@ E:\Visual Studio\source\Projects\Course19\DVLDProject\DVLDPresentation\obj\Debug
 E:\Visual Studio\source\Projects\Course19\DVLDProject\DVLDPresentation\obj\Debug\DVLDPresentation.Applications.Manage_Applications.International_Driving_License_Application.frmInternationalLicenseInfo.resources
 E:\Visual Studio\source\Projects\Course19\DVLDProject\DVLDPresentation\obj\Debug\DVLDPresentation.Controls.ctrlInternationalDriverLicensInfo.resources
 E:\Visual Studio\source\Projects\Course19\DVLDProject\DVLDPresentation\obj\Debug\DVLDPresentation.Applications.Manage_Applications.International_Driving_License_Application.frmListInternationalDrivingLicenseApplications.resources
+E:\Visual Studio\source\Projects\Course19\DVLDProject\DVLDPresentation\obj\Debug\DVLDPresentation.Controls.ctrlDriverLicenseInfoCardWithFilter.resources
+E:\Visual Studio\source\Projects\Course19\DVLDProject\DVLDPresentation\obj\Debug\DVLDPresentation.Applications.Driving_License_Services.Renew_Driving_License.frmRenewLocalLicense.resources

@@ -85,7 +85,8 @@ namespace DVLDPresentation.Controls
 
         private void llblShowLicenseInfo_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            frmLicneseInfo frm = new frmLicneseInfo(LDLApplicationID);
+            clsLicenses License = clsLicenses.FindByApplicationID(Convert.ToInt32(lblApplicationID.Text));
+            frmLicneseInfo frm = new frmLicneseInfo(License.LicneseID);
             frm.ShowDialog();
         }
     }

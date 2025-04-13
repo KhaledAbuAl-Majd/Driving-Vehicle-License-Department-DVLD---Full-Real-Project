@@ -341,5 +341,36 @@ namespace DVLDDataAccess
             return IsFound;
         }
 
+        public static bool DeActiveLicense(int LicneseID)
+        {
+            bool IsDeActivated = false;
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSetings.ConnectionString);
+
+            string query = @"Update Licenses SET IsAcitve = 0 WHERE LicneseID = @LicneseID;";
+
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@LicneseID", LicneseID);
+
+            try
+            {
+                connection.Open();
+
+                int NumOfRowsAffected = command.ExecuteNonQuery();
+
+                IsDeActivated = (NumOfRowsAffected > 0);
+            }
+            catch
+            {
+                IsDeActivated = false;
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return IsDeActivated;
+        }
     }
+    
 }

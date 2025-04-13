@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DVLDBusiness;
+using DVLDPresentation.Applications.Manage_Applications.International_Driving_License_Application;
 
 namespace DVLDPresentation.Applications.Manage_Applications.LocalDrivingLicenseApplications
 {
@@ -46,7 +47,7 @@ namespace DVLDPresentation.Applications.Manage_Applications.LocalDrivingLicenseA
 
                 foreach(DataRow row in dtAllLocalLicenses.Rows)
                 {
-                    row["Class Name"] = clsLicneseClasses.Find(Convert.ToInt32(row["Lic.ID"])).ClassName;
+                    row["Class Name"] = clsLicneseClasses.Find(Convert.ToInt32(row["LicenseClassID"])).ClassName;
                 }
 
                 dgvLocalLicenseHistory.DataSource = dtAllLocalLicenses.DefaultView.ToTable(false, "Lic.ID", "App.ID",
@@ -101,5 +102,19 @@ namespace DVLDPresentation.Applications.Manage_Applications.LocalDrivingLicenseA
             this.Close();
         }
 
+        private void CMSIshowLocalLicenseInfo_Click(object sender, EventArgs e)
+        {
+            //LicenseiD
+            int LicenseID = Convert.ToInt32(dgvLocalLicenseHistory.SelectedCells[0].Value);
+            frmLicneseInfo frm = new frmLicneseInfo(LicenseID);
+            frm.ShowDialog();
+        }
+
+        private void tmsIshowInternationalLicenseInfo_Click(object sender, EventArgs e)
+        {
+            int IntLicenseID = Convert.ToInt32(dgvInternationalLicenseHistory.SelectedCells[0].Value);
+            frmInternationalLicenseInfo frm = new frmInternationalLicenseInfo(IntLicenseID);
+            frm.ShowDialog();
+        }
     }
 }

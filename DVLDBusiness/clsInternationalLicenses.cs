@@ -55,7 +55,7 @@ namespace DVLDBusiness
                     PersonID = Driver.PersonID,
                     ApplicationDate = DateTime.Now,
                     ApplicationTypeID = ApplicationTypeID,
-                    //ApplicationStatusID = clsApplicationStatuses.Find("New").ApplicationStatusID,
+                    ApplicationStatusID = clsApplicationStatuses.Find("Completed").ApplicationStatusID,
                     //LastStatusDate = DateTime.Now,
                     CreatedByUserID = CreatedByUseID
                 };

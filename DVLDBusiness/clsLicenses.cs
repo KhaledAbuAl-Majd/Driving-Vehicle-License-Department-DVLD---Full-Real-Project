@@ -25,7 +25,8 @@ namespace DVLDBusiness
         public string IssueReason { get; set; }
         public int CreatedByUserID { get; private set; }
 
-        public clsLicenses(int LDLApplicationID,int CreatedByUseID)
+        //For New Local Driving LIcense
+        public clsLicenses(int LDLApplicationID,int CreatedByUseID,string IssueReasonText)
         {
             this.Mode = enMode.AddNew;
             this.LicneseID = -1;
@@ -44,8 +45,43 @@ namespace DVLDBusiness
                 this.Notes = "";
                 this.PaidFees = clsApplicationTypes.FindApplicationType(Application.ApplicationTypeID).ApplicationFees;
                 this.IsAcitve = true;
-                this.IssueReason = "First Time";
+                this.IssueReason = IssueReasonText;
                 this.CreatedByUserID = CreatedByUseID;
+            }
+            else
+            {
+
+                this.ApplicationID = -1;
+                this.DriverID = -1;
+                this.LicenseClassID = -1;
+                this.IsuueDate = new DateTime(1900, 1, 1);
+                this.ExpirationDate = new DateTime(1900, 1, 1);
+                this.Notes = "";
+                this.PaidFees = 0;
+                this.IsAcitve = false;
+                this.IssueReason = "";
+                this.CreatedByUserID = -1;
+            }
+        }
+
+        //For any thing else
+        public clsLicenses(clsApplications Application, clsLicenses OldLicense ,string IssueReasonText)
+        {
+            this.Mode = enMode.AddNew;
+            this.LicneseID = -1;
+
+            if (Application != null)
+            {
+                this.ApplicationID =  Application.ApplicationID;
+                this.DriverID = OldLicense.DriverID;
+                this.LicenseClassID = OldLicense.LicenseClassID;
+                this.IsuueDate = DateTime.Now;
+                this.ExpirationDate = this.IsuueDate.AddYears(clsLicneseClasses.Find(LicenseClassID).DefaultValidityLength);
+                this.Notes = "";
+                this.PaidFees = clsApplicationTypes.FindApplicationType(Application.ApplicationTypeID).ApplicationFees;
+                this.IsAcitve = true;
+                this.IssueReason = IssueReasonText;
+                this.CreatedByUserID = Application.CreatedByUserID;
             }
             else
             {
@@ -159,6 +195,10 @@ namespace DVLDBusiness
         public static bool IsLicenseExist(int LicenseID)
         {
             return clsLicensesData.IsLicenseExist(LicenseID);
+        }
+        public bool DeActiveLicense()
+        {
+            return clsLicensesData.DeActiveLicense(this.LicneseID);
         }
     }
 }

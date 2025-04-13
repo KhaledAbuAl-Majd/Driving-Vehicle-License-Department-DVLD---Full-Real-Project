@@ -15,10 +15,10 @@ namespace DVLDPresentation.Applications.Manage_Applications.LocalDrivingLicenseA
 {
     public partial class frmLicneseInfo : Form
     {
-        public frmLicneseInfo(int LDLApplicationID)
+        public frmLicneseInfo(int LicenseID)
         {
             InitializeComponent();
-            ctrlDriverLicenseInfo1.LDLApplicationID = LDLApplicationID;
+            ctrlDriverLicenseInfo1.LicenseID = LicenseID;
             
         }
 

@@ -53,7 +53,9 @@ namespace DVLDBusiness
 
         bool _AddNewApplication()
         {
-            this.ApplicationStatusID = clsApplicationStatuses.Find("New").ApplicationStatusID;
+            //New Local Driving License Service
+            if (this.ApplicationTypeID == 1)
+                this.ApplicationStatusID = clsApplicationStatuses.Find("New").ApplicationStatusID;
             this.LastStatusDate = this.ApplicationDate;
             this.PaidFees = clsApplicationTypes.FindApplicationType(this.ApplicationTypeID).ApplicationFees;
 

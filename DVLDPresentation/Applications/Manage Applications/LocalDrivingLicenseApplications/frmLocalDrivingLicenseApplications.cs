@@ -228,6 +228,7 @@ namespace DVLDPresentation.Applications.Manage_Applications
                             _EnapleAndDisableMainToolSripItem(3, false);
                             _EnapleAndDisableMainToolSripItem(4, false);
                             _EnapleAndDisableMainToolSripItem(5, true);
+                            _EnapleAndDisableMainToolSripItem(6, false);
                         }
                         break;
                     }
@@ -396,7 +397,11 @@ namespace DVLDPresentation.Applications.Manage_Applications
         private void CMSIshowLicense_Click(object sender, EventArgs e)
         {
             //Local Driving License Application ID
-            frmLicneseInfo frm = new frmLicneseInfo(Convert.ToInt32(dgvLDLApplications.SelectedCells[0].Value));
+            int LDLApplicationID = Convert.ToInt32(dgvLDLApplications.SelectedCells[0].Value);
+            clsLocalDrivingApplictions LDLApplication = clsLocalDrivingApplictions.FindByLDLApplicationID(LDLApplicationID);
+            clsApplications Application = clsApplications.Find(LDLApplication.ApplicationID);
+            clsLicenses License =  clsLicenses.FindByApplicationID(Application.ApplicationID);
+            frmLicneseInfo frm = new frmLicneseInfo(License.LicneseID);
             frm.ShowDialog();
         }
 

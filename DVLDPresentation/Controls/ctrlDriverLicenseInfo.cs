@@ -15,7 +15,7 @@ namespace DVLDPresentation.Controls
 {
     public partial class ctrlDriverLicenseInfo : UserControl
     {
-        public int LDLApplicationID = -1;
+        public int LicenseID = -1;
         public ctrlDriverLicenseInfo()
         {
             InitializeComponent();
@@ -41,16 +41,14 @@ namespace DVLDPresentation.Controls
             _ChangeLabelValue(lblExpirationDate, "???");
             _ChangeLabelValue(lblIsDetained, "???");
         }
-        public void FillDataInLabels(int LDLApplicationID)
+        public void FillDataInLabels(int LicenseID)
         {
-            clsLocalDrivingApplictions LDLApplication = clsLocalDrivingApplictions.FindByLDLApplicationID(LDLApplicationID);
-            if (LDLApplication != null)
+            clsLicenses License = clsLicenses.FindByLicenseID(LicenseID);
+            if (License != null)
             {
-                clsApplications Application = clsApplications.Find(LDLApplication.ApplicationID);
-                clsPeople Person = clsPeople.Find(Application.PersonID);
-                clsLicenses License = clsLicenses.FindByApplicationID(LDLApplication.ApplicationID);
-
-                lblCalss.Text = clsLicneseClasses.Find(LDLApplication.LicenseClassID).ClassName;
+                clsDrivers Driver = clsDrivers.FindByDriverID(License.DriverID);
+                clsPeople Person = clsPeople.Find(Driver.PersonID);
+                lblCalss.Text = clsLicneseClasses.Find(License.LicenseClassID).ClassName;
                 lblName.Text = Person.GetFullName();
                 lblLicneseID.Text = License.LicneseID.ToString();
                 lblNationalNo.Text = Person.NationalNo;
@@ -90,8 +88,8 @@ namespace DVLDPresentation.Controls
         }
         private void ctrlDriverLicenseInfo_Load(object sender, EventArgs e)
         {
-            if (LDLApplicationID != -1)
-                FillDataInLabels(LDLApplicationID);
+            if (LicenseID != -1)
+                FillDataInLabels(LicenseID);
         }
 
         private void gbDriverLicneseInfo_Enter(object sender, EventArgs e)

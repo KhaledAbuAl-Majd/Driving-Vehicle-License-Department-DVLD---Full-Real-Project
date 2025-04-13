@@ -95,7 +95,7 @@
             this.CMSIshowLicense,
             this.showPersonLicenseHistoryToolStripMenuItem});
             this.cmpLDLApplicationsOptoins.Name = "cmpPeopleOptoins";
-            this.cmpLDLApplicationsOptoins.Size = new System.Drawing.Size(280, 308);
+            this.cmpLDLApplicationsOptoins.Size = new System.Drawing.Size(280, 330);
             this.cmpLDLApplicationsOptoins.Opening += new System.ComponentModel.CancelEventHandler(this.cmpLDLApplicationsOptoins_Opening);
             // 
             // showDetailsToolStripMenuItem
@@ -205,7 +205,7 @@
             this.showPersonLicenseHistoryToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.showPersonLicenseHistoryToolStripMenuItem.Name = "showPersonLicenseHistoryToolStripMenuItem";
             this.showPersonLicenseHistoryToolStripMenuItem.Size = new System.Drawing.Size(279, 38);
-            this.showPersonLicenseHistoryToolStripMenuItem.Text = "Show PersonLicense History";
+            this.showPersonLicenseHistoryToolStripMenuItem.Text = "Show Person License History";
             this.showPersonLicenseHistoryToolStripMenuItem.Click += new System.EventHandler(this.showPersonLicenseHistoryToolStripMenuItem_Click);
             // 
             // gcbFilterBy

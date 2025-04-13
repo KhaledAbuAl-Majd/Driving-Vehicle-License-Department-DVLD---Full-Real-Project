@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -38,10 +39,12 @@
             this.lblLocalNumOfRecords = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.dgvLocalLicenseHistory = new System.Windows.Forms.DataGridView();
+            this.cmpLocalLicenseOptions = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.tmsIshowLocalLicenseInfo = new System.Windows.Forms.ToolStripMenuItem();
             this.label2 = new System.Windows.Forms.Label();
             this.lblHeader = new System.Windows.Forms.Label();
             this.gbtnClose = new Guna.UI2.WinForms.Guna2Button();
-            this.guna2TabControl1 = new Guna.UI2.WinForms.Guna2TabControl();
+            this.gtabCDriverLicenses = new Guna.UI2.WinForms.Guna2TabControl();
             this.gtabLocal = new System.Windows.Forms.TabPage();
             this.gtabInternational = new System.Windows.Forms.TabPage();
             this.label1 = new System.Windows.Forms.Label();
@@ -49,13 +52,17 @@
             this.lblInternationalNumOfRecords = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.cmsInternationalLicenseOptions = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.tmsIshowInternationalLicenseInfo = new System.Windows.Forms.ToolStripMenuItem();
             this.ctrlPersonCardWithFilter1 = new DVLDPresentation.Controls.ctrlPersonCardWithFilter();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLocalLicenseHistory)).BeginInit();
-            this.guna2TabControl1.SuspendLayout();
+            this.cmpLocalLicenseOptions.SuspendLayout();
+            this.gtabCDriverLicenses.SuspendLayout();
             this.gtabLocal.SuspendLayout();
             this.gtabInternational.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvInternationalLicenseHistory)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.cmsInternationalLicenseOptions.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblLocalNumOfRecords
@@ -95,6 +102,7 @@
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvLocalLicenseHistory.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvLocalLicenseHistory.ColumnHeadersHeight = 35;
+            this.dgvLocalLicenseHistory.ContextMenuStrip = this.cmpLocalLicenseOptions;
             this.dgvLocalLicenseHistory.Cursor = System.Windows.Forms.Cursors.Default;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
@@ -121,6 +129,23 @@
             this.dgvLocalLicenseHistory.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvLocalLicenseHistory.Size = new System.Drawing.Size(995, 179);
             this.dgvLocalLicenseHistory.TabIndex = 25;
+            // 
+            // cmpLocalLicenseOptions
+            // 
+            this.cmpLocalLicenseOptions.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tmsIshowLocalLicenseInfo});
+            this.cmpLocalLicenseOptions.Name = "cmpPeopleOptoins";
+            this.cmpLocalLicenseOptions.Size = new System.Drawing.Size(195, 42);
+            // 
+            // tmsIshowLocalLicenseInfo
+            // 
+            this.tmsIshowLocalLicenseInfo.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tmsIshowLocalLicenseInfo.Image = ((System.Drawing.Image)(resources.GetObject("tmsIshowLocalLicenseInfo.Image")));
+            this.tmsIshowLocalLicenseInfo.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tmsIshowLocalLicenseInfo.Name = "tmsIshowLocalLicenseInfo";
+            this.tmsIshowLocalLicenseInfo.Size = new System.Drawing.Size(194, 38);
+            this.tmsIshowLocalLicenseInfo.Text = "Show License Info";
+            this.tmsIshowLocalLicenseInfo.Click += new System.EventHandler(this.CMSIshowLocalLicenseInfo_Click);
             // 
             // label2
             // 
@@ -170,35 +195,35 @@
             this.gbtnClose.Text = "Close";
             this.gbtnClose.Click += new System.EventHandler(this.gbtnClose_Click);
             // 
-            // guna2TabControl1
+            // gtabCDriverLicenses
             // 
-            this.guna2TabControl1.Controls.Add(this.gtabLocal);
-            this.guna2TabControl1.Controls.Add(this.gtabInternational);
-            this.guna2TabControl1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.guna2TabControl1.ItemSize = new System.Drawing.Size(140, 50);
-            this.guna2TabControl1.Location = new System.Drawing.Point(21, 537);
-            this.guna2TabControl1.Name = "guna2TabControl1";
-            this.guna2TabControl1.SelectedIndex = 0;
-            this.guna2TabControl1.Size = new System.Drawing.Size(1039, 335);
-            this.guna2TabControl1.TabButtonHoverState.BorderColor = System.Drawing.Color.Empty;
-            this.guna2TabControl1.TabButtonHoverState.FillColor = System.Drawing.Color.BlueViolet;
-            this.guna2TabControl1.TabButtonHoverState.Font = new System.Drawing.Font("Segoe UI Semibold", 10F);
-            this.guna2TabControl1.TabButtonHoverState.ForeColor = System.Drawing.Color.White;
-            this.guna2TabControl1.TabButtonHoverState.InnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(52)))), ((int)(((byte)(70)))));
-            this.guna2TabControl1.TabButtonIdleState.BorderColor = System.Drawing.Color.Empty;
-            this.guna2TabControl1.TabButtonIdleState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(42)))), ((int)(((byte)(57)))));
-            this.guna2TabControl1.TabButtonIdleState.Font = new System.Drawing.Font("Segoe UI Semibold", 11F);
-            this.guna2TabControl1.TabButtonIdleState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(156)))), ((int)(((byte)(160)))), ((int)(((byte)(167)))));
-            this.guna2TabControl1.TabButtonIdleState.InnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(42)))), ((int)(((byte)(57)))));
-            this.guna2TabControl1.TabButtonSelectedState.BorderColor = System.Drawing.Color.Empty;
-            this.guna2TabControl1.TabButtonSelectedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(37)))), ((int)(((byte)(49)))));
-            this.guna2TabControl1.TabButtonSelectedState.Font = new System.Drawing.Font("Segoe UI Semibold", 10F);
-            this.guna2TabControl1.TabButtonSelectedState.ForeColor = System.Drawing.Color.White;
-            this.guna2TabControl1.TabButtonSelectedState.InnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(132)))), ((int)(((byte)(255)))));
-            this.guna2TabControl1.TabButtonSize = new System.Drawing.Size(140, 50);
-            this.guna2TabControl1.TabIndex = 29;
-            this.guna2TabControl1.TabMenuBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(42)))), ((int)(((byte)(57)))));
-            this.guna2TabControl1.TabMenuOrientation = Guna.UI2.WinForms.TabMenuOrientation.HorizontalTop;
+            this.gtabCDriverLicenses.Controls.Add(this.gtabLocal);
+            this.gtabCDriverLicenses.Controls.Add(this.gtabInternational);
+            this.gtabCDriverLicenses.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.gtabCDriverLicenses.ItemSize = new System.Drawing.Size(140, 50);
+            this.gtabCDriverLicenses.Location = new System.Drawing.Point(21, 537);
+            this.gtabCDriverLicenses.Name = "gtabCDriverLicenses";
+            this.gtabCDriverLicenses.SelectedIndex = 0;
+            this.gtabCDriverLicenses.Size = new System.Drawing.Size(1039, 335);
+            this.gtabCDriverLicenses.TabButtonHoverState.BorderColor = System.Drawing.Color.Empty;
+            this.gtabCDriverLicenses.TabButtonHoverState.FillColor = System.Drawing.Color.BlueViolet;
+            this.gtabCDriverLicenses.TabButtonHoverState.Font = new System.Drawing.Font("Segoe UI Semibold", 10F);
+            this.gtabCDriverLicenses.TabButtonHoverState.ForeColor = System.Drawing.Color.White;
+            this.gtabCDriverLicenses.TabButtonHoverState.InnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(52)))), ((int)(((byte)(70)))));
+            this.gtabCDriverLicenses.TabButtonIdleState.BorderColor = System.Drawing.Color.Empty;
+            this.gtabCDriverLicenses.TabButtonIdleState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(42)))), ((int)(((byte)(57)))));
+            this.gtabCDriverLicenses.TabButtonIdleState.Font = new System.Drawing.Font("Segoe UI Semibold", 11F);
+            this.gtabCDriverLicenses.TabButtonIdleState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(156)))), ((int)(((byte)(160)))), ((int)(((byte)(167)))));
+            this.gtabCDriverLicenses.TabButtonIdleState.InnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(42)))), ((int)(((byte)(57)))));
+            this.gtabCDriverLicenses.TabButtonSelectedState.BorderColor = System.Drawing.Color.Empty;
+            this.gtabCDriverLicenses.TabButtonSelectedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(37)))), ((int)(((byte)(49)))));
+            this.gtabCDriverLicenses.TabButtonSelectedState.Font = new System.Drawing.Font("Segoe UI Semibold", 10F);
+            this.gtabCDriverLicenses.TabButtonSelectedState.ForeColor = System.Drawing.Color.White;
+            this.gtabCDriverLicenses.TabButtonSelectedState.InnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(132)))), ((int)(((byte)(255)))));
+            this.gtabCDriverLicenses.TabButtonSize = new System.Drawing.Size(140, 50);
+            this.gtabCDriverLicenses.TabIndex = 29;
+            this.gtabCDriverLicenses.TabMenuBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(42)))), ((int)(((byte)(57)))));
+            this.gtabCDriverLicenses.TabMenuOrientation = Guna.UI2.WinForms.TabMenuOrientation.HorizontalTop;
             // 
             // gtabLocal
             // 
@@ -257,6 +282,7 @@
             dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvInternationalLicenseHistory.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvInternationalLicenseHistory.ColumnHeadersHeight = 35;
+            this.dgvInternationalLicenseHistory.ContextMenuStrip = this.cmsInternationalLicenseOptions;
             this.dgvInternationalLicenseHistory.Cursor = System.Windows.Forms.Cursors.Default;
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
@@ -314,6 +340,23 @@
             this.pictureBox1.TabIndex = 31;
             this.pictureBox1.TabStop = false;
             // 
+            // cmsInternationalLicenseOptions
+            // 
+            this.cmsInternationalLicenseOptions.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tmsIshowInternationalLicenseInfo});
+            this.cmsInternationalLicenseOptions.Name = "cmpPeopleOptoins";
+            this.cmsInternationalLicenseOptions.Size = new System.Drawing.Size(195, 42);
+            // 
+            // tmsIshowInternationalLicenseInfo
+            // 
+            this.tmsIshowInternationalLicenseInfo.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tmsIshowInternationalLicenseInfo.Image = ((System.Drawing.Image)(resources.GetObject("tmsIshowInternationalLicenseInfo.Image")));
+            this.tmsIshowInternationalLicenseInfo.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tmsIshowInternationalLicenseInfo.Name = "tmsIshowInternationalLicenseInfo";
+            this.tmsIshowInternationalLicenseInfo.Size = new System.Drawing.Size(194, 38);
+            this.tmsIshowInternationalLicenseInfo.Text = "Show License Info";
+            this.tmsIshowInternationalLicenseInfo.Click += new System.EventHandler(this.tmsIshowInternationalLicenseInfo_Click);
+            // 
             // ctrlPersonCardWithFilter1
             // 
             this.ctrlPersonCardWithFilter1.BackColor = System.Drawing.Color.White;
@@ -330,7 +373,7 @@
             this.ClientSize = new System.Drawing.Size(1073, 932);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.ctrlPersonCardWithFilter1);
-            this.Controls.Add(this.guna2TabControl1);
+            this.Controls.Add(this.gtabCDriverLicenses);
             this.Controls.Add(this.gbtnClose);
             this.Controls.Add(this.lblHeader);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
@@ -340,13 +383,15 @@
             this.Text = "License History";
             this.Load += new System.EventHandler(this.frmLicenseHistory_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvLocalLicenseHistory)).EndInit();
-            this.guna2TabControl1.ResumeLayout(false);
+            this.cmpLocalLicenseOptions.ResumeLayout(false);
+            this.gtabCDriverLicenses.ResumeLayout(false);
             this.gtabLocal.ResumeLayout(false);
             this.gtabLocal.PerformLayout();
             this.gtabInternational.ResumeLayout(false);
             this.gtabInternational.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvInternationalLicenseHistory)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.cmsInternationalLicenseOptions.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -360,7 +405,7 @@
         private System.Windows.Forms.DataGridView dgvLocalLicenseHistory;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lblHeader;
-        private Guna.UI2.WinForms.Guna2TabControl guna2TabControl1;
+        private Guna.UI2.WinForms.Guna2TabControl gtabCDriverLicenses;
         private System.Windows.Forms.TabPage gtabLocal;
         private System.Windows.Forms.TabPage gtabInternational;
         private System.Windows.Forms.Label label1;
@@ -369,5 +414,9 @@
         private System.Windows.Forms.Label label5;
         private Controls.ctrlPersonCardWithFilter ctrlPersonCardWithFilter1;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.ContextMenuStrip cmpLocalLicenseOptions;
+        private System.Windows.Forms.ToolStripMenuItem tmsIshowLocalLicenseInfo;
+        private System.Windows.Forms.ContextMenuStrip cmsInternationalLicenseOptions;
+        private System.Windows.Forms.ToolStripMenuItem tmsIshowInternationalLicenseInfo;
     }
 }
