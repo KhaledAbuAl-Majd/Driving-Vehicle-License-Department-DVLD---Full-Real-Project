@@ -71,7 +71,7 @@ namespace DVLDPresentation.Applications.Manage_Applications.LocalDrivingLicenseA
             lblName.Text = clsPeople.Find(clsApplications.Find(_LDLApplication.ApplicationID).PersonID).GetFullName();
             lblTrial.Text = _TestAppointment.TrialNumber.ToString();
             lblDate.Text = _TestAppointment.AppointmentDate.ToString("dd/MMM/yyyy");
-            lblFees.Text = _TestAppointment.TestFees.ToString();
+            lblFees.Text = clsTestTypes.FindTestType(_TestAppointment.TestTypeID).TestFees.ToString();
             _ChagelblTestID("Not Taken Yet");
         }
         void _Save()

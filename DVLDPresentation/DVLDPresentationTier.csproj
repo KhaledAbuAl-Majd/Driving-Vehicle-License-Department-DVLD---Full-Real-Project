@@ -82,6 +82,12 @@
     <Compile Include="Applications\Driving License Services\Renew Driving License\frmRenewLocalLicense.Designer.cs">
       <DependentUpon>frmRenewLocalLicense.cs</DependentUpon>
     </Compile>
+    <Compile Include="Applications\Driving License Services\Replacment For Damage Or Lost\frmReplacementForDamagedOrLost.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Applications\Driving License Services\Replacment For Damage Or Lost\frmReplacementForDamagedOrLost.Designer.cs">
+      <DependentUpon>frmReplacementForDamagedOrLost.cs</DependentUpon>
+    </Compile>
     <Compile Include="Applications\Manage Applications\International Driving License Application\frmInternationalLicenseInfo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -273,6 +279,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Applications\Driving License Services\Renew Driving License\frmRenewLocalLicense.resx">
       <DependentUpon>frmRenewLocalLicense.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Applications\Driving License Services\Replacment For Damage Or Lost\frmReplacementForDamagedOrLost.resx">
+      <DependentUpon>frmReplacementForDamagedOrLost.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Applications\Manage Applications\International Driving License Application\frmInternationalLicenseInfo.resx">
       <DependentUpon>frmInternationalLicenseInfo.cs</DependentUpon>

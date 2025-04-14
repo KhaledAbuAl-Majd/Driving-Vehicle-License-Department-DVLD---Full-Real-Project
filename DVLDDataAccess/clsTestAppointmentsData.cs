@@ -12,15 +12,15 @@ namespace DVLDDataAccess
     public static class clsTestAppointmentsData
     {
         public static int AddNewTestAppointment(int TestTypeID,int LocalDrivingLicenseApplicationID, 
-            DateTime AppointmentDate, float PaidFees,int CreatedByUserID,bool IsLocked,short TrialNumber)
+            DateTime AppointmentDate, float PaidFees,int CreatedByUserID,bool IsLocked,int RetakeTestApplicationID)
         {
             int TestAppointmentID = -1;
 
             SqlConnection connection = new SqlConnection(clsDataAccessSetings.ConnectionString);
 
             string query = @"INSERT INTO [dbo].[TestAppointments]
-          ([TestTypeID],[LocalDrivingLicenseApplicationID] ,[AppointmentDate],[PaidFees],[CreatedByUserID],[IsLocked],[TrialNumber])
-          VALUES (@TestTypeID,@LocalDrivingLicenseApplicationID,@AppointmentDate,@PaidFees,@CreatedByUserID,@IsLocked,@TrialNumber);
+          ([TestTypeID],[LocalDrivingLicenseApplicationID] ,[AppointmentDate],[PaidFees],[CreatedByUserID],[IsLocked],[RetakeTestApplicationID])
+          VALUES (@TestTypeID,@LocalDrivingLicenseApplicationID,@AppointmentDate,@PaidFees,@CreatedByUserID,@IsLocked,@RetakeTestApplicationID);
                SELECT SCOPE_IDENTITY()";
 
             SqlCommand command = new SqlCommand(query, connection);
@@ -30,7 +30,11 @@ namespace DVLDDataAccess
             command.Parameters.AddWithValue("@PaidFees", PaidFees);
             command.Parameters.AddWithValue("@CreatedByUserID", CreatedByUserID);
             command.Parameters.AddWithValue("@IsLocked", IsLocked);
-            command.Parameters.AddWithValue("@TrialNumber", TrialNumber);
+
+            if (RetakeTestApplicationID == -1)
+                command.Parameters.AddWithValue("@RetakeTestApplicationID", System.DBNull.Value);
+            else
+                command.Parameters.AddWithValue("@RetakeTestApplicationID", RetakeTestApplicationID);
 
             try
             {
@@ -131,7 +135,7 @@ namespace DVLDDataAccess
         }
 
         public static bool GetTestAppointmentInfoByTestAppointmentID(int TestAppointmentID,ref int TestTypeID,ref int LocalDrivingLicenseApplicationID,
-           ref DateTime AppointmentDate, ref float PaidFees, ref int CreatedByUserID, ref bool IsLocked, ref short TrialNumber)
+           ref DateTime AppointmentDate, ref float PaidFees, ref int CreatedByUserID, ref bool IsLocked, ref int RetakeTestApplicationID)
         {
             bool IsFound = false;
 
@@ -157,7 +161,11 @@ namespace DVLDDataAccess
                     PaidFees = Convert.ToSingle(reader["PaidFees"]);
                     CreatedByUserID = Convert.ToInt32(reader["CreatedByUserID"]);
                     IsLocked = Convert.ToBoolean(reader["IsLocked"]);
-                    TrialNumber = Convert.ToInt16(reader["TrialNumber"]);
+
+                    if (reader["RetakeTestApplicationID"] == System.DBNull.Value)
+                        RetakeTestApplicationID = -1;
+                    else
+                        RetakeTestApplicationID = Convert.ToInt32(reader["RetakeTestApplicationID"]);
                 }
                 else
                     IsFound = false;

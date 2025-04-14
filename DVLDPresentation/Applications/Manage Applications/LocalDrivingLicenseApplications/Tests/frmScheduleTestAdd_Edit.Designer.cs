@@ -43,7 +43,7 @@
             this.lblRetakeAppFees = new System.Windows.Forms.Label();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.lblTestApplicationID = new System.Windows.Forms.Label();
+            this.lblRetakeTestApplicationID = new System.Windows.Forms.Label();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.label9 = new System.Windows.Forms.Label();
             this.pictureBox12 = new System.Windows.Forms.PictureBox();
@@ -63,7 +63,6 @@
             this.lblHeader = new System.Windows.Forms.Label();
             this.pbHeaderICon = new System.Windows.Forms.PictureBox();
             this.gbtnClose = new Guna.UI2.WinForms.Guna2Button();
-            this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
             this.gbScheduleTest.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -201,7 +200,7 @@
             this.gbRetakeTestInfo.Controls.Add(this.lblRetakeAppFees);
             this.gbRetakeTestInfo.Controls.Add(this.pictureBox8);
             this.gbRetakeTestInfo.Controls.Add(this.label11);
-            this.gbRetakeTestInfo.Controls.Add(this.lblTestApplicationID);
+            this.gbRetakeTestInfo.Controls.Add(this.lblRetakeTestApplicationID);
             this.gbRetakeTestInfo.Controls.Add(this.pictureBox6);
             this.gbRetakeTestInfo.Controls.Add(this.label9);
             this.gbRetakeTestInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -272,15 +271,15 @@
             this.label11.TabIndex = 36;
             this.label11.Text = "R.App.Fees:";
             // 
-            // lblTestApplicationID
+            // lblRetakeTestApplicationID
             // 
-            this.lblTestApplicationID.AutoSize = true;
-            this.lblTestApplicationID.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTestApplicationID.Location = new System.Drawing.Point(207, 84);
-            this.lblTestApplicationID.Name = "lblTestApplicationID";
-            this.lblTestApplicationID.Size = new System.Drawing.Size(40, 24);
-            this.lblTestApplicationID.TabIndex = 26;
-            this.lblTestApplicationID.Text = "???";
+            this.lblRetakeTestApplicationID.AutoSize = true;
+            this.lblRetakeTestApplicationID.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRetakeTestApplicationID.Location = new System.Drawing.Point(207, 84);
+            this.lblRetakeTestApplicationID.Name = "lblRetakeTestApplicationID";
+            this.lblRetakeTestApplicationID.Size = new System.Drawing.Size(40, 24);
+            this.lblRetakeTestApplicationID.TabIndex = 26;
+            this.lblRetakeTestApplicationID.Text = "???";
             // 
             // pictureBox6
             // 
@@ -491,33 +490,6 @@
             this.gbtnClose.Text = "Close";
             this.gbtnClose.Click += new System.EventHandler(this.gbtnClose_Click_1);
             // 
-            // guna2Button1
-            // 
-            this.guna2Button1.Animated = true;
-            this.guna2Button1.AutoRoundedCorners = true;
-            this.guna2Button1.BackColor = System.Drawing.Color.Transparent;
-            this.guna2Button1.BorderThickness = 1;
-            this.guna2Button1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.guna2Button1.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.guna2Button1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2Button1.FillColor = System.Drawing.Color.White;
-            this.guna2Button1.FocusedColor = System.Drawing.SystemColors.MenuHighlight;
-            this.guna2Button1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2Button1.ForeColor = System.Drawing.Color.Black;
-            this.guna2Button1.HoverState.FillColor = System.Drawing.Color.SlateBlue;
-            this.guna2Button1.HoverState.ForeColor = System.Drawing.Color.White;
-            this.guna2Button1.Image = ((System.Drawing.Image)(resources.GetObject("guna2Button1.Image")));
-            this.guna2Button1.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.guna2Button1.ImageSize = new System.Drawing.Size(35, 35);
-            this.guna2Button1.Location = new System.Drawing.Point(417, 675);
-            this.guna2Button1.Name = "guna2Button1";
-            this.guna2Button1.Size = new System.Drawing.Size(154, 45);
-            this.guna2Button1.TabIndex = 66;
-            this.guna2Button1.Text = "Save";
-            this.guna2Button1.Click += new System.EventHandler(this.gbtnSave_Click);
-            // 
             // frmScheduleTestAdd_Edit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -525,7 +497,6 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(594, 791);
             this.Controls.Add(this.gbtnClose);
-            this.Controls.Add(this.guna2Button1);
             this.Controls.Add(this.gbScheduleTest);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "frmScheduleTestAdd_Edit";
@@ -561,7 +532,7 @@
         private System.Windows.Forms.Label lblRetakeAppFees;
         private System.Windows.Forms.PictureBox pictureBox8;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label lblTestApplicationID;
+        private System.Windows.Forms.Label lblRetakeTestApplicationID;
         private System.Windows.Forms.PictureBox pictureBox6;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.PictureBox pictureBox12;
@@ -587,6 +558,5 @@
         private Guna.UI2.WinForms.Guna2Button gbtnSave;
         private Guna.UI2.WinForms.Guna2Button gbtnClose;
         private System.Windows.Forms.PictureBox pictureBox2;
-        private Guna.UI2.WinForms.Guna2Button guna2Button1;
     }
 }

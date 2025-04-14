@@ -1,7 +1,24 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "E:\\Visual Studio\\source\\Projects\\Course19\\DVLDProject\\DVLDPresentation\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{0ED341D7-871B-430D-AF5D-AC132FF6147A}|DVLDPresentationTier.csproj|e:\\visual studio\\source\\projects\\course19\\dvldproject\\dvldpresentation\\applications\\driving license services\\replacment for damage or lost\\frmreplacementfordamagedorlost.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{0ED341D7-871B-430D-AF5D-AC132FF6147A}|DVLDPresentationTier.csproj|solutionrelative:applications\\driving license services\\replacment for damage or lost\\frmreplacementfordamagedorlost.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0ED341D7-871B-430D-AF5D-AC132FF6147A}|DVLDPresentationTier.csproj|e:\\visual studio\\source\\projects\\course19\\dvldproject\\dvldpresentation\\applications\\driving license services\\replacment for damage or lost\\frmreplacementfordamagedorlost.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0ED341D7-871B-430D-AF5D-AC132FF6147A}|DVLDPresentationTier.csproj|solutionrelative:applications\\driving license services\\replacment for damage or lost\\frmreplacementfordamagedorlost.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0ED341D7-871B-430D-AF5D-AC132FF6147A}|DVLDPresentationTier.csproj|e:\\visual studio\\source\\projects\\course19\\dvldproject\\dvldpresentation\\login_mainpage\\frmmain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0ED341D7-871B-430D-AF5D-AC132FF6147A}|DVLDPresentationTier.csproj|solutionrelative:login_mainpage\\frmmain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0ED341D7-871B-430D-AF5D-AC132FF6147A}|DVLDPresentationTier.csproj|e:\\visual studio\\source\\projects\\course19\\dvldproject\\dvldpresentation\\login_mainpage\\frmmain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{0ED341D7-871B-430D-AF5D-AC132FF6147A}|DVLDPresentationTier.csproj|solutionrelative:login_mainpage\\frmmain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -9,7 +26,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Bookmark",
@@ -26,6 +43,56 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{6d4078d1-5951-4ed1-ac0e-0a8099c1cce5}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "frmMain.cs",
+              "DocumentMoniker": "E:\\Visual Studio\\source\\Projects\\Course19\\DVLDProject\\DVLDPresentation\\Login_MainPage\\frmMain.cs",
+              "RelativeDocumentMoniker": "Login_MainPage\\frmMain.cs",
+              "ToolTip": "E:\\Visual Studio\\source\\Projects\\Course19\\DVLDProject\\DVLDPresentation\\Login_MainPage\\frmMain.cs",
+              "RelativeToolTip": "Login_MainPage\\frmMain.cs",
+              "ViewState": "AgIAAGkAAAAAAAAAAAAUwHwAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-14T19:49:01.733Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "frmMain.cs [Design]",
+              "DocumentMoniker": "E:\\Visual Studio\\source\\Projects\\Course19\\DVLDProject\\DVLDPresentation\\Login_MainPage\\frmMain.cs",
+              "RelativeDocumentMoniker": "Login_MainPage\\frmMain.cs",
+              "ToolTip": "E:\\Visual Studio\\source\\Projects\\Course19\\DVLDProject\\DVLDPresentation\\Login_MainPage\\frmMain.cs [Design]",
+              "RelativeToolTip": "Login_MainPage\\frmMain.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-14T19:48:57.585Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "frmReplacementForDamagedOrLost.cs",
+              "DocumentMoniker": "E:\\Visual Studio\\source\\Projects\\Course19\\DVLDProject\\DVLDPresentation\\Applications\\Driving License Services\\Replacment For Damage Or Lost\\frmReplacementForDamagedOrLost.cs",
+              "RelativeDocumentMoniker": "Applications\\Driving License Services\\Replacment For Damage Or Lost\\frmReplacementForDamagedOrLost.cs",
+              "ToolTip": "E:\\Visual Studio\\source\\Projects\\Course19\\DVLDProject\\DVLDPresentation\\Applications\\Driving License Services\\Replacment For Damage Or Lost\\frmReplacementForDamagedOrLost.cs",
+              "RelativeToolTip": "Applications\\Driving License Services\\Replacment For Damage Or Lost\\frmReplacementForDamagedOrLost.cs",
+              "ViewState": "AgIAADkAAAAAAAAAAAAAwEoAAABtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-14T18:41:55.718Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "frmReplacementForDamagedOrLost.cs [Design]",
+              "DocumentMoniker": "E:\\Visual Studio\\source\\Projects\\Course19\\DVLDProject\\DVLDPresentation\\Applications\\Driving License Services\\Replacment For Damage Or Lost\\frmReplacementForDamagedOrLost.cs",
+              "RelativeDocumentMoniker": "Applications\\Driving License Services\\Replacment For Damage Or Lost\\frmReplacementForDamagedOrLost.cs",
+              "ToolTip": "E:\\Visual Studio\\source\\Projects\\Course19\\DVLDProject\\DVLDPresentation\\Applications\\Driving License Services\\Replacment For Damage Or Lost\\frmReplacementForDamagedOrLost.cs [Design]",
+              "RelativeToolTip": "Applications\\Driving License Services\\Replacment For Damage Or Lost\\frmReplacementForDamagedOrLost.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-14T17:16:43.535Z",
+              "EditorCaption": " [Design]"
             }
           ]
         }

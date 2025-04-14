@@ -281,7 +281,7 @@ namespace DVLDDataAccess
 
             SqlConnection connection = new SqlConnection(clsDataAccessSetings.ConnectionString);
 
-            string query = "SELECT COUNT(*) FROM Licenses WHERE DriverID = @DriverID;";
+            string query = "SELECT COUNT(*) FROM Licenses WHERE DriverID = @DriverID AND IsAcitve = 1;";
 
             SqlCommand command = new SqlCommand(query, connection);
             command.Parameters.AddWithValue("@DriverID", DriverID);

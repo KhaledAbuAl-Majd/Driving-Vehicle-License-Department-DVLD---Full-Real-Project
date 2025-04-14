@@ -26,7 +26,14 @@ namespace DVLDPresentation.Applications.Manage_Applications.LocalDrivingLicenseA
             InitializeComponent();
             _LDLApplication = clsLocalDrivingApplictions.FindByLDLApplicationID(LDLApplicationID);
             _TestType = (enTestType)TestType;
-            _TestAppointment = (TestAppointmentID == -1) ? new clsTestAppointments(LDLApplicationID,Convert.ToInt32(_TestType)) : clsTestAppointments.Find(TestAppointmentID);
+            if (TestAppointmentID == -1)
+            {
+                _TestAppointment = new clsTestAppointments(LDLApplicationID, Convert.ToInt32(_TestType), clsGlobalSettings.LoggedInUser.UserID);
+            }
+            else
+            {
+                _TestAppointment = clsTestAppointments.Find(TestAppointmentID); ;
+            }
         }
 
         void _ChangeGroubBoxText(string Text)
@@ -75,9 +82,22 @@ namespace DVLDPresentation.Applications.Manage_Applications.LocalDrivingLicenseA
         }
         void _RetakeTestMode()
         {
+            if (_TestAppointment.RetakeTestApplicationID != -1)
+                lblRetakeTestApplicationID.Text = _TestAppointment.RetakeTestApplicationID.ToString();
+            else
+                lblRetakeTestApplicationID.Text = "N/A";
+            //Retatke Test ID
+            lblRetakeAppFees.Text = clsApplicationTypes.FindApplicationType(7).ApplicationFees.ToString();
+            lblTotalFees.Text = (_TestAppointment.PaidFees + clsApplicationTypes.FindApplicationType(7).ApplicationFees).ToString();
             _ChageHeader("Schedule Retake Test");
             _ChangeRetakeTestInfoGroubBoxEnablity(true);
-
+        } 
+        void _FirstScheduleTestMode()
+        {
+            lblRetakeTestApplicationID.Text = "N/A";
+            lblRetakeAppFees.Text = "0";
+            lblTotalFees.Text = _TestAppointment.PaidFees.ToString();
+            _ChangeRetakeTestInfoGroubBoxEnablity(false);
         }
         void _TestLockedMode()
         {
@@ -95,10 +115,10 @@ namespace DVLDPresentation.Applications.Manage_Applications.LocalDrivingLicenseA
             lblName.Text = clsPeople.Find(clsApplications.Find(_LDLApplication.ApplicationID).PersonID).GetFullName();
             lblTrial.Text = _TestAppointment.TrialNumber.ToString();
             gDTPDate.Value = _TestAppointment.AppointmentDate;
-            lblFees.Text = _TestAppointment.TestFees.ToString();
-            lblRetakeAppFees.Text = _TestAppointment.RetakeTestFees.ToString();
-            lblTotalFees.Text = _TestAppointment.TotalPaidFees.ToString();
-            lblTestApplicationID.Text = (_TestAppointment.TestAppointmentID == -1) ? "N/A" : _TestAppointment.TestAppointmentID.ToString();
+            lblFees.Text = _TestAppointment.PaidFees.ToString();
+            //lblRetakeAppFees.Text = _TestAppointment.RetakeTestFees.ToString();
+            //lblTotalFees.Text = _TestAppointment.PaidFees.ToString();
+            //lblRetakeTestApplicationID.Text = (_TestAppointment.TestAppointmentID == -1) ? "N/A" : _TestAppointment.TestAppointmentID.ToString();
 
             if (_TestAppointment.IsLocked)
                 _TestLockedMode();
@@ -107,6 +127,8 @@ namespace DVLDPresentation.Applications.Manage_Applications.LocalDrivingLicenseA
 
             if (_TestAppointment.TestMode == clsTestAppointments.enTestMode.RetakeTest)
                 _RetakeTestMode();
+            else
+                _FirstScheduleTestMode();
         }
         void _Save()
         {
@@ -115,6 +137,7 @@ namespace DVLDPresentation.Applications.Manage_Applications.LocalDrivingLicenseA
             if (_TestAppointment.Save())
             {
                 _IsSave = true;
+                lblRetakeTestApplicationID.Text = _TestAppointment.RetakeTestApplicationID.ToString();
                 MessageBox.Show("Data Saved Successfully!", "Succed", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 _Close();
             }
@@ -138,6 +161,7 @@ namespace DVLDPresentation.Applications.Manage_Applications.LocalDrivingLicenseA
             _SetMinDateOfDate();
             _FillDataInLabels();
             _SetDesingAtTestType();
+        
         }
 
         private void gbtnSave_Click(object sender, EventArgs e)

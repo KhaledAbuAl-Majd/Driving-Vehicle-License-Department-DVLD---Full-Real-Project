@@ -91,7 +91,6 @@
             this.applicationsToolStripMenuItem.Name = "applicationsToolStripMenuItem";
             this.applicationsToolStripMenuItem.Size = new System.Drawing.Size(198, 73);
             this.applicationsToolStripMenuItem.Text = "Applications";
-           
             // 
             // drivingLicenseToolStripMenuItem
             // 
@@ -159,6 +158,7 @@
             this.replacementForLostOrDamagedLicenseToolStripMenuItem.Name = "replacementForLostOrDamagedLicenseToolStripMenuItem";
             this.replacementForLostOrDamagedLicenseToolStripMenuItem.Size = new System.Drawing.Size(417, 38);
             this.replacementForLostOrDamagedLicenseToolStripMenuItem.Text = "Replacement For Lost or Damaged License";
+            this.replacementForLostOrDamagedLicenseToolStripMenuItem.Click += new System.EventHandler(this.replacementForLostOrDamagedLicenseToolStripMenuItem_Click);
             // 
             // releaseDetainedDrivingLicenseToolStripMenuItem
             // 
