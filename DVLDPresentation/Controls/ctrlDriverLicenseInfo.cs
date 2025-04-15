@@ -61,7 +61,7 @@ namespace DVLDPresentation.Controls
                 lblDriverID.Text = License.DriverID.ToString();
                 lblExpirationDate.Text = License.ExpirationDate.ToString("dd/MMM/yyyy");
                 //is Detained
-                lblIsDetained.Text = (!License.IsAcitve) ? "Yes" : "No";
+                lblIsDetained.Text = (clsDetainedLicenses.IsLicenseDetainedByLicenseID(License.LicneseID)) ? "Yes" : "No";
             }
         }
         void _ChangeGendorData(short Gendor, string PersonImagePath)

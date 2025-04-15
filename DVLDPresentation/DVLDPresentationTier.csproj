@@ -64,6 +64,24 @@
     <Compile Include="Applications\Application Types\frmUpdateApplicationTypes.Designer.cs">
       <DependentUpon>frmUpdateApplicationTypes.cs</DependentUpon>
     </Compile>
+    <Compile Include="Applications\Detain Licenses\frmDetainLicense.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Applications\Detain Licenses\frmDetainLicense.Designer.cs">
+      <DependentUpon>frmDetainLicense.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Applications\Detain Licenses\frmListDetainedLicenses.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Applications\Detain Licenses\frmListDetainedLicenses.Designer.cs">
+      <DependentUpon>frmListDetainedLicenses.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Applications\Detain Licenses\frmReleaseDetainedLicense.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Applications\Detain Licenses\frmReleaseDetainedLicense.Designer.cs">
+      <DependentUpon>frmReleaseDetainedLicense.cs</DependentUpon>
+    </Compile>
     <Compile Include="Applications\Driving License Services\New Driving License\frmNewInternationalLicneseApplication.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -270,6 +288,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Applications\Application Types\frmUpdateApplicationTypes.resx">
       <DependentUpon>frmUpdateApplicationTypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Applications\Detain Licenses\frmDetainLicense.resx">
+      <DependentUpon>frmDetainLicense.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Applications\Detain Licenses\frmListDetainedLicenses.resx">
+      <DependentUpon>frmListDetainedLicenses.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Applications\Detain Licenses\frmReleaseDetainedLicense.resx">
+      <DependentUpon>frmReleaseDetainedLicense.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Applications\Driving License Services\New Driving License\frmNewInternationalLicneseApplication.resx">
       <DependentUpon>frmNewInternationalLicneseApplication.cs</DependentUpon>

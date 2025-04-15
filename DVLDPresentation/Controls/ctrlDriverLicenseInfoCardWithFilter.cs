@@ -17,11 +17,18 @@ namespace DVLDPresentation.Controls
 
         public delegate void SearchDataBack(int PersonID, clsLicenses LocalLicense, object sender);
         public event SearchDataBack OnSuccedAtSearch;
-        public enum enMode { NewInternationalLicense, RenewLocalLicense, ReplacementForDamaged_Lost }
+        public enum enMode { NewInternationalLicense, RenewLocalLicense, ReplacementForDamaged_Lost,DetainLicense,ReleaseLicense }
         public enMode Mode;
+
+        public void EnterLicenseIDByCode(int LicenseID)
+        {
+            gtxtFilterValue.Text = LicenseID.ToString();
+            btnLicenseSearch.PerformClick();
+            gbFilterBy.Enabled = false;
+        }
         public void ChangeEnaplityOfGBFilterBy(bool value)
         {
-            gbFilterBy.Enabled = value;
+            gbFilterBy.Enabled = value; 
         }
         void _RaiseEventErrorAtSearch()
         {
@@ -63,6 +70,16 @@ namespace DVLDPresentation.Controls
 
             return false;
         }
+        bool _CheckIsLicenseExpired(clsLicenses LocalLicense)
+        {
+            if (LocalLicense.ExpirationDate < DateTime.Today)
+            {
+                _ErrorAtSearch($"Selected License is expiared, Choose another one!", "Not allowed");
+                return true;
+            }
+
+            return false;
+        }
         bool _CheckIsLicenseNotExpired(clsLicenses LocalLicense)
         {
             if (!(LocalLicense.ExpirationDate < DateTime.Today))
@@ -94,6 +111,26 @@ namespace DVLDPresentation.Controls
 
             return false;
         }
+        bool _CheckIsLicenseDetained(int LicenseID)
+        {
+            if (clsDetainedLicenses.IsLicenseDetainedByLicenseID(LicenseID))
+            {
+                _ErrorAtSearch("Selected License is already detained, Choose another one.", "Not allowed");
+                return true;
+            }
+
+            return false;
+        }
+        bool _CheckIsLicenseNotDetained(int LicenseID)
+        {
+            if (!clsDetainedLicenses.IsLicenseDetainedByLicenseID(LicenseID))
+            {
+                _ErrorAtSearch("Selected License is not detained, Choose another one.", "Not allowed");
+                return true;
+            }
+
+            return false;
+        }
         void _SearchAtLicenseForInternatinalLicense()
         {
             if (_CheckIsNullOrWhiteSpace())
@@ -107,9 +144,14 @@ namespace DVLDPresentation.Controls
             clsLicenses LocalLicense = clsLicenses.FindByLicenseID(EnteredLicenseID);
             int PersonID = clsDrivers.FindByDriverID(LocalLicense.DriverID).PersonID;
 
+            if (_CheckIsLicenseExpired(LocalLicense))
+                return;
+
             if (_CheckIsPersonHaveActiveInternationalLicense(PersonID))
                 return;
-            
+
+            if (_CheckIsLicenseNotActive(LocalLicense))
+                return;
 
             //Class 3 - Ordinary Driving License
             if (LocalLicense.LicenseClassID != 3)
@@ -160,7 +202,65 @@ namespace DVLDPresentation.Controls
             clsLicenses LocalLicense = clsLicenses.FindByLicenseID(EnteredLicenseID);
             int PersonID = clsDrivers.FindByDriverID(LocalLicense.DriverID).PersonID;
 
+            if (_CheckIsLicenseExpired(LocalLicense))
+                return;
+
             if (_CheckIsLicenseNotActive(LocalLicense))
+                return;
+
+            if (_CheckIsLicenseDetained(LocalLicense.LicneseID))
+                return;
+
+            ctrlDriverLicenseInfo1.FillDataInLabels(LocalLicense.LicneseID);
+
+            _InvokeDelegateSearchDataBack(PersonID, LocalLicense);
+        }
+        void _SearchAtLocalLicenseToDetain()
+        {
+            if (_CheckIsNullOrWhiteSpace())
+                return;
+
+            int EnteredLicenseID = Convert.ToInt32(gtxtFilterValue.Text);
+
+            if (_CheckIsLicenseNotExist(EnteredLicenseID))
+                return;
+
+            clsLicenses LocalLicense = clsLicenses.FindByLicenseID(EnteredLicenseID);
+            int PersonID = clsDrivers.FindByDriverID(LocalLicense.DriverID).PersonID;
+
+            if (_CheckIsLicenseExpired(LocalLicense))
+                return;
+
+            if (_CheckIsLicenseNotActive(LocalLicense))
+                return;
+            
+            if (_CheckIsLicenseDetained(LocalLicense.LicneseID))
+                return;
+
+            ctrlDriverLicenseInfo1.FillDataInLabels(LocalLicense.LicneseID);
+
+            _InvokeDelegateSearchDataBack(PersonID, LocalLicense);
+        }
+        void _SearchAtLocalLicenseToRelease()
+        {
+            if (_CheckIsNullOrWhiteSpace())
+                return;
+
+            int EnteredLicenseID = Convert.ToInt32(gtxtFilterValue.Text);
+
+            if (_CheckIsLicenseNotExist(EnteredLicenseID))
+                return;
+
+            clsLicenses LocalLicense = clsLicenses.FindByLicenseID(EnteredLicenseID);
+            int PersonID = clsDrivers.FindByDriverID(LocalLicense.DriverID).PersonID;
+
+            if (_CheckIsLicenseExpired(LocalLicense))
+                return;
+
+            if (_CheckIsLicenseNotActive(LocalLicense))
+                return;
+            
+            if (_CheckIsLicenseNotDetained(LocalLicense.LicneseID))
                 return;
 
             ctrlDriverLicenseInfo1.FillDataInLabels(LocalLicense.LicneseID);
@@ -181,6 +281,14 @@ namespace DVLDPresentation.Controls
 
                 case enMode.ReplacementForDamaged_Lost:
                     _SearchAtLocalLicenseToReplacementForDamagedOrLost();
+                    break;
+                
+                case enMode.DetainLicense:
+                    _SearchAtLocalLicenseToDetain();
+                    break; 
+                
+                case enMode.ReleaseLicense:
+                    _SearchAtLocalLicenseToRelease();
                     break;
             }
         }

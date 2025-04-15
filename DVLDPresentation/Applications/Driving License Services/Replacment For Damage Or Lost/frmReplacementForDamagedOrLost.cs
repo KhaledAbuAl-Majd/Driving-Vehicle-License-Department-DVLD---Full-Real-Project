@@ -35,17 +35,23 @@ namespace DVLDPresentation.Applications.Driving_License_Services.Replacment_For_
         {
             lblHeader.Text = Text;
         }
+        void _ChangeApplicationFeesLabels()
+        {
+            lblApplicationFees.Text = clsApplicationTypes.FindApplicationType(Convert.ToInt32(_ApplicationTypeID_Mode)).ApplicationFees.ToString();
+        }
         void _ReplacementForDamagedMode()
         {
             _ApplicationTypeID_Mode = enApplicationTypeID.ReplacementForDamaged;
             _ChangeHeaderText("Replacement for Damaged License");
             _ChangeFormText("Replacement for Damaged License");
+            _ChangeApplicationFeesLabels();
         }
         void _ReplacementForLostMode()
         {
             _ApplicationTypeID_Mode = enApplicationTypeID.ReplacementForLost;
             _ChangeHeaderText("Replacement for Lost License");
             _ChangeFormText("Replacement for Lost License");
+            _ChangeApplicationFeesLabels();
         }
         void _DeActivateOldLicense()
         {
@@ -61,8 +67,7 @@ namespace DVLDPresentation.Applications.Driving_License_Services.Replacment_For_
         }
         void _InitializeDataInLoad()
         {
-            lblApplicationDate.Text = DateTime.Now.ToString("dd/MMM/yyyy");
-            lblApplicationFees.Text = clsApplicationTypes.FindApplicationType(Convert.ToInt32(_ApplicationTypeID_Mode)).ApplicationFees.ToString();
+            lblApplicationDate.Text = DateTime.Now.ToString("dd/MMM/yyyy");  
             lblCreatedBy.Text = clsGlobalSettings.LoggedInUser.UserName;
         }
         void _OnErrorAtSearch()

@@ -137,8 +137,12 @@ namespace DVLDPresentation.Applications.Manage_Applications.LocalDrivingLicenseA
             if (_TestAppointment.Save())
             {
                 _IsSave = true;
-                lblRetakeTestApplicationID.Text = _TestAppointment.RetakeTestApplicationID.ToString();
-                MessageBox.Show("Data Saved Successfully!", "Succed", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                if (_TestAppointment.TestMode == clsTestAppointments.enTestMode.RetakeTest)
+                    lblRetakeTestApplicationID.Text = _TestAppointment.RetakeTestApplicationID.ToString();
+                else
+                    lblRetakeTestApplicationID.Text = "N/A";
+
+                    MessageBox.Show("Data Saved Successfully!", "Succed", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 _Close();
             }
             else

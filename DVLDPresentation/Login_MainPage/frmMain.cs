@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DVLDPresentation.Applications;
+using DVLDPresentation.Applications.Detain_Licenses;
 using DVLDPresentation.Applications.Driving_License_Services.New_Driving_License;
 using DVLDPresentation.Applications.Driving_License_Services.Renew_Driving_License;
 using DVLDPresentation.Applications.Driving_License_Services.Replacment_For_Damage_Or_Lost;
@@ -123,6 +124,36 @@ namespace DVLDPresentation.Login_HomePage
         private void replacementForLostOrDamagedLicenseToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmReplacementForDamagedOrLost frm = new frmReplacementForDamagedOrLost();
+            frm.ShowDialog();
+        }
+
+        private void releaseDetainedDrivingLicenseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void retakeTestToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmLocalDrivingLicenseApplications frm = new frmLocalDrivingLicenseApplications();
+
+            frm.ShowDialog();
+        }
+
+        private void manageDetainedLicensesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmListDetainedLicenses frm = new frmListDetainedLicenses();
+            frm.ShowDialog();
+        }
+
+        private void detainLicenseToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            frmDetainLicense frm = new frmDetainLicense();
+            frm.ShowDialog();
+        }
+
+        private void releaseDetainedLicenseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmReleaseDetainedLicense frm = new frmReleaseDetainedLicense(-1);
             frm.ShowDialog();
         }
     }

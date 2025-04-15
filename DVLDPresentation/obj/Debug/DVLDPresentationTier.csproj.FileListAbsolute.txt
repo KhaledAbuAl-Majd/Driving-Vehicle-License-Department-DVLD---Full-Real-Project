@@ -48,3 +48,6 @@ E:\Visual Studio\source\Projects\Course19\DVLDProject\DVLDPresentation\obj\Debug
 E:\Visual Studio\source\Projects\Course19\DVLDProject\DVLDPresentation\obj\Debug\DVLDPresentation.Controls.ctrlDriverLicenseInfoCardWithFilter.resources
 E:\Visual Studio\source\Projects\Course19\DVLDProject\DVLDPresentation\obj\Debug\DVLDPresentation.Applications.Driving_License_Services.Renew_Driving_License.frmRenewLocalLicense.resources
 E:\Visual Studio\source\Projects\Course19\DVLDProject\DVLDPresentation\obj\Debug\DVLDPresentation.Applications.Driving_License_Services.Replacment_For_Damage_Or_Lost.frmReplacementForDamagedOrLost.resources
+E:\Visual Studio\source\Projects\Course19\DVLDProject\DVLDPresentation\obj\Debug\DVLDPresentation.Applications.Detain_Licenses.frmDetainLicense.resources
+E:\Visual Studio\source\Projects\Course19\DVLDProject\DVLDPresentation\obj\Debug\DVLDPresentation.Applications.Detain_Licenses.frmReleaseDetainedLicense.resources
+E:\Visual Studio\source\Projects\Course19\DVLDProject\DVLDPresentation\obj\Debug\DVLDPresentation.Applications.Detain_Licenses.frmListDetainedLicenses.resources
