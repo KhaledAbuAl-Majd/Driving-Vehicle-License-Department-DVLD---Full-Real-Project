@@ -77,11 +77,11 @@ namespace DVLDPresentation
                 dtAllDrivers.Columns["PersonID"].ColumnName = "Person ID";
                 dtAllDrivers.Columns["CreatedDate"].ColumnName = "Date";
 
-                clsPeople Person;
+                clsPerson Person;
 
                 foreach (DataRow row in dtAllDrivers.Rows)
                 {
-                    Person = clsPeople.Find(Convert.ToInt32(row["Person ID"]));
+                    Person = clsPerson.Find(Convert.ToInt32(row["Person ID"]));
 
                     row["Full Name"] = Person.GetFullName();
                     row["National No."] = Person.NationalNo;
@@ -168,8 +168,8 @@ namespace DVLDPresentation
         private void showDetailsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             int PersonID = Convert.ToInt32(dgvDrivers.SelectedCells[1].Value);
-            frmPersonDetails frm = new frmPersonDetails(PersonID);
-            frm.OnClose += _Load_RefereshUsersInDGV;
+            frmShowPersonInfo frm = new frmShowPersonInfo(PersonID);
+            //frm.OnClose += _Load_RefereshUsersInDGV;
             frm.ShowDialog();
         }
 

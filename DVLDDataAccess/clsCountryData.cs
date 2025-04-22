@@ -93,7 +93,7 @@ namespace DVLDDataAccess
 
             SqlConnection connection = new SqlConnection(clsDataAccessSetings.ConnectionString);
 
-            string query = "SELECT * FROM Countries";
+            string query = "SELECT * FROM Countries ORDER BY CountryName";
 
             SqlCommand command = new SqlCommand(query, connection);
 

@@ -49,10 +49,10 @@ namespace DVLDPresentation.Controls
                 clsApplicationTypes ApplicationType = clsApplicationTypes.FindApplicationType(Application.ApplicationTypeID);
                 lblFees.Text = ApplicationType.ApplicationFees.ToString();
                 lblType.Text = ApplicationType.ApplicationTypeTitle;
-                lblApplicant.Text = clsPeople.Find(Application.PersonID).GetFullName();
+                lblApplicant.Text = clsPerson.Find(Application.PersonID).GetFullName();
                 lblDate.Text = Application.ApplicationDate.ToString("dd/MMM/yyyy");
                 lblStatusDate.Text = Application.LastStatusDate.ToString("dd/MMM/yyyy");
-                lblCreatedBy.Text = clsUsers.Find(Application.CreatedByUserID).UserName;
+                lblCreatedBy.Text = clsUser.FindByUserID(Application.CreatedByUserID).UserName;
                 _PersonID = Application.PersonID;
                 llblViewPersonInfo.Enabled = (_PersonID == -1) ? false : true;
             }
@@ -66,9 +66,9 @@ namespace DVLDPresentation.Controls
         }
         private void llblViewPersonInfo_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            frmPersonDetails frm = new frmPersonDetails(_PersonID);
+            frmShowPersonInfo frm = new frmShowPersonInfo(_PersonID);
 
-            frm.OnClose += FrmViewPersonInfo_OnClose;
+            //frm.OnClose += FrmViewPersonInfo_OnClose;
             frm.ShowDialog();
         }
 

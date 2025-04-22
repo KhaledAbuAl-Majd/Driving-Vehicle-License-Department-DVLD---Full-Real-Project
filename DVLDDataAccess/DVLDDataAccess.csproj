@@ -52,11 +52,11 @@
     <Compile Include="clsLicneseClassesData.cs" />
     <Compile Include="clsLicensesData.cs" />
     <Compile Include="clsLocalDrivingApplictionsData.cs" />
-    <Compile Include="clsPeopleData.cs" />
+    <Compile Include="clsPersonData.cs" />
     <Compile Include="clsTestAppointmentsData.cs" />
     <Compile Include="clsTestsData.cs" />
     <Compile Include="clsTestTypesData.cs" />
-    <Compile Include="clsUsersData.cs" />
+    <Compile Include="clsUserData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -7,39 +7,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using DVLDBusiness;
 
 namespace DVLDPresentation.Users
 {
     public partial class frmUserInfo : Form
     {
-
-        clsUsers User;
-
-        public event Action OnClose;
+        //public event Action OnClose;
         public frmUserInfo(int UserID)
         {
             InitializeComponent();
-            User = clsUsers.Find(UserID);
-
-            if (User != null)
-            {
-                ctrPersonCard1.PersonID = User.PersonID;
-                _FillLoginInfomationFromUserToForm();
-            }
+            ctrUserCard1.LoadUserInfo(UserID);
         }
 
-        void _FillLoginInfomationFromUserToForm()
+        private void gbtnClose_Click(object sender, EventArgs e)
         {
-            lblUserID.Text = User.UserID.ToString();
-            lblUserName.Text = User.UserName;
-            lblIsActive.Text = (User.IsActive) ? "Yes" : "No";
-        }
-        private void gbtnClose_Click_1(object sender, EventArgs e)
-        {
-            if (OnClose != null)
-                OnClose();
-
             this.Close();
         }
     }

@@ -47,7 +47,7 @@ namespace DVLDPresentation.Applications.Detain_Licenses
             lblFineFees.Text = _DetainedLicense.FineFees.ToString();
             lblTotalFees.Text = (ApplicationFees + _DetainedLicense.FineFees).ToString();
             lblLicenseID.Text = _DetainedLicense.LicenseID.ToString();
-            lblCreatedBy.Text = clsUsers.Find(_DetainedLicense.CreatedByUserID).UserName;
+            lblCreatedBy.Text = clsUser.FindByUserID(_DetainedLicense.CreatedByUserID).UserName;
         }
         void _OnErrorAtSearch()
         {

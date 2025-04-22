@@ -24,7 +24,7 @@ namespace DVLDPresentation.Applications.Driving_License_Services.New_Driving_Lic
         {
             InitializeComponent();
             int _ApplicationTypeID = 1;
-            ctrlPersonCardWithFilter1.IsToAddNewUser = false;
+            //ctrlPersonCardWithFilter1.IsToAddNewUser = false;
             _ApplicationType = clsApplicationTypes.FindApplicationType(_ApplicationTypeID);
             if(LDLApplicationID != -1)
             {

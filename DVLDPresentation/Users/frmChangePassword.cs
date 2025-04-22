@@ -14,7 +14,7 @@ namespace DVLDPresentation.Users
 {
     public partial class frmChangePassword : Form
     {
-        clsUsers User;
+        clsUser User;
         bool IsSave = false;
 
         public event Action OnClose;
@@ -22,11 +22,11 @@ namespace DVLDPresentation.Users
         {
             InitializeComponent();
 
-            User = clsUsers.Find(UserID);
+            User = clsUser.FindByUserID(UserID);
 
             if (User != null)
             {
-                ctrPersonCard1.PersonID = User.PersonID;
+                //ctrPersonCard1.PersonID = User.PersonID;
                 _FillLoginInfomationFromUserToForm();
             }
         }

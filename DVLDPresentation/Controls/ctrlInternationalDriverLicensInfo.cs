@@ -28,7 +28,7 @@ namespace DVLDPresentation.Controls
             {
                 clsApplications Application = clsApplications.Find(IntLicense.ILApplicationID);
                 clsDrivers Driver = clsDrivers.FindByDriverID(IntLicense.DriverID);
-                clsPeople Person = clsPeople.Find(Driver.PersonID);
+                clsPerson Person = clsPerson.Find(Driver.PersonID);
 
                 lblName.Text = Person.GetFullName();
                 lblIntLicenseID.Text = IntLicense.InternationalLicenseID.ToString();

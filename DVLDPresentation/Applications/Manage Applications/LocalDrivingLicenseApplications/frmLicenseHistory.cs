@@ -92,7 +92,8 @@ namespace DVLDPresentation.Applications.Manage_Applications.LocalDrivingLicenseA
         }
         private void frmLicenseHistory_Load(object sender, EventArgs e)
         {
-            ctrlPersonCardWithFilter1.UpdateMode(_PersonID);
+            ctrlPersonCardWithFilter1.FilterEnabled = false;
+            ctrlPersonCardWithFilter1.LoadPersonInfo(_PersonID);
             _LoadDataInLocalDGV();
             _LoadDataInInternationalDGV();
         }

@@ -267,7 +267,7 @@ namespace DVLDPresentation.Applications.Manage_Applications
         {
             int LDLAppID = Convert.ToInt32(dgvLDLApplications.SelectedCells[0].Value);
             byte PassedTests = Convert.ToByte(dgvLDLApplications.SelectedCells[5].Value);
-            frmTestAppointments frm = new frmTestAppointments(LDLAppID, PassedTests);
+            frmListTestAppointments frm = new frmListTestAppointments(LDLAppID, PassedTests);
             frm.OnClose += _Load_RefreshDataInDGV;
             frm.ShowDialog();
         }
@@ -408,7 +408,7 @@ namespace DVLDPresentation.Applications.Manage_Applications
         private void showPersonLicenseHistoryToolStripMenuItem_Click(object sender, EventArgs e)
         {
             // National No 
-            int PersonID = clsPeople.Find((string)dgvLDLApplications.SelectedCells[2].Value).PersonID;
+            int PersonID = clsPerson.Find((string)dgvLDLApplications.SelectedCells[2].Value).PersonID;
 
             frmLicenseHistory frm = new frmLicenseHistory(PersonID);
             frm.ShowDialog();

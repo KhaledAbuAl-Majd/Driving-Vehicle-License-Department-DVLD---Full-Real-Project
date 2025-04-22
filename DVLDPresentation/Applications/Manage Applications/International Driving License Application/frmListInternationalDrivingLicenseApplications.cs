@@ -184,7 +184,7 @@ namespace DVLDPresentation.Applications.Manage_Applications.International_Drivin
         {
             int DriverID = Convert.ToInt32(dgvIntLApplications.SelectedCells[2].Value);
             int PersonID = clsDrivers.FindByDriverID(DriverID).PersonID;
-            frmPersonDetails frm = new frmPersonDetails(PersonID);
+            frmShowPersonInfo frm = new frmShowPersonInfo(PersonID);
             frm.ShowDialog();
         }
 

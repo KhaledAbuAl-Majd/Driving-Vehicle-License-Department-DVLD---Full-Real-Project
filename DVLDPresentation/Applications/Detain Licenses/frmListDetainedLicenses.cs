@@ -103,12 +103,12 @@ namespace DVLDPresentation.Applications.Detain_Licenses
                 dtAllDetainedLicenses.Columns["ReleasedDate"].ColumnName = "Released Date";
                 dtAllDetainedLicenses.Columns["ReleaseApplicationID"].ColumnName = "Release App.ID";
 
-                clsPeople Person;
+                clsPerson Person;
 
                 foreach(DataRow row in dtAllDetainedLicenses.Rows)
                 {
                     int PersonID = clsDrivers.FindByDriverID(clsLicenses.FindByLicenseID(Convert.ToInt32(row["L.ID"])).DriverID).PersonID;
-                    Person = clsPeople.Find(PersonID);
+                    Person = clsPerson.Find(PersonID);
 
                     row["N.No."] = Person.NationalNo;
                     row["Full Name"] = Person.GetFullName();
@@ -229,10 +229,10 @@ namespace DVLDPresentation.Applications.Detain_Licenses
         private void showDetailsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             string NationalNo = (string)dgvDetainedLicenses.SelectedCells[6].Value;
-            int PersonID = clsPeople.Find(NationalNo).PersonID;
+            int PersonID = clsPerson.Find(NationalNo).PersonID;
 
-            frmPersonDetails frm = new frmPersonDetails(PersonID);
-            frm.OnClose += _Load_RefereshDetainedLicensesInDGV;
+            frmShowPersonInfo frm = new frmShowPersonInfo(PersonID);
+            //frm.OnClose += _Load_RefereshDetainedLicensesInDGV;
             frm.ShowDialog();
         }
 
@@ -247,7 +247,7 @@ namespace DVLDPresentation.Applications.Detain_Licenses
         private void showPersonLicenseHistoryToolStripMenuItem_Click(object sender, EventArgs e)
         {
             string NationalNo = (string)dgvDetainedLicenses.SelectedCells[6].Value;
-            int PersonID = clsPeople.Find(NationalNo).PersonID;
+            int PersonID = clsPerson.Find(NationalNo).PersonID;
 
             frmLicenseHistory frm = new frmLicenseHistory(PersonID);
             frm.ShowDialog();
