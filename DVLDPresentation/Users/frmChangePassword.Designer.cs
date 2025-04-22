@@ -30,14 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmChangePassword));
-            this.ctrPersonCard1 = new DVLDPresentation.ctrPersonCard();
-            this.gbLoginInformation = new System.Windows.Forms.GroupBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.lblIsActive = new System.Windows.Forms.Label();
-            this.lblUserName = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.lblUserID = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.gbtnClose = new Guna.UI2.WinForms.Guna2Button();
             this.gbtnSave = new Guna.UI2.WinForms.Guna2Button();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
@@ -50,95 +42,12 @@
             this.gtxtCurrentPassword = new Guna.UI2.WinForms.Guna2TextBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.gbLoginInformation.SuspendLayout();
+            this.ctrUserCard1 = new DVLDPresentation.Users.Controls.ctrUserCard();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // ctrPersonCard1
-            // 
-            this.ctrPersonCard1.Location = new System.Drawing.Point(24, 27);
-            this.ctrPersonCard1.Name = "ctrPersonCard1";
-            this.ctrPersonCard1.Size = new System.Drawing.Size(829, 271);
-            this.ctrPersonCard1.TabIndex = 37;
-            // 
-            // gbLoginInformation
-            // 
-            this.gbLoginInformation.Controls.Add(this.label6);
-            this.gbLoginInformation.Controls.Add(this.lblIsActive);
-            this.gbLoginInformation.Controls.Add(this.lblUserName);
-            this.gbLoginInformation.Controls.Add(this.label3);
-            this.gbLoginInformation.Controls.Add(this.lblUserID);
-            this.gbLoginInformation.Controls.Add(this.label1);
-            this.gbLoginInformation.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbLoginInformation.Location = new System.Drawing.Point(24, 304);
-            this.gbLoginInformation.Name = "gbLoginInformation";
-            this.gbLoginInformation.Size = new System.Drawing.Size(829, 81);
-            this.gbLoginInformation.TabIndex = 36;
-            this.gbLoginInformation.TabStop = false;
-            this.gbLoginInformation.Text = "Login Information";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(593, 37);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(83, 20);
-            this.label6.TabIndex = 5;
-            this.label6.Text = "Is Active:";
-            // 
-            // lblIsActive
-            // 
-            this.lblIsActive.AutoSize = true;
-            this.lblIsActive.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblIsActive.Location = new System.Drawing.Point(682, 37);
-            this.lblIsActive.Name = "lblIsActive";
-            this.lblIsActive.Size = new System.Drawing.Size(39, 20);
-            this.lblIsActive.TabIndex = 4;
-            this.lblIsActive.Text = "???";
-            // 
-            // lblUserName
-            // 
-            this.lblUserName.AutoSize = true;
-            this.lblUserName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUserName.Location = new System.Drawing.Point(492, 37);
-            this.lblUserName.Name = "lblUserName";
-            this.lblUserName.Size = new System.Drawing.Size(39, 20);
-            this.lblUserName.TabIndex = 3;
-            this.lblUserName.Text = "???";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(367, 37);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(98, 20);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "UserName:";
-            // 
-            // lblUserID
-            // 
-            this.lblUserID.AutoSize = true;
-            this.lblUserID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUserID.Location = new System.Drawing.Point(257, 37);
-            this.lblUserID.Name = "lblUserID";
-            this.lblUserID.Size = new System.Drawing.Size(39, 20);
-            this.lblUserID.TabIndex = 1;
-            this.lblUserID.Text = "???";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(155, 37);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(76, 20);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "User ID:";
             // 
             // gbtnClose
             // 
@@ -147,6 +56,7 @@
             this.gbtnClose.BackColor = System.Drawing.Color.Transparent;
             this.gbtnClose.BorderThickness = 1;
             this.gbtnClose.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.gbtnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.gbtnClose.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.gbtnClose.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.gbtnClose.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -160,7 +70,7 @@
             this.gbtnClose.Image = ((System.Drawing.Image)(resources.GetObject("gbtnClose.Image")));
             this.gbtnClose.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.gbtnClose.ImageSize = new System.Drawing.Size(35, 35);
-            this.gbtnClose.Location = new System.Drawing.Point(542, 587);
+            this.gbtnClose.Location = new System.Drawing.Point(626, 590);
             this.gbtnClose.Name = "gbtnClose";
             this.gbtnClose.Size = new System.Drawing.Size(154, 45);
             this.gbtnClose.TabIndex = 4;
@@ -187,7 +97,7 @@
             this.gbtnSave.Image = ((System.Drawing.Image)(resources.GetObject("gbtnSave.Image")));
             this.gbtnSave.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.gbtnSave.ImageSize = new System.Drawing.Size(35, 35);
-            this.gbtnSave.Location = new System.Drawing.Point(710, 587);
+            this.gbtnSave.Location = new System.Drawing.Point(794, 590);
             this.gbtnSave.Name = "gbtnSave";
             this.gbtnSave.Size = new System.Drawing.Size(154, 45);
             this.gbtnSave.TabIndex = 3;
@@ -197,7 +107,7 @@
             // pictureBox3
             // 
             this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
-            this.pictureBox3.Location = new System.Drawing.Point(226, 500);
+            this.pictureBox3.Location = new System.Drawing.Point(222, 524);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(29, 26);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -207,7 +117,7 @@
             // pictureBox5
             // 
             this.pictureBox5.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox5.Image")));
-            this.pictureBox5.Location = new System.Drawing.Point(226, 455);
+            this.pictureBox5.Location = new System.Drawing.Point(222, 479);
             this.pictureBox5.Name = "pictureBox5";
             this.pictureBox5.Size = new System.Drawing.Size(29, 26);
             this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -218,7 +128,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(46, 500);
+            this.label4.Location = new System.Drawing.Point(42, 524);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(156, 20);
             this.label4.TabIndex = 46;
@@ -238,7 +148,7 @@
             this.gtxtConfirmPassword.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gtxtConfirmPassword.ForeColor = System.Drawing.Color.Black;
             this.gtxtConfirmPassword.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.gtxtConfirmPassword.Location = new System.Drawing.Point(275, 493);
+            this.gtxtConfirmPassword.Location = new System.Drawing.Point(271, 517);
             this.gtxtConfirmPassword.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.gtxtConfirmPassword.MaxLength = 255;
             this.gtxtConfirmPassword.Name = "gtxtConfirmPassword";
@@ -253,7 +163,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(65, 455);
+            this.label2.Location = new System.Drawing.Point(61, 479);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(139, 20);
             this.label2.TabIndex = 44;
@@ -273,7 +183,7 @@
             this.gtxtNewPassword.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gtxtNewPassword.ForeColor = System.Drawing.Color.Black;
             this.gtxtNewPassword.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.gtxtNewPassword.Location = new System.Drawing.Point(275, 447);
+            this.gtxtNewPassword.Location = new System.Drawing.Point(271, 471);
             this.gtxtNewPassword.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.gtxtNewPassword.MaxLength = 255;
             this.gtxtNewPassword.Name = "gtxtNewPassword";
@@ -288,7 +198,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(46, 411);
+            this.label5.Location = new System.Drawing.Point(42, 435);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(158, 20);
             this.label5.TabIndex = 41;
@@ -308,7 +218,7 @@
             this.gtxtCurrentPassword.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gtxtCurrentPassword.ForeColor = System.Drawing.Color.Black;
             this.gtxtCurrentPassword.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.gtxtCurrentPassword.Location = new System.Drawing.Point(275, 401);
+            this.gtxtCurrentPassword.Location = new System.Drawing.Point(271, 425);
             this.gtxtCurrentPassword.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.gtxtCurrentPassword.MaxLength = 255;
             this.gtxtCurrentPassword.Name = "gtxtCurrentPassword";
@@ -322,7 +232,7 @@
             // pictureBox2
             // 
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(226, 411);
+            this.pictureBox2.Location = new System.Drawing.Point(222, 435);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(29, 26);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -333,12 +243,24 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
+            // ctrUserCard1
+            // 
+            this.ctrUserCard1.BackColor = System.Drawing.Color.White;
+            this.ctrUserCard1.Location = new System.Drawing.Point(21, 37);
+            this.ctrUserCard1.Name = "ctrUserCard1";
+            this.ctrUserCard1.Size = new System.Drawing.Size(938, 381);
+            this.ctrUserCard1.TabIndex = 50;
+            // 
             // frmChangePassword
             // 
+            this.AcceptButton = this.gbtnSave;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(898, 657);
+            this.CancelButton = this.gbtnClose;
+            this.ClientSize = new System.Drawing.Size(971, 649);
+            this.Controls.Add(this.ctrUserCard1);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.pictureBox5);
@@ -350,15 +272,11 @@
             this.Controls.Add(this.gtxtCurrentPassword);
             this.Controls.Add(this.gbtnClose);
             this.Controls.Add(this.gbtnSave);
-            this.Controls.Add(this.ctrPersonCard1);
-            this.Controls.Add(this.gbLoginInformation);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "frmChangePassword";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Change Password";
             this.Load += new System.EventHandler(this.frmChangePassword_Load);
-            this.gbLoginInformation.ResumeLayout(false);
-            this.gbLoginInformation.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
@@ -369,15 +287,6 @@
         }
 
         #endregion
-
-        private ctrPersonCard ctrPersonCard1;
-        private System.Windows.Forms.GroupBox gbLoginInformation;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label lblIsActive;
-        private System.Windows.Forms.Label lblUserName;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label lblUserID;
-        private System.Windows.Forms.Label label1;
         private Guna.UI2.WinForms.Guna2Button gbtnClose;
         private Guna.UI2.WinForms.Guna2Button gbtnSave;
         private System.Windows.Forms.PictureBox pictureBox3;
@@ -390,5 +299,6 @@
         private Guna.UI2.WinForms.Guna2TextBox gtxtCurrentPassword;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.ErrorProvider errorProvider1;
+        private Controls.ctrUserCard ctrUserCard1;
     }
 }

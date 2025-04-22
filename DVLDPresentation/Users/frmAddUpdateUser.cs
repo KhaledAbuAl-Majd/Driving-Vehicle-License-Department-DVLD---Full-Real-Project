@@ -16,247 +16,206 @@ namespace DVLDPresentation.Users
 {
     public partial class frmAddUpdateUser : Form
     {
-        public event Action OnClose;
-        public bool IsSave = false;
+        public event Action OnSave;
+        public enum enMode { AddNew = 0, Update = 1 }
+        enMode _Mode;
         public int UserID = -1;
-        private void _MessageIfTxtFailedInValidating(string MessageText)
-        {  
-            MessageBox.Show(MessageText, "Validation Error",
-                MessageBoxButtons.OK, MessageBoxIcon.Warning);
-        }
         private clsUser User;
 
-        private void _GiveTextBoxesInitialValueForValidating(bool Value)
+        public frmAddUpdateUser()
         {
-            gtxtUserName.Tag = Value;
-            gtxtPassword.Tag = Value;
-            gtxtConfirmPassword.Tag = Value;
+            InitializeComponent();
+            _Mode = enMode.AddNew;
+        }
+        public frmAddUpdateUser(int UserID)
+        {
+            InitializeComponent();
+            this.UserID = UserID;
+            _Mode = enMode.Update;
+        }
+        void _ChangeEnaplityForLoginInfoPanel(bool value)
+        {
+            pnlLoginInfo.Enabled = value;
+        }
+        void _ChageEnaplityOfSaveButton(bool value)
+        {
+            gbtnSave.Enabled = value;
+        }
+        private void _ChangeHeader(string HeaderText)
+        {
+            lblHeader.Text = HeaderText;
+        }
+        void _ChangeFormText(string Text)
+        {
+            this.Text = Text;
+        }
+        void _AddNewUserMode()
+        {
+            User = new clsUser();
+            _ChangeHeader("Add New User");
+            _ChangeFormText("Add New User");
 
+            _ChageEnaplityOfSaveButton(false);
+            _ChangeEnaplityForLoginInfoPanel(false);
+            ctrlPersonCardWithFilter1.FilterFocus();
         }
-        void _FillDataFromFormToObject()
-        {
-            User.UserName = gtxtUserName.Text;
-            //User.PersonID = ctrlPersonCardWithFilter1.PersonID;
-            User.Password = gtxtPassword.Text;
-            User.IsActive = gchkIsActive.Checked;
-        }
-        void _FillDataFromObjectToForm()
+        void _LoadData()
         {
             lblUserID.Text = User.UserID.ToString();
             gtxtUserName.Text = User.UserName;
             gtxtPassword.Text = User.Password;
             gtxtConfirmPassword.Text = User.Password;
             gchkIsActive.Checked = User.IsActive;
+            ctrlPersonCardWithFilter1.LoadPersonInfo(User.PersonID);
         }
-        private  void _Save()
+        void _UpdateUserMode()
         {
-            ////bool IsPersonSelected = (ctrlPersonCardWithFilter1.PersonID != -1);
-            //bool UserNameValidatingResult = (bool)gtxtUserName.Tag;
-            //bool PasswordValidatingResult = (bool)gtxtPassword.Tag;
-            //bool ConfirmPassword = (bool)gtxtConfirmPassword.Tag;
-
-            ////if (!IsPersonSelected)
-            ////{
-            ////    _MessageIfTxtFailedInValidating("Please Select a Person values!");
-            ////    return;
-            ////}
-
-            //else if(!UserNameValidatingResult)
-            //{
-            //    _MessageIfTxtFailedInValidating("Please enter correct UserName!");
-            //    gtxtUserName.Focus();
-            //    return;
-            //}
-
-            //else if (!PasswordValidatingResult)
-            //{
-            //    _MessageIfTxtFailedInValidating("Please enter a correct Password!");
-            //    gtxtPassword.Focus();
-            //    return;
-            //}
-
-            //else if (!ConfirmPassword)
-            //{
-            //    _MessageIfTxtFailedInValidating("Please enter a correct Password!");
-            //    gtxtConfirmPassword.Focus();
-            //    return;
-            //}
-
-            _FillDataFromFormToObject();
-
-            clsUser.enMode prevMode = User.Mode;
-            
-            if (User.Save())
-            {
-                IsSave = true;
-                if (prevMode == clsUser.enMode.Update)
-                    MessageBox.Show($"User Updated Successfuly", "Result"
-                   , MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                else
-                {
-                    _UpdateUserModeAfterAddUser();
-                    MessageBox.Show($"User Addess Successfuly With ID = {User.UserID}", "Result"
-                        , MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-            }
-            else
-            {
-                IsSave = false;
-            }
-        }
-        private void _ChangeHeader(string HeaderText)
-        {
-            lblHeader.Text = HeaderText;
-        }
-        void _AddNewUserMode()
-        {
-            User = new clsUser();
-            _GiveTextBoxesInitialValueForValidating(false);
-        }
-        void _UpdateUserModeAfterAddUser()
-        {
-            _ChangeHeader("Update User");
-            lblUserID.Text = User.UserID.ToString();
-        }
-        void _UpdateUserModeFromEditOption()
-        {
-            //ctrlPersonCardWithFilter1.FilterEnabled = false;
             User = clsUser.FindByUserID(UserID);
+            ctrlPersonCardWithFilter1.FilterEnabled = false;
 
-            if(User != null)
+            if(User == null)
             {
-                _GiveTextBoxesInitialValueForValidating(true);
-                //ctrlPersonCardWithFilter1.LoadPersonInfo(clsUser.FindByUserID(UserID).PersonID);
-                _ChangeHeader("Update User");
-                _FillDataFromObjectToForm();
-            }
-        }
-
-        public frmAddUpdateUser(int UserID)
-        {
-            InitializeComponent();
-            this.UserID = UserID;
-            if(UserID != -1)
-            {
-                _UpdateUserModeFromEditOption();
-            }
-            else
-            {
-                _AddNewUserMode();
-            }
-
-        }
-
-        private void gbtnNext_Click(object sender, EventArgs e)
-        {
-            gtabcAddNewPerson.SelectedIndex = 1;
-        }
-
-        private void gtabcAddNewPerson_Selecting(object sender, TabControlCancelEventArgs e)
-        {
-            //if ((gtabcAddNewPerson.SelectedIndex == 1) && ctrlPersonCardWithFilter1.PersonID == -1)
-            //{
-            //    e.Cancel = true;
-            //    MessageBox.Show("Please Select a Person", "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //}
-            //else
-            //{
-            //    e.Cancel = false;
-            //}
-        }
-
-        private void gtxtUserName_Validating(object sender, CancelEventArgs e)
-        {
-            Guna2TextBox txt = (Guna2TextBox)sender;
-
-            if (string.IsNullOrWhiteSpace(txt.Text))
-            {
-                errorProvider1.SetError(txt, "UserName Must have a value!");
-                txt.Tag = false;
+                MessageBox.Show("No User with ID = " + User, "User Not Found", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                this.Close();
                 return;
             }
 
-            if (clsUser.IsUserExist(txt.Text) && User.UserName != txt.Text)
-            {
-                errorProvider1.SetError(txt, "UserName Is Already Exist!");
-                txt.Tag = false;
-            }
-            else
-            {
-                errorProvider1.SetError(txt, "");
-                txt.Tag = true;
-            }
+            _ChangeHeader("Update User");
+            _ChangeFormText("Update User");          
+            _ChageEnaplityOfSaveButton(true);
+            _ChangeEnaplityForLoginInfoPanel(true);
+            _LoadData();
         }
 
-        bool _CheckErrorProviderForPasswords(Guna2TextBox txt,string ErrorText)
+        private void frmAdd_EditNewUser_Load(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txt.Text))
+            switch (_Mode)
             {
-                errorProvider1.SetError(txt, "Password Must have a value!");
-                txt.Tag = false;
-                return true;
-            }
-            else
-            {
-                errorProvider1.SetError(txt, "");
-                txt.Tag = true;
-                return false;
-            }
-        }
-        private void gtxtPassword_Validating(object sender, CancelEventArgs e)
-        {
-            Guna2TextBox txt = (Guna2TextBox)sender;
+                case enMode.AddNew:
+                    _AddNewUserMode();
+                    break;
 
-            _CheckErrorProviderForPasswords(txt, "Password Must have a value!");
-        }
-
-        private void gtxtConfirmPassword_Validating(object sender, CancelEventArgs e)
-        {
-            Guna2TextBox txt = (Guna2TextBox)sender;
-
-            if (_CheckErrorProviderForPasswords(txt, "Confirm Password must have a value!"))
-                return;
-
-            if (gtxtConfirmPassword.Text != gtxtPassword.Text)
-            {
-                errorProvider1.SetError(txt, "Password Confirmation does not match Password!");
-                txt.Tag = false;
-            }
-            else
-            {
-                errorProvider1.SetError(txt, "");
-                txt.Tag = true;
+                case enMode.Update:
+                    _UpdateUserMode();
+                    break;
             }
         }
 
         private void gbtnSave_Click(object sender, EventArgs e)
         {
-            _Save();
-        }
-
-        private void gbtnClose_Click(object sender, EventArgs e)
-        {
-            if (IsSave)
+            if (!ValidateChildren())
             {
-                if (OnClose != null)
-                    OnClose();
+                MessageBox.Show("Some fileds are not valide!, put the mouse over the red icon(s) to see the erro",
+                   "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
 
-            this.Close();
-                
+            User.PersonID = ctrlPersonCardWithFilter1.PersonID;
+            User.UserName = gtxtUserName.Text.Trim();
+            User.Password = gtxtPassword.Text.Trim();
+            User.IsActive = gchkIsActive.Checked;
+
+
+            if (User.Save())
+            {
+                lblUserID.Text = User.UserID.ToString();
+                _Mode = enMode.Update;
+                _ChangeHeader("Update User");
+                _ChangeFormText("Update User");
+                UserID = User.UserID;
+
+                MessageBox.Show("Data Saved Successfully.", "Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                if (OnSave != null)
+                    OnSave();
+
+            }
+            else
+                MessageBox.Show("Error: Data Is not Saved Successfully.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
-        private void frmAdd_EditNewUser_Load(object sender, EventArgs e)
+        private void gtxtConfirmPassword_Validating(object sender, CancelEventArgs e)
         {
-            if(UserID == -1)
+            if (gtxtConfirmPassword.Text.Trim() != gtxtPassword.Text.Trim())
             {
-                _AddNewUserMode();
+                e.Cancel = true;
+                errorProvider1.SetError(gtxtConfirmPassword, "Password Confirmation does not match Password!");
+
             }
             else
             {
-                _UpdateUserModeFromEditOption();
+                e.Cancel = false;
+                errorProvider1.SetError(gtxtConfirmPassword, "");
             }
+        }
+
+        private void gtxtPassword_Validating(object sender, CancelEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(gtxtPassword.Text))
+            {
+                e.Cancel = true;
+                errorProvider1.SetError(gtxtPassword, "Password cannot be blank!");
+            }
+            else
+            {
+                e.Cancel = false;
+                errorProvider1.SetError(gtxtPassword, "");
+            }
+        }
+
+        private void gtxtUserName_Validating(object sender, CancelEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(gtxtUserName.Text))
+            {
+                e.Cancel = true;
+                errorProvider1.SetError(gtxtUserName, "UserName cannot be blank!");
+                return;
+            }
+
+            if (clsUser.IsUserExist(gtxtUserName.Text.Trim()) && User.UserName != gtxtUserName.Text.Trim())
+            {
+                e.Cancel = true;
+                errorProvider1.SetError(gtxtUserName, "Username is used by another user");
+                return;
+            }
+
+            e.Cancel = false;
+            errorProvider1.SetError(gtxtUserName, "");
+        }
+
+        private void gbtnNext_Click(object sender, EventArgs e)
+        {        
+            if(_Mode == enMode.Update)
+            {
+                gtcUserInfo.SelectedTab = gtpLoginInfo;
+                return;
+            }
+
+            //Add new Mode
+            if (ctrlPersonCardWithFilter1.PersonID != -1)
+            {
+                if (clsUser.IsUserExistForPersonID(ctrlPersonCardWithFilter1.PersonID))
+                {
+                    MessageBox.Show("Selected Person already has a user, choose another one.", "Select another Person", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    ctrlPersonCardWithFilter1.FilterFocus();
+                    return;
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please Select a Person", "Select a Person", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ctrlPersonCardWithFilter1.FilterFocus();
+                return;
+            }
+
+            _ChageEnaplityOfSaveButton(true);
+            _ChangeEnaplityForLoginInfoPanel(true);
+            gtcUserInfo.SelectedTab = gtpLoginInfo;
+        }
+
+        private void gbtnClose_Click(object sender, EventArgs e)
+        {          
+            this.Close();             
         }
     }
 }

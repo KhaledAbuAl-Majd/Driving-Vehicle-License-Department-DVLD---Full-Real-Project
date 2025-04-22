@@ -99,7 +99,7 @@ namespace DVLDPresentation.Controls
         }
         private void gtxtFilterValue_Validating(object sender, CancelEventArgs e)
         {
-            if (string.IsNullOrEmpty(gtxtFilterValue.Text))
+            if (string.IsNullOrEmpty(gtxtFilterValue.Text) && PersonID == -1)
             {
                 e.Cancel = true;
                 errorProvider1.SetError(gtxtFilterValue, $"{gcbFilterBy.Text} Must have a value!");

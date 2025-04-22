@@ -31,11 +31,12 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAddUpdateUser));
             this.lblHeader = new System.Windows.Forms.Label();
-            this.gtabcAddNewPerson = new Guna.UI2.WinForms.Guna2TabControl();
-            this.tpPersonInfo = new System.Windows.Forms.TabPage();
+            this.gtcUserInfo = new Guna.UI2.WinForms.Guna2TabControl();
+            this.gtpPersonInfo = new System.Windows.Forms.TabPage();
+            this.ctrlPersonCardWithFilter1 = new DVLDPresentation.Controls.ctrlPersonCardWithFilter();
             this.gbtnNext = new Guna.UI2.WinForms.Guna2Button();
-            //this.ctrlPersonCardWithFilter1 = new DVLDPresentation.Controls.ctrlPersonCardWithFilter();
-            this.tpLoginInfo = new System.Windows.Forms.TabPage();
+            this.gtpLoginInfo = new System.Windows.Forms.TabPage();
+            this.pnlLoginInfo = new System.Windows.Forms.Panel();
             this.gchkIsActive = new Guna.UI2.WinForms.Guna2CheckBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
@@ -52,9 +53,10 @@
             this.gbtnClose = new Guna.UI2.WinForms.Guna2Button();
             this.gbtnSave = new Guna.UI2.WinForms.Guna2Button();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.gtabcAddNewPerson.SuspendLayout();
-            this.tpPersonInfo.SuspendLayout();
-            this.tpLoginInfo.SuspendLayout();
+            this.gtcUserInfo.SuspendLayout();
+            this.gtpPersonInfo.SuspendLayout();
+            this.gtpLoginInfo.SuspendLayout();
+            this.pnlLoginInfo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -73,49 +75,59 @@
             this.lblHeader.Text = "Add New Person";
             this.lblHeader.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // gtabcAddNewPerson
+            // gtcUserInfo
             // 
-            this.gtabcAddNewPerson.Controls.Add(this.tpPersonInfo);
-            this.gtabcAddNewPerson.Controls.Add(this.tpLoginInfo);
-            this.gtabcAddNewPerson.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.gtabcAddNewPerson.ItemSize = new System.Drawing.Size(140, 50);
-            this.gtabcAddNewPerson.Location = new System.Drawing.Point(27, 133);
-            this.gtabcAddNewPerson.Name = "gtabcAddNewPerson";
-            this.gtabcAddNewPerson.SelectedIndex = 0;
-            this.gtabcAddNewPerson.Size = new System.Drawing.Size(996, 554);
-            this.gtabcAddNewPerson.TabButtonHoverState.BorderColor = System.Drawing.Color.Empty;
-            this.gtabcAddNewPerson.TabButtonHoverState.FillColor = System.Drawing.Color.BlueViolet;
-            this.gtabcAddNewPerson.TabButtonHoverState.Font = new System.Drawing.Font("Segoe UI Semibold", 10F);
-            this.gtabcAddNewPerson.TabButtonHoverState.ForeColor = System.Drawing.Color.White;
-            this.gtabcAddNewPerson.TabButtonHoverState.InnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(52)))), ((int)(((byte)(70)))));
-            this.gtabcAddNewPerson.TabButtonIdleState.BorderColor = System.Drawing.Color.Empty;
-            this.gtabcAddNewPerson.TabButtonIdleState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(42)))), ((int)(((byte)(57)))));
-            this.gtabcAddNewPerson.TabButtonIdleState.Font = new System.Drawing.Font("Segoe UI Semibold", 11F);
-            this.gtabcAddNewPerson.TabButtonIdleState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(156)))), ((int)(((byte)(160)))), ((int)(((byte)(167)))));
-            this.gtabcAddNewPerson.TabButtonIdleState.InnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(42)))), ((int)(((byte)(57)))));
-            this.gtabcAddNewPerson.TabButtonSelectedState.BorderColor = System.Drawing.Color.Empty;
-            this.gtabcAddNewPerson.TabButtonSelectedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(37)))), ((int)(((byte)(49)))));
-            this.gtabcAddNewPerson.TabButtonSelectedState.Font = new System.Drawing.Font("Segoe UI Semibold", 10F);
-            this.gtabcAddNewPerson.TabButtonSelectedState.ForeColor = System.Drawing.Color.White;
-            this.gtabcAddNewPerson.TabButtonSelectedState.InnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(132)))), ((int)(((byte)(255)))));
-            this.gtabcAddNewPerson.TabButtonSize = new System.Drawing.Size(140, 50);
-            this.gtabcAddNewPerson.TabIndex = 25;
-            this.gtabcAddNewPerson.TabMenuBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(42)))), ((int)(((byte)(57)))));
-            this.gtabcAddNewPerson.TabMenuOrientation = Guna.UI2.WinForms.TabMenuOrientation.HorizontalTop;
-            this.gtabcAddNewPerson.Selecting += new System.Windows.Forms.TabControlCancelEventHandler(this.gtabcAddNewPerson_Selecting);
+            this.gtcUserInfo.Controls.Add(this.gtpPersonInfo);
+            this.gtcUserInfo.Controls.Add(this.gtpLoginInfo);
+            this.gtcUserInfo.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.gtcUserInfo.ItemSize = new System.Drawing.Size(140, 50);
+            this.gtcUserInfo.Location = new System.Drawing.Point(27, 115);
+            this.gtcUserInfo.Name = "gtcUserInfo";
+            this.gtcUserInfo.SelectedIndex = 0;
+            this.gtcUserInfo.Size = new System.Drawing.Size(996, 554);
+            this.gtcUserInfo.TabButtonHoverState.BorderColor = System.Drawing.Color.Empty;
+            this.gtcUserInfo.TabButtonHoverState.FillColor = System.Drawing.Color.BlueViolet;
+            this.gtcUserInfo.TabButtonHoverState.Font = new System.Drawing.Font("Segoe UI Semibold", 10F);
+            this.gtcUserInfo.TabButtonHoverState.ForeColor = System.Drawing.Color.White;
+            this.gtcUserInfo.TabButtonHoverState.InnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(52)))), ((int)(((byte)(70)))));
+            this.gtcUserInfo.TabButtonIdleState.BorderColor = System.Drawing.Color.Empty;
+            this.gtcUserInfo.TabButtonIdleState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(42)))), ((int)(((byte)(57)))));
+            this.gtcUserInfo.TabButtonIdleState.Font = new System.Drawing.Font("Segoe UI Semibold", 11F);
+            this.gtcUserInfo.TabButtonIdleState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(156)))), ((int)(((byte)(160)))), ((int)(((byte)(167)))));
+            this.gtcUserInfo.TabButtonIdleState.InnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(42)))), ((int)(((byte)(57)))));
+            this.gtcUserInfo.TabButtonSelectedState.BorderColor = System.Drawing.Color.Empty;
+            this.gtcUserInfo.TabButtonSelectedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(37)))), ((int)(((byte)(49)))));
+            this.gtcUserInfo.TabButtonSelectedState.Font = new System.Drawing.Font("Segoe UI Semibold", 10F);
+            this.gtcUserInfo.TabButtonSelectedState.ForeColor = System.Drawing.Color.White;
+            this.gtcUserInfo.TabButtonSelectedState.InnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(132)))), ((int)(((byte)(255)))));
+            this.gtcUserInfo.TabButtonSize = new System.Drawing.Size(140, 50);
+            this.gtcUserInfo.TabIndex = 25;
+            this.gtcUserInfo.TabMenuBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(42)))), ((int)(((byte)(57)))));
+            this.gtcUserInfo.TabMenuOrientation = Guna.UI2.WinForms.TabMenuOrientation.HorizontalTop;
             // 
-            // tpPersonInfo
+            // gtpPersonInfo
             // 
-            this.tpPersonInfo.BackColor = System.Drawing.Color.White;
-            this.tpPersonInfo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.tpPersonInfo.Controls.Add(this.gbtnNext);
-            //this.tpPersonInfo.Controls.Add(this.ctrlPersonCardWithFilter1);
-            this.tpPersonInfo.Location = new System.Drawing.Point(4, 54);
-            this.tpPersonInfo.Name = "tpPersonInfo";
-            this.tpPersonInfo.Padding = new System.Windows.Forms.Padding(3);
-            this.tpPersonInfo.Size = new System.Drawing.Size(988, 496);
-            this.tpPersonInfo.TabIndex = 0;
-            this.tpPersonInfo.Text = "Person Info";
+            this.gtpPersonInfo.BackColor = System.Drawing.Color.White;
+            this.gtpPersonInfo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.gtpPersonInfo.Controls.Add(this.ctrlPersonCardWithFilter1);
+            this.gtpPersonInfo.Controls.Add(this.gbtnNext);
+            this.gtpPersonInfo.Location = new System.Drawing.Point(4, 54);
+            this.gtpPersonInfo.Name = "gtpPersonInfo";
+            this.gtpPersonInfo.Padding = new System.Windows.Forms.Padding(3);
+            this.gtpPersonInfo.Size = new System.Drawing.Size(988, 496);
+            this.gtpPersonInfo.TabIndex = 0;
+            this.gtpPersonInfo.Text = "Person Info";
+            // 
+            // ctrlPersonCardWithFilter1
+            // 
+            this.ctrlPersonCardWithFilter1.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
+            this.ctrlPersonCardWithFilter1.BackColor = System.Drawing.Color.White;
+            this.ctrlPersonCardWithFilter1.FilterEnabled = true;
+            this.ctrlPersonCardWithFilter1.Location = new System.Drawing.Point(6, 11);
+            this.ctrlPersonCardWithFilter1.Name = "ctrlPersonCardWithFilter1";
+            this.ctrlPersonCardWithFilter1.ShowAddPerson = true;
+            this.ctrlPersonCardWithFilter1.Size = new System.Drawing.Size(962, 415);
+            this.ctrlPersonCardWithFilter1.TabIndex = 6;
             // 
             // gbtnNext
             // 
@@ -144,52 +156,51 @@
             this.gbtnNext.Text = "Next";
             this.gbtnNext.Click += new System.EventHandler(this.gbtnNext_Click);
             // 
-            // ctrlPersonCardWithFilter1
+            // gtpLoginInfo
             // 
-            //this.ctrlPersonCardWithFilter1.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
-            //this.ctrlPersonCardWithFilter1.BackColor = System.Drawing.Color.White;
-            //this.ctrlPersonCardWithFilter1.FilterEnabled = true;
-            //this.ctrlPersonCardWithFilter1.Location = new System.Drawing.Point(7, 22);
-            //this.ctrlPersonCardWithFilter1.Margin = new System.Windows.Forms.Padding(4);
-            //this.ctrlPersonCardWithFilter1.Name = "ctrlPersonCardWithFilter1";
-            //this.ctrlPersonCardWithFilter1.ShowAddPerson = true;
-            //this.ctrlPersonCardWithFilter1.Size = new System.Drawing.Size(963, 403);
-            //this.ctrlPersonCardWithFilter1.TabIndex = 0;
+            this.gtpLoginInfo.BackColor = System.Drawing.Color.White;
+            this.gtpLoginInfo.Controls.Add(this.pnlLoginInfo);
+            this.gtpLoginInfo.Location = new System.Drawing.Point(4, 54);
+            this.gtpLoginInfo.Name = "gtpLoginInfo";
+            this.gtpLoginInfo.Padding = new System.Windows.Forms.Padding(3);
+            this.gtpLoginInfo.Size = new System.Drawing.Size(988, 496);
+            this.gtpLoginInfo.TabIndex = 1;
+            this.gtpLoginInfo.Text = "LoginInfo";
             // 
-            // tpLoginInfo
+            // pnlLoginInfo
             // 
-            this.tpLoginInfo.BackColor = System.Drawing.Color.White;
-            this.tpLoginInfo.Controls.Add(this.gchkIsActive);
-            this.tpLoginInfo.Controls.Add(this.pictureBox3);
-            this.tpLoginInfo.Controls.Add(this.pictureBox5);
-            this.tpLoginInfo.Controls.Add(this.label4);
-            this.tpLoginInfo.Controls.Add(this.gtxtConfirmPassword);
-            this.tpLoginInfo.Controls.Add(this.label3);
-            this.tpLoginInfo.Controls.Add(this.gtxtPassword);
-            this.tpLoginInfo.Controls.Add(this.lblUserID);
-            this.tpLoginInfo.Controls.Add(this.pictureBox1);
-            this.tpLoginInfo.Controls.Add(this.pictureBox2);
-            this.tpLoginInfo.Controls.Add(this.label1);
-            this.tpLoginInfo.Controls.Add(this.gtxtUserName);
-            this.tpLoginInfo.Controls.Add(this.label2);
-            this.tpLoginInfo.Location = new System.Drawing.Point(4, 54);
-            this.tpLoginInfo.Name = "tpLoginInfo";
-            this.tpLoginInfo.Padding = new System.Windows.Forms.Padding(3);
-            this.tpLoginInfo.Size = new System.Drawing.Size(946, 496);
-            this.tpLoginInfo.TabIndex = 1;
-            this.tpLoginInfo.Text = "LoginInfo";
+            this.pnlLoginInfo.Controls.Add(this.gchkIsActive);
+            this.pnlLoginInfo.Controls.Add(this.pictureBox3);
+            this.pnlLoginInfo.Controls.Add(this.pictureBox5);
+            this.pnlLoginInfo.Controls.Add(this.label4);
+            this.pnlLoginInfo.Controls.Add(this.gtxtConfirmPassword);
+            this.pnlLoginInfo.Controls.Add(this.label3);
+            this.pnlLoginInfo.Controls.Add(this.gtxtPassword);
+            this.pnlLoginInfo.Controls.Add(this.lblUserID);
+            this.pnlLoginInfo.Controls.Add(this.pictureBox1);
+            this.pnlLoginInfo.Controls.Add(this.pictureBox2);
+            this.pnlLoginInfo.Controls.Add(this.label1);
+            this.pnlLoginInfo.Controls.Add(this.gtxtUserName);
+            this.pnlLoginInfo.Controls.Add(this.label2);
+            this.pnlLoginInfo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlLoginInfo.Location = new System.Drawing.Point(3, 3);
+            this.pnlLoginInfo.Name = "pnlLoginInfo";
+            this.pnlLoginInfo.Size = new System.Drawing.Size(982, 490);
+            this.pnlLoginInfo.TabIndex = 33;
             // 
             // gchkIsActive
             // 
             this.gchkIsActive.Animated = true;
             this.gchkIsActive.AutoSize = true;
+            this.gchkIsActive.Checked = true;
             this.gchkIsActive.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.gchkIsActive.CheckedState.BorderRadius = 2;
             this.gchkIsActive.CheckedState.BorderThickness = 1;
             this.gchkIsActive.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.gchkIsActive.CheckState = System.Windows.Forms.CheckState.Checked;
             this.gchkIsActive.Cursor = System.Windows.Forms.Cursors.Hand;
             this.gchkIsActive.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gchkIsActive.Location = new System.Drawing.Point(287, 228);
+            this.gchkIsActive.Location = new System.Drawing.Point(276, 220);
             this.gchkIsActive.Name = "gchkIsActive";
             this.gchkIsActive.Size = new System.Drawing.Size(88, 24);
             this.gchkIsActive.TabIndex = 32;
@@ -202,7 +213,7 @@
             // pictureBox3
             // 
             this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
-            this.pictureBox3.Location = new System.Drawing.Point(235, 179);
+            this.pictureBox3.Location = new System.Drawing.Point(224, 171);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(29, 26);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -212,7 +223,7 @@
             // pictureBox5
             // 
             this.pictureBox5.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox5.Image")));
-            this.pictureBox5.Location = new System.Drawing.Point(235, 134);
+            this.pictureBox5.Location = new System.Drawing.Point(224, 126);
             this.pictureBox5.Name = "pictureBox5";
             this.pictureBox5.Size = new System.Drawing.Size(29, 26);
             this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -223,7 +234,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(45, 179);
+            this.label4.Location = new System.Drawing.Point(34, 171);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(156, 20);
             this.label4.TabIndex = 28;
@@ -243,7 +254,7 @@
             this.gtxtConfirmPassword.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gtxtConfirmPassword.ForeColor = System.Drawing.Color.Black;
             this.gtxtConfirmPassword.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.gtxtConfirmPassword.Location = new System.Drawing.Point(284, 172);
+            this.gtxtConfirmPassword.Location = new System.Drawing.Point(273, 164);
             this.gtxtConfirmPassword.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.gtxtConfirmPassword.MaxLength = 255;
             this.gtxtConfirmPassword.Name = "gtxtConfirmPassword";
@@ -258,7 +269,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(104, 134);
+            this.label3.Location = new System.Drawing.Point(93, 126);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(97, 20);
             this.label3.TabIndex = 25;
@@ -278,7 +289,7 @@
             this.gtxtPassword.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gtxtPassword.ForeColor = System.Drawing.Color.Black;
             this.gtxtPassword.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.gtxtPassword.Location = new System.Drawing.Point(284, 126);
+            this.gtxtPassword.Location = new System.Drawing.Point(273, 118);
             this.gtxtPassword.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.gtxtPassword.MaxLength = 255;
             this.gtxtPassword.Name = "gtxtPassword";
@@ -293,7 +304,7 @@
             // 
             this.lblUserID.AutoSize = true;
             this.lblUserID.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUserID.Location = new System.Drawing.Point(290, 46);
+            this.lblUserID.Location = new System.Drawing.Point(279, 38);
             this.lblUserID.Name = "lblUserID";
             this.lblUserID.Size = new System.Drawing.Size(40, 24);
             this.lblUserID.TabIndex = 23;
@@ -302,7 +313,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(235, 83);
+            this.pictureBox1.Location = new System.Drawing.Point(224, 75);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(29, 26);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -312,7 +323,7 @@
             // pictureBox2
             // 
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(235, 44);
+            this.pictureBox2.Location = new System.Drawing.Point(224, 36);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(29, 26);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -323,7 +334,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(98, 89);
+            this.label1.Location = new System.Drawing.Point(87, 81);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(103, 20);
             this.label1.TabIndex = 17;
@@ -343,7 +354,7 @@
             this.gtxtUserName.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gtxtUserName.ForeColor = System.Drawing.Color.Black;
             this.gtxtUserName.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.gtxtUserName.Location = new System.Drawing.Point(284, 80);
+            this.gtxtUserName.Location = new System.Drawing.Point(273, 72);
             this.gtxtUserName.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.gtxtUserName.MaxLength = 255;
             this.gtxtUserName.Name = "gtxtUserName";
@@ -357,7 +368,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(127, 50);
+            this.label2.Location = new System.Drawing.Point(116, 42);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(74, 20);
             this.label2.TabIndex = 13;
@@ -370,6 +381,7 @@
             this.gbtnClose.BackColor = System.Drawing.Color.Transparent;
             this.gbtnClose.BorderThickness = 1;
             this.gbtnClose.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.gbtnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.gbtnClose.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.gbtnClose.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.gbtnClose.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -383,7 +395,7 @@
             this.gbtnClose.Image = ((System.Drawing.Image)(resources.GetObject("gbtnClose.Image")));
             this.gbtnClose.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.gbtnClose.ImageSize = new System.Drawing.Size(35, 35);
-            this.gbtnClose.Location = new System.Drawing.Point(704, 693);
+            this.gbtnClose.Location = new System.Drawing.Point(704, 675);
             this.gbtnClose.Name = "gbtnClose";
             this.gbtnClose.Size = new System.Drawing.Size(154, 45);
             this.gbtnClose.TabIndex = 27;
@@ -410,7 +422,7 @@
             this.gbtnSave.Image = ((System.Drawing.Image)(resources.GetObject("gbtnSave.Image")));
             this.gbtnSave.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.gbtnSave.ImageSize = new System.Drawing.Size(35, 35);
-            this.gbtnSave.Location = new System.Drawing.Point(864, 693);
+            this.gbtnSave.Location = new System.Drawing.Point(864, 675);
             this.gbtnSave.Name = "gbtnSave";
             this.gbtnSave.Size = new System.Drawing.Size(154, 45);
             this.gbtnSave.TabIndex = 26;
@@ -425,20 +437,25 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1035, 750);
+            this.CancelButton = this.gbtnClose;
+            this.ClientSize = new System.Drawing.Size(1035, 733);
             this.Controls.Add(this.gbtnClose);
             this.Controls.Add(this.gbtnSave);
-            this.Controls.Add(this.gtabcAddNewPerson);
+            this.Controls.Add(this.gtcUserInfo);
             this.Controls.Add(this.lblHeader);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "frmAddUpdateUser";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Add New User";
+
             this.Load += new System.EventHandler(this.frmAdd_EditNewUser_Load);
-            this.gtabcAddNewPerson.ResumeLayout(false);
-            this.tpPersonInfo.ResumeLayout(false);
-            this.tpLoginInfo.ResumeLayout(false);
-            this.tpLoginInfo.PerformLayout();
+            this.gtcUserInfo.ResumeLayout(false);
+            this.gtpPersonInfo.ResumeLayout(false);
+            this.gtpLoginInfo.ResumeLayout(false);
+            this.pnlLoginInfo.ResumeLayout(false);
+            this.pnlLoginInfo.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -451,9 +468,9 @@
         #endregion
 
         private System.Windows.Forms.Label lblHeader;
-        private Guna.UI2.WinForms.Guna2TabControl gtabcAddNewPerson;
-        private System.Windows.Forms.TabPage tpPersonInfo;
-        private System.Windows.Forms.TabPage tpLoginInfo;
+        private Guna.UI2.WinForms.Guna2TabControl gtcUserInfo;
+        private System.Windows.Forms.TabPage gtpPersonInfo;
+        private System.Windows.Forms.TabPage gtpLoginInfo;
         private Guna.UI2.WinForms.Guna2Button gbtnNext;
         private Guna.UI2.WinForms.Guna2Button gbtnClose;
         private Guna.UI2.WinForms.Guna2Button gbtnSave;
@@ -471,5 +488,7 @@
         private Guna.UI2.WinForms.Guna2TextBox gtxtPassword;
         private Guna.UI2.WinForms.Guna2CheckBox gchkIsActive;
         private System.Windows.Forms.ErrorProvider errorProvider1;
+        private DVLDPresentation.Controls.ctrlPersonCardWithFilter ctrlPersonCardWithFilter1;
+        private System.Windows.Forms.Panel pnlLoginInfo;
     }
 }

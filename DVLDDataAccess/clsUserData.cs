@@ -227,8 +227,8 @@ namespace DVLDDataAccess
             SqlConnection connection = new SqlConnection(clsDataAccessSetings.ConnectionString);
 
             string query = @"select Users.UserID,People.PersonID,
-             (People.FirstName + ' ' + People.SecondName +' ' + People.ThirdName +' ' + People.LastName) AS FullName,
-             Users.UserName,Users.IsActive from Users INNER JOIN People ON Users.PersonID = People.PersonID";
+            Concat_WS(' ',People.FirstName,People.SecondName,People.ThirdName, People.LastName) As FullName,
+            Users.UserName,Users.IsActive from Users INNER JOIN People ON Users.PersonID = People.PersonID;";
 
             SqlCommand command = new SqlCommand(query, connection);
 

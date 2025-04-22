@@ -14,151 +14,119 @@ namespace DVLDPresentation.Users
 {
     public partial class frmChangePassword : Form
     {
-        clsUser User;
-        bool IsSave = false;
-
-        public event Action OnClose;
+        int _UserID;
+        clsUser _User;
         public frmChangePassword(int UserID)
         {
             InitializeComponent();
-
-            User = clsUser.FindByUserID(UserID);
-
-            if (User != null)
-            {
-                //ctrPersonCard1.PersonID = User.PersonID;
-                _FillLoginInfomationFromUserToForm();
-            }
+            this._UserID = UserID;
         }
 
-        void _GiveInitialValueForInTagPasswordsValidation()
+        void _ResetDefaultValues()
         {
-            gtxtCurrentPassword.Tag = false;
-            gtxtNewPassword.Tag = false;
-            gtxtConfirmPassword.Tag = false;
-        }
-        void _FillLoginInfomationFromUserToForm()
-        {
-            lblUserID.Text = User.UserID.ToString();
-            lblUserName.Text = User.UserName;
-            lblIsActive.Text = (User.IsActive) ? "Yes" : "No";
-        }
-        void _MessageIfValidatonFailedOnSave(string MessageText)
-        {
-            MessageBox.Show(MessageText, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        }
-
-        private bool _CheckErrorProviderForTextBox(Guna2TextBox txt,string ErrorText)
-        {
-            
-            if (string.IsNullOrWhiteSpace(txt.Text))
-            {
-                errorProvider1.SetError(txt, ErrorText);
-                txt.Tag = false;
-                return true;
-            }
-            else
-            {
-                errorProvider1.SetError(txt, "");
-                txt.Tag = true;
-                return false;
-            }
-        }
-        private void gtxtCurrentPassword_Validating(object sender, CancelEventArgs e)
-        {
-            Guna2TextBox txt = (Guna2TextBox)sender;
-
-            if(!_CheckErrorProviderForTextBox(txt, "CurrentPassword must have a value!"))
-            {
-                if(txt.Text != User.Password)
-                {
-                    errorProvider1.SetError(txt, "Please Enter The Correct Password!");
-                    txt.Tag = false;
-                }
-                else
-                {
-                    errorProvider1.SetError(txt, "");
-                    txt.Tag = true;
-                }
-            }
-        }
-
-        private void gtxtNewPassword_Validating(object sender, CancelEventArgs e)
-        {
-            _CheckErrorProviderForTextBox((Guna2TextBox)sender, "New Password mush have a value!");
-        }
-
-        private void gtxtConfirmPassword_Validating(object sender, CancelEventArgs e)
-        {
-            Guna2TextBox txt = (Guna2TextBox)sender;
-
-            if(_CheckErrorProviderForTextBox(txt,"Confirm Password must have a value!"))
-            {
-                if (gtxtConfirmPassword.Text != gtxtNewPassword.Text)
-                {
-                    errorProvider1.SetError(txt, "Password Confirmation does not match Password!");
-                    txt.Tag = false;
-                }
-                else
-                {
-                    errorProvider1.SetError(txt, "");
-                    txt.Tag = true;
-                }
-            }
-        }
-
-        private void gbtnClose_Click(object sender, EventArgs e)
-        {
-            if (IsSave)
-            {
-                if (OnClose != null)
-                    OnClose();
-            }
-
-            this.Close();
+            gtxtCurrentPassword.Text = "";
+            gtxtNewPassword.Text = "";
+            gtxtConfirmPassword.Text = "";
+            gtxtCurrentPassword.Focus();
         }
 
         private void frmChangePassword_Load(object sender, EventArgs e)
         {
-            _GiveInitialValueForInTagPasswordsValidation();
+            _ResetDefaultValues();
+
+            _User = clsUser.FindByUserID(_UserID);
+
+            if (_User == null)
+            {
+                MessageBox.Show("Could not Find User with id = " + _UserID,
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.Close();
+
+                return;
+            }
+
+            ctrUserCard1.LoadUserInfo(_UserID);
+        }
+
+        private void gtxtCurrentPassword_Validating(object sender, CancelEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(gtxtCurrentPassword.Text))
+            {
+                e.Cancel = true;
+                errorProvider1.SetError(gtxtCurrentPassword, "Current Password cannot be blank!");
+                return;
+            }
+
+            if (gtxtCurrentPassword.Text.Trim() != _User.Password)
+            {
+                errorProvider1.SetError(gtxtCurrentPassword, "Current password is wrong!");
+                e.Cancel = true;
+                return;
+            }
+    
+
+            e.Cancel = false;
+            errorProvider1.SetError(gtxtCurrentPassword, "");
+        }
+
+        private void gtxtNewPassword_Validating(object sender, CancelEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(gtxtNewPassword.Text))
+            {
+                e.Cancel = true;
+                errorProvider1.SetError(gtxtNewPassword, "Password cannot be blank!");
+            }
+            else
+            {
+                e.Cancel = false;
+                errorProvider1.SetError(gtxtNewPassword, "");
+            }
+        }
+
+        private void gtxtConfirmPassword_Validating(object sender, CancelEventArgs e)
+        {
+            if (gtxtConfirmPassword.Text.Trim() != gtxtNewPassword.Text.Trim())
+            {
+                e.Cancel = true;
+                errorProvider1.SetError(gtxtConfirmPassword, "Password Confirmation does not match Password!");
+
+            }
+            else
+            {
+                e.Cancel = false;
+                errorProvider1.SetError(gtxtConfirmPassword, "");
+            }
+
         }
 
         private void gbtnSave_Click(object sender, EventArgs e)
         {
-            bool CurrentPasswordValidatoinResult = (bool)gtxtCurrentPassword.Tag;
-            bool NewPasswordValidatoinResult = (bool)gtxtNewPassword.Tag;
-            bool ConfirmPasswordValidationResult = (bool)gtxtConfirmPassword.Tag;
-
-            if (!CurrentPasswordValidatoinResult)
+            if (!ValidateChildren())
             {
-                _MessageIfValidatonFailedOnSave("Please Enter a Correct Current Password");
+                MessageBox.Show("Some fileds are not valide!, put the mouse over the red icon(s) to see the erro",
+                   "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            if (!NewPasswordValidatoinResult)
-            {
-                _MessageIfValidatonFailedOnSave("Please Enter a Correct New Password!");
-                return;
-            }
+            _User.Password = gtxtNewPassword.Text.Trim();
 
-            if (!ConfirmPasswordValidationResult)
+            if (_User.ChangePassword())
             {
-                _MessageIfValidatonFailedOnSave("Please Enter a Correct Password Confimations!");
-            }
-
-            User.Password = gtxtNewPassword.Text;
-
-            if (User.Save())
-            {
-                MessageBox.Show("Password Updated Successfully!", "Succeed", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                IsSave = true;
+                MessageBox.Show("Password Changed Successfully.",
+                  "Saved.", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                _ResetDefaultValues();
             }
             else
             {
-                MessageBox.Show("Password Failed To Update", "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                IsSave = false;
+                MessageBox.Show("An Erro Occured, Password did not change.",
+                  "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
+        }
+
+        private void gbtnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

@@ -88,7 +88,7 @@ namespace DVLDPresentation.People
                                                          "Phone", "Email").DefaultView;
 
             dgvPeople.DataSource = _dvPeople;
-            lblRecordsCount.Text = _dvPeople.Count.ToString();
+            gcbFilterBy.SelectedIndex = 0;
         }
         private void _FilterByGendor()
         {
@@ -104,7 +104,6 @@ namespace DVLDPresentation.People
         private void frmManagePeople_Load(object sender, EventArgs e)
         {
             _RefreshPeoplList();
-            gcbFilterBy.SelectedIndex = 0;
 
             if (dgvPeople.Rows.Count > 0)
             {

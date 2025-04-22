@@ -131,9 +131,9 @@ namespace DVLDBusiness
         {
             return clsUserData.IsUserExistForPersonID(PersonID);
         }
-        public bool ChangePassword(int UserID, string NewPassword)
+        public bool ChangePassword()
         {
-            return clsUserData.ChangePassword(UserID, NewPassword);
+            return clsUserData.ChangePassword(this.UserID, this.Password);
         }
     }
 }
