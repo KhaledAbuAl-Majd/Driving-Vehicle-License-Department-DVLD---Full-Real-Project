@@ -45,9 +45,9 @@ namespace DVLDPresentation.Applications.Driving_License_Services.New_Driving_Lic
         {
             lblApplicationDate.Text = DateTime.Now.ToString("dd/MMM/yyyy");
             lblIssueDate.Text = DateTime.Now.ToString("dd/MMM/yyyy");
-            lblFees.Text = clsApplicationTypes.FindApplicationType(_ApplicationTypeID).ApplicationFees.ToString();
+            lblFees.Text = clsApplicationType.Find(_ApplicationTypeID).ApplicationFees.ToString();
             lblExpirationDate.Text = DateTime.Now.ToString("dd/MMM/yyyy");
-            lblCreatedBy.Text = clsGlobalSettings.LoggedInUser.UserName;
+            lblCreatedBy.Text = clsGlobalSettings.CurrentUser.UserName;
         }
         void _OnErrorAtSearch()
         {
@@ -89,7 +89,7 @@ namespace DVLDPresentation.Applications.Driving_License_Services.New_Driving_Lic
             {
 
                 clsInternationalLicenses NewInternationalLicense = new clsInternationalLicenses
-                (_LocalLicense.LicneseID, clsGlobalSettings.LoggedInUser.UserID);
+                (_LocalLicense.LicneseID, clsGlobalSettings.CurrentUser.UserID);
 
                 if (NewInternationalLicense.Save())
                 {

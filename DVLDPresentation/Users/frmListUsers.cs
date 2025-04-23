@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DVLDBusiness;
+using DVLDPresentation.Global_Classes;
 
 namespace DVLDPresentation.Users
 {
@@ -28,7 +29,7 @@ namespace DVLDPresentation.Users
         }
         void _ShowDetails()
         {
-            frmUserInfo frm = new frmUserInfo(Convert.ToInt32(dgvUsers.SelectedCells[0].Value));
+            frmUserInfo frm = new frmUserInfo(Convert.ToInt32(dgvUsers.CurrentRow.Cells[0].Value));
             frm.ShowDialog();
         }
         private void _GetTextFilterEmpty()
@@ -53,26 +54,20 @@ namespace DVLDPresentation.Users
         }
         private void _FilterByAtDesign()
         {
-            if (gcbFilterBy.Text == "None")
-            {
-                _Show_HideTextFilter(false);
-                _Show_HideCBIsActiveFilter(false);
-                _FilterData("");
-            }
-            else if(gcbFilterBy.Text == "Is Active")
+            if (gcbFilterBy.Text == "Is Active")
             {
                 _Show_HideTextFilter(false);
                 _Show_HideCBIsActiveFilter(true);
                 gcbIsActive.SelectedIndex = 0;
-            }
-            else
-            {
-                _Show_HideTextFilter(true);
-                _Show_HideCBIsActiveFilter(false);
-                _FilterData("");
+                gcbIsActive.Focus();
+                return;
             }
 
+            _Show_HideTextFilter(gcbFilterBy.Text != "None");
+            _Show_HideCBIsActiveFilter(false);
+            _FilterData("");
             _GetTextFilterEmpty();
+            gtxtFilterValue.Focus();
         }
         void _RefreshUsersList()
         {
@@ -83,22 +78,24 @@ namespace DVLDPresentation.Users
         private void frmManageUsers_Load(object sender, EventArgs e)
         {
             _RefreshUsersList();
-         
 
-            dgvUsers.Columns[0].HeaderText = "User ID";
-            dgvUsers.Columns[0].Width = 105;
+            if (_dvUsers.Count > 0)
+            {
+                dgvUsers.Columns[0].HeaderText = "User ID";
+                dgvUsers.Columns[0].Width = 105;
 
-            dgvUsers.Columns[1].HeaderText = "Person ID";
-            dgvUsers.Columns[1].Width = 110;
+                dgvUsers.Columns[1].HeaderText = "Person ID";
+                dgvUsers.Columns[1].Width = 110;
 
-            dgvUsers.Columns[2].HeaderText = "Full Name";
-            dgvUsers.Columns[2].Width = 350;
+                dgvUsers.Columns[2].HeaderText = "Full Name";
+                dgvUsers.Columns[2].Width = 350;
 
-            dgvUsers.Columns[3].HeaderText = "UserName";
-            dgvUsers.Columns[3].Width = 120;
+                dgvUsers.Columns[3].HeaderText = "UserName";
+                dgvUsers.Columns[3].Width = 120;
 
-            dgvUsers.Columns[4].HeaderText = "Is Active";
-            dgvUsers.Columns[4].Width = 90;
+                dgvUsers.Columns[4].HeaderText = "Is Active";
+                dgvUsers.Columns[4].Width = 90;
+            }
         }
 
         private void gcmFilterBy_SelectedIndexChanged(object sender, EventArgs e)
@@ -108,35 +105,43 @@ namespace DVLDPresentation.Users
 
         private void gtxtFilterValue_TextChanged(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(gtxtFilterValue.Text))
+            string FilterColumn = "";
+
+            switch (gcbFilterBy.Text)
+            {
+                case "User ID":
+                    FilterColumn = "UserID";
+                    break;
+
+                case "UserName":
+                    FilterColumn = "UserName";
+                    break;
+
+                case "Person ID":
+                    FilterColumn = "PersonID";
+                    break;
+
+                case "Full Name":
+                    FilterColumn = "FullName";
+                    break;
+
+                default:
+                    FilterColumn = "None";
+                    break;
+
+            }
+
+            if (string.IsNullOrWhiteSpace(gtxtFilterValue.Text) || FilterColumn == "None")
             {
                 //to make filter is none get all people
                 _FilterData("");
                 return;
             }
-            switch (gcbFilterBy.Text)
-            {
-                case "None":
-                    _FilterData("");
-                    break;
 
-                case "User ID":
-                    _FilterData("UserID = " + gtxtFilterValue.Text);
-                    break;
-
-                case "UserName":
-                    _FilterData($"UserName like '{gtxtFilterValue.Text}%'");
-                    break;
-
-                case "Person ID":
-                    _FilterData("PersonID = " + gtxtFilterValue.Text);
-                    break;
-
-                case "Full Name":
-                    _FilterData($"[Full Name] like '{gtxtFilterValue.Text}%'");
-                    break;
-
-            }
+            if (FilterColumn == "PersonID" || FilterColumn == "UserID")
+                _FilterData($"{FilterColumn} = " + gtxtFilterValue.Text.Trim());
+            else
+                _FilterData($"{FilterColumn}  like '{gtxtFilterValue.Text.Trim()}%'");
         }
 
         private void gcbIsActive_SelectedIndexChanged(object sender, EventArgs e)
@@ -159,7 +164,7 @@ namespace DVLDPresentation.Users
         private void editToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //User ID
-            frmAddUpdateUser frm = new frmAddUpdateUser(Convert.ToInt32(dgvUsers.SelectedCells[0].Value));
+            frmAddUpdateUser frm = new frmAddUpdateUser(Convert.ToInt32(dgvUsers.CurrentRow.Cells[0].Value));
             frm.OnSave += _RefreshUsersList;
             frm.ShowDialog();
         }
@@ -181,7 +186,7 @@ namespace DVLDPresentation.Users
 
         private void changePasswordToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmChangePassword frm = new frmChangePassword(Convert.ToInt32(dgvUsers.SelectedCells[0].Value));
+            frmChangePassword frm = new frmChangePassword(Convert.ToInt32(dgvUsers.CurrentRow.Cells[0].Value));
             frm.ShowDialog();
         }
 
@@ -189,12 +194,22 @@ namespace DVLDPresentation.Users
         {
             if (gcbFilterBy.Text == "Person ID" || gcbFilterBy.Text == "User ID")
                 e.Handled = (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar));
-       
         }
 
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            int UserID = Convert.ToInt32(dgvUsers.SelectedCells[0].Value);
+            //Cannot be deleted
+            int AdminID = 1;
+
+            int UserID = Convert.ToInt32(dgvUsers.CurrentRow.Cells[0].Value);
+
+            if(UserID == AdminID)
+            {
+                MessageBox.Show("Admin Cannot be deleted!", "Not Allowed", MessageBoxButtons.OK,
+                       MessageBoxIcon.Error);
+                return;
+            }
+
             if (MessageBox.Show("Are you sure you want to delete User With ID = [" + UserID+ "]", "Confirm Delete", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
             {
                 //User ID
@@ -205,7 +220,7 @@ namespace DVLDPresentation.Users
                     _RefreshUsersList();
                 }
                 else
-                    MessageBox.Show("User is not deleted de to data connected to it.", "Failed", MessageBoxButtons.OK,
+                    MessageBox.Show("User is not deleted due to data connected to it.", "Failed", MessageBoxButtons.OK,
                         MessageBoxIcon.Error);
             }
         }
@@ -217,12 +232,12 @@ namespace DVLDPresentation.Users
 
         private void sendEmailToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            clsGlobalSettings.FeatureIsNotImplemented();
+            clsUtil.FeatureIsNotImplemented();
         }
 
         private void phoneCallToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            clsGlobalSettings.FeatureIsNotImplemented();
+            clsUtil.FeatureIsNotImplemented();
         }
 
         private void btnRefresh_Click(object sender, EventArgs e)

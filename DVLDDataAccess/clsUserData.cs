@@ -11,7 +11,7 @@ namespace DVLDDataAccess
 {
     public static class clsUserData
     {
-        public static bool GetPersonInfoByUserID(int UserID,ref int PersonID, ref string UserName,
+        public static bool GetUserInfoByUserID(int UserID,ref int PersonID, ref string UserName,
             ref string Password, ref bool IsActive)
         {
             bool IsFound = false;
@@ -53,7 +53,7 @@ namespace DVLDDataAccess
             return IsFound;
         }
 
-        public static bool GetPersonInfoByPersonID(int PersonID, ref int UserID, ref string UserName ,
+        public static bool GetUserInfoByPersonID(int PersonID, ref int UserID, ref string UserName ,
            ref string Password, ref bool IsActive)
         {
             bool IsFound = false;
@@ -96,13 +96,13 @@ namespace DVLDDataAccess
             return IsFound;
         }
 
-        public static bool GetPersonInfoByUsernameAndPassword(string UserName, string Password, ref int UserID, ref int PersonID, ref bool IsActive)
+        public static bool GetUserInfoByUsernameAndPassword(string UserName, string Password, ref int UserID, ref int PersonID, ref bool IsActive)
         {
             bool IsFound = false;
 
             SqlConnection connection = new SqlConnection(clsDataAccessSetings.ConnectionString);
 
-            string query = "SELECT * FROM Users WHERE UserName = @UserName AND Password = @Password";
+            string query = "SELECT * FROM Users WHERE UserName = @UserName AND Password = @Password;";
 
             SqlCommand command = new SqlCommand(query, connection);
             command.Parameters.AddWithValue("@UserName", UserName);

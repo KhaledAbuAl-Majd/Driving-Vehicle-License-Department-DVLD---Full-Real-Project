@@ -1,6 +1,6 @@
 ﻿namespace DVLDPresentation.Applications.Application_Types
 {
-    partial class frmUpdateApplicationTypes
+    partial class frmEditApplicationTypes
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmUpdateApplicationTypes));
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmEditApplicationTypes));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.lblID = new System.Windows.Forms.Label();
@@ -40,8 +41,10 @@
             this.gtxtFees = new Guna.UI2.WinForms.Guna2TextBox();
             this.gbtnClose = new Guna.UI2.WinForms.Guna2Button();
             this.gbtnSave = new Guna.UI2.WinForms.Guna2Button();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -135,8 +138,9 @@
             this.gtxtTitle.Name = "gtxtTitle";
             this.gtxtTitle.PlaceholderText = "";
             this.gtxtTitle.SelectedText = "";
-            this.gtxtTitle.Size = new System.Drawing.Size(298, 36);
+            this.gtxtTitle.Size = new System.Drawing.Size(287, 36);
             this.gtxtTitle.TabIndex = 31;
+            this.gtxtTitle.Validating += new System.ComponentModel.CancelEventHandler(this.gtxtTitle_Validating);
             // 
             // gtxtFees
             // 
@@ -158,9 +162,10 @@
             this.gtxtFees.Name = "gtxtFees";
             this.gtxtFees.PlaceholderText = "";
             this.gtxtFees.SelectedText = "";
-            this.gtxtFees.Size = new System.Drawing.Size(298, 36);
+            this.gtxtFees.Size = new System.Drawing.Size(287, 36);
             this.gtxtFees.TabIndex = 32;
             this.gtxtFees.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.gtxtFees_KeyPress);
+            this.gtxtFees.Validating += new System.ComponentModel.CancelEventHandler(this.gtxtFees_Validating);
             // 
             // gbtnClose
             // 
@@ -169,6 +174,7 @@
             this.gbtnClose.BackColor = System.Drawing.Color.Transparent;
             this.gbtnClose.BorderThickness = 1;
             this.gbtnClose.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.gbtnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.gbtnClose.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.gbtnClose.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.gbtnClose.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -182,7 +188,7 @@
             this.gbtnClose.Image = ((System.Drawing.Image)(resources.GetObject("gbtnClose.Image")));
             this.gbtnClose.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.gbtnClose.ImageSize = new System.Drawing.Size(35, 35);
-            this.gbtnClose.Location = new System.Drawing.Point(177, 276);
+            this.gbtnClose.Location = new System.Drawing.Point(168, 276);
             this.gbtnClose.Name = "gbtnClose";
             this.gbtnClose.Size = new System.Drawing.Size(135, 45);
             this.gbtnClose.TabIndex = 34;
@@ -209,19 +215,26 @@
             this.gbtnSave.Image = ((System.Drawing.Image)(resources.GetObject("gbtnSave.Image")));
             this.gbtnSave.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.gbtnSave.ImageSize = new System.Drawing.Size(35, 35);
-            this.gbtnSave.Location = new System.Drawing.Point(318, 276);
+            this.gbtnSave.Location = new System.Drawing.Point(309, 276);
             this.gbtnSave.Name = "gbtnSave";
             this.gbtnSave.Size = new System.Drawing.Size(135, 45);
             this.gbtnSave.TabIndex = 33;
             this.gbtnSave.Text = "Save";
             this.gbtnSave.Click += new System.EventHandler(this.gbtnSave_Click);
             // 
-            // frmUpdateApplicationTypes
+            // errorProvider1
             // 
+            this.errorProvider1.ContainerControl = this;
+            // 
+            // frmEditApplicationTypes
+            // 
+            this.AcceptButton = this.gbtnSave;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(465, 349);
+            this.CancelButton = this.gbtnClose;
+            this.ClientSize = new System.Drawing.Size(469, 349);
             this.Controls.Add(this.gbtnClose);
             this.Controls.Add(this.gbtnSave);
             this.Controls.Add(this.gtxtFees);
@@ -234,11 +247,13 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Name = "frmUpdateApplicationTypes";
+            this.Name = "frmEditApplicationTypes";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Update Application Types";
             this.Load += new System.EventHandler(this.frmUpdateApplicationTypes_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -257,5 +272,6 @@
         private Guna.UI2.WinForms.Guna2TextBox gtxtFees;
         private Guna.UI2.WinForms.Guna2Button gbtnClose;
         private Guna.UI2.WinForms.Guna2Button gbtnSave;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }

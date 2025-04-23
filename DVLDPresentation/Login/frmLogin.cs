@@ -21,71 +21,10 @@ namespace DVLDPresentation.Login_MainPage
         {
             InitializeComponent();
         }
-
-        private void _EmptyUserName_Password()
+        void _EmptyUserNamePassword()
         {
             gtxtUserName.Text = "";
             gtxtPassword.Text = "";
-        }
-        private void _RemeberMeLoadDataFromFile()
-        {
-            FileInfo fileInfo = new FileInfo(clsGlobalSettings.PathOfRemeberMeFile);
-
-            if (fileInfo.Exists && fileInfo.Length != 0)
-            {
-                string UserName = "";
-                string Password = "";
-                bool RemeberMeChecked = false;
-
-                using (StreamReader reader = new StreamReader(clsGlobalSettings.PathOfRemeberMeFile))
-                {
-
-                    UserName = reader.ReadLine();
-                    Password = reader.ReadLine();
-                    RemeberMeChecked = Convert.ToBoolean(reader.ReadLine());
-
-                    if (RemeberMeChecked)
-                    {
-                        gtxtUserName.Text = UserName;
-                        gtxtPassword.Text = Password;
-                        gchkRemeberMe.Checked = RemeberMeChecked;
-                        gtxtPassword.UseSystemPasswordChar = true;
-                        gtxtPassword.IconRight = null;
-                    }
-                }
-            }
-            else
-            {
-                _EmptyUserName_Password();
-                gtxtPassword.UseSystemPasswordChar = true;
-                gtxtPassword.IconRight = Resources.eye_icon_256043;
-            }
-        }
-        private void _RemeberMeAddDataToFile(bool IsRemeberMeChecked)
-        {
-            if (IsRemeberMeChecked)
-            {
-                using (StreamWriter writer = new StreamWriter(clsGlobalSettings.PathOfRemeberMeFile))
-                {
-                    writer.WriteLine(gtxtUserName.Text);
-                    writer.WriteLine(gtxtPassword.Text);
-                    writer.WriteLine(gchkRemeberMe.Checked);
-                }
-            }
-            else
-            {
-                File.WriteAllText(clsGlobalSettings.PathOfRemeberMeFile, "");
-            }
-           
-            
-        }
-        private void _ErrorMessage(string Message)
-        {
-            MessageBox.Show(Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        }
-        private void _CloseLoginForm()
-        {
-            this.Close();
         }
         private void gtxtPassword_IconRightClick(object sender, EventArgs e)
         {
@@ -101,54 +40,62 @@ namespace DVLDPresentation.Login_MainPage
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnClose_Click(object sender, EventArgs e)
         {
-            _CloseLoginForm();
+            this.Close();
         }
 
         private void gbtnLogin_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(gtxtUserName.Text) || string.IsNullOrWhiteSpace(gtxtPassword.Text))
+            clsUser User = clsUser.FindByUserNameAndPassword(gtxtUserName.Text.Trim(), gtxtPassword.Text.Trim());
+
+            if (User != null)
             {
-                _ErrorMessage("Invalid UserName/Passsword Enter a Correct one!");
-                return;
+                if (!User.IsActive)
+                {
+                    MessageBox.Show("Your accound is not Active, Contact Admin.", "In Active Account", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    gtxtUserName.Focus();
+                    return;
+                }
+
+                if (gchkRemeberMe.Checked)
+                    clsGlobalSettings.RememberUsernameAndPassword(gtxtUserName.Text.Trim(), gtxtPassword.Text.Trim());
+                else
+                {
+                    _EmptyUserNamePassword();
+                    clsGlobalSettings.RememberUsernameAndPassword("", "");
+                }
+
+                clsGlobalSettings.CurrentUser = User;
+                this.Hide();
+                frmMain frm = new frmMain(this);
+                frm.ShowDialog();
+                gtxtUserName.Focus();
             }
-       
-
-            clsUser User = clsUser.FindByUserNameAndPassword(gtxtUserName.Text.Trim(),gtxtPassword.Text.Trim());
-
-            if(User == null)
+            else
             {
-                _ErrorMessage("Invalid UserName/Passsword Enter a Correct one!");
-                return;
+                MessageBox.Show("Invalid Username/Password.", "Wrong Credintials", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                gtxtUserName.Focus();
             }
-
-            if(User.Password != gtxtPassword.Text)
-            {
-                _ErrorMessage("Invalid UserName/Passsword Enter a Correct one!");
-                return;
-            }
-
-            if (!User.IsActive)
-            {
-                _ErrorMessage("Your Account Is Blocked, Please Contact You Admin!");
-                return;
-            }
-
-            clsGlobalSettings.LoggedInUser = User;
-
-            _RemeberMeAddDataToFile(gchkRemeberMe.Checked);
-
-            frmMain frm = new frmMain();
-            frm.ShowDialog();
-            //_CloseLoginForm();
-            _RemeberMeLoadDataFromFile();
 
         }
 
         private void frmLogin_Load(object sender, EventArgs e)
         {
-            _RemeberMeLoadDataFromFile();
+            string UserName = "",Password = "";
+
+            if(clsGlobalSettings.GetStoredCredential(ref UserName,ref Password))
+            {
+                gtxtUserName.Text = UserName;
+                gtxtPassword.Text = Password;
+                gchkRemeberMe.Enabled = true;
+                gtxtPassword.IconRight = null;
+            }
+            else
+            {
+                gchkRemeberMe.Checked = false;
+                gtxtPassword.IconRight = Resources.eye_icon_256043;
+            }
         }
 
         private void gtxtPassword_TextChanged(object sender, EventArgs e)

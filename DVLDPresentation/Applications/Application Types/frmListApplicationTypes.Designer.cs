@@ -1,6 +1,6 @@
 ﻿namespace DVLDPresentation.Applications
 {
-    partial class frmManageApplicationTypes
+    partial class frmListApplicationTypes
     {
         /// <summary>
         /// Required designer variable.
@@ -32,7 +32,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmManageApplicationTypes));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmListApplicationTypes));
             this.lblNumOfRecords = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -138,7 +138,7 @@
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
             this.toolStripMenuItem3.Size = new System.Drawing.Size(214, 38);
             this.toolStripMenuItem3.Text = "Edit Application Type";
-            this.toolStripMenuItem3.Click += new System.EventHandler(this.toolStripMenuItem3_Click);
+            this.toolStripMenuItem3.Click += new System.EventHandler(this.EdittoolStripMenuItem3_Click);
             // 
             // gbtnClose
             // 
@@ -147,6 +147,7 @@
             this.gbtnClose.BackColor = System.Drawing.Color.Transparent;
             this.gbtnClose.BorderThickness = 1;
             this.gbtnClose.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.gbtnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.gbtnClose.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.gbtnClose.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.gbtnClose.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -177,11 +178,12 @@
             this.pictureBox1.TabIndex = 22;
             this.pictureBox1.TabStop = false;
             // 
-            // frmManageApplicationTypes
+            // frmListApplicationTypes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.CancelButton = this.gbtnClose;
             this.ClientSize = new System.Drawing.Size(824, 746);
             this.Controls.Add(this.gbtnClose);
             this.Controls.Add(this.lblNumOfRecords);
@@ -190,8 +192,8 @@
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.dgvApplicationTypes);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Name = "frmManageApplicationTypes";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Name = "frmListApplicationTypes";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Manage Application Types";
             this.Load += new System.EventHandler(this.frmManageApplicationTypes_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvApplicationTypes)).EndInit();

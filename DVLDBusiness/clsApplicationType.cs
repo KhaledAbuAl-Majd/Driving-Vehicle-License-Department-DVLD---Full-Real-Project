@@ -8,7 +8,7 @@ using DVLDDataAccess;
 
 namespace DVLDBusiness
 {
-    public class clsApplicationTypes
+    public class clsApplicationType
     {
         public enum enMode { Update};
         public enMode Mode { get; private set; }
@@ -16,7 +16,7 @@ namespace DVLDBusiness
         public string ApplicationTypeTitle { get; set; }
         public float ApplicationFees { get; set; }
 
-        private clsApplicationTypes(int ApplicationTypeID, string ApplicationTypeTitle, float ApplicationFees)
+        private clsApplicationType(int ApplicationTypeID, string ApplicationTypeTitle, float ApplicationFees)
         {
             this.ApplicationTypeID = ApplicationTypeID;
             this.ApplicationTypeTitle = ApplicationTypeTitle;
@@ -24,34 +24,36 @@ namespace DVLDBusiness
             Mode = enMode.Update;
         }
 
-        private bool _Update()
+        private bool _UpdateApplicationType()
         {
-            return clsApplicationTypesData.UpdateApplicationType(ApplicationTypeID, ApplicationTypeTitle, ApplicationFees);
+            return clsApplicationTypeData.UpdateApplicationType(ApplicationTypeID, ApplicationTypeTitle, ApplicationFees);
         }
-        public bool Save()
-        {
-            switch (Mode)
-            {
-                case enMode.Update:
-                    return _Update();
-            }
 
-            return false;
-        }
-        public static clsApplicationTypes FindApplicationType(int ApplicationTypeID)
+        public static clsApplicationType Find(int ApplicationTypeID)
         {
             string ApplicationTypeTitle = "";
             float ApplicationFees = 0;
 
-            if (clsApplicationTypesData.GetApplicationTypeByID(ApplicationTypeID, ref ApplicationTypeTitle, ref ApplicationFees))
-                return new clsApplicationTypes(ApplicationTypeID, ApplicationTypeTitle, ApplicationFees);
+            if (clsApplicationTypeData.GetApplicationTypeInfoByID(ApplicationTypeID, ref ApplicationTypeTitle, ref ApplicationFees))
+                return new clsApplicationType(ApplicationTypeID, ApplicationTypeTitle, ApplicationFees);
             else
                 return null;
         }
 
         public static DataTable GetAllApplicationTypes()
         {
-            return clsApplicationTypesData.GetAllApplicationTypes();
+            return clsApplicationTypeData.GetAllApplicationTypes();
+        }
+
+        public bool Save()
+        {
+            switch (Mode)
+            {
+                case enMode.Update:
+                    return _UpdateApplicationType();
+            }
+
+            return false;
         }
     }
 }

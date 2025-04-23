@@ -146,6 +146,7 @@
             this.gbtnClose.BackColor = System.Drawing.Color.Transparent;
             this.gbtnClose.BorderThickness = 1;
             this.gbtnClose.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.gbtnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.gbtnClose.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.gbtnClose.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.gbtnClose.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -168,7 +169,7 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Image = global::DVLDPresentation.Properties.Resources.TestType_512;
             this.pictureBox1.Location = new System.Drawing.Point(344, 12);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(244, 160);
@@ -176,12 +177,13 @@
             this.pictureBox1.TabIndex = 32;
             this.pictureBox1.TabStop = false;
             // 
-            // frmManageTestTypes
+            // frmListTestTypes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(902, 730);
+            this.CancelButton = this.gbtnClose;
+            this.ClientSize = new System.Drawing.Size(891, 730);
             this.Controls.Add(this.lblNumOfRecords);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label1);
@@ -190,10 +192,10 @@
             this.Controls.Add(this.pictureBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.ImeMode = System.Windows.Forms.ImeMode.Off;
-            this.Name = "frmManageTestTypes";
+            this.Name = "frmListTestTypes";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmManageTestTypes";
+            this.Text = "Manage Test Types";
             this.Load += new System.EventHandler(this.frmManageTestTypes_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvTestTypes)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);

@@ -42,7 +42,7 @@ namespace DVLDPresentation.Applications.Detain_Licenses
         {
             lblDetainID.Text = _DetainedLicense.DetainID.ToString();
             lblDetainDate.Text = _DetainedLicense.DetainDate.ToString("dd/MMM/yyyy");
-            float ApplicationFees = clsApplicationTypes.FindApplicationType(_DetainedLicense.ApplicatoinTypeID).ApplicationFees;
+            float ApplicationFees = clsApplicationType.Find(_DetainedLicense.ApplicatoinTypeID).ApplicationFees;
             lblApplicationFees.Text = ApplicationFees.ToString();
             lblFineFees.Text = _DetainedLicense.FineFees.ToString();
             lblTotalFees.Text = (ApplicationFees + _DetainedLicense.FineFees).ToString();
@@ -99,7 +99,7 @@ namespace DVLDPresentation.Applications.Detain_Licenses
             {
                 if (_DetainedLicense != null)
                 {
-                    _DetainedLicense.ReleasedByUserID = clsGlobalSettings.LoggedInUser.UserID;
+                    _DetainedLicense.ReleasedByUserID = clsGlobalSettings.CurrentUser.UserID;
                     if (_DetainedLicense.Save())
                     {
                         _IsReleased = true;

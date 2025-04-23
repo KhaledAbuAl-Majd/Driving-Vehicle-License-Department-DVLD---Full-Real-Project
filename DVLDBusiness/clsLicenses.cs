@@ -43,7 +43,7 @@ namespace DVLDBusiness
                 this.IsuueDate = DateTime.Now;
                 this.ExpirationDate = this.IsuueDate.AddYears(clsLicneseClasses.Find(LicenseClassID).DefaultValidityLength);
                 this.Notes = "";
-                this.PaidFees = clsApplicationTypes.FindApplicationType(Application.ApplicationTypeID).ApplicationFees;
+                this.PaidFees = clsApplicationType.Find(Application.ApplicationTypeID).ApplicationFees;
                 this.IsAcitve = true;
                 this.IssueReason = IssueReasonText;
                 this.CreatedByUserID = CreatedByUseID;
@@ -78,7 +78,7 @@ namespace DVLDBusiness
                 this.IsuueDate = DateTime.Now;
                 this.ExpirationDate = this.IsuueDate.AddYears(clsLicneseClasses.Find(LicenseClassID).DefaultValidityLength);
                 this.Notes = "";
-                this.PaidFees = clsApplicationTypes.FindApplicationType(Application.ApplicationTypeID).ApplicationFees;
+                this.PaidFees = clsApplicationType.Find(Application.ApplicationTypeID).ApplicationFees;
                 this.IsAcitve = true;
                 this.IssueReason = IssueReasonText;
                 this.CreatedByUserID = Application.CreatedByUserID;

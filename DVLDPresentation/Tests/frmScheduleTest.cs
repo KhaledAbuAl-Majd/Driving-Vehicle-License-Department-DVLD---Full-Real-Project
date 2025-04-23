@@ -28,7 +28,7 @@ namespace DVLDPresentation.Applications.Manage_Applications.LocalDrivingLicenseA
             _TestType = (enTestType)TestType;
             if (TestAppointmentID == -1)
             {
-                _TestAppointment = new clsTestAppointments(LDLApplicationID, Convert.ToInt32(_TestType), clsGlobalSettings.LoggedInUser.UserID);
+                _TestAppointment = new clsTestAppointments(LDLApplicationID, Convert.ToInt32(_TestType), clsGlobalSettings.CurrentUser.UserID);
             }
             else
             {
@@ -87,8 +87,8 @@ namespace DVLDPresentation.Applications.Manage_Applications.LocalDrivingLicenseA
             else
                 lblRetakeTestApplicationID.Text = "N/A";
             //Retatke Test ID
-            lblRetakeAppFees.Text = clsApplicationTypes.FindApplicationType(7).ApplicationFees.ToString();
-            lblTotalFees.Text = (_TestAppointment.PaidFees + clsApplicationTypes.FindApplicationType(7).ApplicationFees).ToString();
+            lblRetakeAppFees.Text = clsApplicationType.Find(7).ApplicationFees.ToString();
+            lblTotalFees.Text = (_TestAppointment.PaidFees + clsApplicationType.Find(7).ApplicationFees).ToString();
             _ChageHeader("Schedule Retake Test");
             _ChangeRetakeTestInfoGroubBoxEnablity(true);
         } 
@@ -112,7 +112,7 @@ namespace DVLDPresentation.Applications.Manage_Applications.LocalDrivingLicenseA
 
             lblLDLApplicationID.Text = _LDLApplication.LocalDrvingApplicationID.ToString();
             lblClassName.Text = clsLicneseClasses.Find(_LDLApplication.LicenseClassID).ClassName;
-            lblName.Text = clsPerson.Find(clsApplications.Find(_LDLApplication.ApplicationID).PersonID).GetFullName();
+            lblName.Text = clsPerson.Find(clsApplications.Find(_LDLApplication.ApplicationID).PersonID).FullName;
             lblTrial.Text = _TestAppointment.TrialNumber.ToString();
             gDTPDate.Value = _TestAppointment.AppointmentDate;
             lblFees.Text = _TestAppointment.PaidFees.ToString();
@@ -133,7 +133,7 @@ namespace DVLDPresentation.Applications.Manage_Applications.LocalDrivingLicenseA
         void _Save()
         {
             _TestAppointment.AppointmentDate = gDTPDate.Value;
-            _TestAppointment.CreatedByUserID = clsGlobalSettings.LoggedInUser.UserID;
+            _TestAppointment.CreatedByUserID = clsGlobalSettings.CurrentUser.UserID;
             if (_TestAppointment.Save())
             {
                 _IsSave = true;

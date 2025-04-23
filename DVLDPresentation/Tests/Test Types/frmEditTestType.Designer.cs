@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmUpdateTestTypes));
             this.gtxtFees = new Guna.UI2.WinForms.Guna2TextBox();
             this.gtxtTitle = new Guna.UI2.WinForms.Guna2TextBox();
@@ -43,9 +44,11 @@
             this.gtxtDescription = new Guna.UI2.WinForms.Guna2TextBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // gtxtFees
@@ -71,6 +74,7 @@
             this.gtxtFees.Size = new System.Drawing.Size(298, 36);
             this.gtxtFees.TabIndex = 43;
             this.gtxtFees.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.gtxtFees_KeyPress);
+            this.gtxtFees.Validating += new System.ComponentModel.CancelEventHandler(this.gtxtFees_Validating);
             // 
             // gtxtTitle
             // 
@@ -94,6 +98,7 @@
             this.gtxtTitle.SelectedText = "";
             this.gtxtTitle.Size = new System.Drawing.Size(298, 36);
             this.gtxtTitle.TabIndex = 42;
+            this.gtxtTitle.Validating += new System.ComponentModel.CancelEventHandler(this.gtxtTitle_Validating);
             // 
             // label4
             // 
@@ -153,6 +158,7 @@
             this.gbtnClose.BackColor = System.Drawing.Color.Transparent;
             this.gbtnClose.BorderThickness = 1;
             this.gbtnClose.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.gbtnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.gbtnClose.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.gbtnClose.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.gbtnClose.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -231,7 +237,7 @@
             this.gtxtDescription.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.gtxtDescription.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.gtxtDescription.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.gtxtDescription.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gtxtDescription.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gtxtDescription.ForeColor = System.Drawing.Color.Black;
             this.gtxtDescription.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.gtxtDescription.Location = new System.Drawing.Point(199, 220);
@@ -243,6 +249,7 @@
             this.gtxtDescription.SelectedText = "";
             this.gtxtDescription.Size = new System.Drawing.Size(298, 139);
             this.gtxtDescription.TabIndex = 48;
+            this.gtxtDescription.Validating += new System.ComponentModel.CancelEventHandler(this.gtxtDescription_Validating);
             // 
             // pictureBox3
             // 
@@ -264,11 +271,18 @@
             this.label5.TabIndex = 46;
             this.label5.Text = "Description:";
             // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
             // frmUpdateTestTypes
             // 
+            this.AcceptButton = this.gbtnSave;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
             this.BackColor = System.Drawing.Color.White;
+            this.CancelButton = this.gbtnClose;
             this.ClientSize = new System.Drawing.Size(554, 487);
             this.Controls.Add(this.gtxtDescription);
             this.Controls.Add(this.pictureBox3);
@@ -286,11 +300,13 @@
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "frmUpdateTestTypes";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmUpdateTestTypes";
             this.Load += new System.EventHandler(this.frmUpdateTestTypes_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -312,5 +328,6 @@
         private Guna.UI2.WinForms.Guna2TextBox gtxtDescription;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }

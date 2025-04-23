@@ -111,7 +111,7 @@ namespace DVLDPresentation.Applications.Detain_Licenses
                     Person = clsPerson.Find(PersonID);
 
                     row["N.No."] = Person.NationalNo;
-                    row["Full Name"] = Person.GetFullName();
+                    row["Full Name"] = Person.FullName;
                 }
 
                 DataTable dt2 = dtAllDetainedLicenses.DefaultView.ToTable(false, "D.ID", "L.ID",

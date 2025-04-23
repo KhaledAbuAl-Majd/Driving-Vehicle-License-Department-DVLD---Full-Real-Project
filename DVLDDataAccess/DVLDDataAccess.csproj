@@ -43,7 +43,7 @@
   <ItemGroup>
     <Compile Include="clsApplicationsData.cs" />
     <Compile Include="clsApplicationStatusesData.cs" />
-    <Compile Include="clsApplicationTypesData.cs" />
+    <Compile Include="clsApplicationTypeData.cs" />
     <Compile Include="clsCountryData.cs" />
     <Compile Include="clsDataAccessSetings.cs" />
     <Compile Include="clsDetainedLicensesData.cs" />
@@ -55,7 +55,7 @@
     <Compile Include="clsPersonData.cs" />
     <Compile Include="clsTestAppointmentsData.cs" />
     <Compile Include="clsTestsData.cs" />
-    <Compile Include="clsTestTypesData.cs" />
+    <Compile Include="clsTestTypeData.cs" />
     <Compile Include="clsUserData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

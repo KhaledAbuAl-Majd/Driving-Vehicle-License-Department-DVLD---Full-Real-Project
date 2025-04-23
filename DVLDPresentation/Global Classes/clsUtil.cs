@@ -66,5 +66,10 @@ namespace DVLDPresentation.Global_Classes
             SourceFile = destinationFile;
             return true;
         }
+        public static void FeatureIsNotImplemented()
+        {
+            MessageBox.Show("This Feature Is Not Implemented Yet!", "Not Ready!",
+                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        }
     }
 }

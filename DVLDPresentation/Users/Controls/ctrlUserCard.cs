@@ -13,6 +13,7 @@ namespace DVLDPresentation.Users.Controls
 {
     public partial class ctrUserCard : UserControl
     {
+        public int UserID { get; private set; }
         public clsUser SelectedUserInfo { get; private set; }
 
         public ctrUserCard()
@@ -23,6 +24,7 @@ namespace DVLDPresentation.Users.Controls
 
         public void LoadUserInfo(int UserID)
         {
+            this.UserID = UserID;
             SelectedUserInfo = clsUser.FindByUserID(UserID);
             if (SelectedUserInfo == null)
             {

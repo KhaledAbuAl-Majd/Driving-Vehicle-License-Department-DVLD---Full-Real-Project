@@ -49,7 +49,7 @@ namespace DVLDPresentation.Controls
                 clsDrivers Driver = clsDrivers.FindByDriverID(License.DriverID);
                 clsPerson Person = clsPerson.Find(Driver.PersonID);
                 lblCalss.Text = clsLicneseClasses.Find(License.LicenseClassID).ClassName;
-                lblName.Text = Person.GetFullName();
+                lblName.Text = Person.FullName;
                 lblLicneseID.Text = License.LicneseID.ToString();
                 lblNationalNo.Text = Person.NationalNo;
                 _ChangeGendorData(Person.Gendor, Person.ImagePath);

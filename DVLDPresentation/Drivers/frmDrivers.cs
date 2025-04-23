@@ -83,7 +83,7 @@ namespace DVLDPresentation
                 {
                     Person = clsPerson.Find(Convert.ToInt32(row["Person ID"]));
 
-                    row["Full Name"] = Person.GetFullName();
+                    row["Full Name"] = Person.FullName;
                     row["National No."] = Person.NationalNo;
                     row["Active Licenses"] = clsLicenses.GetNumberOfActiveLicnesesByDriverID(Convert.ToInt32(row["Driver ID"]));
                 }

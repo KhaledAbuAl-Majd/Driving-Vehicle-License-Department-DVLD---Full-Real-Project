@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DVLDBusiness;
+using DVLDPresentation.Global_Classes;
 
 namespace DVLDPresentation.People
 {
@@ -235,13 +236,13 @@ namespace DVLDPresentation.People
 
         private void sendEmailToolStripMenuItem_Click(object sender, EventArgs e)
         {
-           clsGlobalSettings.FeatureIsNotImplemented();
+           clsUtil.FeatureIsNotImplemented();
             
         }
 
         private void phoneCallToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            clsGlobalSettings.FeatureIsNotImplemented();
+            clsUtil.FeatureIsNotImplemented();
         }
 
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e)

@@ -59,8 +59,8 @@ namespace DVLDPresentation.Users
 
             if (gtxtCurrentPassword.Text.Trim() != _User.Password)
             {
-                errorProvider1.SetError(gtxtCurrentPassword, "Current password is wrong!");
                 e.Cancel = true;
+                errorProvider1.SetError(gtxtCurrentPassword, "Current password is wrong!");
                 return;
             }
     
@@ -101,7 +101,7 @@ namespace DVLDPresentation.Users
 
         private void gbtnSave_Click(object sender, EventArgs e)
         {
-            if (!ValidateChildren())
+            if (!this.ValidateChildren())
             {
                 MessageBox.Show("Some fileds are not valide!, put the mouse over the red icon(s) to see the erro",
                    "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -118,7 +118,7 @@ namespace DVLDPresentation.Users
             }
             else
             {
-                MessageBox.Show("An Erro Occured, Password did not change.",
+                MessageBox.Show("An Error Occured, Password did not change.",
                   "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 

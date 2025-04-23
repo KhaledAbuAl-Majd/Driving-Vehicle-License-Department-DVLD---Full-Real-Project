@@ -26,7 +26,7 @@ namespace DVLDBusiness
         {
             get
             {
-                return this.FirstName + " " + this.SecondName + " " + this.ThirdName + " " + this.LastName;
+                return this.FirstName + " " + this.SecondName + " " + ((this.ThirdName == "") ? "" : this.ThirdName + " ") + this.LastName;
             }
         }
         public string NationalNo { get; set; }
@@ -194,9 +194,5 @@ namespace DVLDBusiness
             return clsPersonData.IsPersonExist(NationalNo);
         }
 
-        public string GetFullName()
-        {
-            return this.FirstName + " " + this.SecondName + " " + this.ThirdName + " " + this.LastName;
-        }
     }
 }

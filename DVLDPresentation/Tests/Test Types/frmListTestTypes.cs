@@ -14,57 +14,49 @@ namespace DVLDPresentation.Applications.Test_Types
 {
     public partial class frmListTestTypes : Form
     {
+        DataTable _dtAllTestTypes;
         public frmListTestTypes()
         {
             InitializeComponent();
         }
 
-        void _Load_RefreshApplicationTypesInDGV()
+        void _RefreshTestTypesList()
         {
-            DataTable dt = clsTestTypes.GetAllTestTypes();
+            _dtAllTestTypes = clsTestType.GetAllTestTypes();
+            dgvTestTypes.DataSource = _dtAllTestTypes;
+            lblNumOfRecords.Text = _dtAllTestTypes.Rows.Count.ToString();
+        }
 
-            if (dt.Rows.Count > 0)
+        private void frmManageTestTypes_Load(object sender, EventArgs e)
+        {
+            _RefreshTestTypesList();
+
+            if (_dtAllTestTypes.Rows.Count > 0)
             {
-                dt.Columns["TestTypeID"].ColumnName = "ID";
-                dt.Columns["TestTypeTitle"].ColumnName = "Title";
-                dt.Columns["TestTypeDescription"].ColumnName = "Description";
-                dt.Columns["TestFees"].ColumnName = "Fees";
+                dgvTestTypes.Columns[0].HeaderText = "ID";
+                dgvTestTypes.Columns[0].Width = 120;
 
-                dgvTestTypes.DataSource = dt.DefaultView;
-                dgvTestTypes.Columns["ID"].FillWeight = 15;
-                dgvTestTypes.Columns["Title"].FillWeight = 25;
-                dgvTestTypes.Columns["Description"].FillWeight = 50;
-                dgvTestTypes.Columns["Fees"].FillWeight = 10;
+                dgvTestTypes.Columns[1].HeaderText = "Title";
+                dgvTestTypes.Columns[1].Width = 200;
 
-                lblNumOfRecords.Text = dt.Rows.Count.ToString();
-            }
-            else
-            {
-                lblNumOfRecords.Text = "0";
+                dgvTestTypes.Columns[2].HeaderText = "Description";
+                dgvTestTypes.Columns[2].Width = 400;
+
+                dgvTestTypes.Columns[3].HeaderText = "Fees";
+                dgvTestTypes.Columns[3].Width = 100;
             }
         }
-        private void FrmUpdate_OnClose()
+
+        private void toolStripMenuItem3_Click_1(object sender, EventArgs e)
         {
-            _Load_RefreshApplicationTypesInDGV();
+            frmUpdateTestTypes frm = new frmUpdateTestTypes((clsTestType.enTestType)dgvTestTypes.CurrentRow.Cells[0].Value);
+            frm.OnSave += _RefreshTestTypesList;
+            frm.ShowDialog();
         }
 
         private void gbtnClose_Click_1(object sender, EventArgs e)
         {
             this.Close();
-        }
-
-        private void frmManageTestTypes_Load(object sender, EventArgs e)
-        {
-            _Load_RefreshApplicationTypesInDGV();
-        }
-
-        private void toolStripMenuItem3_Click_1(object sender, EventArgs e)
-        {
-            frmUpdateTestTypes frm = new frmUpdateTestTypes
-               (Convert.ToInt32(dgvTestTypes.SelectedCells[0].Value));
-
-            frm.OnClose += FrmUpdate_OnClose; ;
-            frm.ShowDialog();
         }
     }
 }

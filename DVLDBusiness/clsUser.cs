@@ -60,7 +60,7 @@ namespace DVLDBusiness
             string UserName = "", Password = "";
             bool IsActive = false;
 
-            if (clsUserData.GetPersonInfoByUserID(UserID, ref PersonID, ref UserName, ref Password, ref IsActive))
+            if (clsUserData.GetUserInfoByUserID(UserID, ref PersonID, ref UserName, ref Password, ref IsActive))
             {
                 return new clsUser(UserID, PersonID, UserName, Password, IsActive);
             }
@@ -73,7 +73,7 @@ namespace DVLDBusiness
             string UserName = "", Password = "";
             bool IsActive = false;
 
-            if (clsUserData.GetPersonInfoByPersonID(PersonID,ref UserID, ref UserName, ref Password, ref IsActive))
+            if (clsUserData.GetUserInfoByPersonID(PersonID,ref UserID, ref UserName, ref Password, ref IsActive))
             {
                 return new clsUser(UserID, PersonID, UserName, Password, IsActive);
             }
@@ -85,7 +85,7 @@ namespace DVLDBusiness
             int UserID = -1 , PersonID = -1;        
             bool IsActive = false;
 
-            if (clsUserData.GetPersonInfoByUsernameAndPassword(UserName, Password, ref UserID, ref PersonID, ref IsActive))
+            if (clsUserData.GetUserInfoByUsernameAndPassword(UserName, Password, ref UserID, ref PersonID, ref IsActive))
             {
                 return new clsUser(UserID, PersonID, UserName, Password, IsActive);
             }

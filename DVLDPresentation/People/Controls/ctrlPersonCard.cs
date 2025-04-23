@@ -86,7 +86,7 @@ namespace DVLDPresentation
             llblEditPersonInfo.Enabled = true;
             PersonID = SelectedPersonInfo.PersonID;
             lblPersonID.Text = SelectedPersonInfo.PersonID.ToString();
-            lblName.Text = SelectedPersonInfo.FirstName + " " + SelectedPersonInfo.SecondName + " " + SelectedPersonInfo.ThirdName + " " + SelectedPersonInfo.LastName;
+            lblName.Text = SelectedPersonInfo.FullName;
             lblNationalNo.Text = SelectedPersonInfo.NationalNo;
 
             _ChangeGendorDataAndLoadPersonImage((enGendor)SelectedPersonInfo.Gendor);

@@ -68,10 +68,10 @@ namespace DVLDPresentation.Applications.Manage_Applications.LocalDrivingLicenseA
 
             lblLDLApplicationID.Text = _LDLApplication.LocalDrvingApplicationID.ToString();
             lblClassName.Text = clsLicneseClasses.Find(_LDLApplication.LicenseClassID).ClassName;
-            lblName.Text = clsPerson.Find(clsApplications.Find(_LDLApplication.ApplicationID).PersonID).GetFullName();
+            lblName.Text = clsPerson.Find(clsApplications.Find(_LDLApplication.ApplicationID).PersonID).FullName;
             lblTrial.Text = _TestAppointment.TrialNumber.ToString();
             lblDate.Text = _TestAppointment.AppointmentDate.ToString("dd/MMM/yyyy");
-            lblFees.Text = clsTestTypes.FindTestType(_TestAppointment.TestTypeID).TestFees.ToString();
+            lblFees.Text = clsTestType.Find((clsTestType.enTestType)_TestAppointment.TestTypeID).TestTypeFees.ToString();
             _ChagelblTestID("Not Taken Yet");
         }
         void _Save()
@@ -80,7 +80,7 @@ namespace DVLDPresentation.Applications.Manage_Applications.LocalDrivingLicenseA
                "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1) == DialogResult.Yes))
             {
 
-                clsTests NewTest = new clsTests(_TestAppointment.TestAppointmentID, clsGlobalSettings.LoggedInUser.UserID);
+                clsTests NewTest = new clsTests(_TestAppointment.TestAppointmentID, clsGlobalSettings.CurrentUser.UserID);
                 NewTest.Notes = gtxtNotes.Text;
                 NewTest.TestResult = grbPass.Checked;
 

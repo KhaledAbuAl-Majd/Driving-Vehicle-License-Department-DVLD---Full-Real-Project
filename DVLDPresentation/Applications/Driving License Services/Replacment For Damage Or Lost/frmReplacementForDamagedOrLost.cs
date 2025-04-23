@@ -37,7 +37,7 @@ namespace DVLDPresentation.Applications.Driving_License_Services.Replacment_For_
         }
         void _ChangeApplicationFeesLabels()
         {
-            lblApplicationFees.Text = clsApplicationTypes.FindApplicationType(Convert.ToInt32(_ApplicationTypeID_Mode)).ApplicationFees.ToString();
+            lblApplicationFees.Text = clsApplicationType.Find(Convert.ToInt32(_ApplicationTypeID_Mode)).ApplicationFees.ToString();
         }
         void _ReplacementForDamagedMode()
         {
@@ -68,7 +68,7 @@ namespace DVLDPresentation.Applications.Driving_License_Services.Replacment_For_
         void _InitializeDataInLoad()
         {
             lblApplicationDate.Text = DateTime.Now.ToString("dd/MMM/yyyy");  
-            lblCreatedBy.Text = clsGlobalSettings.LoggedInUser.UserName;
+            lblCreatedBy.Text = clsGlobalSettings.CurrentUser.UserName;
         }
         void _OnErrorAtSearch()
         {
@@ -119,7 +119,7 @@ namespace DVLDPresentation.Applications.Driving_License_Services.Replacment_For_
                     ApplicationDate = DateTime.Now,
                     ApplicationStatusID = clsApplicationStatuses.Find("Completed").ApplicationStatusID,
                     ApplicationTypeID = Convert.ToInt32(this._ApplicationTypeID_Mode),
-                    CreatedByUserID = clsGlobalSettings.LoggedInUser.UserID,
+                    CreatedByUserID = clsGlobalSettings.CurrentUser.UserID,
                     LastStatusDate = DateTime.Now,
                     PersonID = this._PersonID
                 };

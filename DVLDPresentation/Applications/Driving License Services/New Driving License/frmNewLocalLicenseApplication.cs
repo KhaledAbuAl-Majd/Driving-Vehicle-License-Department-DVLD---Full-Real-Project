@@ -17,7 +17,7 @@ namespace DVLDPresentation.Applications.Driving_License_Services.New_Driving_Lic
         public event Action OnClose;      
         bool _IsSave;
         int _CurrentLDLApplicationClassID;
-        clsApplicationTypes _ApplicationType;
+        clsApplicationType _ApplicationType;
         clsApplications _Application;
         clsLocalDrivingApplictions _LDLApplication;
         public frmNewLocalLicenseApplication(int LDLApplicationID)
@@ -25,7 +25,7 @@ namespace DVLDPresentation.Applications.Driving_License_Services.New_Driving_Lic
             InitializeComponent();
             int _ApplicationTypeID = 1;
             //ctrlPersonCardWithFilter1.IsToAddNewUser = false;
-            _ApplicationType = clsApplicationTypes.FindApplicationType(_ApplicationTypeID);
+            _ApplicationType = clsApplicationType.Find(_ApplicationTypeID);
             if(LDLApplicationID != -1)
             {
                 _LDLApplication = clsLocalDrivingApplictions.FindByLDLApplicationID(LDLApplicationID);
@@ -53,7 +53,7 @@ namespace DVLDPresentation.Applications.Driving_License_Services.New_Driving_Lic
             gcbLicenseClass.SelectedIndex = 0;
             lblApplicationDate.Text = DateTime.Now.ToShortDateString();
             lblApplicationFees.Text = _ApplicationType.ApplicationFees.ToString();
-            lblCreatedBy.Text = clsGlobalSettings.LoggedInUser.UserName;
+            lblCreatedBy.Text = clsGlobalSettings.CurrentUser.UserName;
         }
         bool _CheckFromPerson()
         {
@@ -66,7 +66,7 @@ namespace DVLDPresentation.Applications.Driving_License_Services.New_Driving_Lic
             _Application.ApplicationTypeID = _ApplicationType.ApplicationTypeID;
             //NewApplication.ApplicationStatus = "New";
             _Application.PaidFees = _ApplicationType.ApplicationFees;
-            _Application.CreatedByUserID = clsGlobalSettings.LoggedInUser.UserID;
+            _Application.CreatedByUserID = clsGlobalSettings.CurrentUser.UserID;
 
             if (_Application.Save())
             {

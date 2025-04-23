@@ -45,8 +45,8 @@ namespace DVLDPresentation.Applications.Driving_License_Services.Renew_Driving_L
         {
             lblApplicationDate.Text = DateTime.Now.ToString("dd/MMM/yyyy");
             lblIssueDate.Text = DateTime.Now.ToString("dd/MMM/yyyy");
-            lblApplicationFees.Text = clsApplicationTypes.FindApplicationType(_ApplicationTypeID).ApplicationFees.ToString();
-            lblCreatedBy.Text = clsGlobalSettings.LoggedInUser.UserName;
+            lblApplicationFees.Text = clsApplicationType.Find(_ApplicationTypeID).ApplicationFees.ToString();
+            lblCreatedBy.Text = clsGlobalSettings.CurrentUser.UserName;
         }
         void _OnErrorAtSearch()
         {
@@ -99,7 +99,7 @@ namespace DVLDPresentation.Applications.Driving_License_Services.Renew_Driving_L
                     ApplicationDate = DateTime.Now,
                     ApplicationStatusID = clsApplicationStatuses.Find("Completed").ApplicationStatusID,
                     ApplicationTypeID = this._ApplicationTypeID,
-                    CreatedByUserID = clsGlobalSettings.LoggedInUser.UserID,
+                    CreatedByUserID = clsGlobalSettings.CurrentUser.UserID,
                     LastStatusDate = DateTime.Now,
                     PersonID = this._PersonID
                 };

@@ -46,10 +46,10 @@ namespace DVLDPresentation.Controls
                 lblPassedTests.Text = LDLApplicatoin.PassedTests.ToString() + "/3";
                 lblApplicationID.Text = LDLApplicatoin.ApplicationID.ToString(); ;
                 lblStatus.Text = clsApplicationStatuses.Find(Application.ApplicationStatusID).ApplicationStatus;
-                clsApplicationTypes ApplicationType = clsApplicationTypes.FindApplicationType(Application.ApplicationTypeID);
+                clsApplicationType ApplicationType = clsApplicationType.Find(Application.ApplicationTypeID);
                 lblFees.Text = ApplicationType.ApplicationFees.ToString();
                 lblType.Text = ApplicationType.ApplicationTypeTitle;
-                lblApplicant.Text = clsPerson.Find(Application.PersonID).GetFullName();
+                lblApplicant.Text = clsPerson.Find(Application.PersonID).FullName;
                 lblDate.Text = Application.ApplicationDate.ToString("dd/MMM/yyyy");
                 lblStatusDate.Text = Application.LastStatusDate.ToString("dd/MMM/yyyy");
                 lblCreatedBy.Text = clsUser.FindByUserID(Application.CreatedByUserID).UserName;

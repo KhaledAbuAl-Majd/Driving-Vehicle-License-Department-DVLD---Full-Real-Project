@@ -19,8 +19,6 @@ E:\Visual Studio\source\Projects\Course19\DVLDProject\DVLDPresentation\obj\Debug
 E:\Visual Studio\source\Projects\Course19\DVLDProject\DVLDPresentation\obj\Debug\DVLDPresentation.Users.frmUserInfo.resources
 E:\Visual Studio\source\Projects\Course19\DVLDProject\DVLDPresentation\obj\Debug\DVLDPresentation.Users.frmChangePassword.resources
 E:\Visual Studio\source\Projects\Course19\DVLDProject\DVLDPresentation\obj\Debug\DVLDPresentation.Login_MainPage.frmLogin.resources
-E:\Visual Studio\source\Projects\Course19\DVLDProject\DVLDPresentation\obj\Debug\DVLDPresentation.Applications.frmManageApplicationTypes.resources
-E:\Visual Studio\source\Projects\Course19\DVLDProject\DVLDPresentation\obj\Debug\DVLDPresentation.Applications.Application_Types.frmUpdateApplicationTypes.resources
 E:\Visual Studio\source\Projects\Course19\DVLDProject\DVLDPresentation\obj\Debug\DVLDPresentation.Applications.Test_Types.frmUpdateTestTypes.resources
 E:\Visual Studio\source\Projects\Course19\DVLDProject\DVLDPresentation\obj\Debug\DVLDPresentation.Applications.Driving_License_Services.New_Driving_License.frmNewLocalLicenseApplication.resources
 E:\Visual Studio\source\Projects\Course19\DVLDProject\DVLDPresentation\obj\Debug\DVLDPresentation.Applications.Manage_Applications.frmLocalDrivingLicenseApplications.resources
@@ -52,3 +50,5 @@ E:\Visual Studio\source\Projects\Course19\DVLDProject\DVLDPresentation\obj\Debug
 E:\Visual Studio\source\Projects\Course19\DVLDProject\DVLDPresentation\obj\Debug\DVLDPresentation.Users.frmListUsers.resources
 E:\Visual Studio\source\Projects\Course19\DVLDProject\DVLDPresentation\obj\Debug\DVLDPresentation.People.frmFindPerson.resources
 E:\Visual Studio\source\Projects\Course19\DVLDProject\DVLDPresentation\obj\Debug\DVLDPresentation.Users.Controls.ctrUserCard.resources
+E:\Visual Studio\source\Projects\Course19\DVLDProject\DVLDPresentation\obj\Debug\DVLDPresentation.Applications.frmListApplicationTypes.resources
+E:\Visual Studio\source\Projects\Course19\DVLDProject\DVLDPresentation\obj\Debug\DVLDPresentation.Applications.Application_Types.frmEditApplicationTypes.resources

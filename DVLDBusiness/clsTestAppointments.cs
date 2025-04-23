@@ -32,7 +32,7 @@ namespace DVLDBusiness
             this.TestTypeID = TestTypeID;
             this.LocalDrivingLicenseApplicationID = LocalDrivingLicenseApplicationID;
             this.AppointmentDate = DateTime.Today;
-            this.PaidFees = clsTestTypes.FindTestType(this.TestTypeID).TestFees;
+            this.PaidFees = clsTestType.Find((clsTestType.enTestType)this.TestTypeID).TestTypeFees;
             this.CreatedByUserID = CreatedByUserID;
             this.IsLocked = false;
             _SetTrailNumber();

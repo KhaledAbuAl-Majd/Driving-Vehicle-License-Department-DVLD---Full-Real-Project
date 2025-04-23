@@ -19,8 +19,8 @@ namespace DVLDPresentation.Users
         public event Action OnSave;
         public enum enMode { AddNew = 0, Update = 1 }
         enMode _Mode;
-        public int UserID = -1;
-        private clsUser User;
+        private int _UserID = -1;
+        private clsUser _User;
 
         public frmAddUpdateUser()
         {
@@ -30,7 +30,7 @@ namespace DVLDPresentation.Users
         public frmAddUpdateUser(int UserID)
         {
             InitializeComponent();
-            this.UserID = UserID;
+            this._UserID = UserID;
             _Mode = enMode.Update;
         }
         void _ChangeEnaplityForLoginInfoPanel(bool value)
@@ -51,7 +51,7 @@ namespace DVLDPresentation.Users
         }
         void _AddNewUserMode()
         {
-            User = new clsUser();
+            _User = new clsUser();
             _ChangeHeader("Add New User");
             _ChangeFormText("Add New User");
 
@@ -61,21 +61,21 @@ namespace DVLDPresentation.Users
         }
         void _LoadData()
         {
-            lblUserID.Text = User.UserID.ToString();
-            gtxtUserName.Text = User.UserName;
-            gtxtPassword.Text = User.Password;
-            gtxtConfirmPassword.Text = User.Password;
-            gchkIsActive.Checked = User.IsActive;
-            ctrlPersonCardWithFilter1.LoadPersonInfo(User.PersonID);
+            lblUserID.Text = _User.UserID.ToString();
+            gtxtUserName.Text = _User.UserName;
+            gtxtPassword.Text = _User.Password;
+            gtxtConfirmPassword.Text = _User.Password;
+            gchkIsActive.Checked = _User.IsActive;
+            ctrlPersonCardWithFilter1.LoadPersonInfo(_User.PersonID);
         }
         void _UpdateUserMode()
         {
-            User = clsUser.FindByUserID(UserID);
+            _User = clsUser.FindByUserID(_UserID);
             ctrlPersonCardWithFilter1.FilterEnabled = false;
 
-            if(User == null)
+            if(_User == null)
             {
-                MessageBox.Show("No User with ID = " + User, "User Not Found", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show("No User with ID = " + _User, "User Not Found", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 this.Close();
                 return;
             }
@@ -110,19 +110,19 @@ namespace DVLDPresentation.Users
                 return;
             }
 
-            User.PersonID = ctrlPersonCardWithFilter1.PersonID;
-            User.UserName = gtxtUserName.Text.Trim();
-            User.Password = gtxtPassword.Text.Trim();
-            User.IsActive = gchkIsActive.Checked;
+            _User.PersonID = ctrlPersonCardWithFilter1.PersonID;
+            _User.UserName = gtxtUserName.Text.Trim();
+            _User.Password = gtxtPassword.Text.Trim();
+            _User.IsActive = gchkIsActive.Checked;
 
 
-            if (User.Save())
+            if (_User.Save())
             {
-                lblUserID.Text = User.UserID.ToString();
+                lblUserID.Text = _User.UserID.ToString();
                 _Mode = enMode.Update;
                 _ChangeHeader("Update User");
                 _ChangeFormText("Update User");
-                UserID = User.UserID;
+                _UserID = _User.UserID;
 
                 MessageBox.Show("Data Saved Successfully.", "Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
@@ -172,7 +172,7 @@ namespace DVLDPresentation.Users
                 return;
             }
 
-            if (clsUser.IsUserExist(gtxtUserName.Text.Trim()) && User.UserName != gtxtUserName.Text.Trim())
+            if (clsUser.IsUserExist(gtxtUserName.Text.Trim()) && _User.UserName.ToLower() != gtxtUserName.Text.Trim().ToLower())
             {
                 e.Cancel = true;
                 errorProvider1.SetError(gtxtUserName, "Username is used by another user");
@@ -198,19 +198,19 @@ namespace DVLDPresentation.Users
                 {
                     MessageBox.Show("Selected Person already has a user, choose another one.", "Select another Person", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     ctrlPersonCardWithFilter1.FilterFocus();
-                    return;
+                }
+                else
+                {
+                    _ChageEnaplityOfSaveButton(true);
+                    _ChangeEnaplityForLoginInfoPanel(true);
+                    gtcUserInfo.SelectedTab = gtpLoginInfo;
                 }
             }
             else
             {
                 MessageBox.Show("Please Select a Person", "Select a Person", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 ctrlPersonCardWithFilter1.FilterFocus();
-                return;
-            }
-
-            _ChageEnaplityOfSaveButton(true);
-            _ChangeEnaplityForLoginInfoPanel(true);
-            gtcUserInfo.SelectedTab = gtpLoginInfo;
+            }   
         }
 
         private void gbtnClose_Click(object sender, EventArgs e)

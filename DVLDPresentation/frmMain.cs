@@ -15,6 +15,7 @@ using DVLDPresentation.Applications.Driving_License_Services.Replacment_For_Dama
 using DVLDPresentation.Applications.Manage_Applications;
 using DVLDPresentation.Applications.Manage_Applications.International_Driving_License_Application;
 using DVLDPresentation.Applications.Test_Types;
+using DVLDPresentation.Login_MainPage;
 using DVLDPresentation.People;
 using DVLDPresentation.Users;
 
@@ -22,9 +23,18 @@ namespace DVLDPresentation.Login_HomePage
 {
     public partial class frmMain : Form
     {
-        public frmMain()
+        frmLogin _frmLogin;
+
+        void _SignOut()
+        {
+            //When You Return
+            clsGlobalSettings.CurrentUser = null;
+            _frmLogin.Show();
+        }
+        public frmMain(frmLogin frm)
         {
             InitializeComponent();
+            _frmLogin = frm;
         }
         private void peopleToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -46,19 +56,20 @@ namespace DVLDPresentation.Login_HomePage
 
         private void currentUserInfoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmUserInfo frm = new frmUserInfo(clsGlobalSettings.LoggedInUser.UserID);
+            frmUserInfo frm = new frmUserInfo(clsGlobalSettings.CurrentUser.UserID);
             frm.ShowDialog();
         }
 
         private void changePasswordToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmChangePassword frm = new frmChangePassword(clsGlobalSettings.LoggedInUser.UserID);
+            frmChangePassword frm = new frmChangePassword(clsGlobalSettings.CurrentUser.UserID);
 
             frm.ShowDialog();
         }
 
         private void signOutToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            //it will call closing event and it will call sign out function
             this.Close();
         }
 
@@ -69,7 +80,7 @@ namespace DVLDPresentation.Login_HomePage
 
         private void manageApplicationTypesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmManageApplicationTypes frm = new frmManageApplicationTypes();
+            frmListApplicationTypes frm = new frmListApplicationTypes();
 
             frm.ShowDialog();
         }
@@ -154,6 +165,11 @@ namespace DVLDPresentation.Login_HomePage
         {
             frmReleaseDetainedLicense frm = new frmReleaseDetainedLicense(-1);
             frm.ShowDialog();
+        }
+
+        private void frmMain_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            _SignOut();
         }
     }
 }

@@ -39,7 +39,7 @@ namespace DVLDPresentation.Applications.Detain_Licenses
         void _InitializeDataInLoad()
         {
             lblDetainDate.Text = DateTime.Now.ToString("dd/MMM/yyyy");
-            lblCreatedBy.Text = clsGlobalSettings.LoggedInUser.UserName;
+            lblCreatedBy.Text = clsGlobalSettings.CurrentUser.UserName;
         }
         void _OnErrorAtSearch()
         {
@@ -91,7 +91,7 @@ namespace DVLDPresentation.Applications.Detain_Licenses
             MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2)) == DialogResult.Yes)
             {
                 float FineFees = Convert.ToSingle(gtxtFineFees.Text);
-                clsDetainedLicenses NewDetainLicense = new clsDetainedLicenses(_LicenseID, FineFees, clsGlobalSettings.LoggedInUser.UserID);
+                clsDetainedLicenses NewDetainLicense = new clsDetainedLicenses(_LicenseID, FineFees, clsGlobalSettings.CurrentUser.UserID);
 
                 if (NewDetainLicense.Save())
                 {

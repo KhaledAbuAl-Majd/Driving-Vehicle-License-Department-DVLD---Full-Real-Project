@@ -52,17 +52,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Applications\Application Types\frmManageApplicationTypes.cs">
+    <Compile Include="Applications\Application Types\frmListApplicationTypes.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Applications\Application Types\frmManageApplicationTypes.Designer.cs">
-      <DependentUpon>frmManageApplicationTypes.cs</DependentUpon>
+    <Compile Include="Applications\Application Types\frmListApplicationTypes.Designer.cs">
+      <DependentUpon>frmListApplicationTypes.cs</DependentUpon>
     </Compile>
-    <Compile Include="Applications\Application Types\frmUpdateApplicationTypes.cs">
+    <Compile Include="Applications\Application Types\frmEditApplicationTypes.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Applications\Application Types\frmUpdateApplicationTypes.Designer.cs">
-      <DependentUpon>frmUpdateApplicationTypes.cs</DependentUpon>
+    <Compile Include="Applications\Application Types\frmEditApplicationTypes.Designer.cs">
+      <DependentUpon>frmEditApplicationTypes.cs</DependentUpon>
     </Compile>
     <Compile Include="Applications\Detain Licenses\frmDetainLicense.cs">
       <SubType>Form</SubType>
@@ -262,11 +262,11 @@
     <Compile Include="People\Controls\ctrlPersonCard.Designer.cs">
       <DependentUpon>ctrlPersonCard.cs</DependentUpon>
     </Compile>
-    <Compile Include="Users\Controls\ctrUserCard.cs">
+    <Compile Include="Users\Controls\ctrlUserCard.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Users\Controls\ctrUserCard.Designer.cs">
-      <DependentUpon>ctrUserCard.cs</DependentUpon>
+    <Compile Include="Users\Controls\ctrlUserCard.Designer.cs">
+      <DependentUpon>ctrlUserCard.cs</DependentUpon>
     </Compile>
     <Compile Include="Users\frmAddUpdateUser.cs">
       <SubType>Form</SubType>
@@ -292,11 +292,11 @@
     <Compile Include="Users\frmUserInfo.Designer.cs">
       <DependentUpon>frmUserInfo.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Applications\Application Types\frmManageApplicationTypes.resx">
-      <DependentUpon>frmManageApplicationTypes.cs</DependentUpon>
+    <EmbeddedResource Include="Applications\Application Types\frmListApplicationTypes.resx">
+      <DependentUpon>frmListApplicationTypes.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Applications\Application Types\frmUpdateApplicationTypes.resx">
-      <DependentUpon>frmUpdateApplicationTypes.cs</DependentUpon>
+    <EmbeddedResource Include="Applications\Application Types\frmEditApplicationTypes.resx">
+      <DependentUpon>frmEditApplicationTypes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Applications\Detain Licenses\frmDetainLicense.resx">
       <DependentUpon>frmDetainLicense.cs</DependentUpon>
@@ -404,8 +404,8 @@
     <EmbeddedResource Include="People\Controls\ctrlPersonCard.resx">
       <DependentUpon>ctrlPersonCard.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Users\Controls\ctrUserCard.resx">
-      <DependentUpon>ctrUserCard.cs</DependentUpon>
+    <EmbeddedResource Include="Users\Controls\ctrlUserCard.resx">
+      <DependentUpon>ctrlUserCard.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Users\frmAddUpdateUser.resx">
       <DependentUpon>frmAddUpdateUser.cs</DependentUpon>
@@ -471,6 +471,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\reload %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TestType 512.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -30,7 +30,7 @@ namespace DVLDPresentation.Controls
                 clsDrivers Driver = clsDrivers.FindByDriverID(IntLicense.DriverID);
                 clsPerson Person = clsPerson.Find(Driver.PersonID);
 
-                lblName.Text = Person.GetFullName();
+                lblName.Text = Person.FullName;
                 lblIntLicenseID.Text = IntLicense.InternationalLicenseID.ToString();
                 lblLicneseID.Text = IntLicense.IssuedUsingLocalLicenseID.ToString();
                 lblNationalNo.Text = Person.NationalNo;

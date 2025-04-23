@@ -83,6 +83,7 @@
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "User Info";
+            this.Load += new System.EventHandler(this.frmUserInfo_Load);
             this.ResumeLayout(false);
 
         }
