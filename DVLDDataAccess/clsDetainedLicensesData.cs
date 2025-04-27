@@ -15,7 +15,7 @@ namespace DVLDDataAccess
         {
             int DetainID = -1;
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSetings.ConnectionString);
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
             string query = @"INSERT INTO DetainedLicenses (LicenseID,DetainDate,FineFees,CreatedByUserID,IsReleased)
                             VALUES (@LicenseID,@DetainDate,@FineFees,@CreatedByUserID,0);
@@ -54,7 +54,7 @@ namespace DVLDDataAccess
         {
             bool Result = false;
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSetings.ConnectionString);
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
             string query = @"UPDATE DetainedLicenses SET ReleasedDate = @ReleasedDate,
             ReleasedByUserID = @ReleasedByUserID,ReleaseApplicationID = @ReleaseApplicationID, IsReleased = 1 
@@ -91,7 +91,7 @@ namespace DVLDDataAccess
         {
             bool IsFound = false;
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSetings.ConnectionString);
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
             string query = @"SELECT * FROM DetainedLicenses WHERE DetainID = @DetainID";
 
@@ -135,7 +135,7 @@ namespace DVLDDataAccess
         {
             bool IsFound = false;
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSetings.ConnectionString);
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
             string query = @"SELECT * FROM DetainedLicenses WHERE LicenseID = @LicenseID AND IsReleased = 0";
 
@@ -178,7 +178,7 @@ namespace DVLDDataAccess
         {
             bool IsDetained = false;
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSetings.ConnectionString);
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
             string query = @"SELECT Found = 1 WHERE EXISTS(
                              SELECT * FROM DetainedLicenses WHERE DetainID = @DetainID AND  IsReleased = 0);";
@@ -210,7 +210,7 @@ namespace DVLDDataAccess
         {
             bool IsDetained = false;
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSetings.ConnectionString);
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
             string query = @"SELECT Found = 1 WHERE EXISTS(
                              SELECT * FROM DetainedLicenses WHERE LicenseID = @LicenseID AND  IsReleased = 0);";
@@ -242,7 +242,7 @@ namespace DVLDDataAccess
         {
             DataTable dtAll = new DataTable();
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSetings.ConnectionString);
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
             string query = @"SELECT * FROM DetainedLicenses;";
 

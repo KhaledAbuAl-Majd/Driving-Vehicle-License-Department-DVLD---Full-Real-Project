@@ -14,7 +14,7 @@ namespace DVLDDataAccess
         {
             bool IsFound = false;
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSetings.ConnectionString);
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
             string query = "SELECT * FROM TestTypes WHERE TestTypeID = @TestTypeID";
 
@@ -57,7 +57,7 @@ namespace DVLDDataAccess
         {
             DataTable TestTypes = new DataTable();
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSetings.ConnectionString);
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
             string query = "SELECT * FROM TestTypes";
 
@@ -90,7 +90,7 @@ namespace DVLDDataAccess
         {
             bool Result = false;
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSetings.ConnectionString);
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
             string query = @"Update TestTypes SET TestTypeTitle = @TestTypeTitle,TestTypeDescription = @TestTypeDescription,
                              TestTypeFees = @TestTypeFees WHERE TestTypeID = @TestTypeID";

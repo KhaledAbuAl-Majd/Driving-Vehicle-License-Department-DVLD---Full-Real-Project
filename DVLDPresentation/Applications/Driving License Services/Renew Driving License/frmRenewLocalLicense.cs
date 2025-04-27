@@ -18,7 +18,7 @@ namespace DVLDPresentation.Applications.Driving_License_Services.Renew_Driving_L
         //Renew Driving License Service ID
         int _ApplicationTypeID = 2;
         int _PersonID;
-        clsLicenses _OLDLocalLicense;
+        clsLicense _OLDLocalLicense;
         int _NewLicenseID;
         public frmRenewLocalLicense()
         {
@@ -30,7 +30,7 @@ namespace DVLDPresentation.Applications.Driving_License_Services.Renew_Driving_L
 
         void _DeActivateOldLicense()
         {
-            _OLDLocalLicense.DeActiveLicense();
+            _OLDLocalLicense.DeactivateCurrentLicense();
         }
         void _ChangeEnaplityOfRenewButton(bool Value)
         {
@@ -55,12 +55,12 @@ namespace DVLDPresentation.Applications.Driving_License_Services.Renew_Driving_L
             _ChangeEnaplityOfRenewButton(false);
             lblOldLicenseID.Text = "???";
         }
-        private void OnSuccedAtSearch_OnSuccedAtSearch(int PersonID, clsLicenses LocalLicense, object sender)
+        private void OnSuccedAtSearch_OnSuccedAtSearch(int PersonID, clsLicense LocalLicense, object sender)
         {
             _PersonID = PersonID;
             _OLDLocalLicense = LocalLicense;
-            lblOldLicenseID.Text = LocalLicense.LicneseID.ToString();
-            lblLicenseFees.Text = clsLicneseClasses.Find(LocalLicense.LicenseClassID).ClassFees.ToString();
+            lblOldLicenseID.Text = LocalLicense.LicenseID.ToString();
+            lblLicenseFees.Text = clsLicenseClass.Find(LocalLicense.LicenseClassID).ClassFees.ToString();
             lblTotalFees.Text = (Convert.ToSingle(lblApplicationFees.Text) + Convert.ToSingle(lblLicenseFees.Text)).ToString();
             _ChangeEnaplityOfLinkLabel(llblShowLicenseHistory, true);
             _ChangeEnaplityOfRenewButton(true);
@@ -94,42 +94,42 @@ namespace DVLDPresentation.Applications.Driving_License_Services.Renew_Driving_L
             {
 
 
-                clsApplications NewApplication = new clsApplications
+                clsApplication NewApplication = new clsApplication
                 {
-                    ApplicationDate = DateTime.Now,
-                    ApplicationStatusID = clsApplicationStatuses.Find("Completed").ApplicationStatusID,
-                    ApplicationTypeID = this._ApplicationTypeID,
-                    CreatedByUserID = clsGlobalSettings.CurrentUser.UserID,
-                    LastStatusDate = DateTime.Now,
-                    PersonID = this._PersonID
+                    //ApplicationDate = DateTime.Now,
+                    //ApplicationStatus = clsApplicationStatuses.Find("Completed").ApplicationStatusID,
+                    //ApplicationTypeID = this._ApplicationTypeID,
+                    //CreatedByUserID = clsGlobalSettings.CurrentUser.UserID,
+                    //LastStatusDate = DateTime.Now,
+                    //ApplicantPersonID = this._PersonID
                 };
 
                 if (NewApplication.Save())
                 {
 
 
-                    clsLicenses _NewLicense = new clsLicenses(NewApplication, _OLDLocalLicense, "Renew");
+                    //clsLicense _NewLicense = new clsLicense(NewApplication, _OLDLocalLicense, "Renew");
 
-                    if (_NewLicense.Save())
-                    {
-                        _DeActivateOldLicense();
+                    //if (_NewLicense.Save())
+                    //{
+                    //    _DeActivateOldLicense();
 
-                        MessageBox.Show($"License Issued Successfully With ID = {_NewLicense.LicneseID}",
-                            "License Renewed", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //    MessageBox.Show($"License Issued Successfully With ID = {_NewLicense.LicenseID}",
+                    //        "License Renewed", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                        _NewLicenseID = _NewLicense.LicneseID;
-                        _ChangeEnaplityOfRenewButton(false);
-                        _ChangeEnaplityOfLinkLabel(llblShowLicenseHistory, true);
-                        _ChangeEnaplityOfLinkLabel(llblShowNewLicenseInfo, true);
-                        lblRenewILApplicationID.Text = _NewLicense.ApplicationID.ToString();
-                        lblRenewedLicenseID.Text = _NewLicense.LicneseID.ToString();
-                        lblExpirationDate.Text = _NewLicense.ExpirationDate.ToString("dd/MMM/yyyy");
-                        ctrlDriverLicenseInfoCardWithFilter1.ChangeEnaplityOfGBFilterBy(false);
-                    }
-                    else
-                    {
-                        MessageBox.Show($"Error To Renew License!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
+                    //    _NewLicenseID = _NewLicense.LicenseID;
+                    //    _ChangeEnaplityOfRenewButton(false);
+                    //    _ChangeEnaplityOfLinkLabel(llblShowLicenseHistory, true);
+                    //    _ChangeEnaplityOfLinkLabel(llblShowNewLicenseInfo, true);
+                    //    lblRenewILApplicationID.Text = _NewLicense.ApplicationID.ToString();
+                    //    lblRenewedLicenseID.Text = _NewLicense.LicenseID.ToString();
+                    //    lblExpirationDate.Text = _NewLicense.ExpirationDate.ToString("dd/MMM/yyyy");
+                    //    ctrlDriverLicenseInfoCardWithFilter1.ChangeEnaplityOfGBFilterBy(false);
+                    //}
+                    //else
+                    //{
+                    //    MessageBox.Show($"Error To Renew License!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    //}
                 }
             }
         }

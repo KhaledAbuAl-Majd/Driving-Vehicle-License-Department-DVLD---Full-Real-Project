@@ -16,7 +16,7 @@ namespace DVLDPresentation.Applications.Manage_Applications.LocalDrivingLicenseA
     {
         public event Action OnClose;
 
-        clsTestAppointments _TestAppointment;
+        clsTestAppointment _TestAppointment;
         enum enTestType { VisionTest = 1, WrittenTest = 2, StreetTest = 3 }
         enTestType _TestType;
         bool _IsSave = false;
@@ -25,7 +25,7 @@ namespace DVLDPresentation.Applications.Manage_Applications.LocalDrivingLicenseA
         public frmTakeTest(int TestAppointmentID)
         {
             InitializeComponent();
-            _TestAppointment = clsTestAppointments.Find(TestAppointmentID);
+            _TestAppointment = clsTestAppointment.Find(TestAppointmentID);
             _TestType = (enTestType)_TestAppointment.TestTypeID;
         }
 
@@ -63,13 +63,13 @@ namespace DVLDPresentation.Applications.Manage_Applications.LocalDrivingLicenseA
         }
         void _FillDataInLabels()
         {
-            clsLocalDrivingApplictions _LDLApplication = clsLocalDrivingApplictions.FindByLDLApplicationID(_TestAppointment.LocalDrivingLicenseApplicationID);
+            clsLocalDrivingLicenseApplication _LDLApplication = clsLocalDrivingLicenseApplication.FindByLocalDrivingAppLicenseID(_TestAppointment.LocalDrivingLicenseApplicationID);
 
 
-            lblLDLApplicationID.Text = _LDLApplication.LocalDrvingApplicationID.ToString();
-            lblClassName.Text = clsLicneseClasses.Find(_LDLApplication.LicenseClassID).ClassName;
-            lblName.Text = clsPerson.Find(clsApplications.Find(_LDLApplication.ApplicationID).PersonID).FullName;
-            lblTrial.Text = _TestAppointment.TrialNumber.ToString();
+            lblLDLApplicationID.Text = _LDLApplication.LocalDrivingLicenseApplicationID.ToString();
+            lblClassName.Text = clsLicenseClass.Find(_LDLApplication.LicenseClassID).ClassName;
+            lblName.Text = clsPerson.Find(clsApplication.FindBaseApplication(_LDLApplication.ApplicationID).ApplicantPersonID).FullName;
+            //lblTrial.Text = _TestAppointment.TrialNumber.ToString();
             lblDate.Text = _TestAppointment.AppointmentDate.ToString("dd/MMM/yyyy");
             lblFees.Text = clsTestType.Find((clsTestType.enTestType)_TestAppointment.TestTypeID).TestTypeFees.ToString();
             _ChagelblTestID("Not Taken Yet");
@@ -80,21 +80,21 @@ namespace DVLDPresentation.Applications.Manage_Applications.LocalDrivingLicenseA
                "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1) == DialogResult.Yes))
             {
 
-                clsTests NewTest = new clsTests(_TestAppointment.TestAppointmentID, clsGlobalSettings.CurrentUser.UserID);
-                NewTest.Notes = gtxtNotes.Text;
-                NewTest.TestResult = grbPass.Checked;
+                //clsTest NewTest = new clsTest(_TestAppointment.TestAppointmentID, clsGlobalSettings.CurrentUser.UserID);
+                //NewTest.Notes = gtxtNotes.Text;
+                //NewTest.TestResult = grbPass.Checked;
 
-                if (NewTest.Save())
-                {
-                    _IsSave = true;
-                    MessageBox.Show("Data Saved Successfully!", "Succed", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    _Close();
-                }
-                else
-                {
-                    _IsSave = false;
-                    MessageBox.Show("Failed To Save !", "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                //if (NewTest.Save())
+                //{
+                //    _IsSave = true;
+                //    MessageBox.Show("Data Saved Successfully!", "Succed", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //    _Close();
+                //}
+                //else
+                //{
+                //    _IsSave = false;
+                //    MessageBox.Show("Failed To Save !", "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //}
             }
         }
         void _Close()

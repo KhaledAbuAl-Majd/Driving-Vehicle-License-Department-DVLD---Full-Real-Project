@@ -49,11 +49,11 @@ namespace DVLDPresentation.Applications.Detain_Licenses
             lblLicenseID.Text = "???";
             _IsDetained = false;
         }
-        private void OnSuccedAtSearch_OnSuccedAtSearch(int PersonID, clsLicenses LocalLicense, object sender)
+        private void OnSuccedAtSearch_OnSuccedAtSearch(int PersonID, clsLicense LocalLicense, object sender)
         {
             _PersonID = PersonID;
-            _LicenseID = LocalLicense.LicneseID;
-            lblLicenseID.Text = LocalLicense.LicneseID.ToString();
+            _LicenseID = LocalLicense.LicenseID;
+            lblLicenseID.Text = LocalLicense.LicenseID.ToString();
             _ChangeEnaplityOfLinkLabel(llblShowLicenseHistory, true);
             _ChangeEnaplityOfDetainButton(true);
         }

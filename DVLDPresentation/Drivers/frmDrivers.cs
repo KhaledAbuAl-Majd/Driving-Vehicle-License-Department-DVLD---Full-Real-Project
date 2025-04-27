@@ -64,7 +64,7 @@ namespace DVLDPresentation
         }
         void _Load_RefereshUsersInDGV()
         {
-            DataTable dtAllDrivers = clsDrivers.GetAllDrivers();
+            DataTable dtAllDrivers = clsDriver.GetAllDrivers();
 
             if (dtAllDrivers.Rows.Count > 0)
             {
@@ -85,7 +85,7 @@ namespace DVLDPresentation
 
                     row["Full Name"] = Person.FullName;
                     row["National No."] = Person.NationalNo;
-                    row["Active Licenses"] = clsLicenses.GetNumberOfActiveLicnesesByDriverID(Convert.ToInt32(row["Driver ID"]));
+                    //row["Active Licenses"] = clsLicense.GetNumberOfActiveLicnesesByDriverID(Convert.ToInt32(row["Driver ID"]));
                 }
 
                 DataTable dt2 = dtAllDrivers.DefaultView.ToTable(false, "Driver ID", "Person ID",

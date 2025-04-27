@@ -17,7 +17,7 @@ namespace DVLDPresentation.Applications.Driving_License_Services.Replacment_For_
         enum enApplicationTypeID { ReplacementForLost = 3, ReplacementForDamaged = 4 }
         enApplicationTypeID _ApplicationTypeID_Mode;
         int _PersonID;
-        clsLicenses _OLDLocalLicense;
+        clsLicense _OLDLocalLicense;
         int _NewLicenseID;
         public frmReplacementForDamagedOrLost()
         {
@@ -55,7 +55,7 @@ namespace DVLDPresentation.Applications.Driving_License_Services.Replacment_For_
         }
         void _DeActivateOldLicense()
         {
-            _OLDLocalLicense.DeActiveLicense();
+            _OLDLocalLicense.DeactivateCurrentLicense();
         }
         void _ChangeEnaplityOfIssueReplacementButton(bool Value)
         {
@@ -77,11 +77,11 @@ namespace DVLDPresentation.Applications.Driving_License_Services.Replacment_For_
             _ChangeEnaplityOfIssueReplacementButton(false);
             lblOldLicenseID.Text = "???";
         }
-        private void OnSuccedAtSearch_OnSuccedAtSearch(int PersonID, clsLicenses LocalLicense, object sender)
+        private void OnSuccedAtSearch_OnSuccedAtSearch(int PersonID, clsLicense LocalLicense, object sender)
         {
             _PersonID = PersonID;
             _OLDLocalLicense = LocalLicense;
-            lblOldLicenseID.Text = LocalLicense.LicneseID.ToString();
+            lblOldLicenseID.Text = LocalLicense.LicenseID.ToString();
             _ChangeEnaplityOfLinkLabel(llblShowLicenseHistory, true);
             _ChangeEnaplityOfIssueReplacementButton(true);
         }
@@ -114,14 +114,14 @@ namespace DVLDPresentation.Applications.Driving_License_Services.Replacment_For_
             {
 
 
-                clsApplications NewApplication = new clsApplications
+                clsApplication NewApplication = new clsApplication
                 {
                     ApplicationDate = DateTime.Now,
-                    ApplicationStatusID = clsApplicationStatuses.Find("Completed").ApplicationStatusID,
+                    //ApplicationStatus = clsApplicationStatuses.Find("Completed").ApplicationStatusID,
                     ApplicationTypeID = Convert.ToInt32(this._ApplicationTypeID_Mode),
                     CreatedByUserID = clsGlobalSettings.CurrentUser.UserID,
                     LastStatusDate = DateTime.Now,
-                    PersonID = this._PersonID
+                    ApplicantPersonID = this._PersonID
                 };
 
                 if (NewApplication.Save())
@@ -139,28 +139,28 @@ namespace DVLDPresentation.Applications.Driving_License_Services.Replacment_For_
                             break;
                     }
 
-                    clsLicenses _NewLicense = new clsLicenses(NewApplication, _OLDLocalLicense, IssueReasonText);
+                    //clsLicense _NewLicense = new clsLicense(NewApplication, _OLDLocalLicense, IssueReasonText);
 
-                    if (_NewLicense.Save())
-                    {
-                        _DeActivateOldLicense();
+                    //if (_NewLicense.Save())
+                    //{
+                    //    _DeActivateOldLicense();
 
-                        MessageBox.Show($"License Replacement Successfully With ID = {_NewLicense.LicneseID}",
-                            "License Issued", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //    MessageBox.Show($"License Replacement Successfully With ID = {_NewLicense.LicenseID}",
+                    //        "License Issued", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                        _NewLicenseID = _NewLicense.LicneseID;
-                        _ChangeEnaplityOfIssueReplacementButton(false);
-                        _ChangeEnaplityOfLinkLabel(llblShowLicenseHistory, true);
-                        _ChangeEnaplityOfLinkLabel(llblShowNewLicenseInfo, true);
-                        lblLicenseReplacementApplicationID.Text = _NewLicense.ApplicationID.ToString();
-                        lblReplacedLicenseID.Text = _NewLicense.LicneseID.ToString();
-                        ctrlDriverLicenseInfoCardWithFilter1.ChangeEnaplityOfGBFilterBy(false);
-                        gbReplacementFor.Enabled = false;
-                    }
-                    else
-                    {
-                        MessageBox.Show($"Error To Replace License!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
+                    //    _NewLicenseID = _NewLicense.LicenseID;
+                    //    _ChangeEnaplityOfIssueReplacementButton(false);
+                    //    _ChangeEnaplityOfLinkLabel(llblShowLicenseHistory, true);
+                    //    _ChangeEnaplityOfLinkLabel(llblShowNewLicenseInfo, true);
+                    //    lblLicenseReplacementApplicationID.Text = _NewLicense.ApplicationID.ToString();
+                    //    lblReplacedLicenseID.Text = _NewLicense.LicenseID.ToString();
+                    //    ctrlDriverLicenseInfoCardWithFilter1.ChangeEnaplityOfGBFilterBy(false);
+                    //    gbReplacementFor.Enabled = false;
+                    //}
+                    //else
+                    //{
+                    //    MessageBox.Show($"Error To Replace License!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    //}
                 }
             }
         }

@@ -14,7 +14,7 @@ namespace DVLDDataAccess
         {
             bool IsFound = false;
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSetings.ConnectionString);
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
             string query = "SELECT * FROM ApplicationStatuses WHERE ApplicationStatusID = @ApplicationStatusID";
 
@@ -51,7 +51,7 @@ namespace DVLDDataAccess
         {
             bool IsFound = false;
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSetings.ConnectionString);
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
             string query = "SELECT * FROM ApplicationStatuses WHERE ApplicationStatus = @ApplicationStatus";
 
@@ -90,7 +90,7 @@ namespace DVLDDataAccess
         {
             DataTable dtAll = new DataTable();
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSetings.ConnectionString);
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
             string query = "SELECT * FROM ApplicationStatuses";
 

@@ -92,7 +92,7 @@ namespace DVLDPresentation.Applications.Manage_Applications.Schedule_Test
         } 
         void _Load_RefreshDataInAppointmentsDGV()
         {
-            DataTable dtAppointments = clsTestAppointments.GetAllTestAppointmentsForSelectdL_D_LApplicationIDAndTestType(_LDLApplicationID, Convert.ToInt32(_TestType));
+            DataTable dtAppointments = clsTestAppointment.GetApplicationTestAppointmentsPerTestType(_LDLApplicationID, (clsTestType.enTestType)_TestType);
 
             if (dtAppointments.Rows.Count > 0)
             {
@@ -119,14 +119,14 @@ namespace DVLDPresentation.Applications.Manage_Applications.Schedule_Test
 
         private void btnAddAppointment_Click(object sender, EventArgs e)
         {
-            if (clsTestAppointments.CheckHasActiveTestAppointmentForL_D_LApplicationIDAndTestType(_LDLApplicationID, Convert.ToInt32(_TestType)))
-            {
-                MessageBox.Show("Person Already have an active appointment for this test,You cannot add new appointment.",
-                    "Not allowed", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
+            //if (clsLocalDrivingLicenseApplication.IsThereAnActiveScheduledTest(_LDLApplicationID, Convert.ToInt32(_TestType)))
+            //{
+            //    MessageBox.Show("Person Already have an active appointment for this test,You cannot add new appointment.",
+            //        "Not allowed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    return;
+            //}
 
-            if (clsTests.CheckPersonPassedThisTextBefore(_LDLApplicationID, Convert.ToInt32(_TestType)))
+            if (clsTest.CheckPersonPassedThisTextBefore(_LDLApplicationID, Convert.ToInt32(_TestType)))
             {
                 MessageBox.Show("This Person Already passed this test before, you can only retake failed test.",
                     "Not allowed", MessageBoxButtons.OK, MessageBoxIcon.Error);

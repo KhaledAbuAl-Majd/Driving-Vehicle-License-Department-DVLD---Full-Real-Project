@@ -21,7 +21,7 @@ namespace DVLDPresentation.Applications.Driving_License_Services.New_Driving_Lic
         //International License 
         int _ApplicationTypeID = 6;
         int _PersonID;
-        clsLicenses _LocalLicense;
+        clsLicense _LocalLicense;
         int _InternationLicenseID;
 
         public frmNewInternationalLicneseApplication()
@@ -60,11 +60,11 @@ namespace DVLDPresentation.Applications.Driving_License_Services.New_Driving_Lic
             _IsIssued = false;
             lblLocalLicenseID.Text = "???";
         }
-        private void OnSuccedAtSearch_OnSuccedAtSearch(int PersonID, clsLicenses LocalLicense, object sender)
+        private void OnSuccedAtSearch_OnSuccedAtSearch(int PersonID, clsLicense LocalLicense, object sender)
         {
             _PersonID = PersonID;
             _LocalLicense = LocalLicense;
-            lblLocalLicenseID.Text = _LocalLicense.LicneseID.ToString();
+            lblLocalLicenseID.Text = _LocalLicense.LicenseID.ToString();
             _ChangeEnaplityOfLinkLabel(llblShowLicenseHistory, true);
             _ChangeEnaplityOfIssueButton(true);
         }
@@ -88,8 +88,8 @@ namespace DVLDPresentation.Applications.Driving_License_Services.New_Driving_Lic
                MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2)) == DialogResult.Yes)
             {
 
-                clsInternationalLicenses NewInternationalLicense = new clsInternationalLicenses
-                (_LocalLicense.LicneseID, clsGlobalSettings.CurrentUser.UserID);
+                clsInternationalLicense NewInternationalLicense = new clsInternationalLicense
+                (_LocalLicense.LicenseID, clsGlobalSettings.CurrentUser.UserID);
 
                 if (NewInternationalLicense.Save())
                 {

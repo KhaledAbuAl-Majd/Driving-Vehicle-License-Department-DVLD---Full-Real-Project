@@ -78,7 +78,7 @@ namespace DVLDPresentation.Applications.Manage_Applications.International_Drivin
         }
         void _Load_RefereshIntLApplicationsInDGV()
         {
-            DataTable dtAllIntApplications = clsInternationalLicenses.GetAllLicneses();
+            DataTable dtAllIntApplications = clsInternationalLicense.GetAllLicneses();
 
             if (dtAllIntApplications.Rows.Count > 0)
             {
@@ -183,7 +183,7 @@ namespace DVLDPresentation.Applications.Manage_Applications.International_Drivin
         private void showPersonDetailsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             int DriverID = Convert.ToInt32(dgvIntLApplications.SelectedCells[2].Value);
-            int PersonID = clsDrivers.FindByDriverID(DriverID).PersonID;
+            int PersonID = clsDriver.FindByDriverID(DriverID).PersonID;
             frmShowPersonInfo frm = new frmShowPersonInfo(PersonID);
             frm.ShowDialog();
         }
@@ -198,7 +198,7 @@ namespace DVLDPresentation.Applications.Manage_Applications.International_Drivin
         private void showPersonLicenseHistoryToolStripMenuItem_Click(object sender, EventArgs e)
         {
             int DriverID = Convert.ToInt32(dgvIntLApplications.SelectedCells[2].Value);
-            int PersonID = clsDrivers.FindByDriverID(DriverID).PersonID;
+            int PersonID = clsDriver.FindByDriverID(DriverID).PersonID;
             frmLicenseHistory frm = new frmLicenseHistory(PersonID);
             frm.ShowDialog();
         }

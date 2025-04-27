@@ -57,14 +57,14 @@ namespace DVLDPresentation.Applications.Detain_Licenses
             lblLicenseID.Text = "???";
             _IsReleased = false;
         }
-        private void OnSuccedAtSearch_OnSuccedAtSearch(int PersonID, clsLicenses LocalLicense, object sender)
+        private void OnSuccedAtSearch_OnSuccedAtSearch(int PersonID, clsLicense LocalLicense, object sender)
         {
             _PersonID = PersonID;
-            _LicenseID = LocalLicense.LicneseID;
+            _LicenseID = LocalLicense.LicenseID;
            
             _ChangeEnaplityOfLinkLabel(llblShowLicenseHistory, true);
             _ChangeEnaplityOfReleaseButton(true);
-            _DetainedLicense = clsDetainedLicenses.FindByLicenseID(LocalLicense.LicneseID);
+            _DetainedLicense = clsDetainedLicenses.FindByLicenseID(LocalLicense.LicenseID);
             if (_DetainedLicense != null)
             {
                 _FillLabelsAfterFindLicense();

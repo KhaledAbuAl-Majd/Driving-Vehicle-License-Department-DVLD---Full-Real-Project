@@ -41,20 +41,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="clsApplicationsData.cs" />
+    <Compile Include="clsApplicationData.cs" />
     <Compile Include="clsApplicationStatusesData.cs" />
     <Compile Include="clsApplicationTypeData.cs" />
     <Compile Include="clsCountryData.cs" />
-    <Compile Include="clsDataAccessSetings.cs" />
+    <Compile Include="clsDataAccessSettings.cs" />
     <Compile Include="clsDetainedLicensesData.cs" />
-    <Compile Include="clsDriversData.cs" />
+    <Compile Include="clsDriverData.cs" />
     <Compile Include="clsInternationalLicensesData.cs" />
-    <Compile Include="clsLicneseClassesData.cs" />
-    <Compile Include="clsLicensesData.cs" />
-    <Compile Include="clsLocalDrivingApplictionsData.cs" />
+    <Compile Include="clsLicenseClasseData.cs" />
+    <Compile Include="clsLicenseData.cs" />
+    <Compile Include="clsLocalDrivingLicenseApplicationData.cs" />
     <Compile Include="clsPersonData.cs" />
-    <Compile Include="clsTestAppointmentsData.cs" />
-    <Compile Include="clsTestsData.cs" />
+    <Compile Include="clsTestAppointmentData.cs" />
+    <Compile Include="clsTestData.cs" />
     <Compile Include="clsTestTypeData.cs" />
     <Compile Include="clsUserData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

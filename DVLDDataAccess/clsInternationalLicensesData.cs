@@ -16,7 +16,7 @@ namespace DVLDDataAccess
         {
             int InternationalLicenseID = -1;
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSetings.ConnectionString);
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
             string query = @"INSERT INTO [dbo].[InternationalLicenses]
             ([ApplicationID],[DriverID] ,[IssuedUsingLocalLicenseID],[IssueDate],
@@ -61,7 +61,7 @@ namespace DVLDDataAccess
         {
             bool IsFound = false;
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSetings.ConnectionString);
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
             string query = "SELECT * FROM InternationalLicenses WHERE InternationalLicenseID = @InternationalLicenseID;";
 
@@ -106,7 +106,7 @@ namespace DVLDDataAccess
         {
             DataTable dtAllLicneses = new DataTable();
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSetings.ConnectionString);
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
             string query = "SELECT * FROM InternationalLicenses;";
 
@@ -139,7 +139,7 @@ namespace DVLDDataAccess
         {
             DataTable dtAllLicneses = new DataTable();
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSetings.ConnectionString);
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
             string query = "SELECT * FROM InternationalLicenses WHERE DriverID = @DriverID;";
 
@@ -172,7 +172,7 @@ namespace DVLDDataAccess
         public static int GetInternationalLicenseIfPersonHasActiveOne(int PersonID)
         {
             int InternationalLicenseID = -1;
-            SqlConnection connection = new SqlConnection(clsDataAccessSetings.ConnectionString);
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
             string query = @"SELECT InternationalLicenses.InternationalLicenseID FROM InternationalLicenses 
              INNER JOIN Drivers ON InternationalLicenses.DriverID = Drivers.DriverID WHERE

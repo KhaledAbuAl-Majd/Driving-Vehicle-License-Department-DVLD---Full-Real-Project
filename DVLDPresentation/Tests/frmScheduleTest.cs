@@ -18,21 +18,21 @@ namespace DVLDPresentation.Applications.Manage_Applications.LocalDrivingLicenseA
          public enum enTestType { VisionTest = 1, WrittenTest = 2, StreetTest = 3 }
         enTestType _TestType;
 
-        clsLocalDrivingApplictions _LDLApplication;
-        clsTestAppointments _TestAppointment;
+        //clsLocalDrivingLicenseApplication _LocalDrivingLicenseApplication;
+        clsTestAppointment _TestAppointment;
         bool _IsSave = false;
         public frmScheduleTest(int LDLApplicationID,int TestAppointmentID,int TestType)
         {
             InitializeComponent();
-            _LDLApplication = clsLocalDrivingApplictions.FindByLDLApplicationID(LDLApplicationID);
+            //_LocalDrivingLicenseApplication = clsLocalDrivingLicenseApplication.FindByLocalDrivingAppLicenseID(LDLApplicationID);
             _TestType = (enTestType)TestType;
             if (TestAppointmentID == -1)
             {
-                _TestAppointment = new clsTestAppointments(LDLApplicationID, Convert.ToInt32(_TestType), clsGlobalSettings.CurrentUser.UserID);
+                //_TestAppointment = new clsTestAppointment(LDLApplicationID, Convert.ToInt32(_TestType), clsGlobalSettings.CurrentUser.UserID);
             }
             else
             {
-                _TestAppointment = clsTestAppointments.Find(TestAppointmentID); ;
+                _TestAppointment = clsTestAppointment.Find(TestAppointmentID); ;
             }
         }
 
@@ -110,10 +110,10 @@ namespace DVLDPresentation.Applications.Manage_Applications.LocalDrivingLicenseA
         void _FillDataInLabels()
         {
 
-            lblLDLApplicationID.Text = _LDLApplication.LocalDrvingApplicationID.ToString();
-            lblClassName.Text = clsLicneseClasses.Find(_LDLApplication.LicenseClassID).ClassName;
-            lblName.Text = clsPerson.Find(clsApplications.Find(_LDLApplication.ApplicationID).PersonID).FullName;
-            lblTrial.Text = _TestAppointment.TrialNumber.ToString();
+            //lblLDLApplicationID.Text = _LocalDrivingLicenseApplication.LocalDrivingLicenseApplicationID.ToString();
+            //lblClassName.Text = clsLicenseClass.Find(_LocalDrivingLicenseApplication.LicenseClassID).ClassName;
+            //lblName.Text = clsPerson.Find(clsApplication.FindBaseApplication(_LocalDrivingLicenseApplication.ApplicationID).ApplicantPersonID).FullName;
+            //lblTrial.Text = _TestAppointment.TrialNumber.ToString();
             gDTPDate.Value = _TestAppointment.AppointmentDate;
             lblFees.Text = _TestAppointment.PaidFees.ToString();
             //lblRetakeAppFees.Text = _TestAppointment.RetakeTestFees.ToString();
@@ -125,7 +125,7 @@ namespace DVLDPresentation.Applications.Manage_Applications.LocalDrivingLicenseA
             else
                 _ChangeAppointmentLockedLabelVisiblity(false);
 
-            if (_TestAppointment.TestMode == clsTestAppointments.enTestMode.RetakeTest)
+            if (_TestAppointment.TestMode == clsTestAppointment.enTestMode.RetakeTest)
                 _RetakeTestMode();
             else
                 _FirstScheduleTestMode();
@@ -137,7 +137,7 @@ namespace DVLDPresentation.Applications.Manage_Applications.LocalDrivingLicenseA
             if (_TestAppointment.Save())
             {
                 _IsSave = true;
-                if (_TestAppointment.TestMode == clsTestAppointments.enTestMode.RetakeTest)
+                if (_TestAppointment.TestMode == clsTestAppointment.enTestMode.RetakeTest)
                     lblRetakeTestApplicationID.Text = _TestAppointment.RetakeTestApplicationID.ToString();
                 else
                     lblRetakeTestApplicationID.Text = "N/A";

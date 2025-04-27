@@ -15,7 +15,7 @@ namespace DVLDDataAccess
         {
             bool IsFound = false;
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSetings.ConnectionString);
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
             string query = "SELECT * FROM ApplicationTypes WHERE ApplicationTypeID = @ApplicationTypeID";
 
@@ -57,7 +57,7 @@ namespace DVLDDataAccess
         {
             DataTable dtApplicationTypes = new DataTable();
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSetings.ConnectionString);
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
             string query = "SELECT * FROM ApplicationTypes";
 
@@ -90,7 +90,7 @@ namespace DVLDDataAccess
         {
             bool Result = false;
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSetings.ConnectionString);
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
             string query = @"Update ApplicationTypes SET ApplicationTypeTitle = @ApplicationTypeTitle, 
                              ApplicationFees = @ApplicationFees WHERE ApplicationTypeID = @ApplicationTypeID";

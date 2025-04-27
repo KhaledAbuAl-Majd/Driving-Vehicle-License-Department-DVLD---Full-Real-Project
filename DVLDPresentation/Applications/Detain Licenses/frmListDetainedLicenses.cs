@@ -107,7 +107,7 @@ namespace DVLDPresentation.Applications.Detain_Licenses
 
                 foreach(DataRow row in dtAllDetainedLicenses.Rows)
                 {
-                    int PersonID = clsDrivers.FindByDriverID(clsLicenses.FindByLicenseID(Convert.ToInt32(row["L.ID"])).DriverID).PersonID;
+                    int PersonID = clsDriver.FindByDriverID(clsLicense.Find(Convert.ToInt32(row["L.ID"])).DriverID).PersonID;
                     Person = clsPerson.Find(PersonID);
 
                     row["N.No."] = Person.NationalNo;

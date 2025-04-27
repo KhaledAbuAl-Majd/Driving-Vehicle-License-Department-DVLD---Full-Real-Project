@@ -22,12 +22,12 @@ namespace DVLDPresentation.Controls
 
         private void FillDataInLabels()
         {
-            clsInternationalLicenses IntLicense = clsInternationalLicenses.FindByIntLicenseID(IntLicenseID);
+            clsInternationalLicense IntLicense = clsInternationalLicense.FindByIntLicenseID(IntLicenseID);
 
             if (IntLicense != null)
             {
-                clsApplications Application = clsApplications.Find(IntLicense.ILApplicationID);
-                clsDrivers Driver = clsDrivers.FindByDriverID(IntLicense.DriverID);
+                clsApplication Application = clsApplication.FindBaseApplication(IntLicense.ILApplicationID);
+                clsDriver Driver = clsDriver.FindByDriverID(IntLicense.DriverID);
                 clsPerson Person = clsPerson.Find(Driver.PersonID);
 
                 lblName.Text = Person.FullName;

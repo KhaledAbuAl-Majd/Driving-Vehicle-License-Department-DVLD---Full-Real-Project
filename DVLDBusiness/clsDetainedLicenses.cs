@@ -66,15 +66,15 @@ namespace DVLDBusiness
             if (IsLicenseDetainedByDetainID(this.DetainID))
             {
                
-                int PersonID = clsDrivers.FindByDriverID(clsLicenses.FindByLicenseID(this.LicenseID).DriverID).PersonID;
+                int PersonID = clsDriver.FindByDriverID(clsLicense.Find(this.LicenseID).DriverID).PersonID;
 
-                clsApplications ReleaseApplication = new clsApplications
+                clsApplication ReleaseApplication = new clsApplication
                 {
                     ApplicationDate = DateTime.Now,
-                    ApplicationStatusID = 1,
+                    //ApplicationStatus = 1,
                     ApplicationTypeID = ApplicatoinTypeID,
                     CreatedByUserID = this.CreatedByUserID,
-                    PersonID = PersonID,      
+                    ApplicantPersonID = PersonID,      
                 };
 
                 if (ReleaseApplication.Save())

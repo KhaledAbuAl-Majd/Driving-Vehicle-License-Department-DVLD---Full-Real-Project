@@ -43,25 +43,25 @@ namespace DVLDPresentation.Controls
         }
         public void FillDataInLabels(int LicenseID)
         {
-            clsLicenses License = clsLicenses.FindByLicenseID(LicenseID);
+            clsLicense License = clsLicense.Find(LicenseID);
             if (License != null)
             {
-                clsDrivers Driver = clsDrivers.FindByDriverID(License.DriverID);
+                clsDriver Driver = clsDriver.FindByDriverID(License.DriverID);
                 clsPerson Person = clsPerson.Find(Driver.PersonID);
-                lblCalss.Text = clsLicneseClasses.Find(License.LicenseClassID).ClassName;
+                lblCalss.Text = clsLicenseClass.Find(License.LicenseClassID).ClassName;
                 lblName.Text = Person.FullName;
-                lblLicneseID.Text = License.LicneseID.ToString();
+                lblLicneseID.Text = License.LicenseID.ToString();
                 lblNationalNo.Text = Person.NationalNo;
                 _ChangeGendorData(Person.Gendor, Person.ImagePath);
-                lblIssueDate.Text = License.IsuueDate.ToString("dd/MMM/yyyy");
-                lblIssueReason.Text = License.IssueReason;
+                lblIssueDate.Text = License.IssueDate.ToString("dd/MMM/yyyy");
+                //lblIssueReason.Text = License.IssueReason;
                 lblNotes.Text = (License.Notes == "") ? "No Notes" : License.Notes;
-                lblIsActive.Text = (License.IsAcitve) ? "Yes" : "No";
+                lblIsActive.Text = (License.IsActive) ? "Yes" : "No";
                 lblDateOfBirth.Text = Person.DateOfBirth.ToString("dd/MMM/yyyy");
                 lblDriverID.Text = License.DriverID.ToString();
                 lblExpirationDate.Text = License.ExpirationDate.ToString("dd/MMM/yyyy");
                 //is Detained
-                lblIsDetained.Text = (clsDetainedLicenses.IsLicenseDetainedByLicenseID(License.LicneseID)) ? "Yes" : "No";
+                lblIsDetained.Text = (clsDetainedLicenses.IsLicenseDetainedByLicenseID(License.LicenseID)) ? "Yes" : "No";
             }
         }
         void _ChangeGendorData(short Gendor, string PersonImagePath)

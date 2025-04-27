@@ -94,14 +94,14 @@ namespace DVLDPresentation.Login_HomePage
 
         private void tmslocalLicenseToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmNewLocalLicenseApplication frm = new frmNewLocalLicenseApplication(-1);
+            frmAddUpdateLocalDrivingLicesnseApplication frm = new frmAddUpdateLocalDrivingLicesnseApplication(-1);
 
             frm.ShowDialog();
         }
 
         private void localDrivingLicenseApplicationsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmLocalDrivingLicenseApplications frm = new frmLocalDrivingLicenseApplications();
+            frmListLocalDrivingLicesnseApplications frm = new frmListLocalDrivingLicesnseApplications();
 
             frm.ShowDialog();
         }
@@ -144,7 +144,7 @@ namespace DVLDPresentation.Login_HomePage
 
         private void retakeTestToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmLocalDrivingLicenseApplications frm = new frmLocalDrivingLicenseApplications();
+            frmListLocalDrivingLicesnseApplications frm = new frmListLocalDrivingLicesnseApplications();
 
             frm.ShowDialog();
         }

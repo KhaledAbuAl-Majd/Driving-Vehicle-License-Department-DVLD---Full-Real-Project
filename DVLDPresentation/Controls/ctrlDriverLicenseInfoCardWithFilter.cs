@@ -15,7 +15,7 @@ namespace DVLDPresentation.Controls
     {
         public event Action OnErrorAtSearch;
 
-        public delegate void SearchDataBack(int PersonID, clsLicenses LocalLicense, object sender);
+        public delegate void SearchDataBack(int PersonID, clsLicense LocalLicense, object sender);
         public event SearchDataBack OnSuccedAtSearch;
         public enum enMode { NewInternationalLicense, RenewLocalLicense, ReplacementForDamaged_Lost,DetainLicense,ReleaseLicense }
         public enMode Mode;
@@ -35,7 +35,7 @@ namespace DVLDPresentation.Controls
             if (OnErrorAtSearch != null)
                 OnErrorAtSearch();
         }
-        void _InvokeDelegateSearchDataBack(int PersonID, clsLicenses LocalLicense)
+        void _InvokeDelegateSearchDataBack(int PersonID, clsLicense LocalLicense)
         {
             if (OnSuccedAtSearch != null)
                 OnSuccedAtSearch.Invoke(PersonID, LocalLicense,this);
@@ -62,7 +62,7 @@ namespace DVLDPresentation.Controls
         }
         bool _CheckIsLicenseNotExist(int EnteredLicenseID)
         {
-            if (!clsLicenses.IsLicenseExist(EnteredLicenseID))
+            if (!clsLicense.IsLicenseExist(EnteredLicenseID))
             {
                 _ErrorAtSearch($"Not License With Licnese ID  = {EnteredLicenseID}, Please Enter a Correct One!", "Not Exist");
                 return true;
@@ -70,7 +70,7 @@ namespace DVLDPresentation.Controls
 
             return false;
         }
-        bool _CheckIsLicenseExpired(clsLicenses LocalLicense)
+        bool _CheckIsLicenseExpired(clsLicense LocalLicense)
         {
             if (LocalLicense.ExpirationDate < DateTime.Today)
             {
@@ -80,7 +80,7 @@ namespace DVLDPresentation.Controls
 
             return false;
         }
-        bool _CheckIsLicenseNotExpired(clsLicenses LocalLicense)
+        bool _CheckIsLicenseNotExpired(clsLicense LocalLicense)
         {
             if (!(LocalLicense.ExpirationDate < DateTime.Today))
             {
@@ -90,9 +90,9 @@ namespace DVLDPresentation.Controls
 
             return false;
         }
-        bool _CheckIsLicenseNotActive(clsLicenses License)
+        bool _CheckIsLicenseNotActive(clsLicense License)
         {
-            if (!License.IsAcitve)
+            if (!License.IsActive)
             {
                 _ErrorAtSearch("Selected License is Not Active, Choose an active License", "Not allowed");
                 return true;
@@ -102,7 +102,7 @@ namespace DVLDPresentation.Controls
         }
         bool _CheckIsPersonHaveActiveInternationalLicense(int PersonID)
         {
-            int SearchedInternationalLicenseID = clsInternationalLicenses.GetInternationalLicenseIfPersonHasActiveOne(PersonID);
+            int SearchedInternationalLicenseID = clsInternationalLicense.GetInternationalLicenseIfPersonHasActiveOne(PersonID);
             if (SearchedInternationalLicenseID != -1)
             {
                 _ErrorAtSearch($"Person already have an active international license with ID = {SearchedInternationalLicenseID}", "Not allowed");
@@ -141,8 +141,8 @@ namespace DVLDPresentation.Controls
             if (_CheckIsLicenseNotExist(EnteredLicenseID))
                 return;
 
-            clsLicenses LocalLicense = clsLicenses.FindByLicenseID(EnteredLicenseID);
-            int PersonID = clsDrivers.FindByDriverID(LocalLicense.DriverID).PersonID;
+            clsLicense LocalLicense = clsLicense.Find(EnteredLicenseID);
+            int PersonID = clsDriver.FindByDriverID(LocalLicense.DriverID).PersonID;
 
             if (_CheckIsLicenseExpired(LocalLicense))
                 return;
@@ -160,7 +160,7 @@ namespace DVLDPresentation.Controls
                 return;
             }
 
-            ctrlDriverLicenseInfo1.FillDataInLabels(LocalLicense.LicneseID);
+            ctrlDriverLicenseInfo1.FillDataInLabels(LocalLicense.LicenseID);
 
             _InvokeDelegateSearchDataBack(PersonID, LocalLicense);
         }
@@ -174,8 +174,8 @@ namespace DVLDPresentation.Controls
             if (_CheckIsLicenseNotExist(EnteredLicenseID))
                 return;         
 
-            clsLicenses LocalLicense = clsLicenses.FindByLicenseID(EnteredLicenseID);
-            int PersonID = clsDrivers.FindByDriverID(LocalLicense.DriverID).PersonID;
+            clsLicense LocalLicense = clsLicense.Find(EnteredLicenseID);
+            int PersonID = clsDriver.FindByDriverID(LocalLicense.DriverID).PersonID;
 
             if (_CheckIsLicenseNotExpired(LocalLicense))
                 return;
@@ -185,7 +185,7 @@ namespace DVLDPresentation.Controls
                 return;
             
 
-            ctrlDriverLicenseInfo1.FillDataInLabels(LocalLicense.LicneseID);
+            ctrlDriverLicenseInfo1.FillDataInLabels(LocalLicense.LicenseID);
 
             _InvokeDelegateSearchDataBack(PersonID, LocalLicense);
         }
@@ -199,8 +199,8 @@ namespace DVLDPresentation.Controls
             if (_CheckIsLicenseNotExist(EnteredLicenseID))
                 return;
 
-            clsLicenses LocalLicense = clsLicenses.FindByLicenseID(EnteredLicenseID);
-            int PersonID = clsDrivers.FindByDriverID(LocalLicense.DriverID).PersonID;
+            clsLicense LocalLicense = clsLicense.Find(EnteredLicenseID);
+            int PersonID = clsDriver.FindByDriverID(LocalLicense.DriverID).PersonID;
 
             if (_CheckIsLicenseExpired(LocalLicense))
                 return;
@@ -208,10 +208,10 @@ namespace DVLDPresentation.Controls
             if (_CheckIsLicenseNotActive(LocalLicense))
                 return;
 
-            if (_CheckIsLicenseDetained(LocalLicense.LicneseID))
+            if (_CheckIsLicenseDetained(LocalLicense.LicenseID))
                 return;
 
-            ctrlDriverLicenseInfo1.FillDataInLabels(LocalLicense.LicneseID);
+            ctrlDriverLicenseInfo1.FillDataInLabels(LocalLicense.LicenseID);
 
             _InvokeDelegateSearchDataBack(PersonID, LocalLicense);
         }
@@ -225,8 +225,8 @@ namespace DVLDPresentation.Controls
             if (_CheckIsLicenseNotExist(EnteredLicenseID))
                 return;
 
-            clsLicenses LocalLicense = clsLicenses.FindByLicenseID(EnteredLicenseID);
-            int PersonID = clsDrivers.FindByDriverID(LocalLicense.DriverID).PersonID;
+            clsLicense LocalLicense = clsLicense.Find(EnteredLicenseID);
+            int PersonID = clsDriver.FindByDriverID(LocalLicense.DriverID).PersonID;
 
             if (_CheckIsLicenseExpired(LocalLicense))
                 return;
@@ -234,10 +234,10 @@ namespace DVLDPresentation.Controls
             if (_CheckIsLicenseNotActive(LocalLicense))
                 return;
             
-            if (_CheckIsLicenseDetained(LocalLicense.LicneseID))
+            if (_CheckIsLicenseDetained(LocalLicense.LicenseID))
                 return;
 
-            ctrlDriverLicenseInfo1.FillDataInLabels(LocalLicense.LicneseID);
+            ctrlDriverLicenseInfo1.FillDataInLabels(LocalLicense.LicenseID);
 
             _InvokeDelegateSearchDataBack(PersonID, LocalLicense);
         }
@@ -251,8 +251,8 @@ namespace DVLDPresentation.Controls
             if (_CheckIsLicenseNotExist(EnteredLicenseID))
                 return;
 
-            clsLicenses LocalLicense = clsLicenses.FindByLicenseID(EnteredLicenseID);
-            int PersonID = clsDrivers.FindByDriverID(LocalLicense.DriverID).PersonID;
+            clsLicense LocalLicense = clsLicense.Find(EnteredLicenseID);
+            int PersonID = clsDriver.FindByDriverID(LocalLicense.DriverID).PersonID;
 
             if (_CheckIsLicenseExpired(LocalLicense))
                 return;
@@ -260,10 +260,10 @@ namespace DVLDPresentation.Controls
             if (_CheckIsLicenseNotActive(LocalLicense))
                 return;
             
-            if (_CheckIsLicenseNotDetained(LocalLicense.LicneseID))
+            if (_CheckIsLicenseNotDetained(LocalLicense.LicenseID))
                 return;
 
-            ctrlDriverLicenseInfo1.FillDataInLabels(LocalLicense.LicneseID);
+            ctrlDriverLicenseInfo1.FillDataInLabels(LocalLicense.LicenseID);
 
             _InvokeDelegateSearchDataBack(PersonID, LocalLicense);
         }

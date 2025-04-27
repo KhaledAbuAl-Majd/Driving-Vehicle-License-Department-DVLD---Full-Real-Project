@@ -13,7 +13,7 @@ namespace DVLDDataAccess
         {
             bool IsFound = false;
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSetings.ConnectionString);
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
             string query = "SELECT * FROM People WHERE PersonID = @PersonID";
 
@@ -79,7 +79,7 @@ namespace DVLDDataAccess
         {
             bool IsFound = false;
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSetings.ConnectionString);
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
             string query = "SELECT * FROM People WHERE NationalNo = @NationalNo";
 
@@ -143,7 +143,7 @@ namespace DVLDDataAccess
         {
             int personID = -1;
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSetings.ConnectionString);
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
             string Query = @"Insert Into People (FirstName,SecondName,ThirdName,LastName,NationalNo,
                                 DateOfBirth,Gendor,Address,Phone,Email,NationalityCountryID,ImagePath) values
@@ -210,7 +210,7 @@ namespace DVLDDataAccess
         {
             bool Result = false;
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSetings.ConnectionString);
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
             string Query = @"UPDATE People
                              SET FirstName=@FirstName,SecondName=@SecondName,ThirdName=@ThirdName,LastName=@LastName,NationalNo=@NationalNo
@@ -270,7 +270,7 @@ namespace DVLDDataAccess
         {
             DataTable People = new DataTable();
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSetings.ConnectionString);
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
             string query = @"SELECT People.PersonID,People.NationalNo,People.FirstName,
               People.SecondName,People.ThirdName,People.LastName,People.DateOfBirth, People.Gendor,
@@ -313,7 +313,7 @@ namespace DVLDDataAccess
         {
             bool Result = false;
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSetings.ConnectionString);
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
             string query = "DELETE FROM People WHERE PersonID = @PersonID";
 
@@ -344,7 +344,7 @@ namespace DVLDDataAccess
         {
             bool IsFound = false;
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSetings.ConnectionString);
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
             string query = @"SELECT Found = 1 FROM People Where PersonID = @PersonID";
 
@@ -380,7 +380,7 @@ namespace DVLDDataAccess
         {
             bool IsFound = false;
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSetings.ConnectionString);
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
             string query = @"SELECT Found = 1 FROM People Where NationalNo = @NationalNo";
 
