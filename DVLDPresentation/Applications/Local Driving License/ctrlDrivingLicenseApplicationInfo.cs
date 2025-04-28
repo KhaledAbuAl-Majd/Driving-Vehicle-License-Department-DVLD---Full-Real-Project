@@ -15,78 +15,71 @@ namespace DVLDPresentation.Controls
 {
     public partial class ctrlDLApplicationInfo : UserControl
     {
-        public int LDLApplicationID;
+        private clsLocalDrivingLicenseApplication _LocalDrivingLicenseApplication;
+
+        private int _LicenseID;
+
+        public int LocalDrivingLicenseApplicationID { get; private set; }
+
 
         public ctrlDLApplicationInfo()
         {
             InitializeComponent();
         }
-        int _PersonID;
 
-        public void _ChangePassedTestsLabel()
+        public void LoadApplicationInfoByLocalDrivingAppID(int LocalDrivingLicenseApplicationID)
         {
-            //lblPassedTests.Text = clsLocalDrivingLicenseApplication.FindByLocalDrivingAppLicenseID(LDLApplicationID).PassedTests.ToString() + "/3";
-        }
+            _LocalDrivingLicenseApplication = clsLocalDrivingLicenseApplication.FindByLocalDrivingAppLicenseID(LocalDrivingLicenseApplicationID);
 
-        private void _FillDataInLables()
-        {
-            clsLocalDrivingLicenseApplication LDLApplicatoin = clsLocalDrivingLicenseApplication.FindByLocalDrivingAppLicenseID(LDLApplicationID);
-
-            if (LDLApplicatoin != null)
+            if (_LocalDrivingLicenseApplication == null)
             {
-                clsApplication Application = clsApplication.FindBaseApplication(LDLApplicatoin.ApplicationID);
-                clsLicenseClass LicenseClass = clsLicenseClass.Find(LDLApplicatoin.LicenseClassID);
-                //if (Application.ApplicationStatus == clsApplicationStatuses.Find("Completed").ApplicationStatusID)
-                //    _ChangeEnablityForllblShowLicneseInfo(true);
-                //else
-                //    _ChangeEnablityForllblShowLicneseInfo(false);
+                _ResetLocalDrivingLicenseApplicationInfo();
 
-                    lblD_L_ApplicationID.Text = LDLApplicatoin.LocalDrivingLicenseApplicationID.ToString();
-                lblClassName.Text = LicenseClass.ClassName;
-                //lblPassedTests.Text = LDLApplicatoin.PassedTests.ToString() + "/3";
-                lblApplicationID.Text = LDLApplicatoin.ApplicationID.ToString(); ;
-                //lblStatus.Text = clsApplicationStatuses.Find(Application.ApplicationStatus).ApplicationStatus;
-                clsApplicationType ApplicationType = clsApplicationType.Find(Application.ApplicationTypeID);
-                lblFees.Text = ApplicationType.ApplicationFees.ToString();
-                lblType.Text = ApplicationType.ApplicationTypeTitle;
-                lblApplicant.Text = clsPerson.Find(Application.ApplicantPersonID).FullName;
-                lblDate.Text = Application.ApplicationDate.ToString("dd/MMM/yyyy");
-                lblStatusDate.Text = Application.LastStatusDate.ToString("dd/MMM/yyyy");
-                lblCreatedBy.Text = clsUser.FindByUserID(Application.CreatedByUserID).UserName;
-                _PersonID = Application.ApplicantPersonID;
-                llblViewPersonInfo.Enabled = (_PersonID == -1) ? false : true;
+                MessageBox.Show("No Application with ApplicationID = " + LocalDrivingLicenseApplicationID.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
-            else
-                _ChangeEnablityForllblShowLicneseInfo(false);
-     
-        }
-        private void _ChangeEnablityForllblShowLicneseInfo(bool value)
-        {
-            llblShowLicenseInfo.Enabled = value;
-        }
-        private void llblViewPersonInfo_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            frmShowPersonInfo frm = new frmShowPersonInfo(_PersonID);
 
-            //frm.OnClose += FrmViewPersonInfo_OnClose;
-            frm.ShowDialog();
+            _FillLocalDrivingLicenseApplicationInfo();
         }
 
-        private void FrmViewPersonInfo_OnClose()
+        public void LoadApplicationInfoByApplicationID(int ApplicationID)
         {
-            _FillDataInLables();
+            _LocalDrivingLicenseApplication = clsLocalDrivingLicenseApplication.FindByApplicationID(ApplicationID);
+            if (_LocalDrivingLicenseApplication == null)
+            {
+                _ResetLocalDrivingLicenseApplicationInfo();
+
+                MessageBox.Show("No Application with ApplicationID = " + LocalDrivingLicenseApplicationID.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            _FillLocalDrivingLicenseApplicationInfo();
         }
 
-        private void ctrlDLApplicationInfo_Load(object sender, EventArgs e)
+        private void _FillLocalDrivingLicenseApplicationInfo()
         {
-            _FillDataInLables();
-            
+            _LicenseID = _LocalDrivingLicenseApplication.GetActiveLicenseID();
+
+            //incase there is license enable the show link.
+            llblShowLicenseInfo.Enabled = (_LicenseID != -1);
+
+            lblLocalDrivingLicenseApplicationID.Text = _LocalDrivingLicenseApplication.LocalDrivingLicenseApplicationID.ToString();
+            lblClassName.Text = clsLicenseClass.Find(_LocalDrivingLicenseApplication.LicenseClassID).ClassName;
+            lblPassedTests.Text = _LocalDrivingLicenseApplication.GetPassedTestCount().ToString() + "/3";
+            ctrlApplicationBasicInfo1.LoadApplicationInfo(_LocalDrivingLicenseApplication.ApplicationID);
+        }
+
+        private void _ResetLocalDrivingLicenseApplicationInfo()
+        {
+            LocalDrivingLicenseApplicationID = -1;
+            ctrlApplicationBasicInfo1.ResetApplicationInfo();
+            lblLocalDrivingLicenseApplicationID.Text = "[????]";
+            lblClassName.Text = "[????]";
         }
 
         private void llblShowLicenseInfo_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            clsLicense License = clsLicense.FindByApplicationID(Convert.ToInt32(lblApplicationID.Text));
-            frmLicneseInfo frm = new frmLicneseInfo(License.LicenseID);
+            frmShowLicenseInfo frm = new frmShowLicenseInfo(_LocalDrivingLicenseApplication.GetActiveLicenseID());
             frm.ShowDialog();
         }
     }

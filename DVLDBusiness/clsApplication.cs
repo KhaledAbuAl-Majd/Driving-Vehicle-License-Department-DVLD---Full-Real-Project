@@ -30,7 +30,7 @@ namespace DVLDBusiness
         public DateTime ApplicationDate { get; set; }
         public int ApplicationTypeID { get; set; }
 
-        clsApplicationType ApplicationTypeInfo;
+        public clsApplicationType ApplicationTypeInfo;
         public enApplicationStatus ApplicationStatus { get; set; }
         public string StatusText
         {

@@ -13,9 +13,9 @@ using DVLDPresentation.Properties;
 
 namespace DVLDPresentation.Applications.Manage_Applications.LocalDrivingLicenseApplications
 {
-    public partial class frmLicneseInfo : Form
+    public partial class frmShowLicenseInfo : Form
     {
-        public frmLicneseInfo(int LicenseID)
+        public frmShowLicenseInfo(int LicenseID)
         {
             InitializeComponent();
             ctrlDriverLicenseInfo1.LicenseID = LicenseID;

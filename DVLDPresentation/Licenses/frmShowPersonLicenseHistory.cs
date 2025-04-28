@@ -12,10 +12,10 @@ using DVLDPresentation.Applications.Manage_Applications.International_Driving_Li
 
 namespace DVLDPresentation.Applications.Manage_Applications.LocalDrivingLicenseApplications
 {
-    public partial class frmLicenseHistory : Form
+    public partial class frmShowPersonLicenseHistory : Form
     {
         int _PersonID;
-        public frmLicenseHistory(int PersonID)
+        public frmShowPersonLicenseHistory(int PersonID)
         {
             InitializeComponent();
             _PersonID = PersonID;
@@ -107,7 +107,7 @@ namespace DVLDPresentation.Applications.Manage_Applications.LocalDrivingLicenseA
         {
             //LicenseiD
             int LicenseID = Convert.ToInt32(dgvLocalLicenseHistory.SelectedCells[0].Value);
-            frmLicneseInfo frm = new frmLicneseInfo(LicenseID);
+            frmShowLicenseInfo frm = new frmShowLicenseInfo(LicenseID);
             frm.ShowDialog();
         }
 

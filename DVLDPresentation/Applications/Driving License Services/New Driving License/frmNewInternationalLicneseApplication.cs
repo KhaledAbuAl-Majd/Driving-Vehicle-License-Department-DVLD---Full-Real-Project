@@ -78,7 +78,7 @@ namespace DVLDPresentation.Applications.Driving_License_Services.New_Driving_Lic
 
         private void llblShowLicenseHistory_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            frmLicenseHistory frm = new frmLicenseHistory(_PersonID);
+            frmShowPersonLicenseHistory frm = new frmShowPersonLicenseHistory(_PersonID);
             frm.ShowDialog();
         }
 

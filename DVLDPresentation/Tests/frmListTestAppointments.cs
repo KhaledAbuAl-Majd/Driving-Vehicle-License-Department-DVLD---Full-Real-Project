@@ -40,12 +40,12 @@ namespace DVLDPresentation.Applications.Manage_Applications.Schedule_Test
                     break;
             }
         }
-        public frmListTestAppointments(int LDLApplicationID,byte PassedTestsNum)
+        public frmListTestAppointments(int LocalDrivingLicenseApplicationID,clsTestType.enTestType TestType)
         {
             InitializeComponent();
-            _LDLApplicationID = LDLApplicationID;
-            ctrlDLApplicationInfo1.LDLApplicationID = LDLApplicationID;
-            _SetFirstTypeInTestTypeMode(PassedTestsNum);
+            _LDLApplicationID = LocalDrivingLicenseApplicationID;
+            //ctrlDLApplicationInfo1.LocalDrivingLicenseApplicationID = LocalDrivingLicenseApplicationID;
+            //_SetFirstTypeInTestTypeMode(PassedTestsNum);
         }
 
         void _ChangeFormText(string Text)
@@ -142,7 +142,7 @@ namespace DVLDPresentation.Applications.Manage_Applications.Schedule_Test
         {
             _Load_RefreshDataInAppointmentsDGV();
             _AnyChanges = true;
-            ctrlDLApplicationInfo1._ChangePassedTestsLabel();
+            //ctrlDLApplicationInfo1._ChangePassedTestsLabel();
         }
 
 

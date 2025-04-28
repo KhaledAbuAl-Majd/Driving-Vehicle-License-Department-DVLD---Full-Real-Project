@@ -68,13 +68,13 @@ namespace DVLDPresentation.Applications.Detain_Licenses
 
         private void llblShowLicenseHistory_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            frmLicenseHistory frm = new frmLicenseHistory(_PersonID);
+            frmShowPersonLicenseHistory frm = new frmShowPersonLicenseHistory(_PersonID);
             frm.ShowDialog();
         }
 
         private void llblShowDetainedLicenseInfo_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            frmLicneseInfo frm = new frmLicneseInfo(_LicenseID);
+            frmShowLicenseInfo frm = new frmShowLicenseInfo(_LicenseID);
             frm.ShowDialog();
         }
 

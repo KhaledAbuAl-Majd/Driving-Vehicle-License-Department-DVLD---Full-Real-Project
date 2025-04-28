@@ -176,7 +176,7 @@ namespace DVLDPresentation
         private void showPersonLicenseHistoryToolStripMenuItem_Click(object sender, EventArgs e)
         {
             int PersonID = Convert.ToInt32(dgvDrivers.SelectedCells[1].Value);
-            frmLicenseHistory frm = new frmLicenseHistory(PersonID);
+            frmShowPersonLicenseHistory frm = new frmShowPersonLicenseHistory(PersonID);
             frm.ShowDialog();
         }
     }

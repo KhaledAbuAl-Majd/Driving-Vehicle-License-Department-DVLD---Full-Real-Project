@@ -240,7 +240,7 @@ namespace DVLDPresentation.Applications.Detain_Licenses
         {
             int LicenseID = Convert.ToInt32(dgvDetainedLicenses.SelectedCells[1].Value);
 
-            frmLicneseInfo frm = new frmLicneseInfo(LicenseID);
+            frmShowLicenseInfo frm = new frmShowLicenseInfo(LicenseID);
             frm.ShowDialog();
         }
 
@@ -249,7 +249,7 @@ namespace DVLDPresentation.Applications.Detain_Licenses
             string NationalNo = (string)dgvDetainedLicenses.SelectedCells[6].Value;
             int PersonID = clsPerson.Find(NationalNo).PersonID;
 
-            frmLicenseHistory frm = new frmLicenseHistory(PersonID);
+            frmShowPersonLicenseHistory frm = new frmShowPersonLicenseHistory(PersonID);
             frm.ShowDialog();
         }
 

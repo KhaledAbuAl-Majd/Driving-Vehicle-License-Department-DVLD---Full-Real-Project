@@ -19,7 +19,6 @@ namespace DVLDPresentation.Applications.Manage_Applications.LocalDrivingLicenseA
         public frmIssueDriverLicenseForFirstTime(int LDLApplicationID)
         {
             InitializeComponent();
-            ctrlDLApplicationInfo1.LDLApplicationID = LDLApplicationID;
             this._LDLApplicationID = LDLApplicationID;
         }
 

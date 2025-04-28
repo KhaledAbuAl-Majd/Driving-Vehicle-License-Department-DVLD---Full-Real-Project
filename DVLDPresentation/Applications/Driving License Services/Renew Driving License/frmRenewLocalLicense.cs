@@ -76,13 +76,13 @@ namespace DVLDPresentation.Applications.Driving_License_Services.Renew_Driving_L
 
         private void llblShowLicenseHistory_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            frmLicenseHistory frm = new frmLicenseHistory(_PersonID);
+            frmShowPersonLicenseHistory frm = new frmShowPersonLicenseHistory(_PersonID);
             frm.ShowDialog();
         }
 
         private void llblShowLicenseInfo_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            frmLicneseInfo frm = new frmLicneseInfo(_NewLicenseID);
+            frmShowLicenseInfo frm = new frmShowLicenseInfo(_NewLicenseID);
 
             frm.ShowDialog();
         }

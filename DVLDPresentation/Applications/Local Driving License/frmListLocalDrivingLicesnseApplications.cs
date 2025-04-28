@@ -6,6 +6,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -39,36 +40,13 @@ namespace DVLDPresentation.Applications.Manage_Applications
             if (_dvAllLDLApplications != null)
             {
                 _dvAllLDLApplications.RowFilter = FilterText;
-                //dgvLocalDrivingLicenseApplications.DataSource = _dvAllLDLApplications;
                 lblNumOfRecords.Text = _dvAllLDLApplications.Count.ToString();
+                //dgvLocalDrivingLicenseApplications.DataSource = _dvAllLDLApplications;
             }
         }
         private void _GetTextFilterEmpty()
         {
             gtxtFilterValue.Text = "";
-        }
-        private void _FilterByAtDesign()
-        {
-            if (gcbFilterBy.Text == "None")
-            {
-                _Show_HideTextFilter(false);
-                _Show_HideCBStatusFilter(false);
-                _FilterData("");
-            }
-            else if (gcbFilterBy.Text == "Status")
-            {
-                _Show_HideTextFilter(false);
-                _Show_HideCBStatusFilter(true);
-                gcbFilterByStatus.SelectedIndex = 0;
-            }
-            else
-            {
-                _Show_HideTextFilter(true);
-                _Show_HideCBStatusFilter(false);
-                _FilterData("");
-            }
-
-            _GetTextFilterEmpty();
         }
         private void _FilterByFilterByStatus()
         {
@@ -81,171 +59,15 @@ namespace DVLDPresentation.Applications.Manage_Applications
                 _FilterData($"Status = '{gcbFilterByStatus.Text}'");
             }
         }
-        void _CancelApplication()
+
+        void _ScheduleTest(clsTestType.enTestType TestType)
         {
-            clsLocalDrivingLicenseApplication LDLApplication = clsLocalDrivingLicenseApplication.FindByLocalDrivingAppLicenseID(Convert.ToInt32(dgvLocalDrivingLicenseApplications.SelectedCells[0].Value));
-            clsApplication Application = clsApplication.FindBaseApplication(LDLApplication.ApplicationID);
-            //Application.ApplicationStatus = clsApplicationStatuses.Find("Cancelled").ApplicationStatusID;
-            Application.LastStatusDate = DateTime.Now;
-
-            if(MessageBox.Show("Are you sure you want to Cancel this application?","Confirm",
-                MessageBoxButtons.OKCancel, MessageBoxIcon.Question,MessageBoxDefaultButton.Button1) == DialogResult.OK)
-            {
-                if (Application.Save())
-                {
-                    MessageBox.Show("Application Cancelled Successfully!", "Succed", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    _RefreshLDLApplicationsList();
-                }
-                else
-                {
-                    MessageBox.Show("Failed To Save", "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-            else
-            {
-                MessageBox.Show("Cancel Operatoin Cancelled ", "Cancelled", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-        }
-        void _AddNewLDLApplication()
-        {
-            frmAddUpdateLocalDrivingLicesnseApplication frm = new frmAddUpdateLocalDrivingLicesnseApplication();
-
-            frm.OnClose += FrmAddNewLDLApplication_OnClose;
-
-            frm.ShowDialog();
-        }
-        private void FrmAddNewLDLApplication_OnClose()
-        {
-            _RefreshLDLApplicationsList();
-        }
-        void _EnapleAndDisableMainToolSripItem(int Index,bool Value)
-        {
-            cmpLDLApplicationsOptoins.Items[Index].Enabled = Value;
-        }
-        void _EnapleAndDisableScehduleToolSripItem(int Index,bool Value)
-        {
-            ToolStripMenuItem scheduleTestsItems = (ToolStripMenuItem)cmpLDLApplicationsOptoins.Items[4];
-            scheduleTestsItems.DropDownItems[Index].Enabled = Value;
-        }
-        void _EnapleAndDisableLDLAOptions()
-        {
-            byte PassedTests = Convert.ToByte(dgvLocalDrivingLicenseApplications.SelectedCells[5].Value);
-
-            switch ((dgvLocalDrivingLicenseApplications.SelectedCells[6].Value).ToString().ToLower())
-            {
-                case "new":
-                    {
-                        _EnapleAndDisableMainToolSripItem(0, true);
-
-                        if (PassedTests < 3 && PassedTests >= 0)
-                        {
-                            _EnapleAndDisableMainToolSripItem(3, true);
-                            _EnapleAndDisableMainToolSripItem(4, true);
-                            _EnapleAndDisableMainToolSripItem(5, false);
-                            _EnapleAndDisableMainToolSripItem(6, false);
-
-                            switch (PassedTests)
-                            {
-                                case 0:
-                                    _EnapleAndDisableScehduleToolSripItem(0, true);
-                                    _EnapleAndDisableScehduleToolSripItem(1, false);
-                                    _EnapleAndDisableScehduleToolSripItem(2, false);
-
-                                    _EnapleAndDisableMainToolSripItem(1, true);
-                                    _EnapleAndDisableMainToolSripItem(2, true); 
-                                    break;
-
-                                case 1:
-                                    _EnapleAndDisableScehduleToolSripItem(0, false);
-                                    _EnapleAndDisableScehduleToolSripItem(1, true);
-                                    _EnapleAndDisableScehduleToolSripItem(2, false);
-
-                                    _EnapleAndDisableMainToolSripItem(1, false);
-                                    _EnapleAndDisableMainToolSripItem(2, false);
-                                    break;
-
-                                case 2:
-                                    _EnapleAndDisableScehduleToolSripItem(0, false);
-                                    _EnapleAndDisableScehduleToolSripItem(1, false);
-                                    _EnapleAndDisableScehduleToolSripItem(2, true);
-
-                                    _EnapleAndDisableMainToolSripItem(1, false);
-                                    _EnapleAndDisableMainToolSripItem(2, false);
-                                    break;
-                            }
-                            break;
-                        }
-                        else if (PassedTests == 3)
-                        {
-                            _EnapleAndDisableMainToolSripItem(1, false);
-                            _EnapleAndDisableMainToolSripItem(2, false);
-                            _EnapleAndDisableMainToolSripItem(3, false);
-                            _EnapleAndDisableMainToolSripItem(4, false);
-                            _EnapleAndDisableMainToolSripItem(5, true);
-                            _EnapleAndDisableMainToolSripItem(6, false);
-                        }
-                        break;
-                    }
-
-                case "cancelled":
-                    {
-                        _EnapleAndDisableMainToolSripItem(0, true);
-                        _EnapleAndDisableMainToolSripItem(1, false);
-
-                        if (PassedTests == 0)
-                            _EnapleAndDisableMainToolSripItem(2, true);
-                        else
-                            _EnapleAndDisableMainToolSripItem(2, false);
-
-                        _EnapleAndDisableMainToolSripItem(3, false);
-                        _EnapleAndDisableMainToolSripItem(4, false);
-                        _EnapleAndDisableMainToolSripItem(5, false);
-                        _EnapleAndDisableMainToolSripItem(6, false);
-                        break;
-                    }
-
-                case "completed":
-                    {
-                        _EnapleAndDisableMainToolSripItem(0, true);
-                        _EnapleAndDisableMainToolSripItem(1, false);
-                        _EnapleAndDisableMainToolSripItem(2, false);
-                        _EnapleAndDisableMainToolSripItem(3, false);
-                        _EnapleAndDisableMainToolSripItem(4, false);
-                        _EnapleAndDisableMainToolSripItem(5, false);
-                        _EnapleAndDisableMainToolSripItem(6, true);
-                        break;
-                    }
-            }
-        }
-        void _SchduleNewTest()
-        {
-            int LDLAppID = Convert.ToInt32(dgvLocalDrivingLicenseApplications.SelectedCells[0].Value);
-            byte PassedTests = Convert.ToByte(dgvLocalDrivingLicenseApplications.SelectedCells[5].Value);
-            frmListTestAppointments frm = new frmListTestAppointments(LDLAppID, PassedTests);
+            int LocalDrivingLicenseApplicationID = Convert.ToInt32(dgvLocalDrivingLicenseApplications.CurrentRow.Cells[0].Value);
+            frmListTestAppointments frm = new frmListTestAppointments(LocalDrivingLicenseApplicationID, TestType);
             frm.OnClose += _RefreshLDLApplicationsList;
             frm.ShowDialog();
         }
-        void _DeleteLDLApplication()
-        {
-            if (MessageBox.Show("Are you sure you want to delete this Application?", "Confirm",
-                MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) == DialogResult.Yes)
-            {
-                //if (clsLocalDrivingLicenseApplication.Delete(Convert.ToInt32(dgvLocalDrivingLicenseApplications.SelectedCells[0].Value)))
-                //{
-                //    MessageBox.Show("Application Deleted Successfully!", "Succed",
-                //MessageBoxButtons.OK, MessageBoxIcon.Information);
-                //    _RefreshLDLApplicationsList();
-                //}
-                //else
-                //{
-                //    MessageBox.Show("Failed to delete!, this application has linked to another things", "Failed",
-                //                   MessageBoxButtons.OK, MessageBoxIcon.Error);
-                //}
-            }
-            else
-                MessageBox.Show("Delete Operation Was Cancelled!", "Cancelled",
-              MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
+
         void _RefreshLDLApplicationsList()
         {
             _dvAllLDLApplications = clsLocalDrivingLicenseApplication.GetAllLocalDrivingLicenseApplications().DefaultView;
@@ -253,6 +75,7 @@ namespace DVLDPresentation.Applications.Manage_Applications
             //lblNumOfRecords.Text = _dvAllLDLApplications.Count.ToString();
             gcbFilterBy.SelectedIndex = 0;
         }
+
         private void frmLocalDrivingLicenseApplications_Load(object sender, EventArgs e)
         {
             _RefreshLDLApplicationsList();
@@ -282,47 +105,249 @@ namespace DVLDPresentation.Applications.Manage_Applications
             }
         }
 
-        private void btnAddLDLApplication_Click(object sender, EventArgs e)
-        {
-            _AddNewLDLApplication();
-        }
-
         private void showDetailsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //Local Driving License Application ID
-            frmLocalDrivingLicenseApplicationInfo frm = new frmLocalDrivingLicenseApplicationInfo(Convert.ToInt32(dgvLocalDrivingLicenseApplications.SelectedCells[0].Value));
+            frmLocalDrivingLicenseApplicationInfo frm = new 
+            frmLocalDrivingLicenseApplicationInfo(Convert.ToInt32(dgvLocalDrivingLicenseApplications.CurrentRow.Cells[0].Value));
             frm.ShowDialog();
-        }
 
-        private void editToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            frmAddUpdateLocalDrivingLicesnseApplication frm = new frmAddUpdateLocalDrivingLicesnseApplication(Convert.ToInt32(dgvLocalDrivingLicenseApplications.CurrentRow.Cells[0].Value));
-        }
-
-        private void DeletetoolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            _DeleteLDLApplication();
-        }
-
-        private void CancelToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            _CancelApplication();
-        }
-
-        private void gtxtFilterValue_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (gcbFilterBy.Text != "L.D.L.AppID")
-                return;
-
-            if(!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
-            {
-                e.Handled = true;
-            }
+            //Refresh
+            //_RefreshLDLApplicationsList();
         }
 
         private void gcbFilterBy_SelectedIndexChanged(object sender, EventArgs e)
         {
-            _FilterByAtDesign();
+            if (gcbFilterBy.Text == "Status")
+            {
+                _Show_HideTextFilter(false);
+                _Show_HideCBStatusFilter(true);
+                gcbFilterByStatus.SelectedIndex = 0;
+                return;
+            }
+
+            _Show_HideTextFilter(gcbFilterBy.Text != "None");
+            _FilterData("");
+            _Show_HideCBStatusFilter(false);
+            _GetTextFilterEmpty();
+        }
+
+        private void gtxtFilterValue_TextChanged(object sender, EventArgs e)
+        {
+            string FilterColumn = "";
+
+            switch (gcbFilterBy.Text)
+            {
+                case "L.D.L.AppID":
+                    FilterColumn = "LocalDrivingLicenseApplicationID";
+                    break;
+
+                case "National No.":
+                    FilterColumn = "NationalNo";
+                    break;
+
+
+                case "Full Name":
+                    FilterColumn = "FullName";
+                    break;
+
+
+                default:
+                    FilterColumn = "None";
+                    break;
+            }
+
+            //Reset the filters in case nothing selected or filter value conains nothing.
+            if (gtxtFilterValue.Text.Trim() == "" || FilterColumn == "None")
+            {
+                _FilterData("");
+                return;
+            }
+
+            if (FilterColumn == "LocalDrivingLicenseApplicationID")
+                _FilterData($"{FilterColumn} = {gtxtFilterValue.Text}");
+            else
+                _FilterData($"{FilterColumn} like '{gtxtFilterValue.Text}%'");
+        }
+
+        private void editToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmAddUpdateLocalDrivingLicesnseApplication frm = 
+                new frmAddUpdateLocalDrivingLicesnseApplication(Convert.ToInt32(dgvLocalDrivingLicenseApplications.CurrentRow.Cells[0].Value));
+
+            frm.OnClose += _RefreshLDLApplicationsList;
+            frm.ShowDialog();
+        }
+
+        private void gtxtFilterValue_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (gcbFilterBy.Text == "L.D.L.AppID")
+                e.Handled = (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar));
+        }
+
+        private void scheduleVisionTestToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            _ScheduleTest(clsTestType.enTestType.VisionTest);
+        }
+
+        private void scheduleWrittenTestToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            _ScheduleTest(clsTestType.enTestType.WrittenTest);
+        }
+
+        private void scheduleStreetTestToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            _ScheduleTest(clsTestType.enTestType.StreetTest);
+        }
+
+        private void btnAddLDLApplication_Click(object sender, EventArgs e)
+        {
+            frmAddUpdateLocalDrivingLicesnseApplication frm = new frmAddUpdateLocalDrivingLicesnseApplication();
+            frm.OnClose += _RefreshLDLApplicationsList;
+            frm.ShowDialog();
+        }
+
+        private void issueDrivingLicenseFirstTimeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //Local Driving License Application ID
+            frmIssueDriverLicenseForFirstTime frm = new frmIssueDriverLicenseForFirstTime(Convert.ToInt32(dgvLocalDrivingLicenseApplications.CurrentRow.Cells[0].Value));
+            frm.OnClose += _RefreshLDLApplicationsList;
+            frm.ShowDialog();
+        }
+
+        private void cmpLDLApplicationsOptoins_Opening(object sender, CancelEventArgs e)
+        {
+            int LocalDrivingLicenseApplicationID = Convert.ToInt32(dgvLocalDrivingLicenseApplications.CurrentRow.Cells[0].Value);
+
+            clsLocalDrivingLicenseApplication LocalDrivingLicenseApplication = clsLocalDrivingLicenseApplication.FindByLocalDrivingAppLicenseID(LocalDrivingLicenseApplicationID);
+
+            int TotalPassedTests = (int)dgvLocalDrivingLicenseApplications.CurrentRow.Cells[5].Value;
+
+            //have an active license from this class, note person cannot apply New License if he has license (Active ant not)
+            //This Application for first time only!!
+            bool LicenseExists = LocalDrivingLicenseApplication.IsLicenseIssued();
+
+            //Enabled only if person passed all tests and Does not have license. 
+            issueDrivingLicenseFirstTimeToolStripMenuItem.Enabled = (TotalPassedTests == 3) && !LicenseExists;
+
+            showLicenseToolStripMenuItem.Enabled = LicenseExists;
+            editToolStripMenuItem.Enabled = !LicenseExists && (LocalDrivingLicenseApplication.ApplicationStatus == clsApplication.enApplicationStatus.New);
+            //ScheduleTestsMenue.Enabled = !LicenseExists;
+
+            //We only canel the applications with status=new.
+            CancelApplicaitonToolStripMenuItem.Enabled = LocalDrivingLicenseApplication.ApplicationStatus == clsApplication.enApplicationStatus.New;
+
+            //We only canel the applications with status=new.
+            DeleteApplicationToolStripMenuItem.Enabled = LocalDrivingLicenseApplication.ApplicationStatus == clsApplication.enApplicationStatus.New;
+
+            bool PassedVisionTest = LocalDrivingLicenseApplication.DoesPassTestType(clsTestType.enTestType.VisionTest);
+            bool PassedWrittenTest = LocalDrivingLicenseApplication.DoesPassTestType(clsTestType.enTestType.WrittenTest);
+            bool PassedStreetTest = LocalDrivingLicenseApplication.DoesPassTestType(clsTestType.enTestType.StreetTest);
+
+            ScheduleTestsMenue.Enabled = (!PassedVisionTest || !PassedWrittenTest || !PassedStreetTest) && (LocalDrivingLicenseApplication.ApplicationStatus == clsApplication.enApplicationStatus.New);
+
+            if (ScheduleTestsMenue.Enabled)
+            {
+                scheduleVisionTestToolStripMenuItem.Enabled = !PassedVisionTest;
+                scheduleWrittenTestToolStripMenuItem.Enabled = PassedVisionTest && !PassedWrittenTest;
+                scheduleStreetTestToolStripMenuItem.Enabled = PassedVisionTest && PassedWrittenTest && !PassedStreetTest;
+            }
+
+        }
+
+        private void showLicenseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //Local Driving License Application ID
+            //int LDLApplicationID = Convert.ToInt32(dgvLocalDrivingLicenseApplications.CurrentRow.Cells[0].Value);
+            //clsLocalDrivingLicenseApplication LDLApplication = clsLocalDrivingLicenseApplication.FindByLocalDrivingAppLicenseID(LDLApplicationID);
+            //clsApplication Application = clsApplication.FindBaseApplication(LDLApplication.ApplicationID);
+            //clsLicense License = clsLicense.FindByApplicationID(Application.ApplicationID);
+            //frmShowLicenseInfo frm = new frmShowLicenseInfo(License.LicenseID);
+            //frm.ShowDialog();
+
+            //I Git Active LIcense Because , Person Can Apply to New license for First Time Only
+
+
+           int LocalDrivingLicenseApplicationID = (int)dgvLocalDrivingLicenseApplications.CurrentRow.Cells[0].Value;
+
+            int LicenseID = clsLocalDrivingLicenseApplication.FindByLocalDrivingAppLicenseID(
+              LocalDrivingLicenseApplicationID).GetActiveLicenseID();
+
+            if (LicenseID != -1)
+                {
+                    frmShowLicenseInfo frm = new frmShowLicenseInfo(LicenseID);
+                    frm.ShowDialog();
+
+                }
+                else
+                {
+                    MessageBox.Show("No License Found!", "No License", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+        }
+
+        private void CancelToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Are you sure do want to cancel this application?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+                return;
+
+            int LocalDrivingLicenseApplicationID = (int)dgvLocalDrivingLicenseApplications.CurrentRow.Cells[0].Value;
+
+            clsLocalDrivingLicenseApplication LocalDrivingLicenseApplication =
+                 clsLocalDrivingLicenseApplication.FindByLocalDrivingAppLicenseID(LocalDrivingLicenseApplicationID);
+
+            if(LocalDrivingLicenseApplication != null)
+            {
+                if (LocalDrivingLicenseApplication.Cancel())
+                {
+                    MessageBox.Show("Application Cancelled Successfully.", "Cancelled", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //refresh the form again.
+                    _RefreshLDLApplicationsList();
+                }
+                else
+                    MessageBox.Show("Could not cancel applicatoin.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void DeletetoolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Are you sure do want to delete this application?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+                return;
+
+            int LocalDrivingLicenseApplicationID = (int)dgvLocalDrivingLicenseApplications.CurrentRow.Cells[0].Value;
+
+            clsLocalDrivingLicenseApplication LocalDrivingLicenseApplication =
+               clsLocalDrivingLicenseApplication.FindByLocalDrivingAppLicenseID(LocalDrivingLicenseApplicationID);
+
+            if (LocalDrivingLicenseApplication != null)
+            {
+                if (LocalDrivingLicenseApplication.Delete())
+                {
+                    MessageBox.Show("Application Deleted Successfully.", "Deleted", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //refresh the form again.
+                    _RefreshLDLApplicationsList();
+                }
+                else
+                {
+                    MessageBox.Show("Could not delete applicatoin, other data depends on it.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+
+        }
+
+        private void showPersonLicenseHistoryToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //int LocalDrivingLicenseApplicationID = (int)dgvLocalDrivingLicenseApplications.CurrentRow.Cells[0].Value;
+            //clsLocalDrivingLicenseApplication localDrivingLicenseApplication = clsLocalDrivingLicenseApplication.FindByLocalDrivingAppLicenseID(LocalDrivingLicenseApplicationID);
+
+            //frmShowPersonLicenseHistory frm = new frmShowPersonLicenseHistory(localDrivingLicenseApplication.ApplicantPersonID);
+            //frm.ShowDialog();
+
+            // National No 
+            int PersonID = clsPerson.Find((string)dgvLocalDrivingLicenseApplications.SelectedCells[2].Value).PersonID;
+
+            frmShowPersonLicenseHistory frm = new frmShowPersonLicenseHistory(PersonID);
+            frm.ShowDialog();
         }
 
         private void gcbFilterByStatus_SelectedIndexChanged(object sender, EventArgs e)
@@ -330,72 +355,9 @@ namespace DVLDPresentation.Applications.Manage_Applications
             _FilterByFilterByStatus();
         }
 
-        private void gtxtFilterValue_TextChanged(object sender, EventArgs e)
-        {
-            if (string.IsNullOrWhiteSpace(gtxtFilterValue.Text))
-                _FilterData("");
-
-            else if (gcbFilterBy.Text.ToLower() == "L.D.L.AppID".ToLower())
-                _FilterData($"[L.D.L.AppID] = '{gtxtFilterValue.Text}'");
-
-            else if (gcbFilterBy.Text.ToLower() == "National No.".ToLower())
-                _FilterData($"[National No]. like '{gtxtFilterValue.Text}%'");
-
-            else if (gcbFilterBy.Text.ToLower() == "Full Name".ToLower())
-                _FilterData($"[Full Name] like '{gtxtFilterValue.Text}%'");
-        }
-
         private void gbtnClose_Click(object sender, EventArgs e)
         {
             this.Close();
-        }
-
-        private void scheduleVisionTestToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            _SchduleNewTest();
-        }
-
-        private void cmpLDLApplicationsOptoins_Opening(object sender, CancelEventArgs e)
-        {
-            _EnapleAndDisableLDLAOptions();
-        }
-
-        private void scheduleWrittenTestToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            _SchduleNewTest();
-        }
-
-        private void scheduleStreetTestToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            _SchduleNewTest();
-        }
-
-        private void CMSIIssueDrivingLicenseFirstTime_Click(object sender, EventArgs e)
-        {
-            //Local Driving License Application ID
-            frmIssueDriverLicenseForFirstTime frm = new frmIssueDriverLicenseForFirstTime(Convert.ToInt32(dgvLocalDrivingLicenseApplications.SelectedCells[0].Value));
-            frm.OnClose += _RefreshLDLApplicationsList;
-            frm.ShowDialog();
-        }
-
-        private void CMSIshowLicense_Click(object sender, EventArgs e)
-        {
-            //Local Driving License Application ID
-            int LDLApplicationID = Convert.ToInt32(dgvLocalDrivingLicenseApplications.SelectedCells[0].Value);
-            clsLocalDrivingLicenseApplication LDLApplication = clsLocalDrivingLicenseApplication.FindByLocalDrivingAppLicenseID(LDLApplicationID);
-            clsApplication Application = clsApplication.FindBaseApplication(LDLApplication.ApplicationID);
-            clsLicense License =  clsLicense.FindByApplicationID(Application.ApplicationID);
-            frmLicneseInfo frm = new frmLicneseInfo(License.LicenseID);
-            frm.ShowDialog();
-        }
-
-        private void showPersonLicenseHistoryToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            // National No 
-            int PersonID = clsPerson.Find((string)dgvLocalDrivingLicenseApplications.SelectedCells[2].Value).PersonID;
-
-            frmLicenseHistory frm = new frmLicenseHistory(PersonID);
-            frm.ShowDialog();
         }
     }
 }

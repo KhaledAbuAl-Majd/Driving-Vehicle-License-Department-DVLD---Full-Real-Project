@@ -1,6 +1,6 @@
 ﻿namespace DVLDPresentation.Applications.Manage_Applications.LocalDrivingLicenseApplications
 {
-    partial class frmLicneseInfo
+    partial class frmShowLicenseInfo
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmLicneseInfo));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmShowLicenseInfo));
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.gbtnClose = new Guna.UI2.WinForms.Guna2Button();

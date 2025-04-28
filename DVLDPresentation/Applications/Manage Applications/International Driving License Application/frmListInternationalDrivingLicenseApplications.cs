@@ -199,7 +199,7 @@ namespace DVLDPresentation.Applications.Manage_Applications.International_Drivin
         {
             int DriverID = Convert.ToInt32(dgvIntLApplications.SelectedCells[2].Value);
             int PersonID = clsDriver.FindByDriverID(DriverID).PersonID;
-            frmLicenseHistory frm = new frmLicenseHistory(PersonID);
+            frmShowPersonLicenseHistory frm = new frmShowPersonLicenseHistory(PersonID);
             frm.ShowDialog();
         }
 
