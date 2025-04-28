@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data;
 using System.Diagnostics.SymbolStore;
 using System.Linq;
@@ -18,16 +19,16 @@ namespace DVLDBusiness
 
         public clsDriver DriverInfo;
         public int LicenseID { get; private set; }
-        public int ApplicationID { get; private set; }
-        public int DriverID { get; private set; }
-        public int LicenseClassID{ get; private set; }
+        public int ApplicationID { get; set; }
+        public int DriverID { get; set; }
+        public int LicenseClassID { get; set; }
 
         public clsLicenseClass LicenseClassIfo;
-        public DateTime IssueDate { get; private set; }
-        public DateTime ExpirationDate { get; private set; }
+        public DateTime IssueDate { get; set; }
+        public DateTime ExpirationDate { get; set; }
         public string Notes { get; set; }
-        public float PaidFees { get; private set; }
-        public bool IsActive{ get; set; }
+        public float PaidFees { get; set; }
+        public bool IsActive { get; set; }
         public enIssueReason IssueReason { get; set; }
         public string IssueReasonText
         {
@@ -36,11 +37,11 @@ namespace DVLDBusiness
                 return GetIssueReasonText(this.IssueReason);
             }
         }
-        public clsDetainedLicenses DetainedInfo { get; set; }
-        public int CreatedByUserID { get; private set; }
+        public clsDetainedLicense DetainedInfo { get; set; }
+        public int CreatedByUserID { get; set; }
         public bool IsDetained
         {
-            get { return clsDetainedLicenses.IsLicenseDetainedByLicenseID(this.LicenseID); }
+            get { return clsDetainedLicense.IsLicenseDetained(this.LicenseID); }
         }
 
         public clsLicense()
@@ -60,7 +61,7 @@ namespace DVLDBusiness
             Mode = enMode.AddNew;
         }
 
-        private clsLicense(int LicneseID,int ApplicationID, int DriverID, int LicenseClassID, DateTime IsuueDate, DateTime ExpirationDate,
+        private clsLicense(int LicneseID, int ApplicationID, int DriverID, int LicenseClassID, DateTime IsuueDate, DateTime ExpirationDate,
             string Notes, float PaidFees, bool IsAcitve, enIssueReason IssueReason, int CreatedByUserID)
         {
             this.LicenseID = LicenseID;
@@ -77,11 +78,11 @@ namespace DVLDBusiness
 
             this.DriverInfo = clsDriver.FindByDriverID(this.DriverID);
             this.LicenseClassIfo = clsLicenseClass.Find(this.LicenseClassID);
-            this.DetainedInfo = clsDetainedLicenses.FindByLicenseID(this.LicenseID);
+            this.DetainedInfo = clsDetainedLicense.FindByLicenseID(this.LicenseID);
 
             Mode = enMode.Update;
         }
-        private bool _AddNewLicnese()
+        private bool _AddNewLicense()
         {
             this.LicenseID = clsLicenseData.AddNewLicense(ApplicationID, DriverID, LicenseClassID, IssueDate, ExpirationDate,
                 Notes, PaidFees, IsActive, (byte)IssueReason, CreatedByUserID);
@@ -120,11 +121,11 @@ namespace DVLDBusiness
         {
             int LicneseID = -1, DriverID = -1, LicneseClassID = -1, CreatedByUserID = -1;
             DateTime IssueDate = new DateTime(1900, 1, 1), ExpirationDate = new DateTime(1900, 1, 1);
-            string Notes = "";byte IssueReason = 0;
+            string Notes = ""; byte IssueReason = 0;
             float PaidFees = 0;
             bool IsActive = false;
 
-            if (clsLicenseData.GetLicneseInfoByApplicationID(ApplicationID, ref LicneseID,  ref DriverID, ref LicneseClassID, ref IssueDate, ref ExpirationDate,
+            if (clsLicenseData.GetLicneseInfoByApplicationID(ApplicationID, ref LicneseID, ref DriverID, ref LicneseClassID, ref IssueDate, ref ExpirationDate,
                 ref Notes, ref PaidFees, ref IsActive, ref IssueReason, ref CreatedByUserID))
 
                 return new clsLicense(LicneseID, ApplicationID, DriverID, LicneseClassID, IssueDate, ExpirationDate,
@@ -140,22 +141,27 @@ namespace DVLDBusiness
 
         public bool Save()
         {
-            switch (this.Mode)
+            switch (Mode)
             {
                 case enMode.AddNew:
-                    if (_AddNewLicnese())
+                    if (_AddNewLicense())
                     {
-                        this.Mode = enMode.Update;
-                        clsApplication Application = clsApplication.FindBaseApplication(this.ApplicationID);
-                        //Application.ApplicationStatus = clsApplicationStatuses.Find("Completed").ApplicationStatusID;
-                        Application.LastStatusDate = DateTime.Now;
-                        Application.Save();
+
+                        Mode = enMode.Update;
                         return true;
                     }
                     else
+                    {
                         return false;
+                    }
+
+                case enMode.Update:
+
+                    return _UpdateLicense();
+
             }
-            return false;   
+
+            return false;
         }
 
         public static bool IsLicenseExistByPersonID(int PersonID, int LicenseClassID)
@@ -165,7 +171,6 @@ namespace DVLDBusiness
 
         public static int GetActiveLicenseIDByPersonID(int PersonID, int LicenseClassID)
         {
-
             return clsLicenseData.GetActiveLicenseIDByPersonID(PersonID, LicenseClassID);
 
         }
@@ -216,7 +221,7 @@ namespace DVLDBusiness
         {
             return clsLicenseData.IsPersonHaveAnActiveLicneseWithTheSameLicneseClass(PersonID, LicenseClassID);
         }
-     
+
         public static bool IsLicenseExist(int LicenseID)
         {
             return clsLicenseData.IsLicenseExist(LicenseID);
@@ -224,5 +229,127 @@ namespace DVLDBusiness
 
         //
 
+        public int Detain(float FineFees, int CreatedByUserID)
+        {
+            clsDetainedLicense detainedLicense = new clsDetainedLicense();
+            detainedLicense.LicenseID = this.LicenseID;
+            detainedLicense.DetainDate = DateTime.Now;
+            detainedLicense.FineFees = FineFees;
+            detainedLicense.CreatedByUserID = CreatedByUserID;
+
+            if (!detainedLicense.Save())
+                return -1;
+
+            return detainedLicense.DetainID;
+        }
+
+        public bool ReleaseDetainedLicense(int ReleasedByUserID, ref int ApplicationID)
+        {
+            //First Create Applicaiton 
+            clsApplication Application = new clsApplication();
+            Application.ApplicantPersonID = this.DriverInfo.PersonID;
+            Application.ApplicationDate = DateTime.Now;
+            Application.ApplicationTypeID = (int)clsApplication.enApplicationType.ReleaseDetainedDrivingLicsense;
+            Application.ApplicationStatus = clsApplication.enApplicationStatus.Completed;
+            Application.LastStatusDate = DateTime.Now;
+            Application.PaidFees = clsApplicationType.Find((int)clsApplication.enApplicationType.ReleaseDetainedDrivingLicsense).ApplicationFees;
+            Application.CreatedByUserID = ReleasedByUserID;
+
+            if (!Application.Save())
+            {
+                ApplicationID = -1;
+                return false;
+            }
+
+            ApplicationID = Application.ApplicationID;
+
+            return this.DetainedInfo.ReleaseDetainedLicense(ReleasedByUserID, Application.ApplicationID);
+        }
+
+        public clsLicense RenewLicense(string Notes, int CreatedByUserID)
+        {
+            //First Create Applicaiton 
+            clsApplication Application = new clsApplication();
+
+            Application.ApplicantPersonID = this.DriverInfo.PersonID;
+            Application.ApplicationDate = DateTime.Now;
+            Application.ApplicationTypeID = (int)clsApplication.enApplicationType.RenewDrivingLicense;
+            Application.ApplicationStatus = clsApplication.enApplicationStatus.Completed;
+            Application.LastStatusDate = DateTime.Now;
+            Application.PaidFees = clsApplicationType.Find((int)clsApplication.enApplicationType.RenewDrivingLicense).ApplicationFees;
+            Application.CreatedByUserID = CreatedByUserID;
+
+            if (!Application.Save())
+            {
+                return null;
+            }
+
+            clsLicense NewLicense = new clsLicense();
+
+            NewLicense.ApplicationID = Application.ApplicationID;
+            NewLicense.DriverID = this.DriverID;
+            NewLicense.LicenseClassID = this.LicenseClassID;
+            NewLicense.IssueDate = DateTime.Now;
+
+            int DefaultValidityLength = this.LicenseClassIfo.DefaultValidityLength;
+
+            NewLicense.ExpirationDate = DateTime.Now.AddYears(DefaultValidityLength);
+            NewLicense.Notes = Notes;
+            NewLicense.PaidFees = this.LicenseClassIfo.ClassFees;
+            NewLicense.IsActive = true;
+            NewLicense.IssueReason = clsLicense.enIssueReason.Renew;
+            NewLicense.CreatedByUserID = CreatedByUserID;
+
+            if (!NewLicense.Save())
+                return null;
+
+            //we need to deactivate the old License.
+            DeactivateCurrentLicense();
+
+            return NewLicense;
+        }
+
+        public clsLicense Replace(enIssueReason IssueReason, int CreatedByUserID)
+        {
+            //First Create Applicaiton 
+            clsApplication Application = new clsApplication();
+
+            Application.ApplicantPersonID = this.DriverInfo.PersonID;
+            Application.ApplicationDate = DateTime.Now;
+
+            Application.ApplicationTypeID = (IssueReason == enIssueReason.DamagedReplacement) ?
+                (int)clsApplication.enApplicationType.ReplaceDamagedDrivingLicense : (int)clsApplication.enApplicationType.ReplaceLostDrivingLicense;
+
+            Application.ApplicationStatus = clsApplication.enApplicationStatus.Completed;
+            Application.LastStatusDate = DateTime.Now;
+            Application.PaidFees = clsApplicationType.Find((int)clsApplication.enApplicationType.RenewDrivingLicense).ApplicationFees;
+            Application.CreatedByUserID = CreatedByUserID;
+
+            if (!Application.Save())
+            {
+                return null;
+            }
+
+            clsLicense NewLicense = new clsLicense();
+
+            NewLicense.ApplicationID = Application.ApplicationID;
+            NewLicense.DriverID = this.DriverID;
+            NewLicense.LicenseClassID = this.LicenseClassID;
+            NewLicense.IssueDate = DateTime.Now;
+            NewLicense.ExpirationDate = this.ExpirationDate;
+            NewLicense.Notes = this.Notes;
+            NewLicense.PaidFees = 0;// no fees for the license because it's a replacement.
+            NewLicense.IsActive = true;
+            NewLicense.IssueReason = IssueReason;
+            NewLicense.CreatedByUserID = CreatedByUserID;
+
+            if (!NewLicense.Save())
+                return null;
+
+            //we need to deactivate the old License.
+            DeactivateCurrentLicense();
+
+            return NewLicense;
+        }
     }
 }

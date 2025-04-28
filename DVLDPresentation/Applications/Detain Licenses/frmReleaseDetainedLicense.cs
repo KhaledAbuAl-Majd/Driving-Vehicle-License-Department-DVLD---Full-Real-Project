@@ -28,7 +28,7 @@ namespace DVLDPresentation.Applications.Detain_Licenses
         int _PersonID;
         int _LicenseID;
         bool _IsReleased = false;
-        clsDetainedLicenses _DetainedLicense;
+        clsDetainedLicense _DetainedLicense;
 
         void _ChangeEnaplityOfReleaseButton(bool Value)
         {
@@ -40,14 +40,14 @@ namespace DVLDPresentation.Applications.Detain_Licenses
         }
         void _FillLabelsAfterFindLicense()
         {
-            lblDetainID.Text = _DetainedLicense.DetainID.ToString();
-            lblDetainDate.Text = _DetainedLicense.DetainDate.ToString("dd/MMM/yyyy");
-            float ApplicationFees = clsApplicationType.Find(_DetainedLicense.ApplicatoinTypeID).ApplicationFees;
-            lblApplicationFees.Text = ApplicationFees.ToString();
-            lblFineFees.Text = _DetainedLicense.FineFees.ToString();
-            lblTotalFees.Text = (ApplicationFees + _DetainedLicense.FineFees).ToString();
-            lblLicenseID.Text = _DetainedLicense.LicenseID.ToString();
-            lblCreatedBy.Text = clsUser.FindByUserID(_DetainedLicense.CreatedByUserID).UserName;
+            //lblDetainID.Text = _DetainedLicense.DetainID.ToString();
+            //lblDetainDate.Text = _DetainedLicense.DetainDate.ToString("dd/MMM/yyyy");
+            //float ApplicationFees = clsApplicationType.Find(_DetainedLicense.ApplicatoinTypeID).ApplicationFees;
+            //lblApplicationFees.Text = ApplicationFees.ToString();
+            //lblFineFees.Text = _DetainedLicense.FineFees.ToString();
+            //lblTotalFees.Text = (ApplicationFees + _DetainedLicense.FineFees).ToString();
+            //lblLicenseID.Text = _DetainedLicense.LicenseID.ToString();
+            //lblCreatedBy.Text = clsUser.FindByUserID(_DetainedLicense.CreatedByUserID).UserName;
         }
         void _OnErrorAtSearch()
         {
@@ -64,7 +64,7 @@ namespace DVLDPresentation.Applications.Detain_Licenses
            
             _ChangeEnaplityOfLinkLabel(llblShowLicenseHistory, true);
             _ChangeEnaplityOfReleaseButton(true);
-            _DetainedLicense = clsDetainedLicenses.FindByLicenseID(LocalLicense.LicenseID);
+            _DetainedLicense = clsDetainedLicense.FindByLicenseID(LocalLicense.LicenseID);
             if (_DetainedLicense != null)
             {
                 _FillLabelsAfterFindLicense();

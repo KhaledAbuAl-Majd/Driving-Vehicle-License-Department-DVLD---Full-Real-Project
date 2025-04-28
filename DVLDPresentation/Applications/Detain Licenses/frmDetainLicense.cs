@@ -91,25 +91,25 @@ namespace DVLDPresentation.Applications.Detain_Licenses
             MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2)) == DialogResult.Yes)
             {
                 float FineFees = Convert.ToSingle(gtxtFineFees.Text);
-                clsDetainedLicenses NewDetainLicense = new clsDetainedLicenses(_LicenseID, FineFees, clsGlobalSettings.CurrentUser.UserID);
+                //clsDetainedLicense NewDetainLicense = new clsDetainedLicense(_LicenseID, FineFees, clsGlobalSettings.CurrentUser.UserID);
 
-                if (NewDetainLicense.Save())
-                {
-                    _IsDetained = true;
-                    MessageBox.Show($"License Detained Successfully With ID = {NewDetainLicense.DetainID}",
-                        "License Detained", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //if (NewDetainLicense.Save())
+                //{
+                //    _IsDetained = true;
+                //    MessageBox.Show($"License Detained Successfully With ID = {NewDetainLicense.DetainID}",
+                //        "License Detained", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    _ChangeEnaplityOfDetainButton(false);
-                    _ChangeEnaplityOfLinkLabel(llblShowLicenseHistory, true);
-                    _ChangeEnaplityOfLinkLabel(llblShowDetainedLicenseInfo, true);
-                    lblDetainID.Text = NewDetainLicense.DetainID.ToString();
-                    ctrlDriverLicenseInfoCardWithFilter1.ChangeEnaplityOfGBFilterBy(false);
-                }
-                else
-                {
-                    _IsDetained = false;    
-                    MessageBox.Show($"Error To Detaine License!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                //    _ChangeEnaplityOfDetainButton(false);
+                //    _ChangeEnaplityOfLinkLabel(llblShowLicenseHistory, true);
+                //    _ChangeEnaplityOfLinkLabel(llblShowDetainedLicenseInfo, true);
+                //    lblDetainID.Text = NewDetainLicense.DetainID.ToString();
+                //    ctrlDriverLicenseInfoCardWithFilter1.ChangeEnaplityOfGBFilterBy(false);
+                //}
+                //else
+                //{
+                //    _IsDetained = false;    
+                //    MessageBox.Show($"Error To Detaine License!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //}
             }
         }
         private void gbtnClose_Click(object sender, EventArgs e)

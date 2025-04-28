@@ -78,7 +78,7 @@ namespace DVLDPresentation.Applications.Manage_Applications.International_Drivin
         }
         void _Load_RefereshIntLApplicationsInDGV()
         {
-            DataTable dtAllIntApplications = clsInternationalLicense.GetAllLicneses();
+            DataTable dtAllIntApplications = clsInternationalLicense.GetAllInternationalLicenses();
 
             if (dtAllIntApplications.Rows.Count > 0)
             {

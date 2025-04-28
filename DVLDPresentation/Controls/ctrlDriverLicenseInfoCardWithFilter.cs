@@ -102,7 +102,7 @@ namespace DVLDPresentation.Controls
         }
         bool _CheckIsPersonHaveActiveInternationalLicense(int PersonID)
         {
-            int SearchedInternationalLicenseID = clsInternationalLicense.GetInternationalLicenseIfPersonHasActiveOne(PersonID);
+            int SearchedInternationalLicenseID = clsInternationalLicense.GetActiveInternationalLicenseIDByPersonID(PersonID);
             if (SearchedInternationalLicenseID != -1)
             {
                 _ErrorAtSearch($"Person already have an active international license with ID = {SearchedInternationalLicenseID}", "Not allowed");
@@ -113,7 +113,7 @@ namespace DVLDPresentation.Controls
         }
         bool _CheckIsLicenseDetained(int LicenseID)
         {
-            if (clsDetainedLicenses.IsLicenseDetainedByLicenseID(LicenseID))
+            if (clsDetainedLicense.IsLicenseDetained(LicenseID))
             {
                 _ErrorAtSearch("Selected License is already detained, Choose another one.", "Not allowed");
                 return true;
@@ -123,7 +123,7 @@ namespace DVLDPresentation.Controls
         }
         bool _CheckIsLicenseNotDetained(int LicenseID)
         {
-            if (!clsDetainedLicenses.IsLicenseDetainedByLicenseID(LicenseID))
+            if (!clsDetainedLicense.IsLicenseDetained(LicenseID))
             {
                 _ErrorAtSearch("Selected License is not detained, Choose another one.", "Not allowed");
                 return true;

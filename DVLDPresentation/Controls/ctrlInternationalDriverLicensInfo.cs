@@ -22,11 +22,11 @@ namespace DVLDPresentation.Controls
 
         private void FillDataInLabels()
         {
-            clsInternationalLicense IntLicense = clsInternationalLicense.FindByIntLicenseID(IntLicenseID);
+            clsInternationalLicense IntLicense = clsInternationalLicense.Find(IntLicenseID);
 
             if (IntLicense != null)
             {
-                clsApplication Application = clsApplication.FindBaseApplication(IntLicense.ILApplicationID);
+                clsApplication Application = clsApplication.FindBaseApplication(IntLicense.ApplicationID);
                 clsDriver Driver = clsDriver.FindByDriverID(IntLicense.DriverID);
                 clsPerson Person = clsPerson.Find(Driver.PersonID);
 
@@ -36,7 +36,7 @@ namespace DVLDPresentation.Controls
                 lblNationalNo.Text = Person.NationalNo;
                 _ChangeGendorData(Person.Gendor, Person.ImagePath);
                 lblIssueDate.Text = IntLicense.IssueDate.ToString("dd/MMM/yyyy");
-                lblIntApplicationID.Text = IntLicense.ILApplicationID.ToString();
+                lblIntApplicationID.Text = IntLicense.ApplicationID.ToString();
                 lblIsActive.Text = (IntLicense.IsActive) ? "Yes" : "No";
                 lblDateOfBirth.Text = Person.DateOfBirth.ToString("dd/MMM/yyyy");
                 lblDriverID.Text = IntLicense.DriverID.ToString();

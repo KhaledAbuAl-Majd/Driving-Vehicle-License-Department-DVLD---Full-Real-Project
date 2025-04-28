@@ -70,25 +70,25 @@ namespace DVLDPresentation.Applications.Manage_Applications.LocalDrivingLicenseA
         }
         void _LoadDataInInternationalDGV()
         {
-            DataTable dtAllInternationalLicenses = clsInternationalLicense.GetAllLicnesesByPersonID(_PersonID);
+            //DataTable dtAllInternationalLicenses = clsInternationalLicense.get(_PersonID);
 
-            if (dtAllInternationalLicenses.Rows.Count > 0)
-            {
-                dtAllInternationalLicenses.Columns["InternationalLicenseID"].ColumnName = "Int.License ID";
-                dtAllInternationalLicenses.Columns["ApplicationID"].ColumnName = "Application ID";
-                dtAllInternationalLicenses.Columns["IssuedUsingLocalLicenseID"].ColumnName = "L.License ID";
-                dtAllInternationalLicenses.Columns["IssueDate"].ColumnName = "Issue Date";
-                dtAllInternationalLicenses.Columns["ExpirationDate"].ColumnName = "Expiration Date";
-                dtAllInternationalLicenses.Columns["IsActive"].ColumnName = "Is Acitve";
+            //if (dtAllInternationalLicenses.Rows.Count > 0)
+            //{
+            //    dtAllInternationalLicenses.Columns["InternationalLicenseID"].ColumnName = "Int.License ID";
+            //    dtAllInternationalLicenses.Columns["ApplicationID"].ColumnName = "Application ID";
+            //    dtAllInternationalLicenses.Columns["IssuedUsingLocalLicenseID"].ColumnName = "L.License ID";
+            //    dtAllInternationalLicenses.Columns["IssueDate"].ColumnName = "Issue Date";
+            //    dtAllInternationalLicenses.Columns["ExpirationDate"].ColumnName = "Expiration Date";
+            //    dtAllInternationalLicenses.Columns["IsActive"].ColumnName = "Is Acitve";
 
-                dgvInternationalLicenseHistory.DataSource = dtAllInternationalLicenses.DefaultView.ToTable(false, "Int.License ID", "Application ID",
-                    "L.License ID", "Issue Date", "Expiration Date", "Is Acitve");
+            //    dgvInternationalLicenseHistory.DataSource = dtAllInternationalLicenses.DefaultView.ToTable(false, "Int.License ID", "Application ID",
+            //        "L.License ID", "Issue Date", "Expiration Date", "Is Acitve");
 
-                _EditInternationalDGVSize();
-                lblInternationalNumOfRecords.Text = dtAllInternationalLicenses.Rows.Count.ToString();
-            }
-            else
-                lblInternationalNumOfRecords.Text = "0";
+            //    _EditInternationalDGVSize();
+            //    lblInternationalNumOfRecords.Text = dtAllInternationalLicenses.Rows.Count.ToString();
+            //}
+            //else
+            //    lblInternationalNumOfRecords.Text = "0";
         }
         private void frmLicenseHistory_Load(object sender, EventArgs e)
         {

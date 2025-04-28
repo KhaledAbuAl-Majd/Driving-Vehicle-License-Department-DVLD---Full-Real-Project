@@ -88,28 +88,28 @@ namespace DVLDPresentation.Applications.Driving_License_Services.New_Driving_Lic
                MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2)) == DialogResult.Yes)
             {
 
-                clsInternationalLicense NewInternationalLicense = new clsInternationalLicense
-                (_LocalLicense.LicenseID, clsGlobalSettings.CurrentUser.UserID);
+                //clsInternationalLicense NewInternationalLicense = new clsInternationalLicense
+                //(_LocalLicense.LicenseID, clsGlobalSettings.CurrentUser.UserID);
 
-                if (NewInternationalLicense.Save())
-                {
-                    _IsIssued = true;
-                    MessageBox.Show($"International License Issued Successfully With ID = {NewInternationalLicense.InternationalLicenseID}",
-                        "License Issued", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //if (NewInternationalLicense.Save())
+                //{
+                //    _IsIssued = true;
+                //    MessageBox.Show($"International License Issued Successfully With ID = {NewInternationalLicense.InternationalLicenseID}",
+                //        "License Issued", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    _InternationLicenseID = NewInternationalLicense.InternationalLicenseID;
-                    _ChangeEnaplityOfIssueButton(false);
-                    _ChangeEnaplityOfLinkLabel(llblShowLicenseHistory, true);
-                    _ChangeEnaplityOfLinkLabel(llblShowLicenseInfo, true);
-                    lblILApplicationID.Text = NewInternationalLicense.ILApplicationID.ToString();
-                    lblILLicenseID.Text = NewInternationalLicense.InternationalLicenseID.ToString();
-                    ctrlDriverLicenseInfoCardWithFilter1.ChangeEnaplityOfGBFilterBy(false);
-                }
-                else
-                {
-                    _IsIssued = false;
-                    MessageBox.Show($"Error To Issue License!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                //    _InternationLicenseID = NewInternationalLicense.InternationalLicenseID;
+                //    _ChangeEnaplityOfIssueButton(false);
+                //    _ChangeEnaplityOfLinkLabel(llblShowLicenseHistory, true);
+                //    _ChangeEnaplityOfLinkLabel(llblShowLicenseInfo, true);
+                //    lblILApplicationID.Text = NewInternationalLicense.ApplicationID.ToString();
+                //    lblILLicenseID.Text = NewInternationalLicense.InternationalLicenseID.ToString();
+                //    ctrlDriverLicenseInfoCardWithFilter1.ChangeEnaplityOfGBFilterBy(false);
+                //}
+                //else
+                //{
+                //    _IsIssued = false;
+                //    MessageBox.Show($"Error To Issue License!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //}
             }
         }
 

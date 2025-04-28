@@ -88,7 +88,7 @@ namespace DVLDPresentation.Applications.Detain_Licenses
         }
         void _Load_RefereshDetainedLicensesInDGV()
         {
-            DataTable dtAllDetainedLicenses = clsDetainedLicenses.GetAllLicensesDetainedAndNot();
+            DataTable dtAllDetainedLicenses = clsDetainedLicense.GetAllDetainedLicenses();
 
             if (dtAllDetainedLicenses.Rows.Count > 0)
             {
@@ -100,7 +100,7 @@ namespace DVLDPresentation.Applications.Detain_Licenses
                 dtAllDetainedLicenses.Columns["DetainDate"].ColumnName = "D.Date";
                 dtAllDetainedLicenses.Columns["IsReleased"].ColumnName = "Is Released";
                 dtAllDetainedLicenses.Columns["FineFees"].ColumnName = "Fine Fees";
-                dtAllDetainedLicenses.Columns["ReleasedDate"].ColumnName = "Released Date";
+                dtAllDetainedLicenses.Columns["ReleaseDate"].ColumnName = "Released Date";
                 dtAllDetainedLicenses.Columns["ReleaseApplicationID"].ColumnName = "Release App.ID";
 
                 clsPerson Person;
