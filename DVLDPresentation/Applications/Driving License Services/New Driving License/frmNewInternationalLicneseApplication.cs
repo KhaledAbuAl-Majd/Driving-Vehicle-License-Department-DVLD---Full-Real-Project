@@ -47,7 +47,7 @@ namespace DVLDPresentation.Applications.Driving_License_Services.New_Driving_Lic
             lblIssueDate.Text = DateTime.Now.ToString("dd/MMM/yyyy");
             lblFees.Text = clsApplicationType.Find(_ApplicationTypeID).ApplicationFees.ToString();
             lblExpirationDate.Text = DateTime.Now.ToString("dd/MMM/yyyy");
-            lblCreatedBy.Text = clsGlobalSettings.CurrentUser.UserName;
+            lblCreatedBy.Text = clsGlobal.CurrentUser.UserName;
         }
         void _OnErrorAtSearch()
         {

@@ -29,10 +29,11 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAddUpdateLocalDrivingLicesnseApplication));
-            this.gtabNewLocalDrivingLicenseApplication = new Guna.UI2.WinForms.Guna2TabControl();
+            this.gtcApplicationInfo = new Guna.UI2.WinForms.Guna2TabControl();
             this.gtabPersonInfo = new System.Windows.Forms.TabPage();
             this.gbtnNext = new Guna.UI2.WinForms.Guna2Button();
-            this.gtabApplicationInfo = new System.Windows.Forms.TabPage();
+            this.gtpApplicationInfo = new System.Windows.Forms.TabPage();
+            this.pnlApplicationInfo = new System.Windows.Forms.Panel();
             this.lblCreatedBy = new System.Windows.Forms.Label();
             this.lblApplicationFees = new System.Windows.Forms.Label();
             this.lblApplicationDate = new System.Windows.Forms.Label();
@@ -52,48 +53,46 @@
             this.gbtnClose = new Guna.UI2.WinForms.Guna2Button();
             this.gbtnSave = new Guna.UI2.WinForms.Guna2Button();
             this.ctrlPersonCardWithFilter1 = new DVLDPresentation.Controls.ctrlPersonCardWithFilter();
-            this.pnlApplicationInfo = new System.Windows.Forms.Panel();
-            this.gtabNewLocalDrivingLicenseApplication.SuspendLayout();
+            this.gtcApplicationInfo.SuspendLayout();
             this.gtabPersonInfo.SuspendLayout();
-            this.gtabApplicationInfo.SuspendLayout();
+            this.gtpApplicationInfo.SuspendLayout();
+            this.pnlApplicationInfo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            this.pnlApplicationInfo.SuspendLayout();
             this.SuspendLayout();
             // 
-            // gtabNewLocalDrivingLicenseApplication
+            // gtcApplicationInfo
             // 
-            this.gtabNewLocalDrivingLicenseApplication.Controls.Add(this.gtabPersonInfo);
-            this.gtabNewLocalDrivingLicenseApplication.Controls.Add(this.gtabApplicationInfo);
-            this.gtabNewLocalDrivingLicenseApplication.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.gtabNewLocalDrivingLicenseApplication.ItemSize = new System.Drawing.Size(140, 50);
-            this.gtabNewLocalDrivingLicenseApplication.Location = new System.Drawing.Point(26, 120);
-            this.gtabNewLocalDrivingLicenseApplication.Name = "gtabNewLocalDrivingLicenseApplication";
-            this.gtabNewLocalDrivingLicenseApplication.SelectedIndex = 0;
-            this.gtabNewLocalDrivingLicenseApplication.Size = new System.Drawing.Size(987, 563);
-            this.gtabNewLocalDrivingLicenseApplication.TabButtonHoverState.BorderColor = System.Drawing.Color.Empty;
-            this.gtabNewLocalDrivingLicenseApplication.TabButtonHoverState.FillColor = System.Drawing.Color.BlueViolet;
-            this.gtabNewLocalDrivingLicenseApplication.TabButtonHoverState.Font = new System.Drawing.Font("Segoe UI Semibold", 10F);
-            this.gtabNewLocalDrivingLicenseApplication.TabButtonHoverState.ForeColor = System.Drawing.Color.White;
-            this.gtabNewLocalDrivingLicenseApplication.TabButtonHoverState.InnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(52)))), ((int)(((byte)(70)))));
-            this.gtabNewLocalDrivingLicenseApplication.TabButtonIdleState.BorderColor = System.Drawing.Color.Empty;
-            this.gtabNewLocalDrivingLicenseApplication.TabButtonIdleState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(42)))), ((int)(((byte)(57)))));
-            this.gtabNewLocalDrivingLicenseApplication.TabButtonIdleState.Font = new System.Drawing.Font("Segoe UI Semibold", 11F);
-            this.gtabNewLocalDrivingLicenseApplication.TabButtonIdleState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(156)))), ((int)(((byte)(160)))), ((int)(((byte)(167)))));
-            this.gtabNewLocalDrivingLicenseApplication.TabButtonIdleState.InnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(42)))), ((int)(((byte)(57)))));
-            this.gtabNewLocalDrivingLicenseApplication.TabButtonSelectedState.BorderColor = System.Drawing.Color.Empty;
-            this.gtabNewLocalDrivingLicenseApplication.TabButtonSelectedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(37)))), ((int)(((byte)(49)))));
-            this.gtabNewLocalDrivingLicenseApplication.TabButtonSelectedState.Font = new System.Drawing.Font("Segoe UI Semibold", 10F);
-            this.gtabNewLocalDrivingLicenseApplication.TabButtonSelectedState.ForeColor = System.Drawing.Color.White;
-            this.gtabNewLocalDrivingLicenseApplication.TabButtonSelectedState.InnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(132)))), ((int)(((byte)(255)))));
-            this.gtabNewLocalDrivingLicenseApplication.TabButtonSize = new System.Drawing.Size(140, 50);
-            this.gtabNewLocalDrivingLicenseApplication.TabIndex = 26;
-            this.gtabNewLocalDrivingLicenseApplication.TabMenuBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(42)))), ((int)(((byte)(57)))));
-            this.gtabNewLocalDrivingLicenseApplication.TabMenuOrientation = Guna.UI2.WinForms.TabMenuOrientation.HorizontalTop;
-            this.gtabNewLocalDrivingLicenseApplication.Selecting += new System.Windows.Forms.TabControlCancelEventHandler(this.gtabNewLocalDrivingLicenseApplication_Selecting);
+            this.gtcApplicationInfo.Controls.Add(this.gtabPersonInfo);
+            this.gtcApplicationInfo.Controls.Add(this.gtpApplicationInfo);
+            this.gtcApplicationInfo.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.gtcApplicationInfo.ItemSize = new System.Drawing.Size(140, 50);
+            this.gtcApplicationInfo.Location = new System.Drawing.Point(26, 120);
+            this.gtcApplicationInfo.Name = "gtcApplicationInfo";
+            this.gtcApplicationInfo.SelectedIndex = 0;
+            this.gtcApplicationInfo.Size = new System.Drawing.Size(987, 563);
+            this.gtcApplicationInfo.TabButtonHoverState.BorderColor = System.Drawing.Color.Empty;
+            this.gtcApplicationInfo.TabButtonHoverState.FillColor = System.Drawing.Color.BlueViolet;
+            this.gtcApplicationInfo.TabButtonHoverState.Font = new System.Drawing.Font("Segoe UI Semibold", 10F);
+            this.gtcApplicationInfo.TabButtonHoverState.ForeColor = System.Drawing.Color.White;
+            this.gtcApplicationInfo.TabButtonHoverState.InnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(52)))), ((int)(((byte)(70)))));
+            this.gtcApplicationInfo.TabButtonIdleState.BorderColor = System.Drawing.Color.Empty;
+            this.gtcApplicationInfo.TabButtonIdleState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(42)))), ((int)(((byte)(57)))));
+            this.gtcApplicationInfo.TabButtonIdleState.Font = new System.Drawing.Font("Segoe UI Semibold", 11F);
+            this.gtcApplicationInfo.TabButtonIdleState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(156)))), ((int)(((byte)(160)))), ((int)(((byte)(167)))));
+            this.gtcApplicationInfo.TabButtonIdleState.InnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(42)))), ((int)(((byte)(57)))));
+            this.gtcApplicationInfo.TabButtonSelectedState.BorderColor = System.Drawing.Color.Empty;
+            this.gtcApplicationInfo.TabButtonSelectedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(37)))), ((int)(((byte)(49)))));
+            this.gtcApplicationInfo.TabButtonSelectedState.Font = new System.Drawing.Font("Segoe UI Semibold", 10F);
+            this.gtcApplicationInfo.TabButtonSelectedState.ForeColor = System.Drawing.Color.White;
+            this.gtcApplicationInfo.TabButtonSelectedState.InnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(132)))), ((int)(((byte)(255)))));
+            this.gtcApplicationInfo.TabButtonSize = new System.Drawing.Size(140, 50);
+            this.gtcApplicationInfo.TabIndex = 26;
+            this.gtcApplicationInfo.TabMenuBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(42)))), ((int)(((byte)(57)))));
+            this.gtcApplicationInfo.TabMenuOrientation = Guna.UI2.WinForms.TabMenuOrientation.HorizontalTop;
             // 
             // gtabPersonInfo
             // 
@@ -135,16 +134,38 @@
             this.gbtnNext.Text = "Next";
             this.gbtnNext.Click += new System.EventHandler(this.gbtnNext_Click);
             // 
-            // gtabApplicationInfo
+            // gtpApplicationInfo
             // 
-            this.gtabApplicationInfo.BackColor = System.Drawing.Color.White;
-            this.gtabApplicationInfo.Controls.Add(this.pnlApplicationInfo);
-            this.gtabApplicationInfo.Location = new System.Drawing.Point(4, 54);
-            this.gtabApplicationInfo.Name = "gtabApplicationInfo";
-            this.gtabApplicationInfo.Padding = new System.Windows.Forms.Padding(3);
-            this.gtabApplicationInfo.Size = new System.Drawing.Size(979, 505);
-            this.gtabApplicationInfo.TabIndex = 1;
-            this.gtabApplicationInfo.Text = "Application Info";
+            this.gtpApplicationInfo.BackColor = System.Drawing.Color.White;
+            this.gtpApplicationInfo.Controls.Add(this.pnlApplicationInfo);
+            this.gtpApplicationInfo.Location = new System.Drawing.Point(4, 54);
+            this.gtpApplicationInfo.Name = "gtpApplicationInfo";
+            this.gtpApplicationInfo.Padding = new System.Windows.Forms.Padding(3);
+            this.gtpApplicationInfo.Size = new System.Drawing.Size(979, 505);
+            this.gtpApplicationInfo.TabIndex = 1;
+            this.gtpApplicationInfo.Text = "Application Info";
+            // 
+            // pnlApplicationInfo
+            // 
+            this.pnlApplicationInfo.Controls.Add(this.lblCreatedBy);
+            this.pnlApplicationInfo.Controls.Add(this.lblApplicationFees);
+            this.pnlApplicationInfo.Controls.Add(this.lblApplicationDate);
+            this.pnlApplicationInfo.Controls.Add(this.pictureBox5);
+            this.pnlApplicationInfo.Controls.Add(this.pictureBox4);
+            this.pnlApplicationInfo.Controls.Add(this.pictureBox3);
+            this.pnlApplicationInfo.Controls.Add(this.pictureBox1);
+            this.pnlApplicationInfo.Controls.Add(this.gcbLicenseClass);
+            this.pnlApplicationInfo.Controls.Add(this.label5);
+            this.pnlApplicationInfo.Controls.Add(this.label4);
+            this.pnlApplicationInfo.Controls.Add(this.label3);
+            this.pnlApplicationInfo.Controls.Add(this.lblLocalDrivingLicebseApplicationID);
+            this.pnlApplicationInfo.Controls.Add(this.pictureBox2);
+            this.pnlApplicationInfo.Controls.Add(this.label1);
+            this.pnlApplicationInfo.Controls.Add(this.label2);
+            this.pnlApplicationInfo.Location = new System.Drawing.Point(0, 8);
+            this.pnlApplicationInfo.Name = "pnlApplicationInfo";
+            this.pnlApplicationInfo.Size = new System.Drawing.Size(974, 496);
+            this.pnlApplicationInfo.TabIndex = 42;
             // 
             // lblCreatedBy
             // 
@@ -229,13 +250,6 @@
             this.gcbLicenseClass.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gcbLicenseClass.ForeColor = System.Drawing.Color.Black;
             this.gcbLicenseClass.ItemHeight = 30;
-            this.gcbLicenseClass.Items.AddRange(new object[] {
-            "None",
-            "User ID",
-            "UserName",
-            "Person ID",
-            "Full Name",
-            "Is Active"});
             this.gcbLicenseClass.Location = new System.Drawing.Point(281, 130);
             this.gcbLicenseClass.Name = "gcbLicenseClass";
             this.gcbLicenseClass.Size = new System.Drawing.Size(314, 36);
@@ -329,6 +343,7 @@
             this.gbtnClose.BackColor = System.Drawing.Color.Transparent;
             this.gbtnClose.BorderThickness = 1;
             this.gbtnClose.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.gbtnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.gbtnClose.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.gbtnClose.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.gbtnClose.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -387,67 +402,46 @@
             this.ctrlPersonCardWithFilter1.ShowAddPerson = true;
             this.ctrlPersonCardWithFilter1.Size = new System.Drawing.Size(969, 403);
             this.ctrlPersonCardWithFilter1.TabIndex = 0;
-            // 
-            // pnlApplicationInfo
-            // 
-            this.pnlApplicationInfo.Controls.Add(this.lblCreatedBy);
-            this.pnlApplicationInfo.Controls.Add(this.lblApplicationFees);
-            this.pnlApplicationInfo.Controls.Add(this.lblApplicationDate);
-            this.pnlApplicationInfo.Controls.Add(this.pictureBox5);
-            this.pnlApplicationInfo.Controls.Add(this.pictureBox4);
-            this.pnlApplicationInfo.Controls.Add(this.pictureBox3);
-            this.pnlApplicationInfo.Controls.Add(this.pictureBox1);
-            this.pnlApplicationInfo.Controls.Add(this.gcbLicenseClass);
-            this.pnlApplicationInfo.Controls.Add(this.label5);
-            this.pnlApplicationInfo.Controls.Add(this.label4);
-            this.pnlApplicationInfo.Controls.Add(this.label3);
-            this.pnlApplicationInfo.Controls.Add(this.lblLocalDrivingLicebseApplicationID);
-            this.pnlApplicationInfo.Controls.Add(this.pictureBox2);
-            this.pnlApplicationInfo.Controls.Add(this.label1);
-            this.pnlApplicationInfo.Controls.Add(this.label2);
-            this.pnlApplicationInfo.Location = new System.Drawing.Point(0, 8);
-            this.pnlApplicationInfo.Name = "pnlApplicationInfo";
-            this.pnlApplicationInfo.Size = new System.Drawing.Size(974, 496);
-            this.pnlApplicationInfo.TabIndex = 42;
+            this.ctrlPersonCardWithFilter1.OnPersonSelected += new System.Action<int>(this.ctrlPersonCardWithFilter1_OnPersonSelected);
             // 
             // frmAddUpdateLocalDrivingLicesnseApplication
             // 
-            this.AcceptButton = this.gbtnSave;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.CancelButton = this.gbtnClose;
             this.ClientSize = new System.Drawing.Size(1033, 747);
             this.Controls.Add(this.gbtnClose);
             this.Controls.Add(this.gbtnSave);
             this.Controls.Add(this.lblHeader);
-            this.Controls.Add(this.gtabNewLocalDrivingLicenseApplication);
+            this.Controls.Add(this.gtcApplicationInfo);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "frmAddUpdateLocalDrivingLicesnseApplication";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "New Local Driving License Application";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmNewLocalLicenseApplication_FormClosing);
             this.Load += new System.EventHandler(this.frmNewLocalLicenseApplication_Load);
-            this.gtabNewLocalDrivingLicenseApplication.ResumeLayout(false);
+            this.gtcApplicationInfo.ResumeLayout(false);
             this.gtabPersonInfo.ResumeLayout(false);
-            this.gtabApplicationInfo.ResumeLayout(false);
+            this.gtpApplicationInfo.ResumeLayout(false);
+            this.pnlApplicationInfo.ResumeLayout(false);
+            this.pnlApplicationInfo.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            this.pnlApplicationInfo.ResumeLayout(false);
-            this.pnlApplicationInfo.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private Guna.UI2.WinForms.Guna2TabControl gtabNewLocalDrivingLicenseApplication;
+        private Guna.UI2.WinForms.Guna2TabControl gtcApplicationInfo;
         private System.Windows.Forms.TabPage gtabPersonInfo;
         private Guna.UI2.WinForms.Guna2Button gbtnNext;
         private Controls.ctrlPersonCardWithFilter ctrlPersonCardWithFilter1;
-        private System.Windows.Forms.TabPage gtabApplicationInfo;
+        private System.Windows.Forms.TabPage gtpApplicationInfo;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label lblLocalDrivingLicebseApplicationID;

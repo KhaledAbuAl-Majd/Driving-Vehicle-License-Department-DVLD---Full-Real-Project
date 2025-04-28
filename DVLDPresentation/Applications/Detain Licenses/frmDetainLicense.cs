@@ -39,7 +39,7 @@ namespace DVLDPresentation.Applications.Detain_Licenses
         void _InitializeDataInLoad()
         {
             lblDetainDate.Text = DateTime.Now.ToString("dd/MMM/yyyy");
-            lblCreatedBy.Text = clsGlobalSettings.CurrentUser.UserName;
+            lblCreatedBy.Text = clsGlobal.CurrentUser.UserName;
         }
         void _OnErrorAtSearch()
         {

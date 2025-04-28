@@ -59,14 +59,14 @@ namespace DVLDPresentation.Login_MainPage
                 }
 
                 if (gchkRemeberMe.Checked)
-                    clsGlobalSettings.RememberUsernameAndPassword(gtxtUserName.Text.Trim(), gtxtPassword.Text.Trim());
+                    clsGlobal.RememberUsernameAndPassword(gtxtUserName.Text.Trim(), gtxtPassword.Text.Trim());
                 else
                 {
                     _EmptyUserNamePassword();
-                    clsGlobalSettings.RememberUsernameAndPassword("", "");
+                    clsGlobal.RememberUsernameAndPassword("", "");
                 }
 
-                clsGlobalSettings.CurrentUser = User;
+                clsGlobal.CurrentUser = User;
                 this.Hide();
                 frmMain frm = new frmMain(this);
                 frm.ShowDialog();
@@ -84,7 +84,7 @@ namespace DVLDPresentation.Login_MainPage
         {
             string UserName = "",Password = "";
 
-            if(clsGlobalSettings.GetStoredCredential(ref UserName,ref Password))
+            if(clsGlobal.GetStoredCredential(ref UserName,ref Password))
             {
                 gtxtUserName.Text = UserName;
                 gtxtPassword.Text = Password;

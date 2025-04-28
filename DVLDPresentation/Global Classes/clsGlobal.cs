@@ -10,7 +10,7 @@ using DVLDBusiness;
 
 namespace DVLDPresentation
 {
-    public class clsGlobalSettings
+    public class clsGlobal
     {
         public static clsUser CurrentUser { get; set; }
         public static string PathOfRemeberMeFile

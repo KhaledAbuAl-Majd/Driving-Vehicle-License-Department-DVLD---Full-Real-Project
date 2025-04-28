@@ -28,7 +28,7 @@ namespace DVLDPresentation.Login_HomePage
         void _SignOut()
         {
             //When You Return
-            clsGlobalSettings.CurrentUser = null;
+            clsGlobal.CurrentUser = null;
             _frmLogin.Show();
         }
         public frmMain(frmLogin frm)
@@ -56,13 +56,13 @@ namespace DVLDPresentation.Login_HomePage
 
         private void currentUserInfoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmUserInfo frm = new frmUserInfo(clsGlobalSettings.CurrentUser.UserID);
+            frmUserInfo frm = new frmUserInfo(clsGlobal.CurrentUser.UserID);
             frm.ShowDialog();
         }
 
         private void changePasswordToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmChangePassword frm = new frmChangePassword(clsGlobalSettings.CurrentUser.UserID);
+            frmChangePassword frm = new frmChangePassword(clsGlobal.CurrentUser.UserID);
 
             frm.ShowDialog();
         }
@@ -94,7 +94,7 @@ namespace DVLDPresentation.Login_HomePage
 
         private void tmslocalLicenseToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmAddUpdateLocalDrivingLicesnseApplication frm = new frmAddUpdateLocalDrivingLicesnseApplication(-1);
+            frmAddUpdateLocalDrivingLicesnseApplication frm = new frmAddUpdateLocalDrivingLicesnseApplication();
 
             frm.ShowDialog();
         }

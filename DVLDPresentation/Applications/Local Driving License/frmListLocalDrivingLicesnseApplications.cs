@@ -108,7 +108,7 @@ namespace DVLDPresentation.Applications.Manage_Applications
         }
         void _AddNewLDLApplication()
         {
-            frmAddUpdateLocalDrivingLicesnseApplication frm = new frmAddUpdateLocalDrivingLicesnseApplication(-1);
+            frmAddUpdateLocalDrivingLicesnseApplication frm = new frmAddUpdateLocalDrivingLicesnseApplication();
 
             frm.OnClose += FrmAddNewLDLApplication_OnClose;
 
@@ -296,7 +296,7 @@ namespace DVLDPresentation.Applications.Manage_Applications
 
         private void editToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmAddUpdateLocalDrivingLicesnseApplication frm = new frmAddUpdateLocalDrivingLicesnseApplication(Convert.ToInt32(dgvLocalDrivingLicenseApplications.SelectedCells[0].Value));
+            frmAddUpdateLocalDrivingLicesnseApplication frm = new frmAddUpdateLocalDrivingLicesnseApplication(Convert.ToInt32(dgvLocalDrivingLicenseApplications.CurrentRow.Cells[0].Value));
         }
 
         private void DeletetoolStripMenuItem1_Click(object sender, EventArgs e)

@@ -186,7 +186,7 @@
     <Compile Include="Tests\Test Types\frmEditTestType.Designer.cs">
       <DependentUpon>frmEditTestType.cs</DependentUpon>
     </Compile>
-    <Compile Include="Global Classes\clsGlobalSettings.cs" />
+    <Compile Include="Global Classes\clsGlobal.cs" />
     <Compile Include="Applications\Local Driving License\ctrlDrivingLicenseApplicationInfo.cs">
       <SubType>UserControl</SubType>
     </Compile>

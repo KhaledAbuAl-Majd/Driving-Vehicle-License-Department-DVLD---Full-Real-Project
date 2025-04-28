@@ -99,7 +99,7 @@ namespace DVLDPresentation.Applications.Detain_Licenses
             {
                 if (_DetainedLicense != null)
                 {
-                    _DetainedLicense.ReleasedByUserID = clsGlobalSettings.CurrentUser.UserID;
+                    _DetainedLicense.ReleasedByUserID = clsGlobal.CurrentUser.UserID;
                     if (_DetainedLicense.Save())
                     {
                         _IsReleased = true;

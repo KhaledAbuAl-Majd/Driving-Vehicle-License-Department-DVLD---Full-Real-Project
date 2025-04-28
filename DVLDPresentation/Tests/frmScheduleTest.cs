@@ -133,7 +133,7 @@ namespace DVLDPresentation.Applications.Manage_Applications.LocalDrivingLicenseA
         void _Save()
         {
             _TestAppointment.AppointmentDate = gDTPDate.Value;
-            _TestAppointment.CreatedByUserID = clsGlobalSettings.CurrentUser.UserID;
+            _TestAppointment.CreatedByUserID = clsGlobal.CurrentUser.UserID;
             if (_TestAppointment.Save())
             {
                 _IsSave = true;

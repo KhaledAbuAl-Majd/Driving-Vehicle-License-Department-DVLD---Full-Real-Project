@@ -68,7 +68,7 @@ namespace DVLDPresentation.Applications.Driving_License_Services.Replacment_For_
         void _InitializeDataInLoad()
         {
             lblApplicationDate.Text = DateTime.Now.ToString("dd/MMM/yyyy");  
-            lblCreatedBy.Text = clsGlobalSettings.CurrentUser.UserName;
+            lblCreatedBy.Text = clsGlobal.CurrentUser.UserName;
         }
         void _OnErrorAtSearch()
         {
@@ -119,7 +119,7 @@ namespace DVLDPresentation.Applications.Driving_License_Services.Replacment_For_
                     ApplicationDate = DateTime.Now,
                     //ApplicationStatus = clsApplicationStatuses.Find("Completed").ApplicationStatusID,
                     ApplicationTypeID = Convert.ToInt32(this._ApplicationTypeID_Mode),
-                    CreatedByUserID = clsGlobalSettings.CurrentUser.UserID,
+                    CreatedByUserID = clsGlobal.CurrentUser.UserID,
                     LastStatusDate = DateTime.Now,
                     ApplicantPersonID = this._PersonID
                 };
