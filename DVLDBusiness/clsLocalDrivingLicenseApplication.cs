@@ -10,13 +10,14 @@ namespace DVLDBusiness
 {
     public class clsLocalDrivingLicenseApplication : clsApplication
     {
-        public enum enMode { AddNew, Update }
+        public new enum enMode { AddNew, Update }
 
-        public enMode Mode;
+        public new enMode Mode;
         public int LocalDrivingLicenseApplicationID { get; private set; }
         public int LicenseClassID { get; set; }
 
         public clsLicenseClass LicenseClassInfo;
+
         public clsLocalDrivingLicenseApplication()
         {
             this.LocalDrivingLicenseApplicationID = -1;  
@@ -30,12 +31,14 @@ namespace DVLDBusiness
             clsApplication Application = clsApplication.FindBaseApplication(ApplicationID);
             this.ApplicationID = ApplicationID;
             this.ApplicantPersonID = Application.ApplicantPersonID;
+            this.PersonInfo = clsPerson.Find(ApplicantPersonID);
             this.ApplicationDate = Application.ApplicationDate;
             this.ApplicationTypeID = Application.ApplicationTypeID;
             this.ApplicationStatus = Application.ApplicationStatus;
             this.LastStatusDate = Application.LastStatusDate;
             this.PaidFees = Application.PaidFees;
             this.CreatedByUserID = Application.CreatedByUserID;
+            this.CreatedByUserInfo = clsUser.FindByUserID(CreatedByUserID);
             this.LicenseClassID = LicenseClassID;
             this.LicenseClassInfo = clsLicenseClass.Find(LicenseClassID);
             Mode = enMode.Update;
@@ -75,7 +78,7 @@ namespace DVLDBusiness
                 return null;
         }
 
-        public bool Save()
+        public override bool Save()
         {
             //Because of inheritance first we call the save method in the base class,
             //it will take care of adding all information to the application table.
@@ -107,13 +110,13 @@ namespace DVLDBusiness
             return clsLocalDrivingLicenseApplicationData.GetAllLocalDrivingLicenseApplications();
         }
 
-        public bool Delete(int LocalDrvingApplicationID)
+        public override bool Delete()
         {
             bool IsLocalDrivingApplicationDeleted = false;
             bool IsBaseApplicationDeleted = false;
 
             //First we delete the Local Driving License Application
-            IsLocalDrivingApplicationDeleted = clsLocalDrivingLicenseApplicationData.DeleteLocalDrivingLicenseApplication(LocalDrvingApplicationID); ;
+            IsLocalDrivingApplicationDeleted = clsLocalDrivingLicenseApplicationData.DeleteLocalDrivingLicenseApplication(this.LocalDrivingLicenseApplicationID); ;
 
             if (!IsLocalDrivingApplicationDeleted)
                 return false;
@@ -251,7 +254,7 @@ namespace DVLDBusiness
                 return -1;
         }
 
-        public bool IsLicenseIssued()
+        public bool IsLicenseIssuedForPerson()
         {
             return (GetActiveLicenseID() != -1);
         }
@@ -260,6 +263,16 @@ namespace DVLDBusiness
         {
             //this will get the license id that belongs to this application
             return clsLicense.GetActiveLicenseIDByPersonID(this.ApplicantPersonID, this.LicenseClassID);
+        }
+
+        public int GetLicenseIDByLocalDrivingLicenseApplicationID()
+        {
+            return clsLicense.GetLicenseIDByLocalDrivingLicenseApplicationID(this.LocalDrivingLicenseApplicationID);
+        }
+
+        public bool IsLicenseIssuedForLocalDrivingLicenseApplication()
+        {
+            return (GetLicenseIDByLocalDrivingLicenseApplicationID() != -1);
         }
     }
 }

@@ -172,6 +172,7 @@ namespace DVLDBusiness
 
             }
         }
+
         public static bool DeletePerson(int PersonID)
         {
             string ImagePath = clsPerson.Find(PersonID)?.ImagePath;

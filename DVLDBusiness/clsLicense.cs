@@ -164,7 +164,7 @@ namespace DVLDBusiness
             return false;
         }
 
-        public static bool IsLicenseExistByPersonID(int PersonID, int LicenseClassID)
+        public static bool IsActiveLicenseExistByPersonID(int PersonID, int LicenseClassID)
         {
             return (GetActiveLicenseIDByPersonID(PersonID, LicenseClassID) != -1);
         }
@@ -217,9 +217,9 @@ namespace DVLDBusiness
         }
 
         //
-        public static bool IsPersonHaveAnActiveLicneseWithTheSameLicneseClass(int PersonID, int LicenseClassID)
+        public static bool IsPersonHaveLicenseActiveANDNOT(int PersonID, int LicenseClassID)
         {
-            return clsLicenseData.IsPersonHaveAnActiveLicneseWithTheSameLicneseClass(PersonID, LicenseClassID);
+            return clsLicenseData.IsPersonHaveLicenseActiveANDNOT(PersonID, LicenseClassID);
         }
 
         public static bool IsLicenseExist(int LicenseID)
@@ -350,6 +350,12 @@ namespace DVLDBusiness
             DeactivateCurrentLicense();
 
             return NewLicense;
+        }
+
+        //
+        public static int GetLicenseIDByLocalDrivingLicenseApplicationID(int LocalDrivingLicenseApplicationID)
+        {
+            return clsLicenseData.GetLicenseIDByLocalDrivingLicenseApplicationID(LocalDrivingLicenseApplicationID);
         }
     }
 }

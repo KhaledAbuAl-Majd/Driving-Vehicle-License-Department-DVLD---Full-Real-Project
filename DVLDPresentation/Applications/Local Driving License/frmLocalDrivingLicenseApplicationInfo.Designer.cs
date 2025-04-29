@@ -31,7 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmLocalDrivingLicenseApplicationInfo));
             this.lblHeader = new System.Windows.Forms.Label();
             this.gbtnClose = new Guna.UI2.WinForms.Guna2Button();
-            this.ctrlDLApplicationInfo1 = new DVLDPresentation.Controls.ctrlDLApplicationInfo();
+            this.ctrlDLApplicationInfo1 = new DVLDPresentation.Controls.ctrlDrivingLicenseApplicationInfo();
             this.SuspendLayout();
             // 
             // lblHeader
@@ -39,7 +39,7 @@
             this.lblHeader.AutoSize = true;
             this.lblHeader.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lblHeader.Location = new System.Drawing.Point(327, 38);
+            this.lblHeader.Location = new System.Drawing.Point(340, 20);
             this.lblHeader.Name = "lblHeader";
             this.lblHeader.Size = new System.Drawing.Size(300, 37);
             this.lblHeader.TabIndex = 5;
@@ -66,7 +66,7 @@
             this.gbtnClose.Image = ((System.Drawing.Image)(resources.GetObject("gbtnClose.Image")));
             this.gbtnClose.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.gbtnClose.ImageSize = new System.Drawing.Size(35, 35);
-            this.gbtnClose.Location = new System.Drawing.Point(817, 546);
+            this.gbtnClose.Location = new System.Drawing.Point(817, 528);
             this.gbtnClose.Name = "gbtnClose";
             this.gbtnClose.Size = new System.Drawing.Size(154, 45);
             this.gbtnClose.TabIndex = 33;
@@ -76,7 +76,7 @@
             // ctrlDLApplicationInfo1
             // 
             this.ctrlDLApplicationInfo1.BackColor = System.Drawing.Color.White;
-            this.ctrlDLApplicationInfo1.Location = new System.Drawing.Point(22, 112);
+            this.ctrlDLApplicationInfo1.Location = new System.Drawing.Point(22, 94);
             this.ctrlDLApplicationInfo1.Name = "ctrlDLApplicationInfo1";
             this.ctrlDLApplicationInfo1.Size = new System.Drawing.Size(960, 433);
             this.ctrlDLApplicationInfo1.TabIndex = 6;
@@ -87,7 +87,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.CancelButton = this.gbtnClose;
-            this.ClientSize = new System.Drawing.Size(990, 606);
+            this.ClientSize = new System.Drawing.Size(990, 588);
             this.Controls.Add(this.gbtnClose);
             this.Controls.Add(this.ctrlDLApplicationInfo1);
             this.Controls.Add(this.lblHeader);
@@ -104,7 +104,7 @@
 
         #endregion
 
-        private Controls.ctrlDLApplicationInfo ctrlDLApplicationInfo1;
+        private Controls.ctrlDrivingLicenseApplicationInfo ctrlDLApplicationInfo1;
         private System.Windows.Forms.Label lblHeader;
         private Guna.UI2.WinForms.Guna2Button gbtnClose;
     }

@@ -13,7 +13,7 @@ using DVLDPresentation.People;
 
 namespace DVLDPresentation.Controls
 {
-    public partial class ctrlDLApplicationInfo : UserControl
+    public partial class ctrlDrivingLicenseApplicationInfo : UserControl
     {
         private clsLocalDrivingLicenseApplication _LocalDrivingLicenseApplication;
 
@@ -21,8 +21,7 @@ namespace DVLDPresentation.Controls
 
         public int LocalDrivingLicenseApplicationID { get; private set; }
 
-
-        public ctrlDLApplicationInfo()
+        public ctrlDrivingLicenseApplicationInfo()
         {
             InitializeComponent();
         }
@@ -58,7 +57,7 @@ namespace DVLDPresentation.Controls
 
         private void _FillLocalDrivingLicenseApplicationInfo()
         {
-            _LicenseID = _LocalDrivingLicenseApplication.GetActiveLicenseID();
+            _LicenseID = _LocalDrivingLicenseApplication.GetLicenseIDByLocalDrivingLicenseApplicationID();
 
             //incase there is license enable the show link.
             llblShowLicenseInfo.Enabled = (_LicenseID != -1);

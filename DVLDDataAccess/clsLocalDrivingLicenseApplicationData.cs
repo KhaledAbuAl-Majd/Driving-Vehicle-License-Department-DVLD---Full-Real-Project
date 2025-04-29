@@ -247,7 +247,7 @@ namespace DVLDDataAccess
             WHERE (LDLApp.LocalDrivingLicenseApplicationID = @LocalDrivingLicenseApplicationID) AND (TestAppointments.TestTypeID = @TestTypeID) 
             ORDER BY TestAppointments.TestAppointmentID DESC;";
 
-            // My Solution
+            // My Solution, it's best but i want to do as doctor to be with him
             //string query = @"SELECT IsPass = 1 FROM LocalDrivingLicenseApplications LDLApp INNER JOIN 
             // TestAppointments ON LDLApp.LocalDrivingLicenseApplicationID = TestAppointments.LocalDrivingLicenseApplicationID
             // INNER JOIN Tests ON TestAppointments.TestAppointmentID = Tests.TestAppointmentID 
@@ -368,9 +368,8 @@ namespace DVLDDataAccess
 
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
-            string query = @"SELECT Top Found = 1  FROM LocalDrivingLicenseApplications LDLApp INNER JOIN
+            string query = @"SELECT Top 1 Found = 1  FROM LocalDrivingLicenseApplications LDLApp INNER JOIN
             TestAppointments ON LDLApp.LocalDrivingLicenseApplicationID = TestAppointments.LocalDrivingLicenseApplicationID 
-            INNER JOIN Tests ON TestAppointments.TestAppointmentID = Tests.TestAppointmentID
             WHERE (LDLApp.LocalDrivingLicenseApplicationID = @LocalDrivingLicenseApplicationID)
             AND (TestAppointments.TestTypeID = @TestTypeID)  AND (IsLocked = 0)
             ORDER BY TestAppointments.TestAppointmentID DESC;";

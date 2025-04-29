@@ -34,7 +34,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.gbtnIssue = new Guna.UI2.WinForms.Guna2Button();
             this.gbtnClose = new Guna.UI2.WinForms.Guna2Button();
-            this.ctrlDLApplicationInfo1 = new DVLDPresentation.Controls.ctrlDLApplicationInfo();
+            this.ctrlDLApplicationInfo1 = new DVLDPresentation.Controls.ctrlDrivingLicenseApplicationInfo();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             this.SuspendLayout();
             // 
@@ -172,7 +172,7 @@
 
         #endregion
 
-        private Controls.ctrlDLApplicationInfo ctrlDLApplicationInfo1;
+        private Controls.ctrlDrivingLicenseApplicationInfo ctrlDLApplicationInfo1;
         private Guna.UI2.WinForms.Guna2TextBox gtxtNotes;
         private System.Windows.Forms.PictureBox pictureBox7;
         private System.Windows.Forms.Label label5;

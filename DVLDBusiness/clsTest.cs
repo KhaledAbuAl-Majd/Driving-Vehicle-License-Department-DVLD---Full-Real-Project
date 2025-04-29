@@ -107,7 +107,10 @@ namespace DVLDBusiness
                     if (_AddNewTest())
                     {
                         Mode = enMode.Update;
-                        return true;
+
+                        TestAppointmentInfo = clsTestAppointment.Find(TestAppointmentID);
+
+                        return TestAppointmentInfo.LockTestAppointment();
                     }
                     else
                         return false;
@@ -131,9 +134,9 @@ namespace DVLDBusiness
         }
 
         //
-        public static bool CheckPersonPassedThisTextBefore(int LocalDrvingApplicationID, int TestTypeID)
+        public static bool CheckPersonPassedThisTextBeforeByLocalDrivingLicenseApplicationID(int LocalDrvingApplicationID, int TestTypeID)
         {
-            return clsTestData.CheckPersonPassedThisTextBefore(LocalDrvingApplicationID, TestTypeID);
+            return clsTestData.CheckPersonPassedThisTextBeforeByLocalDrivingLicenseApplicationID(LocalDrvingApplicationID, TestTypeID);
         }
     }
 }

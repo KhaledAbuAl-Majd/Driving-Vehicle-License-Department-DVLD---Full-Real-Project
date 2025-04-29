@@ -21,6 +21,7 @@ namespace DVLDPresentation.Applications.Manage_Applications
     public partial class frmListLocalDrivingLicesnseApplications : Form
     {
         DataView _dvAllLDLApplications;
+
         public frmListLocalDrivingLicesnseApplications()
         {
             InitializeComponent();
@@ -31,10 +32,12 @@ namespace DVLDPresentation.Applications.Manage_Applications
         {
             gtxtFilterValue.Visible = value;
         }
+
         private void _Show_HideCBStatusFilter(bool value)
         {
             gcbFilterByStatus.Visible = value;
         }
+
         private void _FilterData(string FilterText)
         {
             if (_dvAllLDLApplications != null)
@@ -44,10 +47,12 @@ namespace DVLDPresentation.Applications.Manage_Applications
                 //dgvLocalDrivingLicenseApplications.DataSource = _dvAllLDLApplications;
             }
         }
+
         private void _GetTextFilterEmpty()
         {
             gtxtFilterValue.Text = "";
         }
+
         private void _FilterByFilterByStatus()
         {
             if (gcbFilterByStatus.Text.ToLower() == "all")
@@ -64,8 +69,8 @@ namespace DVLDPresentation.Applications.Manage_Applications
         {
             int LocalDrivingLicenseApplicationID = Convert.ToInt32(dgvLocalDrivingLicenseApplications.CurrentRow.Cells[0].Value);
             frmListTestAppointments frm = new frmListTestAppointments(LocalDrivingLicenseApplicationID, TestType);
-            frm.OnClose += _RefreshLDLApplicationsList;
             frm.ShowDialog();
+            _RefreshLDLApplicationsList();
         }
 
         void _RefreshLDLApplicationsList()
@@ -113,7 +118,7 @@ namespace DVLDPresentation.Applications.Manage_Applications
             frm.ShowDialog();
 
             //Refresh
-            //_RefreshLDLApplicationsList();
+            _RefreshLDLApplicationsList();
         }
 
         private void gcbFilterBy_SelectedIndexChanged(object sender, EventArgs e)
@@ -225,12 +230,12 @@ namespace DVLDPresentation.Applications.Manage_Applications
 
             //have an active license from this class, note person cannot apply New License if he has license (Active ant not)
             //This Application for first time only!!
-            bool LicenseExists = LocalDrivingLicenseApplication.IsLicenseIssued();
+            bool LicenseExists = LocalDrivingLicenseApplication.IsLicenseIssuedForPerson();
 
             //Enabled only if person passed all tests and Does not have license. 
             issueDrivingLicenseFirstTimeToolStripMenuItem.Enabled = (TotalPassedTests == 3) && !LicenseExists;
 
-            showLicenseToolStripMenuItem.Enabled = LicenseExists;
+            showLicenseToolStripMenuItem.Enabled = LicenseExists && (LocalDrivingLicenseApplication.ApplicationStatus == clsApplication.enApplicationStatus.Completed);
             editToolStripMenuItem.Enabled = !LicenseExists && (LocalDrivingLicenseApplication.ApplicationStatus == clsApplication.enApplicationStatus.New);
             //ScheduleTestsMenue.Enabled = !LicenseExists;
 
@@ -252,7 +257,6 @@ namespace DVLDPresentation.Applications.Manage_Applications
                 scheduleWrittenTestToolStripMenuItem.Enabled = PassedVisionTest && !PassedWrittenTest;
                 scheduleStreetTestToolStripMenuItem.Enabled = PassedVisionTest && PassedWrittenTest && !PassedStreetTest;
             }
-
         }
 
         private void showLicenseToolStripMenuItem_Click(object sender, EventArgs e)
@@ -268,22 +272,22 @@ namespace DVLDPresentation.Applications.Manage_Applications
             //I Git Active LIcense Because , Person Can Apply to New license for First Time Only
 
 
-           int LocalDrivingLicenseApplicationID = (int)dgvLocalDrivingLicenseApplications.CurrentRow.Cells[0].Value;
+            int LocalDrivingLicenseApplicationID = (int)dgvLocalDrivingLicenseApplications.CurrentRow.Cells[0].Value;
 
             int LicenseID = clsLocalDrivingLicenseApplication.FindByLocalDrivingAppLicenseID(
               LocalDrivingLicenseApplicationID).GetActiveLicenseID();
 
             if (LicenseID != -1)
-                {
-                    frmShowLicenseInfo frm = new frmShowLicenseInfo(LicenseID);
-                    frm.ShowDialog();
+            {
+                frmShowLicenseInfo frm = new frmShowLicenseInfo(LicenseID);
+                frm.ShowDialog();
 
-                }
-                else
-                {
-                    MessageBox.Show("No License Found!", "No License", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
+            }
+            else
+            {
+                MessageBox.Show("No License Found!", "No License", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
         }
 
         private void CancelToolStripMenuItem_Click(object sender, EventArgs e)
@@ -332,21 +336,14 @@ namespace DVLDPresentation.Applications.Manage_Applications
                     MessageBox.Show("Could not delete applicatoin, other data depends on it.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-
         }
 
         private void showPersonLicenseHistoryToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //int LocalDrivingLicenseApplicationID = (int)dgvLocalDrivingLicenseApplications.CurrentRow.Cells[0].Value;
-            //clsLocalDrivingLicenseApplication localDrivingLicenseApplication = clsLocalDrivingLicenseApplication.FindByLocalDrivingAppLicenseID(LocalDrivingLicenseApplicationID);
+            int LocalDrivingLicenseApplicationID = (int)dgvLocalDrivingLicenseApplications.CurrentRow.Cells[0].Value;
+            clsLocalDrivingLicenseApplication localDrivingLicenseApplication = clsLocalDrivingLicenseApplication.FindByLocalDrivingAppLicenseID(LocalDrivingLicenseApplicationID);
 
-            //frmShowPersonLicenseHistory frm = new frmShowPersonLicenseHistory(localDrivingLicenseApplication.ApplicantPersonID);
-            //frm.ShowDialog();
-
-            // National No 
-            int PersonID = clsPerson.Find((string)dgvLocalDrivingLicenseApplications.SelectedCells[2].Value).PersonID;
-
-            frmShowPersonLicenseHistory frm = new frmShowPersonLicenseHistory(PersonID);
+            frmShowPersonLicenseHistory frm = new frmShowPersonLicenseHistory(localDrivingLicenseApplication.ApplicantPersonID);
             frm.ShowDialog();
         }
 
@@ -358,6 +355,11 @@ namespace DVLDPresentation.Applications.Manage_Applications
         private void gbtnClose_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            _RefreshLDLApplicationsList();
         }
     }
 }

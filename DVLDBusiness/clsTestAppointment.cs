@@ -18,10 +18,10 @@ namespace DVLDBusiness
         public clsTestType.enTestType TestTypeID { get; set; }
         public int LocalDrivingLicenseApplicationID { get; set; }
         public DateTime AppointmentDate { get; set; }
-        public float PaidFees { get; private set; }
+        public float PaidFees { get;  set; }
         public int CreatedByUserID { get; set; }
         public bool IsLocked { get; private set; }
-        public int RetakeTestApplicationID { get; private set; }
+        public int RetakeTestApplicationID { get;  set; }
 
         public clsApplication RetakeTestAppInfo;
 

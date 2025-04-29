@@ -15,6 +15,7 @@ namespace DVLDPresentation.Applications
     public partial class frmListApplicationTypes : Form
     {
         private DataTable _dtAllApplicationTypes;
+
         public frmListApplicationTypes()
         {
             InitializeComponent();
@@ -41,7 +42,6 @@ namespace DVLDPresentation.Applications
 
                 dgvApplicationTypes.Columns[2].HeaderText = "Fees";
                 dgvApplicationTypes.Columns[2].Width = 100;
-
             }
         }
 
@@ -52,7 +52,7 @@ namespace DVLDPresentation.Applications
 
         private void EdittoolStripMenuItem3_Click(object sender, EventArgs e)
         {
-            frmEditApplicationTypes frm = new frmEditApplicationTypes(Convert.ToInt32(dgvApplicationTypes.SelectedCells[0].Value));
+            frmEditApplicationTypes frm = new frmEditApplicationTypes(Convert.ToInt32(dgvApplicationTypes.CurrentRow.Cells[0].Value));
 
             frm.OnSave += _RefereshApplicationTypesList;
             frm.ShowDialog();

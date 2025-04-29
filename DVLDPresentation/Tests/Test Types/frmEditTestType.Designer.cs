@@ -120,12 +120,12 @@
             this.label3.TabIndex = 38;
             this.label3.Text = "Fees";
             // 
-            // lblID
+            // lblApplicationTypeID
             // 
             this.lblID.AutoSize = true;
             this.lblID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblID.Location = new System.Drawing.Point(205, 123);
-            this.lblID.Name = "lblID";
+            this.lblID.Name = "lblApplicationTypeID";
             this.lblID.Size = new System.Drawing.Size(49, 20);
             this.lblID.TabIndex = 37;
             this.lblID.Text = "????";

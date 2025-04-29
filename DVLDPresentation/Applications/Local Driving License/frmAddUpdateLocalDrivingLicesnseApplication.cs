@@ -30,6 +30,7 @@ namespace DVLDPresentation.Applications.Driving_License_Services.New_Driving_Lic
             InitializeComponent();
             this._Mode = enMode.AddNew;
         }
+
         public frmAddUpdateLocalDrivingLicesnseApplication(int LocalDrivingLicenseApplicationID)
         {
             InitializeComponent();
@@ -134,6 +135,8 @@ namespace DVLDPresentation.Applications.Driving_License_Services.New_Driving_Lic
                     _UpdateMode();
                     break;
             }
+
+            ctrlPersonCardWithFilter1.FilterFocus();
         }
 
         private void gbtnNext_Click(object sender, EventArgs e)
@@ -173,9 +176,10 @@ namespace DVLDPresentation.Applications.Driving_License_Services.New_Driving_Lic
             }
 
             //check if user already have issued license of the same driving  class.
-            if (clsLicense.IsLicenseExistByPersonID(ctrlPersonCardWithFilter1.PersonID, LicenseClassID))
+            if (clsLicense.IsPersonHaveLicenseActiveANDNOT(ctrlPersonCardWithFilter1.PersonID, LicenseClassID))
             {
                 MessageBox.Show("Person already have a license with the same applied driving class, Choose diffrent driving class", "Not allowed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                gcbLicenseClass.Focus();
                 return;
             }
 
@@ -224,6 +228,5 @@ namespace DVLDPresentation.Applications.Driving_License_Services.New_Driving_Lic
                 if (OnClose != null)
                     OnClose();
         }
-
     }
 }

@@ -15,6 +15,7 @@ namespace DVLDPresentation.Applications.Test_Types
     public partial class frmListTestTypes : Form
     {
         DataTable _dtAllTestTypes;
+
         public frmListTestTypes()
         {
             InitializeComponent();
@@ -47,7 +48,7 @@ namespace DVLDPresentation.Applications.Test_Types
             }
         }
 
-        private void toolStripMenuItem3_Click_1(object sender, EventArgs e)
+        private void EdittoolStripMenuItem3_Click_1(object sender, EventArgs e)
         {
             frmUpdateTestTypes frm = new frmUpdateTestTypes((clsTestType.enTestType)dgvTestTypes.CurrentRow.Cells[0].Value);
             frm.OnSave += _RefreshTestTypesList;

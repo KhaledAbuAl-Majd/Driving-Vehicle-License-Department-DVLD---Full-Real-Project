@@ -21,11 +21,13 @@ namespace DVLDPresentation.Login_MainPage
         {
             InitializeComponent();
         }
+
         void _EmptyUserNamePassword()
         {
             gtxtUserName.Text = "";
             gtxtPassword.Text = "";
         }
+
         private void gtxtPassword_IconRightClick(object sender, EventArgs e)
         {
             if (gtxtPassword.UseSystemPasswordChar)
@@ -74,7 +76,7 @@ namespace DVLDPresentation.Login_MainPage
             }
             else
             {
-                MessageBox.Show("Invalid Username/Password.", "Wrong Credintials", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Invalid Username/Password.", "Wrong Credentials", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 gtxtUserName.Focus();
             }
 

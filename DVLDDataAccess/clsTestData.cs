@@ -276,17 +276,17 @@ namespace DVLDDataAccess
             return PassedTestCount;
         }
 
-        public static bool CheckPersonPassedThisTextBefore(int LocalDrvingApplicationID,int TestTypeID)
+        public static bool CheckPersonPassedThisTextBeforeByLocalDrivingLicenseApplicationID(int LocalDrvingApplicationID,int TestTypeID)
         {
             bool IsPass = false;
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
             string query = @"SELECT Found = 1 
                            Where Exists(
-                SELECT * FROM LocalDrivingApplictions LDApp INNER JOIN
-                TestAppointments ON LDApp.LocalDrvingApplicationID = TestAppointments.LocalDrivingLicenseApplicationID
+                SELECT * FROM LocalDrivingLicenseApplications LDApp INNER JOIN
+                TestAppointments ON LDApp.LocalDrivingLicenseApplicationID = TestAppointments.LocalDrivingLicenseApplicationID
                 INNER JOIN Tests ON Tests.TestAppointmentID = TestAppointments.TestAppointmentID
-                WHERE LDApp.LocalDrvingApplicationID = @LocalDrvingApplicationID 
+                WHERE LDApp.LocalDrivingLicenseApplicationID = @LocalDrvingApplicationID 
                AND TestAppointments.TestTypeID = @TestTypeID AND Tests.TestResult = 1);";
 
             SqlCommand command = new SqlCommand(query, connection);
@@ -299,7 +299,7 @@ namespace DVLDDataAccess
 
                 object result = command.ExecuteScalar();
 
-                IsPass = (result != null) ? true : false;
+                IsPass = (result != null);
             }
             catch
             {

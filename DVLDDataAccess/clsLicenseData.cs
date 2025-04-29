@@ -401,7 +401,7 @@ namespace DVLDDataAccess
         }
 
         //
-        public static bool IsPersonHaveAnActiveLicneseWithTheSameLicneseClass(int PersonID,int LicenseClassID)  
+        public static bool IsPersonHaveLicenseActiveANDNOT(int PersonID,int LicenseClassID)  
         {
             bool IsHave = false;
 
@@ -409,8 +409,7 @@ namespace DVLDDataAccess
 
             string query = @"SELECT Found = 1 WHERE EXISTS(
                              SELECT * FROM Licenses INNER JOIN Drivers ON Licenses.DriverID = Drivers.DriverID
-                             WHERE Drivers.PersonID = @PersonID AND Licenses.LicenseClassID = @LicenseClassID
-                             AND Licenses.IsAcitve = 1);";
+                             WHERE Drivers.PersonID = @PersonID AND Licenses.LicenseClassID = @LicenseClassID);";
 
             SqlCommand command = new SqlCommand(query, connection);
             command.Parameters.AddWithValue("@PersonID", PersonID);
@@ -435,6 +434,46 @@ namespace DVLDDataAccess
 
             return IsHave;
         }
+
+        public static int GetLicenseIDByLocalDrivingLicenseApplicationID(int LocalDrivingLicenseApplicationID)
+        {
+            int LicenseID = -1;
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+
+            string query = @"SELECT Licenses.LicneseID FROM Licenses INNER JOIN LocalDrivingLicenseApplications LDLApplication 
+            ON Licenses.ApplicationID = LDLApplication.ApplicationID
+              WHERE LDLApplication.LocalDrivingLicenseApplicationID = @LocalDrivingLicenseApplicationID;";
+
+            SqlCommand command = new SqlCommand(query, connection);
+
+            command.Parameters.AddWithValue("@LocalDrivingLicenseApplicationID", LocalDrivingLicenseApplicationID);
+
+            try
+            {
+                connection.Open();
+
+                object result = command.ExecuteScalar();
+
+                if (result != null && int.TryParse(result.ToString(), out int ID))
+                {
+                    LicenseID = ID;
+                }
+            }
+
+            catch
+            {
+                LicenseID = -1;
+
+            }
+
+            finally
+            {
+                connection.Close();
+            }
+
+
+            return LicenseID;
+        }
     }
-    
 }

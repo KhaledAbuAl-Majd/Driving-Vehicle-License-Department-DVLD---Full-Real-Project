@@ -137,7 +137,7 @@
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
             this.toolStripMenuItem3.Size = new System.Drawing.Size(171, 38);
             this.toolStripMenuItem3.Text = "Edit Test Type";
-            this.toolStripMenuItem3.Click += new System.EventHandler(this.toolStripMenuItem3_Click_1);
+            this.toolStripMenuItem3.Click += new System.EventHandler(this.EdittoolStripMenuItem3_Click_1);
             // 
             // gbtnClose
             // 

@@ -24,6 +24,7 @@ namespace DVLDPresentation.Applications.Application_Types
             InitializeComponent();
             this._ApplicationTypeID = ApplicationTypeID;          
         }
+
         private void frmUpdateApplicationTypes_Load(object sender, EventArgs e)
         {
             _ApplicationType = clsApplicationType.Find(_ApplicationTypeID);
@@ -35,7 +36,7 @@ namespace DVLDPresentation.Applications.Application_Types
                 return;
             }
 
-            lblID.Text = _ApplicationType.ApplicationTypeID.ToString();
+            lblApplicationTypeID.Text = _ApplicationType.ApplicationTypeID.ToString();
             gtxtTitle.Text = _ApplicationType.ApplicationTypeTitle;
             gtxtFees.Text = _ApplicationType.ApplicationFees.ToString();
         } 

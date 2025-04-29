@@ -18,6 +18,7 @@ namespace DVLDPresentation.Applications.Test_Types
 
         private clsTestType.enTestType _TestTypeID = clsTestType.enTestType.VisionTest;
         private clsTestType _TestType;
+
         public frmUpdateTestTypes(clsTestType.enTestType TestTypeID)
         {
             InitializeComponent();

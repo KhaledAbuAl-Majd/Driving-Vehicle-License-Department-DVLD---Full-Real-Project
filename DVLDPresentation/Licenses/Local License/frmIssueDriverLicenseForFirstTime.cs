@@ -24,7 +24,7 @@ namespace DVLDPresentation.Applications.Manage_Applications.LocalDrivingLicenseA
 
         void _Issue()
         {
-            //clsLicense License = new clsLicense(_LDLApplicationID, clsGlobalSettings.CurrentUser.UserID, "First Time");
+            //clsLicense License = new clsLicense(_LocalDrivingLicenseApplicationID, clsGlobalSettings.CurrentUser.UserID, "First Time");
             //License.Notes = gtxtNotes.Text;
 
             //if (License.Save())

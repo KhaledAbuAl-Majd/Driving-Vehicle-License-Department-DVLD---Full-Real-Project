@@ -110,7 +110,7 @@ namespace DVLDBusiness
             return clsInternationalLicenseData.GetAllInternationalLicenses();
         }
 
-        public bool Save()
+        public override bool Save()
         {
             //Because of inheritance first we call the save method in the base class,
             //it will take care of adding all information to the application table.

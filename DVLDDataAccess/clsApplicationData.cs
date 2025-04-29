@@ -210,6 +210,7 @@ namespace DVLDDataAccess
 
             return Result;
         }
+
         public static bool IsApplicationExist(int ApplicationID)
         {
             bool IsFound = false;
@@ -241,14 +242,14 @@ namespace DVLDDataAccess
             return IsFound;
         }
 
-        //For Application Type 
+        //For Application Type && Status = NEW
         public static bool DoesPersonHaveActiveApplication(int ApplicantPersonID, int ApplicationTypeID)
         {
             //incase the ActiveApplication ID !=-1 return true.
             return (GetActiveApplicationID(ApplicantPersonID, ApplicationTypeID) != -1);
         }
 
-        //For Application Type 
+        //For Application Type && Status = NEW
         public static int GetActiveApplicationID(int ApplicantPersonID, int ApplicationTypeID)
         {
             int ActiveApplicationID = -1;
@@ -289,6 +290,8 @@ namespace DVLDDataAccess
 
         public static int GetActiveApplicationIDForLicenseClass(int ApplicantPersonID, int ApplicationTypeID, int LicenseClassID)
         {
+            // Status = NEW
+
             int ActiveApplicationID = -1;
 
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);

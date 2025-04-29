@@ -10,9 +10,10 @@ using DVLDBusiness;
 
 namespace DVLDPresentation
 {
-    public class clsGlobal
+    public static class clsGlobal
     {
         public static clsUser CurrentUser { get; set; }
+
         public static string PathOfRemeberMeFile
         {
             get
@@ -85,7 +86,5 @@ namespace DVLDPresentation
                 return false;
             }
         }
-
-       
     }
 }

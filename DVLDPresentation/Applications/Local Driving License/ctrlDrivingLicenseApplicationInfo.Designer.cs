@@ -1,6 +1,6 @@
 ﻿namespace DVLDPresentation.Controls
 {
-    partial class ctrlDLApplicationInfo
+    partial class ctrlDrivingLicenseApplicationInfo
     {
         /// <summary> 
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ctrlDLApplicationInfo));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ctrlDrivingLicenseApplicationInfo));
             this.gbDLApplicationInfo = new System.Windows.Forms.GroupBox();
             this.pictureBox12 = new System.Windows.Forms.PictureBox();
             this.llblShowLicenseInfo = new System.Windows.Forms.LinkLabel();
@@ -191,14 +191,14 @@
             this.ctrlApplicationBasicInfo1.Size = new System.Drawing.Size(943, 245);
             this.ctrlApplicationBasicInfo1.TabIndex = 1;
             // 
-            // ctrlDLApplicationInfo
+            // ctrlDrivingLicenseApplicationInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.ctrlApplicationBasicInfo1);
             this.Controls.Add(this.gbDLApplicationInfo);
-            this.Name = "ctrlDLApplicationInfo";
+            this.Name = "ctrlDrivingLicenseApplicationInfo";
             this.Size = new System.Drawing.Size(951, 423);
         
             this.gbDLApplicationInfo.ResumeLayout(false);

@@ -25,12 +25,6 @@ namespace DVLDPresentation.Login_HomePage
     {
         frmLogin _frmLogin;
 
-        void _SignOut()
-        {
-            //When You Return
-            clsGlobal.CurrentUser = null;
-            _frmLogin.Show();
-        }
         public frmMain(frmLogin frm)
         {
             InitializeComponent();
@@ -169,7 +163,8 @@ namespace DVLDPresentation.Login_HomePage
 
         private void frmMain_FormClosing(object sender, FormClosingEventArgs e)
         {
-            _SignOut();
+            clsGlobal.CurrentUser = null;
+            _frmLogin.Show();
         }
     }
 }

@@ -21,12 +21,9 @@ namespace DVLDBusiness
 
         public enMode Mode;
         public enum enApplicationStatus { New = 1, Cancelled = 2, Completed = 3 };
-        public int ApplicationID { get; set; }
+        public int ApplicationID { get;protected set; }
         public int ApplicantPersonID { get; set; }
-        public string ApplicantFullName
-        {
-            get { return clsPerson.Find(ApplicantPersonID).FullName; }
-        }
+        public clsPerson PersonInfo { get; set; }
         public DateTime ApplicationDate { get; set; }
         public int ApplicationTypeID { get; set; }
 
@@ -76,15 +73,16 @@ namespace DVLDBusiness
         {
             this.ApplicationID = ApplicationID;
             this.ApplicantPersonID = ApplicantPersonID;
+            this.PersonInfo = clsPerson.Find(ApplicantPersonID);
             this.ApplicationDate = ApplicationDate;
             this.ApplicationTypeID = ApplicationTypeID;
-            ApplicationTypeInfo = clsApplicationType.Find(ApplicationTypeID);
+            this.ApplicationTypeInfo = clsApplicationType.Find(ApplicationTypeID);
             this.ApplicationStatus = ApplicationStatus;
             this.LastStatusDate = LastStatusDate;
             this.PaidFees = PaidFees;
             this.CreatedByUserID = CreatedByUserID;
-            CreatedByUserInfo = clsUser.FindByUserID(CreatedByUserID);
-            Mode = enMode.Update;
+            this.CreatedByUserInfo = clsUser.FindByUserID(CreatedByUserID);
+            this.Mode = enMode.Update;
         }
 
         bool _AddNewApplication()
@@ -94,11 +92,13 @@ namespace DVLDBusiness
 
             return (ApplicationID != -1);
         }
+
         bool _UpdateApplication()
         {
             return clsApplicationData.UpdateAplication(ApplicationID, ApplicantPersonID, ApplicationDate, ApplicationTypeID,
                 (byte)ApplicationStatus, LastStatusDate, PaidFees, CreatedByUserID);
         }
+
         public static clsApplication FindBaseApplication(int ApplicationID)
         {
             int ApplicantPersonID = -1, ApplicationTypeID = -1, CreatedByUseID = -1;
@@ -113,15 +113,18 @@ namespace DVLDBusiness
             else
                 return null;
         }
+
         public bool Cancel()
         {
             return clsApplicationData.UpdateStatus(this.ApplicationID, (byte)enApplicationStatus.Cancelled);
         }
+
         public bool SetComplete()
         {
             return clsApplicationData.UpdateStatus(this.ApplicationID, (byte)enApplicationStatus.Completed);
         }
-        public bool Save()
+
+        public virtual bool Save()
         {
             switch (Mode)
             {
@@ -140,10 +143,12 @@ namespace DVLDBusiness
 
             return false;
         }
-        public bool Delete()
+
+        public virtual bool Delete()
         {
             return clsApplicationData.DeleteApplication(ApplicationID);
         }
+
         public static bool IsApplicationExist(int ApplicationID)
         {
             return clsApplicationData.IsApplicationExist(ApplicationID);
@@ -170,6 +175,7 @@ namespace DVLDBusiness
         {
             return clsApplicationData.GetActiveApplicationIDForLicenseClass(PersonID, (int)ApplicationTypeID, LicenseClassID);
         }
+
         public int GetActiveApplicationID(clsApplication.enApplicationType ApplicationTypeID)
         {
             return GetActiveApplicationID(this.ApplicantPersonID, ApplicationTypeID);
