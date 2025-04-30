@@ -21,15 +21,12 @@ E:\Visual Studio\source\Projects\Course19\DVLDProject\DVLDPresentation\obj\Debug
 E:\Visual Studio\source\Projects\Course19\DVLDProject\DVLDPresentation\obj\Debug\DVLDPresentation.Login_MainPage.frmLogin.resources
 E:\Visual Studio\source\Projects\Course19\DVLDProject\DVLDPresentation\obj\Debug\DVLDPresentation.Applications.Test_Types.frmUpdateTestTypes.resources
 E:\Visual Studio\source\Projects\Course19\DVLDProject\DVLDPresentation\obj\Debug\DVLDPresentation.Applications.Manage_Applications.LocalDrivingLicenseApplications.Tests.frmTakeTest.resources
-E:\Visual Studio\source\Projects\Course19\DVLDProject\DVLDPresentation\obj\Debug\DVLDPresentation.Applications.Manage_Applications.LocalDrivingLicenseApplications.frmIssueDriverLicenseForFirstTime.resources
 E:\Visual Studio\source\Projects\Course19\DVLDProject\DVLDPresentation\obj\Debug\DVLDPresentation.frmDrivers.resources
 E:\Visual Studio\source\Projects\Course19\DVLDProject\DVLDPresentation\obj\Debug\DVLDPresentation.Applications.Driving_License_Services.New_Driving_License.frmNewInternationalLicneseApplication.resources
 E:\Visual Studio\source\Projects\Course19\DVLDProject\DVLDPresentation\obj\Debug\DVLDPresentation.Controls.ctrlDriverLicenseInfo.resources
 E:\Visual Studio\source\Projects\Course19\DVLDProject\DVLDPresentation\obj\Debug\DVLDPresentation.Applications.Manage_Applications.International_Driving_License_Application.frmInternationalLicenseInfo.resources
 E:\Visual Studio\source\Projects\Course19\DVLDProject\DVLDPresentation\obj\Debug\DVLDPresentation.Controls.ctrlInternationalDriverLicensInfo.resources
 E:\Visual Studio\source\Projects\Course19\DVLDProject\DVLDPresentation\obj\Debug\DVLDPresentation.Applications.Manage_Applications.International_Driving_License_Application.frmListInternationalDrivingLicenseApplications.resources
-E:\Visual Studio\source\Projects\Course19\DVLDProject\DVLDPresentation\obj\Debug\DVLDPresentation.Controls.ctrlDriverLicenseInfoCardWithFilter.resources
-E:\Visual Studio\source\Projects\Course19\DVLDProject\DVLDPresentation\obj\Debug\DVLDPresentation.Applications.Driving_License_Services.Renew_Driving_License.frmRenewLocalLicense.resources
 E:\Visual Studio\source\Projects\Course19\DVLDProject\DVLDPresentation\obj\Debug\DVLDPresentation.Applications.Driving_License_Services.Replacment_For_Damage_Or_Lost.frmReplacementForDamagedOrLost.resources
 E:\Visual Studio\source\Projects\Course19\DVLDProject\DVLDPresentation\obj\Debug\DVLDPresentation.Applications.Detain_Licenses.frmDetainLicense.resources
 E:\Visual Studio\source\Projects\Course19\DVLDProject\DVLDPresentation\obj\Debug\DVLDPresentation.Applications.Detain_Licenses.frmReleaseDetainedLicense.resources
@@ -55,3 +52,6 @@ E:\Visual Studio\source\Projects\Course19\DVLDProject\DVLDPresentation\obj\Debug
 E:\Visual Studio\source\Projects\Course19\DVLDProject\DVLDPresentation\obj\Debug\DVLDPresentation.Controls.ctrlDrivingLicenseApplicationInfo.resources
 E:\Visual Studio\source\Projects\Course19\DVLDProject\DVLDPresentation\obj\Debug\DVLDPresentation.Tests.Controls.ctrlScheduleTest.resources
 E:\Visual Studio\source\Projects\Course19\DVLDProject\DVLDPresentation\obj\Debug\DVLDPresentation.Tests.Controls.ctrlSecheduledTest.resources
+E:\Visual Studio\source\Projects\Course19\DVLDProject\DVLDPresentation\obj\Debug\DVLDPresentation.Applications.Manage_Applications.LocalDrivingLicenseApplications.frmIssueDriverLicenseFirstTime.resources
+E:\Visual Studio\source\Projects\Course19\DVLDProject\DVLDPresentation\obj\Debug\DVLDPresentation.Controls.ctrlDriverLicenseInfoWithFilter.resources
+E:\Visual Studio\source\Projects\Course19\DVLDProject\DVLDPresentation\obj\Debug\DVLDPresentation.Applications.Driving_License_Services.Renew_Driving_License.frmRenewLocalDrivingLicenseApplication.resources

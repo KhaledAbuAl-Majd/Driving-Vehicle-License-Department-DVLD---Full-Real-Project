@@ -141,29 +141,38 @@ namespace DVLDPresentation.Applications.Driving_License_Services.New_Driving_Lic
 
         private void gbtnNext_Click(object sender, EventArgs e)
         {
-            if (_Mode == enMode.Update)
-            {
-                gtcApplicationInfo.SelectedTab = gtpApplicationInfo;
-                return;
-            }
+            //if (_Mode == enMode.Update)
+            //{
+            //    gtcApplicationInfo.SelectedTab = gtpApplicationInfo;
+            //    return;
+            //}
 
-            //Add new Mode
-            if (ctrlPersonCardWithFilter1.PersonID != -1)
-            {
+            ////Add new Mode
+            //if (ctrlPersonCardWithFilter1.PersonID != -1)
+            //{
 
-                _ChangeEnaplityOfSaveButton(true);
-                _ChangeEnaplityOfApplicationInfoPanel(true);
-                gtcApplicationInfo.SelectedTab = gtpApplicationInfo;
-            }
-            else
-            {
-                MessageBox.Show("Please Select a Person", "Select a Person", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                ctrlPersonCardWithFilter1.FilterFocus();
-            }
+            //    _ChangeEnaplityOfSaveButton(true);
+            //    _ChangeEnaplityOfApplicationInfoPanel(true);
+            //    gtcApplicationInfo.SelectedTab = gtpApplicationInfo;
+            //}
+            //else
+            //{
+            //    MessageBox.Show("Please Select a Person", "Select a Person", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    ctrlPersonCardWithFilter1.FilterFocus();
+            //}
+
+            gtcApplicationInfo.SelectedTab = gtpApplicationInfo;
         }
 
         private void gbtnSave_Click(object sender, EventArgs e)
         {
+            //if (ctrlPersonCardWithFilter1.PersonID == -1)
+            //{
+            //    MessageBox.Show("Please Select a Person", "Select a Person", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    ctrlPersonCardWithFilter1.FilterFocus();
+            //    return;
+            //}
+
             int LicenseClassID = clsLicenseClass.Find(gcbLicenseClass.Text).LicenseClassID;
 
             int ActiveApplicationID = clsApplication.GetActiveApplicationIDForLicenseClass(_SelectedPersonID, clsApplication.enApplicationType.NewDrivingLicense, LicenseClassID);
@@ -215,6 +224,22 @@ namespace DVLDPresentation.Applications.Driving_License_Services.New_Driving_Lic
         private void ctrlPersonCardWithFilter1_OnPersonSelected(int obj)
         {
             _SelectedPersonID = obj;
+
+            //Add new Mode
+            if (ctrlPersonCardWithFilter1.PersonID != -1)
+            {
+
+                _ChangeEnaplityOfSaveButton(true);
+                _ChangeEnaplityOfApplicationInfoPanel(true);
+                //gtcApplicationInfo.SelectedTab = gtpApplicationInfo;
+            }
+            else
+            {
+                MessageBox.Show("Please Select a Person", "Select a Person", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                _ChangeEnaplityOfSaveButton(false);
+                _ChangeEnaplityOfApplicationInfoPanel(false);
+                ctrlPersonCardWithFilter1.FilterFocus();
+            }
         }
 
         private void gbtnClose_Click(object sender, EventArgs e)

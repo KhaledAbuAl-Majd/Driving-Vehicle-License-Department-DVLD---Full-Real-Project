@@ -167,12 +167,12 @@
             this.pnlApplicationInfo.Size = new System.Drawing.Size(974, 496);
             this.pnlApplicationInfo.TabIndex = 42;
             // 
-            // lblCreatedBy
+            // lblCreatedByUser
             // 
             this.lblCreatedBy.AutoSize = true;
             this.lblCreatedBy.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCreatedBy.Location = new System.Drawing.Point(290, 220);
-            this.lblCreatedBy.Name = "lblCreatedBy";
+            this.lblCreatedBy.Name = "lblCreatedByUser";
             this.lblCreatedBy.Size = new System.Drawing.Size(40, 24);
             this.lblCreatedBy.TabIndex = 41;
             this.lblCreatedBy.Text = "???";

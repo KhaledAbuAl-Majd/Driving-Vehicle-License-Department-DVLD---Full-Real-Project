@@ -215,7 +215,7 @@ namespace DVLDPresentation.Applications.Manage_Applications
         private void issueDrivingLicenseFirstTimeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //Local Driving License Application ID
-            frmIssueDriverLicenseForFirstTime frm = new frmIssueDriverLicenseForFirstTime(Convert.ToInt32(dgvLocalDrivingLicenseApplications.CurrentRow.Cells[0].Value));
+            frmIssueDriverLicenseFirstTime frm = new frmIssueDriverLicenseFirstTime(Convert.ToInt32(dgvLocalDrivingLicenseApplications.CurrentRow.Cells[0].Value));
             frm.OnClose += _RefreshLDLApplicationsList;
             frm.ShowDialog();
         }

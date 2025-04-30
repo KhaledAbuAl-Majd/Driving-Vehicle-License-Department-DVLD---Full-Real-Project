@@ -26,8 +26,7 @@ namespace DVLDPresentation.Applications.Manage_Applications.LocalDrivingLicenseA
             _AppointmentID = AppointmentID;
             _TestType = TestType;
         }
-
-        
+ 
         private void frmTakeTest_Load(object sender, EventArgs e)
         {
             ctrlSecheduledTest1.TestTypeID = _TestType;
@@ -42,6 +41,8 @@ namespace DVLDPresentation.Applications.Manage_Applications.LocalDrivingLicenseA
             int _TestID = ctrlSecheduledTest1.TestID;
             if (_TestID != -1)
             {
+                //Update Mode
+
                 _Test = clsTest.Find(_TestID);
 
                 if (_Test.TestResult)
@@ -54,7 +55,9 @@ namespace DVLDPresentation.Applications.Manage_Applications.LocalDrivingLicenseA
                 lblUserMessage.Visible = true;
                 grbFail.Enabled = false;
                 grbPass.Enabled = false;
-                gbtnSave.Enabled = false;
+
+                //You Can Change Notes Only!
+                //gbtnSave.Enabled = false;
             }
 
             else
@@ -85,9 +88,12 @@ namespace DVLDPresentation.Applications.Manage_Applications.LocalDrivingLicenseA
                 ctrlSecheduledTest1.TestID = _TestID;
                 
                 MessageBox.Show("Data Saved Successfully.", "Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                gbtnSave.Enabled = false;
+
                 grbPass.Enabled = false;
                 grbFail.Enabled = false;
+
+                //You Can Change Notes Only!
+                //gbtnSave.Enabled = false;
 
             }
             else

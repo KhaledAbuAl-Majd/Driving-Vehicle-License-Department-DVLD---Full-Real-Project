@@ -43,12 +43,14 @@ namespace DVLDBusiness
 
             Mode = enMode.Update;
         }
+
         bool _AddNewTest()
         {
             this.TestID = clsTestData.AddNewTest(TestAppointmentID, TestResult, Notes, CreatedByUserID);
 
             return (this.TestID != -1);
         }
+
         private bool _UpdateTest()
         {
             //call DataAccess Layer 
@@ -96,7 +98,6 @@ namespace DVLDBusiness
         public static DataTable GetAllTests()
         {
             return clsTestData.GetAllTests();
-
         }
 
         public bool Save()
@@ -107,10 +108,7 @@ namespace DVLDBusiness
                     if (_AddNewTest())
                     {
                         Mode = enMode.Update;
-
-                        TestAppointmentInfo = clsTestAppointment.Find(TestAppointmentID);
-
-                        return TestAppointmentInfo.LockTestAppointment();
+                        return true;
                     }
                     else
                         return false;

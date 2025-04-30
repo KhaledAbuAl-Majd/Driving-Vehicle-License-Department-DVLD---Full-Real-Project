@@ -20,6 +20,7 @@ namespace DVLDPresentation.Applications.Manage_Applications.Schedule_Test
         DataTable _dtLicenseTestAppointments;
         int _LocalDrivingLicenseApplicationID;
         clsTestType.enTestType _TestType;
+
         public frmListTestAppointments(int LocalDrivingLicenseApplicationID,clsTestType.enTestType TestType)
         {
             InitializeComponent();
@@ -74,17 +75,9 @@ namespace DVLDPresentation.Applications.Manage_Applications.Schedule_Test
 
         void _RefreshAppointmentsList()
         {
-            DataTable _dtLicenseTestAppointments = clsTestAppointment.GetApplicationTestAppointmentsPerTestType(_LocalDrivingLicenseApplicationID, _TestType);
+            _dtLicenseTestAppointments = clsTestAppointment.GetApplicationTestAppointmentsPerTestType(_LocalDrivingLicenseApplicationID, _TestType);
             dgvLicenseTestAppointments.DataSource = _dtLicenseTestAppointments;
             lblNumOfRecords.Text = _dtLicenseTestAppointments.Rows.Count.ToString();
-        }
-
-        private void frmListTestAppointments_Load(object sender, EventArgs e)
-        {
-            _LoadTestTypeImageAndTitle();
-
-            ctrlDLApplicationInfo1.LoadApplicationInfoByLocalDrivingAppID(_LocalDrivingLicenseApplicationID);
-            _RefreshAppointmentsList();
 
             if (dgvLicenseTestAppointments.Rows.Count > 0)
             {
@@ -94,12 +87,20 @@ namespace DVLDPresentation.Applications.Manage_Applications.Schedule_Test
                 dgvLicenseTestAppointments.Columns[1].HeaderText = "Appointment Date";
                 dgvLicenseTestAppointments.Columns[1].Width = 200;
 
-                dgvLicenseTestAppointments.Columns[2].HeaderText = "Paid Fees";
+                dgvLicenseTestAppointments.Columns[2].HeaderText = "Total Paid Fees";
                 dgvLicenseTestAppointments.Columns[2].Width = 150;
 
                 dgvLicenseTestAppointments.Columns[3].HeaderText = "Is Locked";
                 dgvLicenseTestAppointments.Columns[3].Width = 100;
             }
+        }
+
+        private void frmListTestAppointments_Load(object sender, EventArgs e)
+        {
+            _LoadTestTypeImageAndTitle();
+
+            ctrlDLApplicationInfo1.LoadApplicationInfoByLocalDrivingAppID(_LocalDrivingLicenseApplicationID);
+            _RefreshAppointmentsList();
         }
 
         private void btnAddAppointment_Click(object sender, EventArgs e)

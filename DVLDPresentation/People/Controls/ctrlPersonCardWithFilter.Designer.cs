@@ -42,7 +42,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
-            // gbFilterBy
+            // gbFilters
             // 
             this.gbFilterBy.BackColor = System.Drawing.Color.White;
             this.gbFilterBy.Controls.Add(this.btnAddPerson);
@@ -52,7 +52,7 @@
             this.gbFilterBy.Controls.Add(this.label1);
             this.gbFilterBy.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbFilterBy.Location = new System.Drawing.Point(15, 12);
-            this.gbFilterBy.Name = "gbFilterBy";
+            this.gbFilterBy.Name = "gbFilters";
             this.gbFilterBy.Size = new System.Drawing.Size(936, 102);
             this.gbFilterBy.TabIndex = 2;
             this.gbFilterBy.TabStop = false;

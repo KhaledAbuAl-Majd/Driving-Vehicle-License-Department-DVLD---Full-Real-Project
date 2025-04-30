@@ -121,7 +121,7 @@ namespace DVLDPresentation.Login_HomePage
 
         private void renewDrivingLicenseToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmRenewLocalLicense frm = new frmRenewLocalLicense();
+            frmRenewLocalDrivingLicenseApplication frm = new frmRenewLocalDrivingLicenseApplication();
             frm.ShowDialog();
         }
 

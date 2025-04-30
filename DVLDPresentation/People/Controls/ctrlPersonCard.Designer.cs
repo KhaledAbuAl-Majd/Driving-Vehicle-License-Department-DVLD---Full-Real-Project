@@ -354,13 +354,13 @@
             this.label5.TabIndex = 4;
             this.label5.Text = "Gendor:";
             // 
-            // lblName
+            // lblFullName
             // 
             this.lblName.AutoSize = true;
             this.lblName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.lblName.Location = new System.Drawing.Point(160, 71);
-            this.lblName.Name = "lblName";
+            this.lblName.Name = "lblFullName";
             this.lblName.Size = new System.Drawing.Size(59, 20);
             this.lblName.TabIndex = 3;
             this.lblName.Text = "[????]";

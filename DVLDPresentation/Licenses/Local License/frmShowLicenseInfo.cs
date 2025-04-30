@@ -15,16 +15,16 @@ namespace DVLDPresentation.Applications.Manage_Applications.LocalDrivingLicenseA
 {
     public partial class frmShowLicenseInfo : Form
     {
+        private int _LicenseID;
         public frmShowLicenseInfo(int LicenseID)
         {
             InitializeComponent();
-            ctrlDriverLicenseInfo1.LicenseID = LicenseID;
-            
+            _LicenseID = LicenseID;
         }
 
         private void frmLicneseInfo_Load(object sender, EventArgs e)
         {
-            
+            ctrlDriverLicenseInfo1.LoadInfo(_LicenseID);
         }
 
         private void gbtnClose_Click(object sender, EventArgs e)

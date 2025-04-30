@@ -41,8 +41,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.lblNumOfRecords = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.btnAddAppointment = new System.Windows.Forms.Button();
             this.gbtnClose = new Guna.UI2.WinForms.Guna2Button();
+            this.btnAddAppointment = new System.Windows.Forms.Button();
             this.pbHeaderICon = new System.Windows.Forms.PictureBox();
             this.ctrlDLApplicationInfo1 = new DVLDPresentation.Controls.ctrlDrivingLicenseApplicationInfo();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLicenseTestAppointments)).BeginInit();
@@ -52,14 +52,14 @@
             // 
             // lblHeader
             // 
-            this.lblHeader.AutoSize = true;
             this.lblHeader.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lblHeader.Location = new System.Drawing.Point(291, 175);
+            this.lblHeader.Location = new System.Drawing.Point(0, 175);
             this.lblHeader.Name = "lblHeader";
-            this.lblHeader.Size = new System.Drawing.Size(406, 37);
+            this.lblHeader.Size = new System.Drawing.Size(997, 37);
             this.lblHeader.TabIndex = 3;
             this.lblHeader.Text = "Vision Test Appointments";
+            this.lblHeader.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // dgvLicenseTestAppointments
             // 
@@ -78,6 +78,7 @@
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvLicenseTestAppointments.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvLicenseTestAppointments.ColumnHeadersHeight = 30;
+            this.dgvLicenseTestAppointments.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvLicenseTestAppointments.ContextMenuStrip = this.contextMenuStrip1;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
@@ -163,19 +164,6 @@
             this.label3.TabIndex = 20;
             this.label3.Text = "# Records";
             // 
-            // btnAddAppointment
-            // 
-            this.btnAddAppointment.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnAddAppointment.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnAddAppointment.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddAppointment.Image = ((System.Drawing.Image)(resources.GetObject("btnAddAppointment.Image")));
-            this.btnAddAppointment.Location = new System.Drawing.Point(924, 677);
-            this.btnAddAppointment.Name = "btnAddAppointment";
-            this.btnAddAppointment.Size = new System.Drawing.Size(36, 33);
-            this.btnAddAppointment.TabIndex = 23;
-            this.btnAddAppointment.UseVisualStyleBackColor = true;
-            this.btnAddAppointment.Click += new System.EventHandler(this.btnAddAppointment_Click);
-            // 
             // gbtnClose
             // 
             this.gbtnClose.Animated = true;
@@ -203,6 +191,18 @@
             this.gbtnClose.TabIndex = 22;
             this.gbtnClose.Text = "Close";
             this.gbtnClose.Click += new System.EventHandler(this.gbtnClose_Click);
+            // 
+            // btnAddAppointment
+            // 
+            this.btnAddAppointment.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAddAppointment.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddAppointment.Image = global::DVLDPresentation.Properties.Resources.AddAppointment_32;
+            this.btnAddAppointment.Location = new System.Drawing.Point(932, 677);
+            this.btnAddAppointment.Name = "btnAddAppointment";
+            this.btnAddAppointment.Size = new System.Drawing.Size(36, 33);
+            this.btnAddAppointment.TabIndex = 24;
+            this.btnAddAppointment.UseVisualStyleBackColor = true;
+            this.btnAddAppointment.Click += new System.EventHandler(this.btnAddAppointment_Click);
             // 
             // pbHeaderICon
             // 
@@ -261,9 +261,9 @@
         private Guna.UI2.WinForms.Guna2Button gbtnClose;
         private System.Windows.Forms.Label lblNumOfRecords;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button btnAddAppointment;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem takeTestToolStripMenuItem;
+        private System.Windows.Forms.Button btnAddAppointment;
     }
 }

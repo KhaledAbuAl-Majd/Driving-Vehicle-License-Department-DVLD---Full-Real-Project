@@ -14,8 +14,8 @@ namespace DVLDBusiness
 {
     public class clsPerson
     {
+        public enum enGendor { Male = 0, Female = 1 };
         public enum enMode { AddNew = 0, Update = 1 };
-
          public enMode _Mode { get; private set; } = enMode.AddNew;
         public int PersonID { get; private set; }
         public string FirstName { get; set; }
@@ -39,6 +39,25 @@ namespace DVLDBusiness
 
         public clsCountry CountryInfo;
         public string ImagePath { get; set; }
+
+        public string GendorText
+        {
+            get
+            {
+                switch ((enGendor)Gendor)
+                {
+                    case enGendor.Male:
+                        return "Male";
+
+                    case enGendor.Female:
+                        return "Female";
+
+                    default:
+                        return "UnKnown";
+                }
+                    
+            }
+        }
 
         public clsPerson()
         {

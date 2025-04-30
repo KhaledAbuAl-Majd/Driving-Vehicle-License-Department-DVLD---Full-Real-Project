@@ -103,6 +103,13 @@ namespace DVLDPresentation.Users
 
         private void gbtnSave_Click(object sender, EventArgs e)
         {
+            //if (ctrlPersonCardWithFilter1.PersonID == -1)
+            //{
+            //    MessageBox.Show("Please Select a Person", "Select a Person", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    ctrlPersonCardWithFilter1.FilterFocus();
+            //    return;
+            //}
+
             if (!ValidateChildren())
             {
                 MessageBox.Show("Some fileds are not valide!, put the mouse over the red icon(s) to see the erro",
@@ -185,37 +192,66 @@ namespace DVLDPresentation.Users
 
         private void gbtnNext_Click(object sender, EventArgs e)
         {        
-            if(_Mode == enMode.Update)
-            {
-                gtcUserInfo.SelectedTab = gtpLoginInfo;
-                return;
-            }
+            //if(_Mode == enMode.Update)
+            //{
+            //    gtcUserInfo.SelectedTab = gtpLoginInfo;
+            //    return;
+            //}
 
             //Add new Mode
+            //if (ctrlPersonCardWithFilter1.PersonID != -1)
+            //{
+            //    if (clsUser.IsUserExistForPersonID(ctrlPersonCardWithFilter1.PersonID))
+            //    {
+            //        MessageBox.Show("Selected Person already has a user, choose another one.", "Select another Person", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //        ctrlPersonCardWithFilter1.FilterFocus();
+            //    }
+            //    else
+            //    {
+            //        _ChageEnaplityOfSaveButton(true);
+            //        _ChangeEnaplityForLoginInfoPanel(true);
+            //        gtcUserInfo.SelectedTab = gtpLoginInfo;
+            //    }
+            //}
+            //else
+            //{
+            //    MessageBox.Show("Please Select a Person", "Select a Person", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    ctrlPersonCardWithFilter1.FilterFocus();
+            //}   
+
+            gtcUserInfo.SelectedTab = gtpLoginInfo;
+        }
+
+        private void gbtnClose_Click(object sender, EventArgs e)
+        {          
+            this.Close();             
+        }
+
+        private void ctrlPersonCardWithFilter1_OnPersonSelected(int obj)
+        {
             if (ctrlPersonCardWithFilter1.PersonID != -1)
             {
                 if (clsUser.IsUserExistForPersonID(ctrlPersonCardWithFilter1.PersonID))
                 {
                     MessageBox.Show("Selected Person already has a user, choose another one.", "Select another Person", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    _ChageEnaplityOfSaveButton(false);
+                    _ChangeEnaplityForLoginInfoPanel(false);
                     ctrlPersonCardWithFilter1.FilterFocus();
                 }
                 else
                 {
                     _ChageEnaplityOfSaveButton(true);
                     _ChangeEnaplityForLoginInfoPanel(true);
-                    gtcUserInfo.SelectedTab = gtpLoginInfo;
+                    //gtcUserInfo.SelectedTab = gtpLoginInfo;
                 }
             }
             else
             {
                 MessageBox.Show("Please Select a Person", "Select a Person", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                _ChageEnaplityOfSaveButton(false);
+                _ChangeEnaplityForLoginInfoPanel(false);
                 ctrlPersonCardWithFilter1.FilterFocus();
-            }   
-        }
-
-        private void gbtnClose_Click(object sender, EventArgs e)
-        {          
-            this.Close();             
+            }
         }
     }
 }

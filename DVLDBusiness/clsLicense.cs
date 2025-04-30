@@ -23,7 +23,7 @@ namespace DVLDBusiness
         public int DriverID { get; set; }
         public int LicenseClassID { get; set; }
 
-        public clsLicenseClass LicenseClassIfo;
+        public clsLicenseClass LicenseClassInfo;
         public DateTime IssueDate { get; set; }
         public DateTime ExpirationDate { get; set; }
         public string Notes { get; set; }
@@ -61,8 +61,8 @@ namespace DVLDBusiness
             Mode = enMode.AddNew;
         }
 
-        private clsLicense(int LicneseID, int ApplicationID, int DriverID, int LicenseClassID, DateTime IsuueDate, DateTime ExpirationDate,
-            string Notes, float PaidFees, bool IsAcitve, enIssueReason IssueReason, int CreatedByUserID)
+        private clsLicense(int LicenseID, int ApplicationID, int DriverID, int LicenseClassID, DateTime IssueDate, DateTime ExpirationDate,
+            string Notes, float PaidFees, bool IsActive, enIssueReason IssueReason, int CreatedByUserID)
         {
             this.LicenseID = LicenseID;
             this.ApplicationID = ApplicationID;
@@ -77,7 +77,7 @@ namespace DVLDBusiness
             this.CreatedByUserID = CreatedByUserID;
 
             this.DriverInfo = clsDriver.FindByDriverID(this.DriverID);
-            this.LicenseClassIfo = clsLicenseClass.Find(this.LicenseClassID);
+            this.LicenseClassInfo = clsLicenseClass.Find(this.LicenseClassID);
             this.DetainedInfo = clsDetainedLicense.FindByLicenseID(this.LicenseID);
 
             Mode = enMode.Update;
@@ -291,11 +291,11 @@ namespace DVLDBusiness
             NewLicense.LicenseClassID = this.LicenseClassID;
             NewLicense.IssueDate = DateTime.Now;
 
-            int DefaultValidityLength = this.LicenseClassIfo.DefaultValidityLength;
+            int DefaultValidityLength = this.LicenseClassInfo.DefaultValidityLength;
 
             NewLicense.ExpirationDate = DateTime.Now.AddYears(DefaultValidityLength);
             NewLicense.Notes = Notes;
-            NewLicense.PaidFees = this.LicenseClassIfo.ClassFees;
+            NewLicense.PaidFees = this.LicenseClassInfo.ClassFees;
             NewLicense.IsActive = true;
             NewLicense.IssueReason = clsLicense.enIssueReason.Renew;
             NewLicense.CreatedByUserID = CreatedByUserID;

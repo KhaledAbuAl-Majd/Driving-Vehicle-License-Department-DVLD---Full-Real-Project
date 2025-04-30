@@ -443,14 +443,14 @@
             // 
             // lblTitle
             // 
-            this.lblTitle.AutoSize = true;
             this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lblTitle.Location = new System.Drawing.Point(157, 179);
+            this.lblTitle.Location = new System.Drawing.Point(0, 179);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(233, 37);
+            this.lblTitle.Size = new System.Drawing.Size(573, 37);
             this.lblTitle.TabIndex = 5;
             this.lblTitle.Text = "Schedule Test";
+            this.lblTitle.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // pbTestTypeImage
             // 
@@ -462,13 +462,13 @@
             this.pbTestTypeImage.TabIndex = 4;
             this.pbTestTypeImage.TabStop = false;
             // 
-            // crlScheduleTest
+            // ctrlScheduleTest
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.gbTestType);
-            this.Name = "crlScheduleTest";
+            this.Name = "ctrlScheduleTest";
             this.Size = new System.Drawing.Size(573, 708);
             this.gbTestType.ResumeLayout(false);
             this.gbTestType.PerformLayout();

@@ -159,6 +159,10 @@ namespace DVLDDataAccess
             string query = @"INSERT INTO [dbo].[Tests]
                      ([TestAppointmentID],[TestResult],[Notes] ,[CreatedByUserID])
                       VALUES (@TestAppointmentID, @TestResult,@Notes,@CreatedByUserID);
+
+                      UPDATE [dbo].[TestAppointments]
+                SET [IsLocked] = 1 WHERE TestAppointmentID = @TestAppointmentID;
+
                       SELECT SCOPE_IDENTITY()";
 
             SqlCommand command = new SqlCommand(query, connection);
@@ -262,7 +266,7 @@ namespace DVLDDataAccess
                 }
             }
 
-            catch (Exception ex)
+            catch 
             {
                 //Console.WriteLine("Error: " + ex.Message);
 

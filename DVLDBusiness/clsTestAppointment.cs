@@ -28,7 +28,17 @@ namespace DVLDBusiness
         public int TestID
         {
             get { return _GetTestID(); }
+        }
 
+        //TestFees + RetakeTestFees
+        public float GetTotalPaidFees
+        {
+            get
+            {
+                float RetakeTestFees = (RetakeTestAppInfo == null) ? 0 : RetakeTestAppInfo.PaidFees;
+
+                return this.PaidFees + RetakeTestFees;
+            }
         }
 
         public clsTestAppointment()
@@ -41,6 +51,7 @@ namespace DVLDBusiness
             this.CreatedByUserID = -1;
             this.IsLocked = false;
             RetakeTestApplicationID = -1;
+            RetakeTestAppInfo = null;
             this.Mode = enMode.AddNew;
         }
 
@@ -55,7 +66,7 @@ namespace DVLDBusiness
             this.CreatedByUserID = CreatedByUserID;
             this.IsLocked = IsLocked;
             this.RetakeTestApplicationID = RetakeTestApplicationID;
-            this.RetakeTestAppInfo = clsApplication.FindBaseApplication(RetakeTestApplicationID);
+            this.RetakeTestAppInfo = (RetakeTestApplicationID == -1) ? null : clsApplication.FindBaseApplication(RetakeTestApplicationID);
             this.Mode = enMode.Update;
         }
 
@@ -66,10 +77,12 @@ namespace DVLDBusiness
 
             return (TestAppointmentID != -1);
         }
+
         bool _UpdateTestAppointment()
         {
             return clsTestAppointmentData.UpdateTestAppointment(TestAppointmentID, AppointmentDate, CreatedByUserID);
         }
+
         public static clsTestAppointment Find(int TestAppointmentID)
         {
             int TestTypeID = -1, LocalDrivingLicenseApplicationID = -1, CreatedByUserID = -1;
@@ -145,6 +158,7 @@ namespace DVLDBusiness
             return clsTestAppointmentData.GetTestID(TestAppointmentID);
         }
 
+        //
         public bool LockTestAppointment()
         {
             if (TestAppointmentID != -1)

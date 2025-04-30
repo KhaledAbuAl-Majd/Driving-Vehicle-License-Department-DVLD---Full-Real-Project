@@ -17,6 +17,7 @@ namespace DVLDPresentation.Applications.Manage_Applications.LocalDrivingLicenseA
         private int _LocalDrivingLicenseApplicationID = -1;
         private clsTestType.enTestType _TestTypeID = clsTestType.enTestType.VisionTest;
         private int _AppointmentID = -1;
+
         public frmScheduleTest(int LocalDrivingLicenseApplicationID, clsTestType.enTestType TestTypeID, int AppointmentID = -1)
         {
             InitializeComponent();

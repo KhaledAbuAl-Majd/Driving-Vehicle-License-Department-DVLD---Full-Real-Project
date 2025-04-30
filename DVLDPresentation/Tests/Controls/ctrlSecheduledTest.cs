@@ -119,7 +119,9 @@ namespace DVLDPresentation.Tests.Controls
             lblTrial.Text = _LocalDrivingLicenseApplication.TotalTrialsPerTest(_TestTypeID).ToString();
 
             lblDate.Text = clsFormat.DateToShort(_TestAppointment.AppointmentDate);
-            lblFees.Text = _TestAppointment.PaidFees.ToString();
+
+            //TestFees + RetakeTestFees
+            lblFees.Text = _TestAppointment.GetTotalPaidFees.ToString();
             lblTestID.Text = (_TestAppointment.TestID == -1) ? "Not Taken Yet" : _TestAppointment.TestID.ToString();
         }
 

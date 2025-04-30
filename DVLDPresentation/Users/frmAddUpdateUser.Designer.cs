@@ -128,6 +128,7 @@
             this.ctrlPersonCardWithFilter1.ShowAddPerson = true;
             this.ctrlPersonCardWithFilter1.Size = new System.Drawing.Size(962, 415);
             this.ctrlPersonCardWithFilter1.TabIndex = 6;
+            this.ctrlPersonCardWithFilter1.OnPersonSelected += new System.Action<int>(this.ctrlPersonCardWithFilter1_OnPersonSelected);
             // 
             // gbtnNext
             // 
@@ -449,7 +450,6 @@
             this.Name = "frmAddUpdateUser";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Add New User";
-
             this.Load += new System.EventHandler(this.frmAdd_EditNewUser_Load);
             this.gtcUserInfo.ResumeLayout(false);
             this.gtpPersonInfo.ResumeLayout(false);

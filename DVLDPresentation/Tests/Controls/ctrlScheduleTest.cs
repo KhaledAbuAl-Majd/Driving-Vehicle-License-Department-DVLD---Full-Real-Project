@@ -38,7 +38,6 @@ namespace DVLDPresentation.Tests.Controls
 
                 switch (_TestTypeID)
                 {
-
                     case clsTestType.enTestType.VisionTest:
                         {
                             gbTestType.Text = "Vision Test";
@@ -57,8 +56,6 @@ namespace DVLDPresentation.Tests.Controls
                             gbTestType.Text = "Street Test";
                             pbTestTypeImage.Image = Resources.driving_test_512;
                             break;
-
-
                         }
                 }
             }
@@ -72,14 +69,18 @@ namespace DVLDPresentation.Tests.Controls
                 _Mode = enMode.Update;
 
             _LocalDrivingLicenseApplicationID = LocalDrivingLicenseApplicationID;
-            _LocalDrivingLicenseApplication = clsLocalDrivingLicenseApplication.FindByLocalDrivingAppLicenseID(LocalDrivingLicenseApplicationID);
             _TestAppointmentID = AppointmentID;
+            _LocalDrivingLicenseApplication = clsLocalDrivingLicenseApplication.FindByLocalDrivingAppLicenseID(LocalDrivingLicenseApplicationID);
 
             if (_LocalDrivingLicenseApplication == null)
             {
                 MessageBox.Show("Error: No Local Driving License Application with ID = " + _LocalDrivingLicenseApplicationID.ToString(),
                     "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 gbtnSave.Enabled = false;
+
+                if (this.ParentForm != null)
+                    this.ParentForm.Close();
+
                 return;
             }
 
@@ -112,7 +113,26 @@ namespace DVLDPresentation.Tests.Controls
             if(_Mode == enMode.AddNew)
             {
                 lblFees.Text = clsTestType.Find(_TestTypeID).TestTypeFees.ToString();
-                gdtpTestDate.MinDate = DateTime.Now;
+
+                if (_CreationMode == enCreationMode.RetakeTestSchedule)
+                {
+                    clsTestAppointment LastTestAppointment = clsTestAppointment.GetLastTestAppointment(LocalDrivingLicenseApplicationID, TestTypeID);
+
+                    if(LastTestAppointment != null)
+                    {
+                        gdtpTestDate.MinDate = LastTestAppointment.AppointmentDate;
+                    }
+                    else
+                    {
+                        gdtpTestDate.MinDate = DateTime.Now;
+                    }
+                }
+                else
+                {
+                    gdtpTestDate.MinDate = DateTime.Now;
+                }
+
+                gdtpTestDate.Value = gdtpTestDate.MinDate;
                 lblRetakeTestAppID.Text = "N/A";
 
                 _TestAppointment = new clsTestAppointment();
@@ -141,7 +161,8 @@ namespace DVLDPresentation.Tests.Controls
             {
                 lblUserMessage.Text = "Person Already have an active appointment for this test";
                 gbtnSave.Enabled = false;
-                gdtpTestDate.Enabled = false;
+                gdtpTestDate.Enabled = false;    
+
                 return false;
             }
 
@@ -156,6 +177,10 @@ namespace DVLDPresentation.Tests.Controls
                 MessageBox.Show("Error: No Appointment with ID = " + _TestAppointmentID.ToString(),
                 "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                gbtnSave.Enabled = false;
+
+                if (this.ParentForm != null)
+                    this.ParentForm.Close();
+
                 return false;
             }
 
@@ -163,11 +188,17 @@ namespace DVLDPresentation.Tests.Controls
 
             //we compare the current date with the appointment date to set the min date.
             if (DateTime.Compare(DateTime.Now, _TestAppointment.AppointmentDate) < 0)
+            {
+                // Now < Appointment Date , Not Commen Yet
                 gdtpTestDate.MinDate = DateTime.Now;
+            }
             else
+            {
                 gdtpTestDate.MinDate = _TestAppointment.AppointmentDate;
+                //gdtpTestDate.Value = gdtpTestDate.MinDate;
+            }
 
-            gdtpTestDate.Value = gdtpTestDate.MinDate;
+            gdtpTestDate.Value = _TestAppointment.AppointmentDate;
 
             if (_TestAppointment.RetakeTestApplicationID == -1)
             {
@@ -194,6 +225,7 @@ namespace DVLDPresentation.Tests.Controls
                 lblUserMessage.Text = "Person already sat for the test, appointment loacked.";
                 gdtpTestDate.Enabled = false;
                 gbtnSave.Enabled = false;
+
                 return false;
 
             }
@@ -225,6 +257,7 @@ namespace DVLDPresentation.Tests.Controls
                         lblUserMessage.Visible = true;
                         gbtnSave.Enabled = false;
                         gdtpTestDate.Enabled = false;
+
                         return false;
                     }
                     else
@@ -247,6 +280,7 @@ namespace DVLDPresentation.Tests.Controls
                         lblUserMessage.Visible = true;
                         gbtnSave.Enabled = false;
                         gdtpTestDate.Enabled = false;
+
                         return false;
                     }
                     else
@@ -316,14 +350,8 @@ namespace DVLDPresentation.Tests.Controls
             {
                 _Mode = enMode.Update;
 
-                if (_TestAppointment.RetakeTestApplicationID == -1)
-                {
-                    lblRetakeTestAppID.Text = "N/A";
-                }
-                else
-                {  
-                    lblRetakeTestAppID.Text = _TestAppointment.RetakeTestApplicationID.ToString();
-                }
+                if (_TestAppointment.RetakeTestApplicationID != -1)
+                    lblRetakeTestAppID.Text = _TestAppointment.RetakeTestApplicationID.ToString();           
 
                 MessageBox.Show("Data Saved Successfully.", "Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
 

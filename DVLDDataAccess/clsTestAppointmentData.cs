@@ -154,9 +154,11 @@ namespace DVLDDataAccess
 
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
-            string query = @"SELECT TestAppointmentID,AppointmentDate,PaidFees,IsLocked FROM TestAppointments 
+            string query = @"SELECT TestAppointmentID,AppointmentDate,(ISNULL(RetakeTestApplication.PaidFees,0) + TestAppointments.PaidFees) AS TotalPaidFees,
+           IsLocked FROM TestAppointments  LEFT OUTER JOIN Applications RetakeTestApplication ON 
+            TestAppointments.RetakeTestApplicationID = RetakeTestApplication.ApplicationID
             WHERE LocalDrivingLicenseApplicationID = @LocalDrivingLicenseApplicationID 
-             AND TestTypeID = @TestTypeID ORDER BY TestAppointmentID DESC";
+             AND TestTypeID = @TestTypeID ORDER BY TestAppointmentID DESC;";
 
             SqlCommand command = new SqlCommand(query, connection);
             command.Parameters.AddWithValue("@LocalDrivingLicenseApplicationID", LocalDrivingLicenseApplicationID);
