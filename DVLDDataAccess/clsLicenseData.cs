@@ -160,7 +160,7 @@ namespace DVLDDataAccess
             string query = @" SELECT Licenses.LicneseID,Licenses.ApplicationID,LicneseClasses.ClassName,Licenses.IsuueDate,
               Licenses.ExpirationDate,Licenses.IsAcitve FROM Licenses INNER JOIN LicneseClasses ON 
              Licenses.LicenseClassID = LicneseClasses.LicenseClassID
-             WHERE DriverID = @DriverID ORDER BY IsAcitve DESC, ExpirationDate DESC;";
+             WHERE DriverID = @DriverID ORDER BY IsAcitve DESC, IsuueDate DESC;";
 
             SqlCommand command = new SqlCommand(query, connection);
             command.Parameters.AddWithValue("@DriverID", DriverID);

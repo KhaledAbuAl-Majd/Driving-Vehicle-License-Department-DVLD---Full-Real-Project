@@ -101,7 +101,7 @@ namespace DVLDDataAccess
             string query = @"SELECT InternationalLicenseID,ApplicationID,DriverID,
              IssuedUsingLocalLicenseID,IssueDate,ExpirationDate,IsActive
              FROM InternationalLicenses WHERE DriverID = @DriverID
-             ORDER BY ExpirationDate DESC;";
+             ORDER BY IssueDate DESC;";
 
             SqlCommand command = new SqlCommand(query, connection);
             command.Parameters.AddWithValue("@DriverID", DriverID);

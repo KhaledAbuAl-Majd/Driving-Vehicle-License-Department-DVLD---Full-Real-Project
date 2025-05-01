@@ -14,108 +14,47 @@ namespace DVLDPresentation.Applications.Manage_Applications.LocalDrivingLicenseA
 {
     public partial class frmShowPersonLicenseHistory : Form
     {
-        int _PersonID;
+        int _PersonID = -1;
         public frmShowPersonLicenseHistory(int PersonID)
         {
             InitializeComponent();
             _PersonID = PersonID;
         }
 
-        void _EditLocalDGVSize()
-        {
-            dgvLocalLicenseHistory.Columns["Lic.ID"].Width = 110;
-            dgvLocalLicenseHistory.Columns["App.ID"].Width = 110;
-            dgvLocalLicenseHistory.Columns["Class Name"].Width = 300;
-            dgvLocalLicenseHistory.Columns["Issue Date"].Width = 185;
-            dgvLocalLicenseHistory.Columns["Expiration Date"].Width = 130;
-            dgvLocalLicenseHistory.Columns["Is Acitve"].Width = 90;
-        }
-        void _LoadDataInLocalDGV()
-        {
-            DataTable dtAllLocalLicenses = clsLicense.GetDriverLicensePersonID(_PersonID);
-
-            if (dtAllLocalLicenses.Rows.Count > 0)
-            {
-                dtAllLocalLicenses.Columns.Add("Class Name", typeof(string));
-
-                dtAllLocalLicenses.Columns["LicenseID"].ColumnName = "Lic.ID";
-                dtAllLocalLicenses.Columns["ApplicationID"].ColumnName = "App.ID";
-                dtAllLocalLicenses.Columns["IssueDate"].ColumnName = "Issue Date";
-                dtAllLocalLicenses.Columns["ExpirationDate"].ColumnName = "Expiration Date";
-                dtAllLocalLicenses.Columns["IsActive"].ColumnName = "Is Acitve";
-
-
-                foreach(DataRow row in dtAllLocalLicenses.Rows)
-                {
-                    row["Class Name"] = clsLicenseClass.Find(Convert.ToInt32(row["LicenseClassID"])).ClassName;
-                }
-
-                dgvLocalLicenseHistory.DataSource = dtAllLocalLicenses.DefaultView.ToTable(false, "Lic.ID", "App.ID",
-                    "Class Name", "Issue Date", "Expiration Date", "Is Acitve");
-
-                _EditLocalDGVSize();
-                lblLocalNumOfRecords.Text = dtAllLocalLicenses.Rows.Count.ToString();
-            }
-            else
-                lblLocalNumOfRecords.Text = "0";
-        }
-        void _EditInternationalDGVSize()
-        {
-            dgvInternationalLicenseHistory.Columns["Int.License ID"].Width = 130;
-            dgvInternationalLicenseHistory.Columns["Application ID"].Width = 130;
-            dgvInternationalLicenseHistory.Columns["L.License ID"].Width = 130;
-            dgvInternationalLicenseHistory.Columns["Issue Date"].Width = 190;
-            dgvInternationalLicenseHistory.Columns["Expiration Date"].Width = 170;
-            dgvInternationalLicenseHistory.Columns["Is Acitve"].Width = 100;
-        }
-        void _LoadDataInInternationalDGV()
-        {
-            //DataTable dtAllInternationalLicenses = clsInternationalLicense.get(_PersonID);
-
-            //if (dtAllInternationalLicenses.Rows.Count > 0)
-            //{
-            //    dtAllInternationalLicenses.Columns["InternationalLicenseID"].ColumnName = "Int.License ID";
-            //    dtAllInternationalLicenses.Columns["ApplicationID"].ColumnName = "Application ID";
-            //    dtAllInternationalLicenses.Columns["IssuedUsingLocalLicenseID"].ColumnName = "L.License ID";
-            //    dtAllInternationalLicenses.Columns["IssueDate"].ColumnName = "Issue Date";
-            //    dtAllInternationalLicenses.Columns["ExpirationDate"].ColumnName = "Expiration Date";
-            //    dtAllInternationalLicenses.Columns["IsActive"].ColumnName = "Is Acitve";
-
-            //    dgvInternationalLicenseHistory.DataSource = dtAllInternationalLicenses.DefaultView.ToTable(false, "Int.License ID", "Application ID",
-            //        "L.License ID", "Issue Date", "Expiration Date", "Is Acitve");
-
-            //    _EditInternationalDGVSize();
-            //    lblInternationalNumOfRecords.Text = dtAllInternationalLicenses.Rows.Count.ToString();
-            //}
-            //else
-            //    lblInternationalNumOfRecords.Text = "0";
-        }
+ 
         private void frmLicenseHistory_Load(object sender, EventArgs e)
         {
-            ctrlPersonCardWithFilter1.FilterEnabled = false;
-            ctrlPersonCardWithFilter1.LoadPersonInfo(_PersonID);
-            _LoadDataInLocalDGV();
-            _LoadDataInInternationalDGV();
+            if(_PersonID != -1)
+            {
+                ctrlPersonCardWithFilter1.LoadPersonInfo(_PersonID);
+                ctrlPersonCardWithFilter1.FilterEnabled = false;
+                ctrlDriverLicenses1.LoadInfoByPersonID(_PersonID);
+            }
+            else
+            {
+                ctrlPersonCardWithFilter1.FilterEnabled = true;
+                ctrlPersonCardWithFilter1.FilterFocus();
+            }
+ 
+        }
+
+        private void ctrlPersonCardWithFilter1_OnPersonSelected(int obj)
+        {
+            _PersonID = obj;
+
+            if(_PersonID == -1)
+            {
+                ctrlDriverLicenses1.Clear();
+            }
+            else
+            {
+                ctrlDriverLicenses1.LoadInfoByPersonID(_PersonID);
+            }
         }
 
         private void gbtnClose_Click(object sender, EventArgs e)
         {
             this.Close();
-        }
-
-        private void CMSIshowLocalLicenseInfo_Click(object sender, EventArgs e)
-        {
-            //LicenseiD
-            int LicenseID = Convert.ToInt32(dgvLocalLicenseHistory.SelectedCells[0].Value);
-            frmShowLicenseInfo frm = new frmShowLicenseInfo(LicenseID);
-            frm.ShowDialog();
-        }
-
-        private void tmsIshowInternationalLicenseInfo_Click(object sender, EventArgs e)
-        {
-            int IntLicenseID = Convert.ToInt32(dgvInternationalLicenseHistory.SelectedCells[0].Value);
-            frmInternationalLicenseInfo frm = new frmInternationalLicenseInfo(IntLicenseID);
-            frm.ShowDialog();
         }
     }
 }

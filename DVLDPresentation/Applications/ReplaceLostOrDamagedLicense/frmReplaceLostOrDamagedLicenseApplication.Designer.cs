@@ -1,6 +1,6 @@
 ﻿namespace DVLDPresentation.Applications.Driving_License_Services.Replacment_For_Damage_Or_Lost
 {
-    partial class frmReplacementForDamagedOrLost
+    partial class frmReplaceLostOrDamagedLicenseApplication
     {
         /// <summary>
         /// Required designer variable.
@@ -28,13 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmReplacementForDamagedOrLost));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmReplaceLostOrDamagedLicenseApplication));
             this.label10 = new System.Windows.Forms.Label();
             this.lblReplacedLicenseID = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.lblApplicationDate = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.lblCreatedBy = new System.Windows.Forms.Label();
+            this.lblCreatedByUser = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.lblApplicationFees = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
@@ -50,13 +50,13 @@
             this.pictureBox11 = new System.Windows.Forms.PictureBox();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
-            this.lblHeader = new System.Windows.Forms.Label();
+            this.lblTitle = new System.Windows.Forms.Label();
             this.gbtnIssueReplacement = new Guna.UI2.WinForms.Guna2Button();
             this.gbtnClose = new Guna.UI2.WinForms.Guna2Button();
             this.gbReplacementFor = new System.Windows.Forms.GroupBox();
             this.grbLostLicense = new Guna.UI2.WinForms.Guna2RadioButton();
             this.grbDamagedLicense = new Guna.UI2.WinForms.Guna2RadioButton();
-            this.ctrlDriverLicenseInfoCardWithFilter1 = new DVLDPresentation.Controls.ctrlDriverLicenseInfoWithFilter();
+            this.ctrlDriverLicenseInfoWithFilter1 = new DVLDPresentation.Controls.ctrlDriverLicenseInfoWithFilter();
             this.gbApplicationInfoForLicenseReplacement.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -119,13 +119,13 @@
             // 
             // lblCreatedByUser
             // 
-            this.lblCreatedBy.AutoSize = true;
-            this.lblCreatedBy.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCreatedBy.Location = new System.Drawing.Point(772, 127);
-            this.lblCreatedBy.Name = "lblCreatedByUser";
-            this.lblCreatedBy.Size = new System.Drawing.Size(40, 24);
-            this.lblCreatedBy.TabIndex = 47;
-            this.lblCreatedBy.Text = "???";
+            this.lblCreatedByUser.AutoSize = true;
+            this.lblCreatedByUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCreatedByUser.Location = new System.Drawing.Point(772, 127);
+            this.lblCreatedByUser.Name = "lblCreatedByUser";
+            this.lblCreatedByUser.Size = new System.Drawing.Size(40, 24);
+            this.lblCreatedByUser.TabIndex = 47;
+            this.lblCreatedByUser.Text = "???";
             // 
             // label6
             // 
@@ -214,7 +214,7 @@
             this.gbApplicationInfoForLicenseReplacement.Controls.Add(this.lblApplicationDate);
             this.gbApplicationInfoForLicenseReplacement.Controls.Add(this.pictureBox1);
             this.gbApplicationInfoForLicenseReplacement.Controls.Add(this.label3);
-            this.gbApplicationInfoForLicenseReplacement.Controls.Add(this.lblCreatedBy);
+            this.gbApplicationInfoForLicenseReplacement.Controls.Add(this.lblCreatedByUser);
             this.gbApplicationInfoForLicenseReplacement.Controls.Add(this.pictureBox11);
             this.gbApplicationInfoForLicenseReplacement.Controls.Add(this.label6);
             this.gbApplicationInfoForLicenseReplacement.Controls.Add(this.lblApplicationFees);
@@ -301,16 +301,16 @@
             this.pictureBox6.TabIndex = 25;
             this.pictureBox6.TabStop = false;
             // 
-            // lblHeader
+            // lblTitle
             // 
-            this.lblHeader.AutoSize = true;
-            this.lblHeader.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lblHeader.Location = new System.Drawing.Point(261, 25);
-            this.lblHeader.Name = "lblHeader";
-            this.lblHeader.Size = new System.Drawing.Size(513, 33);
-            this.lblHeader.TabIndex = 94;
-            this.lblHeader.Text = "Replacement For Damaged License";
+            this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.lblTitle.Location = new System.Drawing.Point(0, 25);
+            this.lblTitle.Name = "lblTitle";
+            this.lblTitle.Size = new System.Drawing.Size(1071, 33);
+            this.lblTitle.TabIndex = 94;
+            this.lblTitle.Text = "Replacement For Damaged License";
+            this.lblTitle.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // gbtnIssueReplacement
             // 
@@ -347,6 +347,7 @@
             this.gbtnClose.BackColor = System.Drawing.Color.Transparent;
             this.gbtnClose.BorderThickness = 1;
             this.gbtnClose.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.gbtnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.gbtnClose.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.gbtnClose.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.gbtnClose.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -422,28 +423,32 @@
             // 
             // ctrlDriverLicenseInfoWithFilter1
             // 
-            this.ctrlDriverLicenseInfoCardWithFilter1.BackColor = System.Drawing.Color.White;
-            this.ctrlDriverLicenseInfoCardWithFilter1.Location = new System.Drawing.Point(12, 71);
-            this.ctrlDriverLicenseInfoCardWithFilter1.Name = "ctrlDriverLicenseInfoWithFilter1";
-            this.ctrlDriverLicenseInfoCardWithFilter1.Size = new System.Drawing.Size(1040, 476);
-            this.ctrlDriverLicenseInfoCardWithFilter1.TabIndex = 100;
+            this.ctrlDriverLicenseInfoWithFilter1.BackColor = System.Drawing.Color.White;
+            this.ctrlDriverLicenseInfoWithFilter1.FilterEnabled = true;
+            this.ctrlDriverLicenseInfoWithFilter1.Location = new System.Drawing.Point(12, 71);
+            this.ctrlDriverLicenseInfoWithFilter1.Name = "ctrlDriverLicenseInfoWithFilter1";
+            this.ctrlDriverLicenseInfoWithFilter1.Size = new System.Drawing.Size(1040, 476);
+            this.ctrlDriverLicenseInfoWithFilter1.TabIndex = 100;
+            this.ctrlDriverLicenseInfoWithFilter1.OnErrorAtSearch += new System.Action(this.ctrlDriverLicenseInfoWithFilter1_OnErrorAtSearch);
+            this.ctrlDriverLicenseInfoWithFilter1.OnLicenseSelected += new System.Action<int>(this.ctrlDriverLicenseInfoWithFilter1_OnLicenseSelected);
             // 
-            // frmReplacementForDamagedOrLost
+            // frmReplaceLostOrDamagedLicenseApplication
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.CancelButton = this.gbtnClose;
             this.ClientSize = new System.Drawing.Size(1055, 819);
             this.Controls.Add(this.gbReplacementFor);
-            this.Controls.Add(this.ctrlDriverLicenseInfoCardWithFilter1);
+            this.Controls.Add(this.ctrlDriverLicenseInfoWithFilter1);
             this.Controls.Add(this.llblShowLicenseHistory);
             this.Controls.Add(this.gbtnIssueReplacement);
             this.Controls.Add(this.gbtnClose);
             this.Controls.Add(this.llblShowNewLicenseInfo);
             this.Controls.Add(this.gbApplicationInfoForLicenseReplacement);
-            this.Controls.Add(this.lblHeader);
+            this.Controls.Add(this.lblTitle);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Name = "frmReplacementForDamagedOrLost";
+            this.Name = "frmReplaceLostOrDamagedLicenseApplication";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Replacement ForDamaged License";
@@ -472,12 +477,12 @@
         private System.Windows.Forms.Label lblApplicationDate;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label lblCreatedBy;
+        private System.Windows.Forms.Label lblCreatedByUser;
         private System.Windows.Forms.PictureBox pictureBox11;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label lblApplicationFees;
         private System.Windows.Forms.PictureBox pictureBox8;
-        private Controls.ctrlDriverLicenseInfoWithFilter ctrlDriverLicenseInfoCardWithFilter1;
+        private Controls.ctrlDriverLicenseInfoWithFilter ctrlDriverLicenseInfoWithFilter1;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.LinkLabel llblShowLicenseHistory;
         private System.Windows.Forms.Label lblLicenseReplacementApplicationID;
@@ -487,7 +492,7 @@
         private Guna.UI2.WinForms.Guna2Button gbtnClose;
         private System.Windows.Forms.LinkLabel llblShowNewLicenseInfo;
         private System.Windows.Forms.GroupBox gbApplicationInfoForLicenseReplacement;
-        private System.Windows.Forms.Label lblHeader;
+        private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.Label lblOldLicenseID;
         private System.Windows.Forms.GroupBox gbReplacementFor;
         private Guna.UI2.WinForms.Guna2RadioButton grbLostLicense;

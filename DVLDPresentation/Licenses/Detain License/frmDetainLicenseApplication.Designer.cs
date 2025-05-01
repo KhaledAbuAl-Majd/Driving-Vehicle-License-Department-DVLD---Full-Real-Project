@@ -1,6 +1,6 @@
 ﻿namespace DVLDPresentation.Applications.Detain_Licenses
 {
-    partial class frmDetainLicense
+    partial class frmDetainLicenseApplication
     {
         /// <summary>
         /// Required designer variable.
@@ -28,8 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmDetainLicense));
-            this.ctrlDriverLicenseInfoCardWithFilter1 = new DVLDPresentation.Controls.ctrlDriverLicenseInfoWithFilter();
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmDetainLicenseApplication));
+            this.ctrlDriverLicenseInfoWithFilter1 = new DVLDPresentation.Controls.ctrlDriverLicenseInfoWithFilter();
             this.llblShowLicenseHistory = new System.Windows.Forms.LinkLabel();
             this.llblShowDetainedLicenseInfo = new System.Windows.Forms.LinkLabel();
             this.gbDetainInfo = new System.Windows.Forms.GroupBox();
@@ -40,7 +41,7 @@
             this.lblDetainDate = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.lblCreatedBy = new System.Windows.Forms.Label();
+            this.lblCreatedByUser = new System.Windows.Forms.Label();
             this.pictureBox11 = new System.Windows.Forms.PictureBox();
             this.label6 = new System.Windows.Forms.Label();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
@@ -51,21 +52,26 @@
             this.lblHeader = new System.Windows.Forms.Label();
             this.gbtnDetain = new Guna.UI2.WinForms.Guna2Button();
             this.gbtnClose = new Guna.UI2.WinForms.Guna2Button();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.gbDetainInfo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // ctrlDriverLicenseInfoWithFilter1
             // 
-            this.ctrlDriverLicenseInfoCardWithFilter1.BackColor = System.Drawing.Color.White;
-            this.ctrlDriverLicenseInfoCardWithFilter1.Location = new System.Drawing.Point(13, 71);
-            this.ctrlDriverLicenseInfoCardWithFilter1.Name = "ctrlDriverLicenseInfoWithFilter1";
-            this.ctrlDriverLicenseInfoCardWithFilter1.Size = new System.Drawing.Size(1040, 476);
-            this.ctrlDriverLicenseInfoCardWithFilter1.TabIndex = 108;
+            this.ctrlDriverLicenseInfoWithFilter1.BackColor = System.Drawing.Color.White;
+            this.ctrlDriverLicenseInfoWithFilter1.FilterEnabled = true;
+            this.ctrlDriverLicenseInfoWithFilter1.Location = new System.Drawing.Point(13, 71);
+            this.ctrlDriverLicenseInfoWithFilter1.Name = "ctrlDriverLicenseInfoWithFilter1";
+            this.ctrlDriverLicenseInfoWithFilter1.Size = new System.Drawing.Size(1040, 476);
+            this.ctrlDriverLicenseInfoWithFilter1.TabIndex = 108;
+            this.ctrlDriverLicenseInfoWithFilter1.OnErrorAtSearch += new System.Action(this.ctrlDriverLicenseInfoCardWithFilter1_OnErrorAtSearch);
+            this.ctrlDriverLicenseInfoWithFilter1.OnLicenseSelected += new System.Action<int>(this.ctrlDriverLicenseInfoCardWithFilter1_OnLicenseSelected);
             // 
             // llblShowLicenseHistory
             // 
@@ -102,7 +108,7 @@
             this.gbDetainInfo.Controls.Add(this.lblDetainDate);
             this.gbDetainInfo.Controls.Add(this.pictureBox1);
             this.gbDetainInfo.Controls.Add(this.label3);
-            this.gbDetainInfo.Controls.Add(this.lblCreatedBy);
+            this.gbDetainInfo.Controls.Add(this.lblCreatedByUser);
             this.gbDetainInfo.Controls.Add(this.pictureBox11);
             this.gbDetainInfo.Controls.Add(this.label6);
             this.gbDetainInfo.Controls.Add(this.pictureBox8);
@@ -142,6 +148,7 @@
             this.gtxtFineFees.Size = new System.Drawing.Size(143, 38);
             this.gtxtFineFees.TabIndex = 61;
             this.gtxtFineFees.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.gtxtFineFees_KeyPress);
+            this.gtxtFineFees.Validating += new System.ComponentModel.CancelEventHandler(this.gtxtFineFees_Validating);
             // 
             // lblLicenseID
             // 
@@ -205,13 +212,13 @@
             // 
             // lblCreatedByUser
             // 
-            this.lblCreatedBy.AutoSize = true;
-            this.lblCreatedBy.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCreatedBy.Location = new System.Drawing.Point(772, 89);
-            this.lblCreatedBy.Name = "lblCreatedByUser";
-            this.lblCreatedBy.Size = new System.Drawing.Size(40, 24);
-            this.lblCreatedBy.TabIndex = 47;
-            this.lblCreatedBy.Text = "???";
+            this.lblCreatedByUser.AutoSize = true;
+            this.lblCreatedByUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCreatedByUser.Location = new System.Drawing.Point(772, 89);
+            this.lblCreatedByUser.Name = "lblCreatedByUser";
+            this.lblCreatedByUser.Size = new System.Drawing.Size(40, 24);
+            this.lblCreatedByUser.TabIndex = 47;
+            this.lblCreatedByUser.Text = "???";
             // 
             // pictureBox11
             // 
@@ -328,6 +335,7 @@
             this.gbtnClose.BackColor = System.Drawing.Color.Transparent;
             this.gbtnClose.BorderThickness = 1;
             this.gbtnClose.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.gbtnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.gbtnClose.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.gbtnClose.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.gbtnClose.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -348,11 +356,17 @@
             this.gbtnClose.Text = "Close";
             this.gbtnClose.Click += new System.EventHandler(this.gbtnClose_Click);
             // 
-            // frmDetainLicense
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
+            // frmDetainLicenseApplication
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
             this.BackColor = System.Drawing.Color.White;
+            this.CancelButton = this.gbtnClose;
             this.ClientSize = new System.Drawing.Size(1060, 826);
             this.Controls.Add(this.gbtnDetain);
             this.Controls.Add(this.gbtnClose);
@@ -360,12 +374,14 @@
             this.Controls.Add(this.llblShowDetainedLicenseInfo);
             this.Controls.Add(this.gbDetainInfo);
             this.Controls.Add(this.lblHeader);
-            this.Controls.Add(this.ctrlDriverLicenseInfoCardWithFilter1);
+            this.Controls.Add(this.ctrlDriverLicenseInfoWithFilter1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Name = "frmDetainLicense";
+            this.Name = "frmDetainLicenseApplication";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Detain License";
+            this.Activated += new System.EventHandler(this.frmDetainLicenseApplication_Activated);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmDetainLicenseApplication_FormClosing);
             this.Load += new System.EventHandler(this.frmDetainLicense_Load);
             this.gbDetainInfo.ResumeLayout(false);
             this.gbDetainInfo.PerformLayout();
@@ -374,6 +390,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -381,7 +398,7 @@
 
         #endregion
 
-        private Controls.ctrlDriverLicenseInfoWithFilter ctrlDriverLicenseInfoCardWithFilter1;
+        private Controls.ctrlDriverLicenseInfoWithFilter ctrlDriverLicenseInfoWithFilter1;
         private Guna.UI2.WinForms.Guna2Button gbtnDetain;
         private Guna.UI2.WinForms.Guna2Button gbtnClose;
         private System.Windows.Forms.PictureBox pictureBox1;
@@ -393,7 +410,7 @@
         private System.Windows.Forms.GroupBox gbDetainInfo;
         private System.Windows.Forms.Label lblDetainDate;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label lblCreatedBy;
+        private System.Windows.Forms.Label lblCreatedByUser;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label lblDetainID;
@@ -403,5 +420,6 @@
         private System.Windows.Forms.PictureBox pictureBox5;
         private System.Windows.Forms.Label label10;
         private Guna.UI2.WinForms.Guna2TextBox gtxtFineFees;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }

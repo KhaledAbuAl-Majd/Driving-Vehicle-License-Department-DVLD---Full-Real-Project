@@ -573,6 +573,7 @@
             this.ctrlDriverLicenseInfoWithFilter1.Name = "ctrlDriverLicenseInfoWithFilter1";
             this.ctrlDriverLicenseInfoWithFilter1.Size = new System.Drawing.Size(1040, 476);
             this.ctrlDriverLicenseInfoWithFilter1.TabIndex = 93;
+            this.ctrlDriverLicenseInfoWithFilter1.OnErrorAtSearch += new System.Action(this.ctrlDriverLicenseInfoWithFilter1_OnErrorAtSearch);
             this.ctrlDriverLicenseInfoWithFilter1.OnLicenseSelected += new System.Action<int>(this.ctrlDriverLicenseInfoWithFilter1_OnLicenseSelected);
             // 
             // frmRenewLocalDrivingLicenseApplication

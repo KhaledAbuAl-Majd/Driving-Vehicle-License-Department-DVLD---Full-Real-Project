@@ -102,7 +102,7 @@ namespace DVLDPresentation.Login_HomePage
 
         private void driversToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmDrivers frm = new frmDrivers();
+            frmListDrivers frm = new frmListDrivers();
 
             frm.ShowDialog();
         }
@@ -127,7 +127,7 @@ namespace DVLDPresentation.Login_HomePage
 
         private void replacementForLostOrDamagedLicenseToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmReplacementForDamagedOrLost frm = new frmReplacementForDamagedOrLost();
+            frmReplaceLostOrDamagedLicenseApplication frm = new frmReplaceLostOrDamagedLicenseApplication();
             frm.ShowDialog();
         }
 
@@ -151,13 +151,13 @@ namespace DVLDPresentation.Login_HomePage
 
         private void detainLicenseToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            frmDetainLicense frm = new frmDetainLicense();
+            frmDetainLicenseApplication frm = new frmDetainLicenseApplication();
             frm.ShowDialog();
         }
 
         private void releaseDetainedLicenseToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmReleaseDetainedLicense frm = new frmReleaseDetainedLicense(-1);
+            frmReleaseDetainedLicenseApplication frm = new frmReleaseDetainedLicenseApplication();
             frm.ShowDialog();
         }
 

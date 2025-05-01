@@ -17,6 +17,8 @@ namespace DVLDPresentation.Controls
 {
     public partial class ctrlDriverLicenseInfo : UserControl
     {
+        public event Action OnErrorAtSearch;
+
         private int _LicenseID;
         private clsLicense _License;
         public ctrlDriverLicenseInfo()
@@ -55,6 +57,12 @@ namespace DVLDPresentation.Controls
             {
                 MessageBox.Show("Could not find License ID = " + _LicenseID.ToString(),"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 _LicenseID = -1;
+
+                _EmptyLabels();
+
+                if (OnErrorAtSearch != null)
+                    OnErrorAtSearch();
+
                 return;
             }
 
@@ -65,7 +73,7 @@ namespace DVLDPresentation.Controls
             lblFullName.Text = _License.DriverInfo.PersonInfo.FullName;
             lblNationalNo.Text = _License.DriverInfo.PersonInfo.NationalNo;
             lblGendor.Text = _License.DriverInfo.PersonInfo.GendorText;
-            pbGendorIcon.Image = (_License.DriverInfo.PersonInfo.Gendor == (int)clsPerson.enGendor.Male) ? Resources.Man_32 : Resources.Female_512;
+            pbGendorIcon.Image = (_License.DriverInfo.PersonInfo.Gendor == (int)clsPerson.enGendor.Male) ? Resources.Man_32 : Resources.Woman_32;
             lblDateOfBirth.Text = clsFormat.DateToShort(_License.DriverInfo.PersonInfo.DateOfBirth);
 
             lblDriverID.Text = _License.DriverInfo.DriverID.ToString();

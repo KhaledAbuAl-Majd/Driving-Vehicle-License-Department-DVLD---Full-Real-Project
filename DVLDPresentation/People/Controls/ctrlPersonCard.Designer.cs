@@ -173,11 +173,11 @@
             this.pictureBox4.TabIndex = 22;
             this.pictureBox4.TabStop = false;
             // 
-            // pbGendor
+            // pbGendorIcon
             // 
             this.pbGendor.Image = global::DVLDPresentation.Properties.Resources.Man_32;
             this.pbGendor.Location = new System.Drawing.Point(113, 143);
-            this.pbGendor.Name = "pbGendor";
+            this.pbGendor.Name = "pbGendorIcon";
             this.pbGendor.Size = new System.Drawing.Size(29, 26);
             this.pbGendor.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbGendor.TabIndex = 21;

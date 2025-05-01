@@ -74,7 +74,7 @@
             this.showDetailsToolStripMenuItem.Name = "showDetailsToolStripMenuItem";
             this.showDetailsToolStripMenuItem.Size = new System.Drawing.Size(257, 38);
             this.showDetailsToolStripMenuItem.Text = "Show Person Details";
-            this.showDetailsToolStripMenuItem.Click += new System.EventHandler(this.showDetailsToolStripMenuItem_Click);
+            this.showDetailsToolStripMenuItem.Click += new System.EventHandler(this.PesonDetailsToolStripMenuItem_Click);
             // 
             // CMSIshowLicenseDetails
             // 
@@ -151,7 +151,7 @@
             this.dgvDetainedLicenses.RowTemplate.Height = 25;
             this.dgvDetainedLicenses.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvDetainedLicenses.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvDetainedLicenses.Size = new System.Drawing.Size(1341, 381);
+            this.dgvDetainedLicenses.Size = new System.Drawing.Size(1296, 381);
             this.dgvDetainedLicenses.TabIndex = 60;
             // 
             // lblNumOfRecords
@@ -215,7 +215,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.label1.Location = new System.Drawing.Point(488, 221);
+            this.label1.Location = new System.Drawing.Point(519, 221);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(359, 37);
             this.label1.TabIndex = 51;
@@ -240,7 +240,7 @@
             "No"});
             this.gcbIsReleased.Location = new System.Drawing.Point(328, 299);
             this.gcbIsReleased.Name = "gcbIsReleased";
-            this.gcbIsReleased.Size = new System.Drawing.Size(170, 36);
+            this.gcbIsReleased.Size = new System.Drawing.Size(143, 36);
             this.gcbIsReleased.TabIndex = 61;
             this.gcbIsReleased.SelectedIndexChanged += new System.EventHandler(this.gcbIsReleased_SelectedIndexChanged);
             // 
@@ -289,7 +289,7 @@
             this.gbtnClose.Image = ((System.Drawing.Image)(resources.GetObject("gbtnClose.Image")));
             this.gbtnClose.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.gbtnClose.ImageSize = new System.Drawing.Size(35, 35);
-            this.gbtnClose.Location = new System.Drawing.Point(1213, 750);
+            this.gbtnClose.Location = new System.Drawing.Point(1168, 750);
             this.gbtnClose.Name = "gbtnClose";
             this.gbtnClose.Size = new System.Drawing.Size(154, 45);
             this.gbtnClose.TabIndex = 58;
@@ -301,17 +301,17 @@
             this.btnNewDetaineLicense.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnNewDetaineLicense.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNewDetaineLicense.Image = ((System.Drawing.Image)(resources.GetObject("btnNewDetaineLicense.Image")));
-            this.btnNewDetaineLicense.Location = new System.Drawing.Point(1292, 289);
+            this.btnNewDetaineLicense.Location = new System.Drawing.Point(1243, 289);
             this.btnNewDetaineLicense.Name = "btnNewDetaineLicense";
             this.btnNewDetaineLicense.Size = new System.Drawing.Size(75, 63);
             this.btnNewDetaineLicense.TabIndex = 54;
             this.btnNewDetaineLicense.UseVisualStyleBackColor = true;
-            this.btnNewDetaineLicense.Click += new System.EventHandler(this.btnNewDetaineLicense_Click);
+            this.btnNewDetaineLicense.Click += new System.EventHandler(this.btnDetainLicense_Click);
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(591, 32);
+            this.pictureBox1.Location = new System.Drawing.Point(622, 32);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(172, 160);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -323,19 +323,19 @@
             this.btnNewReleaseLicense.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnNewReleaseLicense.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNewReleaseLicense.Image = ((System.Drawing.Image)(resources.GetObject("btnNewReleaseLicense.Image")));
-            this.btnNewReleaseLicense.Location = new System.Drawing.Point(1202, 287);
+            this.btnNewReleaseLicense.Location = new System.Drawing.Point(1153, 287);
             this.btnNewReleaseLicense.Name = "btnNewReleaseLicense";
             this.btnNewReleaseLicense.Size = new System.Drawing.Size(75, 63);
             this.btnNewReleaseLicense.TabIndex = 62;
             this.btnNewReleaseLicense.UseVisualStyleBackColor = true;
-            this.btnNewReleaseLicense.Click += new System.EventHandler(this.btnNewReleaseLicense_Click);
+            this.btnNewReleaseLicense.Click += new System.EventHandler(this.btnReleaseDetainedLicense_Click);
             // 
             // frmListDetainedLicenses
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1391, 808);
+            this.ClientSize = new System.Drawing.Size(1345, 808);
             this.Controls.Add(this.btnNewReleaseLicense);
             this.Controls.Add(this.gbtnClose);
             this.Controls.Add(this.dgvDetainedLicenses);

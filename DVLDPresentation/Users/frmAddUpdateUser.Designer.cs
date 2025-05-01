@@ -64,12 +64,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
-            // lblHeader
+            // lblTitle
             // 
             this.lblHeader.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.lblHeader.Location = new System.Drawing.Point(0, 49);
-            this.lblHeader.Name = "lblHeader";
+            this.lblHeader.Name = "lblTitle";
             this.lblHeader.Size = new System.Drawing.Size(1051, 33);
             this.lblHeader.TabIndex = 24;
             this.lblHeader.Text = "Add New Person";

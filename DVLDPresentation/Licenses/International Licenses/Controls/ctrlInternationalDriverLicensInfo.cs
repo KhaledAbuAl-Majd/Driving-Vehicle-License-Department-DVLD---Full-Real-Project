@@ -3,78 +3,74 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DVLDBusiness;
+using DVLDPresentation.Global_Classes;
 using DVLDPresentation.Properties;
 
 namespace DVLDPresentation.Controls
 {
     public partial class ctrlInternationalDriverLicensInfo : UserControl
     {
-        public int IntLicenseID = -1;
+        public int _InternationalLicenseID = -1;
+        private clsInternationalLicense _InternationalLicense;
         public ctrlInternationalDriverLicensInfo()
         {
             InitializeComponent();
         }
 
-        private void FillDataInLabels()
+        public int InternationalLicenseID
         {
-            clsInternationalLicense IntLicense = clsInternationalLicense.Find(IntLicenseID);
-
-            if (IntLicense != null)
-            {
-                clsApplication Application = clsApplication.FindBaseApplication(IntLicense.ApplicationID);
-                clsDriver Driver = clsDriver.FindByDriverID(IntLicense.DriverID);
-                clsPerson Person = clsPerson.Find(Driver.PersonID);
-
-                lblName.Text = Person.FullName;
-                lblIntLicenseID.Text = IntLicense.InternationalLicenseID.ToString();
-                lblLicneseID.Text = IntLicense.IssuedUsingLocalLicenseID.ToString();
-                lblNationalNo.Text = Person.NationalNo;
-                _ChangeGendorData(Person.Gendor, Person.ImagePath);
-                lblIssueDate.Text = IntLicense.IssueDate.ToString("dd/MMM/yyyy");
-                lblIntApplicationID.Text = IntLicense.ApplicationID.ToString();
-                lblIsActive.Text = (IntLicense.IsActive) ? "Yes" : "No";
-                lblDateOfBirth.Text = Person.DateOfBirth.ToString("dd/MMM/yyyy");
-                lblDriverID.Text = IntLicense.DriverID.ToString();
-                lblExpirationDate.Text = IntLicense.ExpirationDate.ToString("dd/MMM/yyyy"); 
-            }
+            get { return _InternationalLicenseID; }
         }
-        void _ChangeGendorData(short Gendor, string PersonImagePath)
+
+        void _LoadPersonImage()
         {
-            if (Gendor == 0)
+            if (_InternationalLicense.DriverInfo.PersonInfo.ImagePath != "")
             {
-                lblGendor.Text = "Male";
-                pbGendor.Image = Resources.Man_32;
+                if (File.Exists(_InternationalLicense.DriverInfo.PersonInfo.ImagePath))
+                    pbImage.ImageLocation = _InternationalLicense.DriverInfo.PersonInfo.ImagePath;
+                else
+                    MessageBox.Show("Could not find this image: = " + _InternationalLicense.DriverInfo.PersonInfo.ImagePath, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
-                lblGendor.Text = "Female";
-                pbGendor.Image = Resources.Woman_32;
-            }
-
-            if (PersonImagePath != "")
-            {
-                pbImage.ImageLocation = PersonImagePath;
-            }
-            else
-            {
-                pbImage.Image = (Gendor == 0) ? Resources.Male_512 : Resources.Female_512;
+                pbImage.Image = (_InternationalLicense.DriverInfo.PersonInfo.Gendor == (int)clsPerson.enGendor.Male) ? Resources.Male_512 : Resources.Female_512;
             }
         }
 
-        private void gbInternationalDriverLicneseInfo_Enter(object sender, EventArgs e)
+        public void LoadInfo(int InternationalLicenseID)
         {
+            _InternationalLicenseID = InternationalLicenseID;
+            _InternationalLicense = clsInternationalLicense.Find(_InternationalLicenseID);
+            if (_InternationalLicense == null)
+            {
+                MessageBox.Show("Could not find Internationa License ID = " + _InternationalLicenseID.ToString(),
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                _InternationalLicenseID = -1;
+                return;
+            }
 
-        }
+            lblInternationalLicenseID.Text = _InternationalLicense.InternationalLicenseID.ToString();
+            lblIntApplicationID.Text = _InternationalLicense.ApplicationID.ToString();
+            lblIsActive.Text = (_InternationalLicense.IsActive) ? "Yes" : "No";
+            lblLocalLicenseID.Text = _InternationalLicense.IssuedUsingLocalLicenseID.ToString();
+            lblFullName.Text = _InternationalLicense.PersonInfo.FullName;
+            lblNationalNo.Text = _InternationalLicense.PersonInfo.NationalNo;
+            lblGendor.Text = _InternationalLicense.PersonInfo.GendorText;
+            pbGendorIcon.Image = (_InternationalLicense.PersonInfo.Gendor == (int)clsPerson.enGendor.Male) ? Resources.Man_32 : Resources.Woman_32;
+            lblDateOfBirth.Text = clsFormat.DateToShort(_InternationalLicense.PersonInfo.DateOfBirth);
+        
+            lblDriverID.Text = _InternationalLicense.DriverID.ToString();
+            lblIssueDate.Text = clsFormat.DateToShort(_InternationalLicense.IssueDate);
+            lblExpirationDate.Text = clsFormat.DateToShort(_InternationalLicense.ExpirationDate);
 
-        private void ctrlInternationalDriverLicensInfo_Load(object sender, EventArgs e)
-        {
-            if (IntLicenseID != -1)
-                FillDataInLabels();
+            _LoadPersonImage();
         }
+  
     }
 }

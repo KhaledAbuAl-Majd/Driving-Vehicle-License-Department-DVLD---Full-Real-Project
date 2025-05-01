@@ -10,17 +10,23 @@ using System.Windows.Forms;
 
 namespace DVLDPresentation.Applications.Manage_Applications.International_Driving_License_Application
 {
-    public partial class frmInternationalLicenseInfo : Form
+    public partial class frmShowInternationalLicenseInfo : Form
     {
-        public frmInternationalLicenseInfo(int IntLicenseID)
+        private int _InternationalLicenseID;
+        public frmShowInternationalLicenseInfo(int InternationalLicenseID)
         {
             InitializeComponent();
-            ctrlInternationalDriverLicensInfo1.IntLicenseID = IntLicenseID;
+            _InternationalLicenseID = InternationalLicenseID;
         }
 
         private void gbtnClose_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void frmShowInternationalLicenseInfo_Load(object sender, EventArgs e)
+        {
+            ctrlInternationalDriverLicensInfo1.LoadInfo(_InternationalLicenseID);
         }
     }
 }

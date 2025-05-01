@@ -34,7 +34,7 @@
             this.lblLocalLicenseID = new System.Windows.Forms.Label();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.lblILLicenseID = new System.Windows.Forms.Label();
+            this.lblInternationalLicenseID = new System.Windows.Forms.Label();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.label5 = new System.Windows.Forms.Label();
             this.lblIssueDate = new System.Windows.Forms.Label();
@@ -43,7 +43,7 @@
             this.lblApplicationDate = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.lblCreatedBy = new System.Windows.Forms.Label();
+            this.lblCreatedByUser = new System.Windows.Forms.Label();
             this.pictureBox11 = new System.Windows.Forms.PictureBox();
             this.label6 = new System.Windows.Forms.Label();
             this.lblFees = new System.Windows.Forms.Label();
@@ -87,7 +87,7 @@
             this.gbApplicationBasicInfo.Controls.Add(this.lblLocalLicenseID);
             this.gbApplicationBasicInfo.Controls.Add(this.pictureBox5);
             this.gbApplicationBasicInfo.Controls.Add(this.label10);
-            this.gbApplicationBasicInfo.Controls.Add(this.lblILLicenseID);
+            this.gbApplicationBasicInfo.Controls.Add(this.lblInternationalLicenseID);
             this.gbApplicationBasicInfo.Controls.Add(this.pictureBox3);
             this.gbApplicationBasicInfo.Controls.Add(this.label5);
             this.gbApplicationBasicInfo.Controls.Add(this.lblIssueDate);
@@ -96,7 +96,7 @@
             this.gbApplicationBasicInfo.Controls.Add(this.lblApplicationDate);
             this.gbApplicationBasicInfo.Controls.Add(this.pictureBox1);
             this.gbApplicationBasicInfo.Controls.Add(this.label3);
-            this.gbApplicationBasicInfo.Controls.Add(this.lblCreatedBy);
+            this.gbApplicationBasicInfo.Controls.Add(this.lblCreatedByUser);
             this.gbApplicationBasicInfo.Controls.Add(this.pictureBox11);
             this.gbApplicationBasicInfo.Controls.Add(this.label6);
             this.gbApplicationBasicInfo.Controls.Add(this.lblFees);
@@ -146,15 +146,15 @@
             this.label10.TabIndex = 58;
             this.label10.Text = "Local Licnese ID:";
             // 
-            // lblILLicenseID
+            // lblInternationalLicenseID
             // 
-            this.lblILLicenseID.AutoSize = true;
-            this.lblILLicenseID.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblILLicenseID.Location = new System.Drawing.Point(772, 44);
-            this.lblILLicenseID.Name = "lblILLicenseID";
-            this.lblILLicenseID.Size = new System.Drawing.Size(40, 24);
-            this.lblILLicenseID.TabIndex = 57;
-            this.lblILLicenseID.Text = "???";
+            this.lblInternationalLicenseID.AutoSize = true;
+            this.lblInternationalLicenseID.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblInternationalLicenseID.Location = new System.Drawing.Point(772, 44);
+            this.lblInternationalLicenseID.Name = "lblInternationalLicenseID";
+            this.lblInternationalLicenseID.Size = new System.Drawing.Size(40, 24);
+            this.lblInternationalLicenseID.TabIndex = 57;
+            this.lblInternationalLicenseID.Text = "???";
             // 
             // pictureBox3
             // 
@@ -238,13 +238,13 @@
             // 
             // lblCreatedByUser
             // 
-            this.lblCreatedBy.AutoSize = true;
-            this.lblCreatedBy.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCreatedBy.Location = new System.Drawing.Point(772, 149);
-            this.lblCreatedBy.Name = "lblCreatedByUser";
-            this.lblCreatedBy.Size = new System.Drawing.Size(40, 24);
-            this.lblCreatedBy.TabIndex = 47;
-            this.lblCreatedBy.Text = "???";
+            this.lblCreatedByUser.AutoSize = true;
+            this.lblCreatedByUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCreatedByUser.Location = new System.Drawing.Point(772, 149);
+            this.lblCreatedByUser.Name = "lblCreatedByUser";
+            this.lblCreatedByUser.Size = new System.Drawing.Size(40, 24);
+            this.lblCreatedByUser.TabIndex = 47;
+            this.lblCreatedByUser.Text = "???";
             // 
             // pictureBox11
             // 
@@ -390,6 +390,7 @@
             this.gbtnClose.BackColor = System.Drawing.Color.Transparent;
             this.gbtnClose.BorderThickness = 1;
             this.gbtnClose.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.gbtnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.gbtnClose.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.gbtnClose.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.gbtnClose.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -436,19 +437,24 @@
             this.llblShowLicenseHistory.Text = "Show License History";
             this.llblShowLicenseHistory.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llblShowLicenseHistory_LinkClicked);
             // 
-            // ctrlDriverLicenseInfoWithFilter1
+            // ctrlDriverLicenseInfoCardWithFilter1
             // 
             this.ctrlDriverLicenseInfoCardWithFilter1.BackColor = System.Drawing.Color.White;
+            this.ctrlDriverLicenseInfoCardWithFilter1.FilterEnabled = true;
             this.ctrlDriverLicenseInfoCardWithFilter1.Location = new System.Drawing.Point(13, 99);
-            this.ctrlDriverLicenseInfoCardWithFilter1.Name = "ctrlDriverLicenseInfoWithFilter1";
+            this.ctrlDriverLicenseInfoCardWithFilter1.Name = "ctrlDriverLicenseInfoCardWithFilter1";
             this.ctrlDriverLicenseInfoCardWithFilter1.Size = new System.Drawing.Size(1040, 476);
             this.ctrlDriverLicenseInfoCardWithFilter1.TabIndex = 86;
+            this.ctrlDriverLicenseInfoCardWithFilter1.OnErrorAtSearch += new System.Action(this.ctrlDriverLicenseInfoCardWithFilter1_OnErrorAtSearch);
+            this.ctrlDriverLicenseInfoCardWithFilter1.OnLicenseSelected += new System.Action<int>(this.ctrlDriverLicenseInfoCardWithFilter1_OnLicenseSelected);
             // 
             // frmNewInternationalLicneseApplication
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
             this.BackColor = System.Drawing.Color.White;
+            this.CancelButton = this.gbtnClose;
             this.ClientSize = new System.Drawing.Size(1065, 849);
             this.Controls.Add(this.ctrlDriverLicenseInfoCardWithFilter1);
             this.Controls.Add(this.llblShowLicenseHistory);
@@ -462,6 +468,8 @@
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "New International Licnese Application";
+            this.Activated += new System.EventHandler(this.frmNewInternationalLicneseApplication_Activated);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmNewInternationalLicneseApplication_FormClosing);
             this.Load += new System.EventHandler(this.frmNewInternationalLicneseApplication_Load);
             this.gbApplicationBasicInfo.ResumeLayout(false);
             this.gbApplicationBasicInfo.PerformLayout();
@@ -482,7 +490,7 @@
 
         private System.Windows.Forms.Label lblHeader;
         private System.Windows.Forms.GroupBox gbApplicationBasicInfo;
-        private System.Windows.Forms.Label lblCreatedBy;
+        private System.Windows.Forms.Label lblCreatedByUser;
         private System.Windows.Forms.PictureBox pictureBox11;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label lblFees;
@@ -503,7 +511,7 @@
         private System.Windows.Forms.Label lblLocalLicenseID;
         private System.Windows.Forms.PictureBox pictureBox5;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label lblILLicenseID;
+        private System.Windows.Forms.Label lblInternationalLicenseID;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Label label5;
         private Guna.UI2.WinForms.Guna2Button gbtnIssue;

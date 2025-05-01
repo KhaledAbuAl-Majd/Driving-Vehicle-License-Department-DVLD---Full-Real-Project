@@ -116,12 +116,12 @@
             this.lblPersonID.TabIndex = 22;
             this.lblPersonID.Text = "N/A";
             // 
-            // lblHeader
+            // lblTitle
             // 
             this.lblHeader.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.lblHeader.Location = new System.Drawing.Point(0, 44);
-            this.lblHeader.Name = "lblHeader";
+            this.lblHeader.Name = "lblTitle";
             this.lblHeader.Size = new System.Drawing.Size(959, 38);
             this.lblHeader.TabIndex = 23;
             this.lblHeader.Text = "Add New Person";

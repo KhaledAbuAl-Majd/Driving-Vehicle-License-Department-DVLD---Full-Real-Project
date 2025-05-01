@@ -177,6 +177,7 @@
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvPeople.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvPeople.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.dgvPeople.RowTemplate.Height = 25;
             this.dgvPeople.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvPeople.Size = new System.Drawing.Size(1532, 381);
             this.dgvPeople.TabIndex = 7;

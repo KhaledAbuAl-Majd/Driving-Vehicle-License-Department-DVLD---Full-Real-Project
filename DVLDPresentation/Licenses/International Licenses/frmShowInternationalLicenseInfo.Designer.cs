@@ -1,6 +1,6 @@
 ﻿namespace DVLDPresentation.Applications.Manage_Applications.International_Driving_License_Application
 {
-    partial class frmInternationalLicenseInfo
+    partial class frmShowInternationalLicenseInfo
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmInternationalLicenseInfo));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmShowInternationalLicenseInfo));
             this.label1 = new System.Windows.Forms.Label();
             this.gbtnClose = new Guna.UI2.WinForms.Guna2Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -54,6 +54,7 @@
             this.gbtnClose.BackColor = System.Drawing.Color.Transparent;
             this.gbtnClose.BorderThickness = 1;
             this.gbtnClose.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.gbtnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.gbtnClose.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.gbtnClose.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.gbtnClose.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -92,21 +93,23 @@
             this.ctrlInternationalDriverLicensInfo1.Size = new System.Drawing.Size(1033, 359);
             this.ctrlInternationalDriverLicensInfo1.TabIndex = 41;
             // 
-            // frmInternationalLicenseInfo
+            // frmShowInternationalLicenseInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.CancelButton = this.gbtnClose;
             this.ClientSize = new System.Drawing.Size(1060, 645);
             this.Controls.Add(this.ctrlInternationalDriverLicensInfo1);
             this.Controls.Add(this.gbtnClose);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Name = "frmInternationalLicenseInfo";
+            this.Name = "frmShowInternationalLicenseInfo";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmInternationalLicenseInfo";
+            this.Load += new System.EventHandler(this.frmShowInternationalLicenseInfo_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

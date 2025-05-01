@@ -122,10 +122,10 @@ namespace DVLDPresentation.Applications.Driving_License_Services.Renew_Driving_L
 
         private void llblShowLicenseHistory_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            //frmShowPersonLicenseHistory frm = new frmShowPersonLicenseHistory(_PersonID);
-            //frm.ShowDialog();
+            frmShowPersonLicenseHistory frm = new frmShowPersonLicenseHistory(ctrlDriverLicenseInfoWithFilter1.SelectedLicenseInfo.DriverInfo.PersonID);
+            frm.ShowDialog();
 
-            clsUtil.FeatureIsNotImplemented();
+            //clsUtil.FeatureIsNotImplemented();
         }
 
         private void llblShowLicenseInfo_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -138,6 +138,11 @@ namespace DVLDPresentation.Applications.Driving_License_Services.Renew_Driving_L
         private void gbtnClose_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void ctrlDriverLicenseInfoWithFilter1_OnErrorAtSearch()
+        {
+            _ErrorAtSearch();
         }
     }
 }

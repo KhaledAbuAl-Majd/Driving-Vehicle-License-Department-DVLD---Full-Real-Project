@@ -50,12 +50,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbHeaderICon)).BeginInit();
             this.SuspendLayout();
             // 
-            // lblHeader
+            // lblTitle
             // 
             this.lblHeader.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.lblHeader.Location = new System.Drawing.Point(0, 175);
-            this.lblHeader.Name = "lblHeader";
+            this.lblHeader.Name = "lblTitle";
             this.lblHeader.Size = new System.Drawing.Size(997, 37);
             this.lblHeader.TabIndex = 3;
             this.lblHeader.Text = "Vision Test Appointments";

@@ -34,13 +34,13 @@
             this.ctrlDLApplicationInfo1 = new DVLDPresentation.Controls.ctrlDrivingLicenseApplicationInfo();
             this.SuspendLayout();
             // 
-            // lblHeader
+            // lblTitle
             // 
             this.lblHeader.AutoSize = true;
             this.lblHeader.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.lblHeader.Location = new System.Drawing.Point(340, 20);
-            this.lblHeader.Name = "lblHeader";
+            this.lblHeader.Name = "lblTitle";
             this.lblHeader.Size = new System.Drawing.Size(300, 37);
             this.lblHeader.TabIndex = 5;
             this.lblHeader.Text = "Application Details";

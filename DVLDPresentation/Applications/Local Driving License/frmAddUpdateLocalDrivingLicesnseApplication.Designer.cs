@@ -325,12 +325,12 @@
             this.label2.TabIndex = 13;
             this.label2.Text = "D.L.Application ID:";
             // 
-            // lblHeader
+            // lblTitle
             // 
             this.lblHeader.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.lblHeader.Location = new System.Drawing.Point(0, 41);
-            this.lblHeader.Name = "lblHeader";
+            this.lblHeader.Name = "lblTitle";
             this.lblHeader.Size = new System.Drawing.Size(1048, 33);
             this.lblHeader.TabIndex = 27;
             this.lblHeader.Text = "New Local Driving License Application";

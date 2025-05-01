@@ -1,6 +1,6 @@
 ﻿namespace DVLDPresentation
 {
-    partial class frmDrivers
+    partial class frmListDrivers
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmDrivers));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmListDrivers));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -57,6 +57,7 @@
             this.gbtnClose.BackColor = System.Drawing.Color.Transparent;
             this.gbtnClose.BorderThickness = 1;
             this.gbtnClose.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.gbtnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.gbtnClose.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.gbtnClose.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.gbtnClose.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -70,7 +71,7 @@
             this.gbtnClose.Image = ((System.Drawing.Image)(resources.GetObject("gbtnClose.Image")));
             this.gbtnClose.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.gbtnClose.ImageSize = new System.Drawing.Size(35, 35);
-            this.gbtnClose.Location = new System.Drawing.Point(871, 718);
+            this.gbtnClose.Location = new System.Drawing.Point(908, 718);
             this.gbtnClose.Name = "gbtnClose";
             this.gbtnClose.Size = new System.Drawing.Size(154, 45);
             this.gbtnClose.TabIndex = 29;
@@ -113,6 +114,7 @@
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvDrivers.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvDrivers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvDrivers.ContextMenuStrip = this.cmpDriersOptoins;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
@@ -136,8 +138,9 @@
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvDrivers.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvDrivers.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.dgvDrivers.RowTemplate.Height = 25;
             this.dgvDrivers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvDrivers.Size = new System.Drawing.Size(1004, 381);
+            this.dgvDrivers.Size = new System.Drawing.Size(1039, 381);
             this.dgvDrivers.TabIndex = 26;
             // 
             // cmpDriersOptoins
@@ -186,8 +189,7 @@
             "Driver ID",
             "Person ID",
             "National No.",
-            "Full Name",
-            "Active Licenses"});
+            "Full Name"});
             this.gcbFilterBy.Location = new System.Drawing.Point(103, 275);
             this.gcbFilterBy.Name = "gcbFilterBy";
             this.gcbFilterBy.Size = new System.Drawing.Size(157, 36);
@@ -209,7 +211,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.label1.Location = new System.Drawing.Point(423, 201);
+            this.label1.Location = new System.Drawing.Point(435, 201);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(255, 37);
             this.label1.TabIndex = 23;
@@ -218,7 +220,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(415, 27);
+            this.pictureBox1.Location = new System.Drawing.Point(427, 27);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(244, 160);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -250,12 +252,13 @@
             this.gtxtFilterValue.TextChanged += new System.EventHandler(this.gtxtFilterValue_TextChanged);
             this.gtxtFilterValue.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.gtxtFilterValue_KeyPress);
             // 
-            // frmDrivers
+            // frmListDrivers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1047, 780);
+            this.CancelButton = this.gbtnClose;
+            this.ClientSize = new System.Drawing.Size(1079, 780);
             this.Controls.Add(this.gtxtFilterValue);
             this.Controls.Add(this.gbtnClose);
             this.Controls.Add(this.lblNumOfRecords);
@@ -266,7 +269,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Name = "frmDrivers";
+            this.Name = "frmListDrivers";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Drivers";

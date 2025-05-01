@@ -58,27 +58,30 @@ namespace DVLDPresentation.People
         }
         private void _FilterByAtDesign()
         {
-            if (gcbFilterBy.Text == "None")
-            {
-                _Show_HideTextFilter(false);
-                _Show_HideCBGendorFilter(false);
-                _FilterData("");
-            }
-            else if(gcbFilterBy.Text == "Gendor")
+            if(gcbFilterBy.Text == "Gendor")
             {
                 _Show_HideTextFilter(false);
                 _Show_HideCBGendorFilter(true);
                 gcbFilterByGendor.SelectedIndex = 0;
-            }
-            else
-            {
-                _Show_HideTextFilter(true);
-                _Show_HideCBGendorFilter(false);
-                _FilterData("");
-                gtxtFilterValue.Focus();
+                return;
             }
 
+            //if (gcbFilterBy.Text == "None")
+            //{
+            //    _Show_HideTextFilter(false);
+            //    _Show_HideCBGendorFilter(false);
+            //    _FilterData("");
+            //}
+            //else
+            //{
+            //    _Show_HideTextFilter(true);
+            //    gtxtFilterValue.Focus();
+            //}
+
+            _Show_HideTextFilter(gcbFilterBy.Text != "None");
+            _Show_HideCBGendorFilter(false);
             gtxtFilterValue.Text = "";
+            _FilterData("");
         }
         private void _RefreshPeoplList()
         {

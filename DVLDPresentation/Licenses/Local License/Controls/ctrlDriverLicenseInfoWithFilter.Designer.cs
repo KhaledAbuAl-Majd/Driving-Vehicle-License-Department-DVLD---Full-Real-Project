@@ -34,8 +34,8 @@
             this.btnFind = new System.Windows.Forms.Button();
             this.gtxtFilterValue = new Guna.UI2.WinForms.Guna2TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.ctrlDriverLicenseInfo1 = new DVLDPresentation.Controls.ctrlDriverLicenseInfo();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.ctrlDriverLicenseInfo1 = new DVLDPresentation.Controls.ctrlDriverLicenseInfo();
             this.gbFilters.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
@@ -102,6 +102,10 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "LicenseID:";
             // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
             // ctrlDriverLicenseInfo1
             // 
             this.ctrlDriverLicenseInfo1.BackColor = System.Drawing.Color.White;
@@ -109,10 +113,7 @@
             this.ctrlDriverLicenseInfo1.Name = "ctrlDriverLicenseInfo1";
             this.ctrlDriverLicenseInfo1.Size = new System.Drawing.Size(1032, 368);
             this.ctrlDriverLicenseInfo1.TabIndex = 32;
-            // 
-            // errorProvider1
-            // 
-            this.errorProvider1.ContainerControl = this;
+            this.ctrlDriverLicenseInfo1.OnErrorAtSearch += new System.Action(this.ctrlDriverLicenseInfo1_OnErrorAtSearch);
             // 
             // ctrlDriverLicenseInfoWithFilter
             // 

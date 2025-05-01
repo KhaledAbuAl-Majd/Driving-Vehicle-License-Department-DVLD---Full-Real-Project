@@ -13,7 +13,7 @@ namespace DVLDPresentation.Controls
 {
     public partial class ctrlDriverLicenseInfoWithFilter : UserControl
     {
-
+        public event Action OnErrorAtSearch;
         public event Action<int> OnLicenseSelected;
 
         public ctrlDriverLicenseInfoWithFilter()
@@ -99,12 +99,11 @@ namespace DVLDPresentation.Controls
             }
         }
 
-        void _ErrorAtSearch(string Text, string Caption)
+
+        private void ctrlDriverLicenseInfo1_OnErrorAtSearch()
         {
-            //MessageBox.Show(Text, Caption, MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //gtxtFilterValue.Focus();
-            //ctrlDriverLicenseInfo1._EmptyLabels();
-            //_RaiseEventErrorAtSearch();
+            if (OnErrorAtSearch != null)
+                OnErrorAtSearch();
         }
 
 

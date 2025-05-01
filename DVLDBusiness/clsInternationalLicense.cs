@@ -11,15 +11,15 @@ namespace DVLDBusiness
 {
     public class clsInternationalLicense : clsApplication
     {
-        public enum enMode { AddNew, Update }
-        public enMode Mode { get; private set; }
+        public new enum enMode { AddNew, Update }
+        public new enMode Mode { get; private set; }
 
         public clsDriver DriverInfo;
         public int InternationalLicenseID { get; private set; }
         public int DriverID { get; set; }
         public int IssuedUsingLocalLicenseID { get; set; }
-        public DateTime IssueDate { get; private set; }
-        public DateTime ExpirationDate { get; private set; }
+        public DateTime IssueDate { get;  set; }
+        public DateTime ExpirationDate { get;  set; }
         public bool IsActive { get; set; }
    
         public clsInternationalLicense()
@@ -45,6 +45,7 @@ namespace DVLDBusiness
             //this is for the base clase
             base.ApplicationID = ApplicationID;
             base.ApplicantPersonID = ApplicantPersonID;
+            base.PersonInfo = clsPerson.Find(ApplicantPersonID);
             base.ApplicationDate = ApplicationDate;
             base.ApplicationTypeID = (int)clsApplication.enApplicationType.NewInternationalLicense;
             base.ApplicationStatus = ApplicationStatus;

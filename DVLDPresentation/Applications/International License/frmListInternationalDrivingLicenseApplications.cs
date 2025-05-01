@@ -17,11 +17,6 @@ namespace DVLDPresentation.Applications.Manage_Applications.International_Drivin
     public partial class frmListInternationalDrivingLicenseApplications : Form
     {
         DataView _dvInternatinalApplications;
-        public frmListInternationalDrivingLicenseApplications()
-        {
-            InitializeComponent();
-        }
-
         private void _Show_HideTextFilter(bool value)
         {
             gtxtFilterValue.Visible = value;
@@ -35,76 +30,126 @@ namespace DVLDPresentation.Applications.Manage_Applications.International_Drivin
             if (_dvInternatinalApplications != null)
             {
                 _dvInternatinalApplications.RowFilter = FilterText;
-                dgvIntLApplications.DataSource = _dvInternatinalApplications;
+                //dgvInternationalLicenses.DataSource = _dvInternatinalApplications;
                 lblNumOfRecords.Text = _dvInternatinalApplications.Count.ToString();
             }
         }
-        private void _GetTextFilterEmpty()
+
+        public frmListInternationalDrivingLicenseApplications()
         {
-            gtxtFilterValue.Text = "";
+            InitializeComponent();
         }
-        private void _FilterByAtDesign()
+
+        private void gbtnClose_Click(object sender, EventArgs e)
         {
-            if (gcbFilterBy.Text == "None")
+            this.Close();
+        }
+
+        void _RefreshInternationalLicensesList()
+        {
+            _dvInternatinalApplications = clsInternationalLicense.GetAllInternationalLicenses().DefaultView;
+            dgvInternationalLicenses.DataSource = _dvInternatinalApplications;
+            gcbFilterBy.SelectedIndex = 0;
+
+            if (dgvInternationalLicenses.Rows.Count > 0)
             {
-                _Show_HideTextFilter(false);
-                _Show_HideCBIsActiveFilter(false);
-                _FilterData("");
+                dgvInternationalLicenses.Columns[0].HeaderText = "Int.License ID";
+                dgvInternationalLicenses.Columns[0].Width = 130;
+
+                dgvInternationalLicenses.Columns[1].HeaderText = "Application ID";
+                dgvInternationalLicenses.Columns[1].Width = 130;
+
+                dgvInternationalLicenses.Columns[2].HeaderText = "Driver ID";
+                dgvInternationalLicenses.Columns[2].Width = 130;
+
+                dgvInternationalLicenses.Columns[3].HeaderText = "L.License ID";
+                dgvInternationalLicenses.Columns[3].Width = 130;
+
+                dgvInternationalLicenses.Columns[4].HeaderText = "Issue Date";
+                dgvInternationalLicenses.Columns[4].Width = 180;
+
+                dgvInternationalLicenses.Columns[5].HeaderText = "Expiration Date";
+                dgvInternationalLicenses.Columns[5].Width = 150;
+
+                dgvInternationalLicenses.Columns[6].HeaderText = "Is Active";
+                dgvInternationalLicenses.Columns[6].Width = 100;
+
             }
-            else if (gcbFilterBy.Text == "Is Active")
+        }
+
+        private void frmListInternationalDrivingLicenseApplications_Load(object sender, EventArgs e)
+        {
+            _RefreshInternationalLicensesList();
+        }
+
+        private void btnAddInternationLicenesApplicatoins_Click(object sender, EventArgs e)
+        {
+            frmNewInternationalLicneseApplication frm = new frmNewInternationalLicneseApplication();
+            frm.OnClose += _RefreshInternationalLicensesList;
+            frm.ShowDialog();
+        }
+
+        private void CMSIshowLicenseDetails_Click(object sender, EventArgs e)
+        {
+            int InternationalLicenseID = Convert.ToInt32(dgvInternationalLicenses.CurrentRow.Cells[0].Value);
+            frmShowInternationalLicenseInfo frm = new frmShowInternationalLicenseInfo(InternationalLicenseID);
+            frm.ShowDialog();
+        }
+
+        private void showPersonDetailsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int DriverID = Convert.ToInt32(dgvInternationalLicenses.CurrentRow.Cells[2].Value);
+            int PersonID = clsDriver.FindByDriverID(DriverID).PersonID;
+
+            frmShowPersonInfo frm = new frmShowPersonInfo(PersonID);
+            frm.ShowDialog();
+        }
+
+        private void showPersonLicenseHistoryToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int DriverID = Convert.ToInt32(dgvInternationalLicenses.CurrentRow.Cells[2].Value);
+            int PersonID = clsDriver.FindByDriverID(DriverID).PersonID;
+            frmShowPersonLicenseHistory frm = new frmShowPersonLicenseHistory(PersonID);
+            frm.ShowDialog();
+        }
+
+        private void gcbFilterBy_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (gcbFilterBy.Text == "Is Active")
             {
                 _Show_HideTextFilter(false);
                 _Show_HideCBIsActiveFilter(true);
-                gcbIsActive.SelectedIndex = 0;
+
+                if (gcbIsActive.SelectedIndex != 0)
+                    gcbIsActive.SelectedIndex = 0;
+                else
+                    _FilterData("");
+
+                gcbFilterBy.Focus();
+                return;
             }
+
+            //if (gcbFilterBy.Text == "None")
+            //{
+            //    _Show_HideTextFilter(false);
+            //    _Show_HideCBIsActiveFilter(false);
+            //    _FilterData("");
+            //}
+            //else
+            //{
+            //    _FilterData("");
+            //}
+
+            _Show_HideTextFilter(gcbFilterBy.Text != "None");
+            _Show_HideCBIsActiveFilter(false);
+
+            if (gtxtFilterValue.Text != "")
+                gtxtFilterValue.Text = "";
             else
-            {
-                _Show_HideTextFilter(true);
-                _Show_HideCBIsActiveFilter(false);
                 _FilterData("");
-            }
-
-            _GetTextFilterEmpty();
         }
-        void _EditSizeOfDGVColumns()
-        {
-            dgvIntLApplications.Columns["Int.License ID"].Width = 130;
-            dgvIntLApplications.Columns["Application ID"].Width = 120;
-            dgvIntLApplications.Columns["Driver ID"].Width = 120;
-            dgvIntLApplications.Columns["L.License ID"].Width = 120;
-            dgvIntLApplications.Columns["Issue Date"].Width = 190;
-            dgvIntLApplications.Columns["Expiration Date"].Width = 170;
-            dgvIntLApplications.Columns["IsActive"].Width = 110;
-        }
-        void _Load_RefereshIntLApplicationsInDGV()
-        {
-            DataTable dtAllIntApplications = clsInternationalLicense.GetAllInternationalLicenses();
 
-            if (dtAllIntApplications.Rows.Count > 0)
-            {
-                dtAllIntApplications.Columns["InternationalLicenseID"].ColumnName = "Int.License ID";
-                dtAllIntApplications.Columns["ApplicationID"].ColumnName = "Application ID";
-                dtAllIntApplications.Columns["DriverID"].ColumnName = "Driver ID";
-                dtAllIntApplications.Columns["IssuedUsingLocalLicenseID"].ColumnName = "L.License ID";
-                dtAllIntApplications.Columns["IssueDate"].ColumnName = "Issue Date";
-                dtAllIntApplications.Columns["ExpirationDate"].ColumnName = "Expiration Date";
-                dtAllIntApplications.Columns["IsActive"].ColumnName = "IsActive";
-
-                DataTable dt2 = dtAllIntApplications.DefaultView.ToTable(false, "Int.License ID", "Application ID",
-                    "Driver ID", "L.License ID", "Issue Date", "Expiration Date", "IsActive");
-
-                _dvInternatinalApplications = dt2.DefaultView;
-                dgvIntLApplications.DataSource = dt2;
-                _EditSizeOfDGVColumns();
-                lblNumOfRecords.Text = _dvInternatinalApplications.Count.ToString();
-                gcbFilterBy.SelectedIndex = 0;
-            }
-            else
-            {
-                lblNumOfRecords.Text = "0";
-            }
-        }
-        private void _FilterByIsActive()
+        private void gcbIsActive_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (gcbIsActive.Text == "All")
                 _FilterData("");
@@ -115,97 +160,49 @@ namespace DVLDPresentation.Applications.Manage_Applications.International_Drivin
             else if (gcbIsActive.Text == "No")
                 _FilterData("IsActive = 0");
         }
-        private void frmListInternationalDrivingLicenseApplications_Load(object sender, EventArgs e)
-        {
-            _Load_RefereshIntLApplicationsInDGV();
-        }
-
-        private void gcbFilterBy_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            _FilterByAtDesign();
-        }
-        private void gtxtFilterValue_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (gcbFilterBy.Text == "Is Active")
-                return;
-
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
-            {
-                e.Handled = true;
-            }
-        }
 
         private void gtxtFilterValue_TextChanged(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(gtxtFilterValue.Text))
+            string FilterColumn = "";
+            //Map Selected Filter to real Column name 
+            switch (gcbFilterBy.Text)
+            {
+                case "International License ID":
+                    FilterColumn = "InternationalLicenseID";
+                    break;
+
+                case "Application ID":
+
+                    FilterColumn = "ApplicationID";
+                    break;
+
+                case "Driver ID":
+                    FilterColumn = "DriverID";
+                    break;
+
+                case "Local License ID":
+                    FilterColumn = "IssuedUsingLocalLicenseID";
+                    break;
+
+                default:
+                    FilterColumn = "None";
+                    break;
+            }
+
+            if (string.IsNullOrWhiteSpace(gtxtFilterValue.Text) || FilterColumn == "None")
             {
                 //to make filter is none get all people
                 _FilterData("");
                 return;
             }
-            switch (gcbFilterBy.Text)
-            {
-                case "None":
-                    _FilterData("");
-                    break;
 
-                case "Int.LicenseID":
-                    _FilterData("[Int.License ID] = " + gtxtFilterValue.Text);
-                    break;
-                
-                case "Application ID":
-                    _FilterData("[Application ID] = " + gtxtFilterValue.Text);
-                    break;
-
-                case "Driver ID":
-                    _FilterData("[Driver ID] = " + gtxtFilterValue.Text);
-                    break;
-
-                case "L.License ID":
-                    _FilterData("[L.License ID] = " + gtxtFilterValue.Text);
-                    break;
-
-            }
+            _FilterData($"{FilterColumn} = {gtxtFilterValue.Text.Trim()}");
         }
 
-        private void gcbIsActive_SelectedIndexChanged(object sender, EventArgs e)
+        private void gtxtFilterValue_KeyPress(object sender, KeyPressEventArgs e)
         {
-            _FilterByIsActive();
-        }
-
-        private void btnAddInternationLicenesApplicatoins_Click(object sender, EventArgs e)
-        {
-            frmNewInternationalLicneseApplication frm = new frmNewInternationalLicneseApplication();
-            frm.OnClose += _Load_RefereshIntLApplicationsInDGV;
-            frm.ShowDialog();
-        }
-
-        private void showPersonDetailsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            int DriverID = Convert.ToInt32(dgvIntLApplications.SelectedCells[2].Value);
-            int PersonID = clsDriver.FindByDriverID(DriverID).PersonID;
-            frmShowPersonInfo frm = new frmShowPersonInfo(PersonID);
-            frm.ShowDialog();
-        }
-
-        private void CMSIshowLicenseDetails_Click(object sender, EventArgs e)
-        {
-            int IntLicenseID = Convert.ToInt32(dgvIntLApplications.SelectedCells[0].Value);
-            frmInternationalLicenseInfo frm = new frmInternationalLicenseInfo(IntLicenseID);
-            frm.ShowDialog();
-        }
-
-        private void showPersonLicenseHistoryToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            int DriverID = Convert.ToInt32(dgvIntLApplications.SelectedCells[2].Value);
-            int PersonID = clsDriver.FindByDriverID(DriverID).PersonID;
-            frmShowPersonLicenseHistory frm = new frmShowPersonLicenseHistory(PersonID);
-            frm.ShowDialog();
-        }
-
-        private void gbtnClose_Click(object sender, EventArgs e)
-        {
-            this.Close();
+            //All Is Number
+            e.Handled = (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar));
         }
     }
 }
