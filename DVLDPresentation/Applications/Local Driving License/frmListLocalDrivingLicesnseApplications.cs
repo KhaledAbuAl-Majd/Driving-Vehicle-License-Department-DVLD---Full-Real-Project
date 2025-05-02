@@ -74,11 +74,6 @@ namespace DVLDPresentation.Applications.Manage_Applications
             dgvLocalDrivingLicenseApplications.DataSource = _dvAllLDLApplications;
             //lblNumOfRecords.Text = _dvAllLDLApplications.Count.ToString();
             gcbFilterBy.SelectedIndex = 0;
-        }
-
-        private void frmLocalDrivingLicenseApplications_Load(object sender, EventArgs e)
-        {
-            _RefreshLDLApplicationsList();
 
             if (_dvAllLDLApplications.Count > 0)
             {
@@ -103,6 +98,11 @@ namespace DVLDPresentation.Applications.Manage_Applications
                 dgvLocalDrivingLicenseApplications.Columns[6].HeaderText = "Status";
                 dgvLocalDrivingLicenseApplications.Columns[6].Width = 100;
             }
+        }
+
+        private void frmLocalDrivingLicenseApplications_Load(object sender, EventArgs e)
+        {
+            _RefreshLDLApplicationsList();
         }
 
         private void showDetailsToolStripMenuItem_Click(object sender, EventArgs e)

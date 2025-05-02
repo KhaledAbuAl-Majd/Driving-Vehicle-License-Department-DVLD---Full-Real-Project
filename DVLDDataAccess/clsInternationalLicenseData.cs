@@ -98,7 +98,7 @@ namespace DVLDDataAccess
 
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
-            string query = @"SELECT InternationalLicenseID,ApplicationID,DriverID,
+            string query = @"SELECT InternationalLicenseID,ApplicationID,
              IssuedUsingLocalLicenseID,IssueDate,ExpirationDate,IsActive
              FROM InternationalLicenses WHERE DriverID = @DriverID
              ORDER BY IssueDate DESC;";

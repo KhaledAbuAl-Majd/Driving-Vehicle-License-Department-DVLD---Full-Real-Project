@@ -66,6 +66,13 @@ namespace DVLDPresentation.Applications.Driving_License_Services.Renew_Driving_L
             if (SelectedLicenseID == -1)
                 return;
 
+            if (ctrlDriverLicenseInfoWithFilter1.SelectedLicenseInfo.IsDetained)
+            {
+                MessageBox.Show("Selected License Is Detained, Cannot Replace a Detained License,Release It ", "Not allowed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                _ErrorAtSearch();
+                return;
+            }
+
             if (!ctrlDriverLicenseInfoWithFilter1.SelectedLicenseInfo.IsLicenseExpired())
             {
                 MessageBox.Show("Selected License is not yet expiared, it will expire on: " + clsFormat.DateToShort(ctrlDriverLicenseInfoWithFilter1.SelectedLicenseInfo.ExpirationDate)
@@ -74,12 +81,6 @@ namespace DVLDPresentation.Applications.Driving_License_Services.Renew_Driving_L
                 return;
             }
 
-            if (ctrlDriverLicenseInfoWithFilter1.SelectedLicenseInfo.IsDetained)
-            {
-                MessageBox.Show("Selected License Is Detained, Cannot Replace a Detained License,Release It ", "Not allowed", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                _ErrorAtSearch();
-                return;
-            }
 
             if (!ctrlDriverLicenseInfoWithFilter1.SelectedLicenseInfo.IsActive)
             {

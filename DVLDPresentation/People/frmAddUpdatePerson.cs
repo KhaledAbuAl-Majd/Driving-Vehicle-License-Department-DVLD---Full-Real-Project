@@ -137,7 +137,7 @@ namespace DVLDPresentation.People
             if (_Person.ImagePath != "")
                 pbPersonImage.ImageLocation = _Person.ImagePath;
 
-            _VisibleOfLLRemove((pbPersonImage.ImageLocation != ""));
+            _VisibleOfLLRemove(!string.IsNullOrEmpty(pbPersonImage.ImageLocation));
         }
         private void _ChangeImageAccordingToGendor()
         {
