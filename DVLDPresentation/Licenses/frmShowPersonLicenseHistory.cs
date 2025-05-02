@@ -15,6 +15,13 @@ namespace DVLDPresentation.Applications.Manage_Applications.LocalDrivingLicenseA
     public partial class frmShowPersonLicenseHistory : Form
     {
         int _PersonID = -1;
+
+        public frmShowPersonLicenseHistory()
+        {
+            InitializeComponent();
+            _PersonID = -1;
+        }
+
         public frmShowPersonLicenseHistory(int PersonID)
         {
             InitializeComponent();
@@ -28,7 +35,8 @@ namespace DVLDPresentation.Applications.Manage_Applications.LocalDrivingLicenseA
             {
                 ctrlPersonCardWithFilter1.LoadPersonInfo(_PersonID);
                 ctrlPersonCardWithFilter1.FilterEnabled = false;
-                ctrlDriverLicenses1.LoadInfoByPersonID(_PersonID);
+                //Fired On Event Person Selected
+                //ctrlDriverLicenses1.LoadInfoByPersonID(_PersonID);
             }
             else
             {

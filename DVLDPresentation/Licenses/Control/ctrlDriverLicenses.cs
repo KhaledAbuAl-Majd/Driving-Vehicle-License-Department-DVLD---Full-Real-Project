@@ -27,7 +27,7 @@ namespace DVLDPresentation.Licenses
 
         private void _LoadLocalLicenseInfo()
         {
-            _dtDriverLocalLicensesHistory = clsLicense.GetDriverLicenses(_DriverID);
+            _dtDriverLocalLicensesHistory = clsDriver.GetLicenses(_DriverID);
 
             dgvLocalLicensesHistory.DataSource = _dtDriverLocalLicensesHistory;
             lblLocalLicensesNumOfRecords.Text = _dtDriverLocalLicensesHistory.Rows.Count.ToString();
@@ -56,7 +56,7 @@ namespace DVLDPresentation.Licenses
 
         private void _LoadInternationalLicenseInfo()
         {
-            _dtDriverInternationalLicensesHistory = clsInternationalLicense.GetDriverInternationalLicenses(_DriverID);
+            _dtDriverInternationalLicensesHistory = clsDriver.GetInternationalLicenses(_DriverID);
 
             dgvInternationalLicensesHistory.DataSource = _dtDriverInternationalLicensesHistory;
             lblInternationalNumOfRecords.Text = _dtDriverInternationalLicensesHistory.Rows.Count.ToString();
@@ -91,10 +91,7 @@ namespace DVLDPresentation.Licenses
 
             if(_Driver == null)
             {
-                MessageBox.Show("Driver Is Not Found!", "Not Found", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                if (this.ParentForm != null)
-                    this.ParentForm.Close();
+                MessageBox.Show($"There Is No Driver with ID = {DriverID} !", "Not Found", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 return;
             }
@@ -109,15 +106,12 @@ namespace DVLDPresentation.Licenses
 
             if (_Driver == null)
             {
-                MessageBox.Show("Driver Is Not Found!", "Not Found", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                if (this.ParentForm != null)
-                    this.ParentForm.Close();
+                MessageBox.Show($"There Is No Driver linked with Person ID = {PersonID} !", "Not Found", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 return;
             }
 
-            _DriverID = _Driver.DriverID; ;
+            _DriverID = _Driver.DriverID;
             _LoadLocalLicenseInfo();
             _LoadInternationalLicenseInfo();
         }
@@ -133,6 +127,7 @@ namespace DVLDPresentation.Licenses
         public void Clear()
         {
             _dtDriverLocalLicensesHistory.Clear();
+            _dtDriverInternationalLicensesHistory.Clear();
         }
 
         private void InternationalLicenseHistorytoolStripMenuItem_Click(object sender, EventArgs e)

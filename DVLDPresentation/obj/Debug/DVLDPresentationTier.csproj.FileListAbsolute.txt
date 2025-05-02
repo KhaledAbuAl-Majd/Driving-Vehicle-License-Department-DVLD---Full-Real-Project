@@ -56,3 +56,7 @@ E:\Visual Studio\source\Projects\Course19\DVLDProject\DVLDPresentation\obj\Debug
 E:\Visual Studio\source\Projects\Course19\DVLDProject\DVLDPresentation\obj\Debug\DVLDPresentation.Applications.Detain_Licenses.frmDetainLicenseApplication.resources
 E:\Visual Studio\source\Projects\Course19\DVLDProject\DVLDPresentation\obj\Debug\DVLDPresentation.Applications.Detain_Licenses.frmReleaseDetainedLicenseApplication.resources
 E:\Visual Studio\source\Projects\Course19\DVLDProject\DVLDPresentation\obj\Debug\DVLDPresentation.Applications.Manage_Applications.International_Driving_License_Application.frmShowInternationalLicenseInfo.resources
+E:\Visual Studio\source\Projects\Course19\DVLDProject\DVLDPresentation\bin\Debug\zxing.dll
+E:\Visual Studio\source\Projects\Course19\DVLDProject\DVLDPresentation\bin\Debug\zxing.presentation.dll
+E:\Visual Studio\source\Projects\Course19\DVLDProject\DVLDPresentation\bin\Debug\zxing.xml
+E:\Visual Studio\source\Projects\Course19\DVLDProject\DVLDPresentation\bin\Debug\zxing.presentation.xml

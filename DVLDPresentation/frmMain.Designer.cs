@@ -59,8 +59,12 @@
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.signOutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
+            this.lblProjectCreatedBy = new System.Windows.Forms.LinkLabel();
             this.msMinOptions.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // msMinOptions
@@ -362,23 +366,62 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.BackColor = System.Drawing.Color.Black;
+            this.pictureBox1.BackColor = System.Drawing.Color.White;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(0, 77);
+            this.pictureBox1.Location = new System.Drawing.Point(697, 209);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(1810, 678);
+            this.pictureBox1.Size = new System.Drawing.Size(553, 368);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 2;
             this.pictureBox1.TabStop = false;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.label3);
+            this.panel1.Controls.Add(this.pictureBox1);
+            this.panel1.Controls.Add(this.lblProjectCreatedBy);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(0, 77);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1810, 719);
+            this.panel1.TabIndex = 4;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Stencil", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.LightBlue;
+            this.label3.Location = new System.Drawing.Point(867, 598);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(223, 42);
+            this.label3.TabIndex = 4;
+            this.label3.Text = "Created By";
+            // 
+            // lblProjectCreatedBy
+            // 
+            this.lblProjectCreatedBy.ActiveLinkColor = System.Drawing.Color.DeepSkyBlue;
+            this.lblProjectCreatedBy.AutoSize = true;
+            this.lblProjectCreatedBy.Font = new System.Drawing.Font("Stencil", 26.25F);
+            this.lblProjectCreatedBy.ForeColor = System.Drawing.Color.White;
+            this.lblProjectCreatedBy.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
+            this.lblProjectCreatedBy.LinkColor = System.Drawing.Color.White;
+            this.lblProjectCreatedBy.Location = new System.Drawing.Point(797, 640);
+            this.lblProjectCreatedBy.Name = "lblProjectCreatedBy";
+            this.lblProjectCreatedBy.Size = new System.Drawing.Size(383, 42);
+            this.lblProjectCreatedBy.TabIndex = 6;
+            this.lblProjectCreatedBy.TabStop = true;
+            this.lblProjectCreatedBy.Text = "Khaled Abu Al-Majd";
+            this.lblProjectCreatedBy.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblProjectCreatedBy_LinkClicked);
             // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1810, 755);
-            this.Controls.Add(this.pictureBox1);
+            this.BackColor = System.Drawing.Color.Black;
+            this.ClientSize = new System.Drawing.Size(1810, 796);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.msMinOptions);
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.msMinOptions;
@@ -391,6 +434,8 @@
             this.msMinOptions.ResumeLayout(false);
             this.msMinOptions.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -427,5 +472,8 @@
         private System.Windows.Forms.ToolStripMenuItem manageDetainedLicensesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem detainLicenseToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem releaseDetainedLicenseToolStripMenuItem;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.LinkLabel lblProjectCreatedBy;
     }
 }

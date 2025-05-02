@@ -52,12 +52,6 @@ namespace DVLDPresentation.Applications.Driving_License_Services.New_Driving_Lic
             if (SelectedLicenseID == -1)
                 return;
 
-            if(ctrlDriverLicenseInfoCardWithFilter1.SelectedLicenseInfo.LicenseClassID !=3)
-            {
-                MessageBox.Show("Selected License should be Class 3, select another one.", "Not allowed", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                _ErrorAtSearch();
-                return;
-            }
 
             if (!ctrlDriverLicenseInfoCardWithFilter1.SelectedLicenseInfo.IsActive)
             {
@@ -65,6 +59,15 @@ namespace DVLDPresentation.Applications.Driving_License_Services.New_Driving_Lic
                 _ErrorAtSearch();
                 return;
             }
+
+
+            if(ctrlDriverLicenseInfoCardWithFilter1.SelectedLicenseInfo.LicenseClassID !=3)
+            {
+                MessageBox.Show("Selected License should be Class 3, select another one.", "Not allowed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                _ErrorAtSearch();
+                return;
+            }
+
 
             // Is Not Expired Yet
             int ActiveInternaionalLicenseID = clsInternationalLicense.GetActiveInternationalLicenseIDByDriverID(ctrlDriverLicenseInfoCardWithFilter1.SelectedLicenseInfo.DriverID);
@@ -121,7 +124,7 @@ namespace DVLDPresentation.Applications.Driving_License_Services.New_Driving_Lic
             InternationalLicense.DriverID = LocalLicense.DriverID;
             InternationalLicense.IssuedUsingLocalLicenseID = LocalLicense.LicenseID;
             InternationalLicense.IssueDate = DateTime.Now;
-            InternationalLicense.ExpirationDate = DateTime.Now.AddDays(1);//Add One year
+            InternationalLicense.ExpirationDate = DateTime.Now.AddYears(1);//Add One year
 
             if (!InternationalLicense.Save())
             {

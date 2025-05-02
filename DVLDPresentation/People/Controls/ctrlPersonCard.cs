@@ -103,7 +103,6 @@ namespace DVLDPresentation
 
             //if (Country != null)
             //    lblCountry.Text = Country.CountryName;
-
         }
         public void ResetPersonInfo()
         {

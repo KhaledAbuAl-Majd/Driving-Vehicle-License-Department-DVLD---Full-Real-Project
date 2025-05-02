@@ -32,10 +32,6 @@ namespace DVLDPresentation.Users
             frmUserInfo frm = new frmUserInfo(Convert.ToInt32(dgvUsers.CurrentRow.Cells[0].Value));
             frm.ShowDialog();
         }
-        private void _GetTextFilterEmpty()
-        {
-            gtxtFilterValue.Text = "";
-        }
         private void _Show_HideTextFilter(bool value)
         {
             gtxtFilterValue.Visible = value;
@@ -58,15 +54,24 @@ namespace DVLDPresentation.Users
             {
                 _Show_HideTextFilter(false);
                 _Show_HideCBIsActiveFilter(true);
-                gcbIsActive.SelectedIndex = 0;
+
+                if (gcbIsActive.SelectedIndex != 0)
+                    gcbIsActive.SelectedIndex = 0;
+                else
+                    _FilterData("");
+
                 gcbIsActive.Focus();
                 return;
             }
 
             _Show_HideTextFilter(gcbFilterBy.Text != "None");
             _Show_HideCBIsActiveFilter(false);
-            _FilterData("");
-            _GetTextFilterEmpty();
+
+            if (gtxtFilterValue.Text != "")
+                gtxtFilterValue.Text = "";
+            else
+                _FilterData("");
+
             gtxtFilterValue.Focus();
         }
         void _RefreshUsersList()

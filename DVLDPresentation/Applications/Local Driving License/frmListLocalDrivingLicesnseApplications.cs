@@ -48,11 +48,6 @@ namespace DVLDPresentation.Applications.Manage_Applications
             }
         }
 
-        private void _GetTextFilterEmpty()
-        {
-            gtxtFilterValue.Text = "";
-        }
-
         private void _FilterByFilterByStatus()
         {
             if (gcbFilterByStatus.Text.ToLower() == "all")
@@ -127,14 +122,23 @@ namespace DVLDPresentation.Applications.Manage_Applications
             {
                 _Show_HideTextFilter(false);
                 _Show_HideCBStatusFilter(true);
-                gcbFilterByStatus.SelectedIndex = 0;
+
+                if (gcbFilterByStatus.SelectedIndex != 0)
+                    gcbFilterByStatus.SelectedIndex = 0;
+                else
+                    _FilterData("");
+
+                gcbFilterByStatus.Focus();
                 return;
             }
 
             _Show_HideTextFilter(gcbFilterBy.Text != "None");
-            _FilterData("");
             _Show_HideCBStatusFilter(false);
-            _GetTextFilterEmpty();
+
+            if (gtxtFilterValue.Text != "")
+                gtxtFilterValue.Text = "";
+            else
+                _FilterData("");
         }
 
         private void gtxtFilterValue_TextChanged(object sender, EventArgs e)

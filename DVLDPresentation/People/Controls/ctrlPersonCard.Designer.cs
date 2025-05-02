@@ -173,11 +173,11 @@
             this.pictureBox4.TabIndex = 22;
             this.pictureBox4.TabStop = false;
             // 
-            // pbGendorIcon
+            // pbGendor
             // 
             this.pbGendor.Image = global::DVLDPresentation.Properties.Resources.Man_32;
             this.pbGendor.Location = new System.Drawing.Point(113, 143);
-            this.pbGendor.Name = "pbGendorIcon";
+            this.pbGendor.Name = "pbGendor";
             this.pbGendor.Size = new System.Drawing.Size(29, 26);
             this.pbGendor.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbGendor.TabIndex = 21;
@@ -354,13 +354,13 @@
             this.label5.TabIndex = 4;
             this.label5.Text = "Gendor:";
             // 
-            // lblFullName
+            // lblName
             // 
             this.lblName.AutoSize = true;
             this.lblName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.lblName.Location = new System.Drawing.Point(160, 71);
-            this.lblName.Name = "lblFullName";
+            this.lblName.Name = "lblName";
             this.lblName.Size = new System.Drawing.Size(59, 20);
             this.lblName.TabIndex = 3;
             this.lblName.Text = "[????]";

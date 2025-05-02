@@ -239,7 +239,7 @@ namespace DVLDDataAccess
             string query = @"  
                             SELECT Top 1 InternationalLicenseID
                             FROM InternationalLicenses 
-                            where DriverID=@DriverID and GetDate() between IssueDate and ExpirationDate 
+                            where DriverID=@DriverID and GetDate() between IssueDate and ExpirationDate  AND IsActive = 1
                             order by ExpirationDate Desc;";
 
             SqlCommand command = new SqlCommand(query, connection);

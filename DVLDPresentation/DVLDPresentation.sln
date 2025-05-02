@@ -1,13 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.13.35919.96 d17.13
+VisualStudioVersion = 17.13.35919.96
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DVLDPresentationTier", "DVLDPresentationTier.csproj", "{0ED341D7-871B-430D-AF5D-AC132FF6147A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DVLD Presentation", "DVLD Presentation.csproj", "{0ED341D7-871B-430D-AF5D-AC132FF6147A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DVLDBusiness", "..\DVLDBusiness\DVLDBusiness.csproj", "{EF75CFF7-DA8E-4352-8155-14FC3DCB47E9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DVLD Business", "..\DVLDBusiness\DVLD Business.csproj", "{EF75CFF7-DA8E-4352-8155-14FC3DCB47E9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DVLDDataAccess", "..\DVLDDataAccess\DVLDDataAccess.csproj", "{1A8B2921-251A-489E-A8FA-03CB0BBF34B1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DVLD Data Access", "..\DVLDDataAccess\DVLD Data Access.csproj", "{1A8B2921-251A-489E-A8FA-03CB0BBF34B1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

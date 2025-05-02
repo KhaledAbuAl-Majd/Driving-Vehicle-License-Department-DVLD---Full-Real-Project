@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -24,7 +25,7 @@ namespace DVLDPresentation.Login_HomePage
     public partial class frmMain : Form
     {
         frmLogin _frmLogin;
-
+        bool _IsSingOut = false;
         public frmMain(frmLogin frm)
         {
             InitializeComponent();
@@ -64,6 +65,7 @@ namespace DVLDPresentation.Login_HomePage
         private void signOutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //it will call closing event and it will call sign out function
+            _IsSingOut = true;
             this.Close();
         }
 
@@ -163,8 +165,20 @@ namespace DVLDPresentation.Login_HomePage
 
         private void frmMain_FormClosing(object sender, FormClosingEventArgs e)
         {
+            if (!_IsSingOut)
+            {
+                Application.Exit();
+                return;
+            }
+
             clsGlobal.CurrentUser = null;
             _frmLogin.Show();
+        }
+
+        private void lblProjectCreatedBy_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Process.Start("https://www.linkedin.com/in/khaled-abu-al-majd-427454326?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3B3oX%2BPIImRtWgX0b4YGjEHw%3D%3D");
+
         }
     }
 }

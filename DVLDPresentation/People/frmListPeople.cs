@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DVLDBusiness;
+using DVLDPresentation.Applications.Manage_Applications.LocalDrivingLicenseApplications;
 using DVLDPresentation.Global_Classes;
 
 namespace DVLDPresentation.People
@@ -58,11 +59,18 @@ namespace DVLDPresentation.People
         }
         private void _FilterByAtDesign()
         {
-            if(gcbFilterBy.Text == "Gendor")
+            if (gcbFilterBy.Text == "Gendor")
             {
                 _Show_HideTextFilter(false);
                 _Show_HideCBGendorFilter(true);
-                gcbFilterByGendor.SelectedIndex = 0;
+
+                if (gcbFilterByGendor.SelectedIndex != 0)
+                    gcbFilterByGendor.SelectedIndex = 0;
+                else
+                    _FilterData("");
+
+                gcbFilterByGendor.Focus();
+
                 return;
             }
 
@@ -80,8 +88,11 @@ namespace DVLDPresentation.People
 
             _Show_HideTextFilter(gcbFilterBy.Text != "None");
             _Show_HideCBGendorFilter(false);
-            gtxtFilterValue.Text = "";
-            _FilterData("");
+
+            if (gtxtFilterValue.Text != "")
+                gtxtFilterValue.Text = "";
+            else
+                _FilterData("");
         }
         private void _RefreshPeoplList()
         {
@@ -300,6 +311,12 @@ namespace DVLDPresentation.People
         private void button1_Click(object sender, EventArgs e)
         {
             _RefreshPeoplList();
+        }
+
+        private void showPersonLicenseHistoryToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmShowPersonLicenseHistory frm = new frmShowPersonLicenseHistory(Convert.ToInt32(dgvPeople.CurrentRow.Cells[0].Value));
+            frm.ShowDialog();
         }
     }
 }

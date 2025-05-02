@@ -1,0 +1,6 @@
+E:\Visual Studio\source\Projects\Course19\DVLDProject\DVLDDataAccess\bin\Debug\DVLDDataAccess.dll
+E:\Visual Studio\source\Projects\Course19\DVLDProject\DVLDDataAccess\bin\Debug\DVLDDataAccess.pdb
+E:\Visual Studio\source\Projects\Course19\DVLDProject\DVLDDataAccess\obj\Debug\DVLD Data Access.csproj.AssemblyReference.cache
+E:\Visual Studio\source\Projects\Course19\DVLDProject\DVLDDataAccess\obj\Debug\DVLD Data Access.csproj.CoreCompileInputs.cache
+E:\Visual Studio\source\Projects\Course19\DVLDProject\DVLDDataAccess\obj\Debug\DVLDDataAccess.dll
+E:\Visual Studio\source\Projects\Course19\DVLDProject\DVLDDataAccess\obj\Debug\DVLDDataAccess.pdb

@@ -63,10 +63,12 @@ namespace DVLDPresentation.Applications.Manage_Applications.LocalDrivingLicenseA
             if (LicenseID != -1)
             {
                 gbtnIssueLicense.Enabled = false;
+                gtxtNotes.Enabled = false;
 
                 MessageBox.Show("License Issued Successfully with License ID = " + LicenseID.ToString(),"Succeeded", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                this.Close();
+                ctrlDrivingLicenseApplicationInfo1.LoadApplicationInfoByLocalDrivingAppID(_LocalDrivingLicenseApplicationID);
+                //this.Close();
             }
             else
             {

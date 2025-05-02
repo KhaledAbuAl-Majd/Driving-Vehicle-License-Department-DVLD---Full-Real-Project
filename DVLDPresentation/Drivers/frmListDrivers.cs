@@ -75,7 +75,11 @@ namespace DVLDPresentation
 
             //_FilterData("");
             //it will go text change event
-            gtxtFilterValue.Text = "";
+
+            if (gtxtFilterValue.Text != "")
+                gtxtFilterValue.Text = "";
+            else
+                _FilterData("");
         }
 
         private void gtxtFilterValue_TextChanged(object sender, EventArgs e)

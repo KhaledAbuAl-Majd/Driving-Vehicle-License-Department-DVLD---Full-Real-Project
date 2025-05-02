@@ -74,6 +74,13 @@ namespace DVLDPresentation.Applications.Driving_License_Services.Renew_Driving_L
                 return;
             }
 
+            if (ctrlDriverLicenseInfoWithFilter1.SelectedLicenseInfo.IsDetained)
+            {
+                MessageBox.Show("Selected License Is Detained, Cannot Replace a Detained License,Release It ", "Not allowed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                _ErrorAtSearch();
+                return;
+            }
+
             if (!ctrlDriverLicenseInfoWithFilter1.SelectedLicenseInfo.IsActive)
             {
                 MessageBox.Show("Selected License is not Not Active, choose an active license." , "Not allowed", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -118,6 +125,7 @@ namespace DVLDPresentation.Applications.Driving_License_Services.Renew_Driving_L
             _ChangeEnaplityOfRenewButton(false);
             ctrlDriverLicenseInfoWithFilter1.FilterEnabled = false;
             _ChangeEnaplityOfLinkLabel(llblShowNewLicenseInfo, true);
+            gtxtNotes.Enabled = false;
         }
 
         private void llblShowLicenseHistory_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
