@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-> **Note:** This is a high-level summary and does not cover every detail; the full project is more extensive and includes additional modules and workflows.
+> ⚠️ This is a simplified explanation and does not cover the full scope of the project. The actual system is larger and includes more features.
 
 ## Project Overview
 
@@ -15,6 +15,8 @@ This project is a comprehensive **Driving & Vehicle License Department (DVLD)** 
 * **Data Access**: ADO.NET
 * **Database**: Microsoft SQL Server
 * **Architecture**: 3-Tier (Presentation, Business Logic, Data Access)
+* **Object-Oriented Programming (OOP)**: The project is built using Object-Oriented Programming (OOP) principles to ensure better structure, modularity, and code reusability.
+
 
 ## Key Features
 
