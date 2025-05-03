@@ -60,8 +60,14 @@ namespace DVLDPresentation.Applications.Driving_License_Services.New_Driving_Lic
                 return;
             }
 
+            if (ctrlDriverLicenseInfoCardWithFilter1.SelectedLicenseInfo.IsDetained)
+            {
+                MessageBox.Show("Selected License Is Detained,Release It First", "Not allowed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                _ErrorAtSearch();
+                return;
+            }
 
-            if(ctrlDriverLicenseInfoCardWithFilter1.SelectedLicenseInfo.LicenseClassID !=3)
+            if (ctrlDriverLicenseInfoCardWithFilter1.SelectedLicenseInfo.LicenseClassID !=3)
             {
                 MessageBox.Show("Selected License should be Class 3, select another one.", "Not allowed", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 _ErrorAtSearch();
