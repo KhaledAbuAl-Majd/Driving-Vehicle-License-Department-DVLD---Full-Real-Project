@@ -63,7 +63,9 @@ This project is a comprehensive **Driving & Vehicle License Department (DVLD)** 
    * Open DVLD Project File
    * Open DVLDPresentation File
    * Open the solution file `DVLDPresentation.sln` in Visual Studio.
+   * Change Connection String From Data Access -> clsDataAccessSettings
    * Build the solution and run the application.
+   * Enter Username(Admin) , Password(1234)
 
 ## Project Architecture
 
