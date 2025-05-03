@@ -121,6 +121,9 @@ namespace DVLDPresentation.Controls
             gcbFilterBy.SelectedIndex = gcbFilterBy.FindString("Person ID");
             gtxtFilterValue.Text = PersonID.ToString();
             ctrlPersonCard1.LoadPersonInfo(PersonID);
+
+            if (OnPersonSelected != null && _FilterEnabled)
+                OnPersonSelected(PersonID);
         }
         public void FilterFocus()
         {
