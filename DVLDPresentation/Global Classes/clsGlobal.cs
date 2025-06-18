@@ -7,11 +7,20 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DVLDBusiness;
+using Microsoft.Win32;
 
 namespace DVLDPresentation
 {
     public static class clsGlobal
     {
+        private static class clsRegisteryConstants
+        {
+            public static string SubKeyName = @"Software\DVLD";
+
+            public static string UserNameValueName = "UserName";
+
+            public static string PasswordValueName = "Password";
+        }
         public static clsUser CurrentUser { get; set; }
 
         public static string PathOfRemeberMeFile
@@ -26,24 +35,30 @@ namespace DVLDPresentation
         {
             try
             {
-                //When Remember Me is UnChecked
-                if (Username == "" && File.Exists(PathOfRemeberMeFile))
+                using (RegistryKey baseKey = RegistryKey.OpenBaseKey(RegistryHive.CurrentUser, RegistryView.Registry64))
                 {
-                    File.Delete(PathOfRemeberMeFile);
-                    return true;
+                    using (RegistryKey key = baseKey.CreateSubKey(clsRegisteryConstants.SubKeyName, true))
+                    {
+                        if (key != null)
+                        {
+                            if (Username == null || Password == null)
+                            {
+                                key.DeleteValue(clsRegisteryConstants.UserNameValueName);
+                                key.DeleteValue(clsRegisteryConstants.PasswordValueName);
+                            }
+                            else
+                            {
+                                key.SetValue(clsRegisteryConstants.UserNameValueName, Username, RegistryValueKind.String);
+
+                                key.SetValue(clsRegisteryConstants.PasswordValueName, Password, RegistryValueKind.String);
+                            }
+                        }
+                        else
+                            return false;
+                    }
                 }
 
-                //If Remember Me Checked
-
-                string DataToSave = Username + "#//#" + Password;
-
-                //if the file not exist create one!)
-                using (StreamWriter writer = new StreamWriter(PathOfRemeberMeFile))
-                {
-                    //Write the data to the file
-                    writer.WriteLine(DataToSave);
-                    return true;
-                }
+                return true;
             }
             catch (Exception ex)
             {
@@ -56,28 +71,22 @@ namespace DVLDPresentation
         {
             try
             {
-                if (File.Exists(PathOfRemeberMeFile))
+                using(RegistryKey baseKey = RegistryKey.OpenBaseKey(RegistryHive.CurrentUser, RegistryView.Registry64))
                 {
-
-                    using (StreamReader reader = new StreamReader(PathOfRemeberMeFile))
+                    using(RegistryKey key = baseKey.OpenSubKey(clsRegisteryConstants.SubKeyName, true))
                     {
-                        string line = "";
-
-                        while ((line = reader.ReadLine()) != null)
+                        if (key != null)
                         {
-                            string[] result = line.Split(new string[] { "#//#" }, StringSplitOptions.None);
+                            Username = key.GetValue(clsRegisteryConstants.UserNameValueName) as string;
 
-                            Username = result[0];
-                            Password = result[1];
+                            Password = key.GetValue(clsRegisteryConstants.PasswordValueName) as string;
+
+                            if (Username == null || Password == null)
+                                return false;
                         }
-
-                        return true;
                     }
-                }
-                else
-                {
-                    //File is not exist
-                    return false;
+
+                    return true;
                 }
             }
             catch (Exception ex)
