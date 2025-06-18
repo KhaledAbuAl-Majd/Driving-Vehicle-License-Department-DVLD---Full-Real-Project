@@ -65,7 +65,7 @@ namespace DVLDPresentation.Login_MainPage
                 else
                 {
                     _EmptyUserNamePassword();
-                    clsGlobal.RememberUsernameAndPassword("", "");
+                    clsGlobal.RememberUsernameAndPassword(null, null);
                 }
 
                 clsGlobal.CurrentUser = User;

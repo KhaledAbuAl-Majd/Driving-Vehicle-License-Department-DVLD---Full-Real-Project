@@ -1,0 +1,9 @@
+E:\Visual Studio\source\Projects\Course19\DVLDProject\DVLDBusiness\bin\Release\DVLDBusiness.dll
+E:\Visual Studio\source\Projects\Course19\DVLDProject\DVLDBusiness\bin\Release\DVLDBusiness.pdb
+E:\Visual Studio\source\Projects\Course19\DVLDProject\DVLDBusiness\bin\Release\DVLDDataAccess.dll
+E:\Visual Studio\source\Projects\Course19\DVLDProject\DVLDBusiness\bin\Release\DVLDDataAccess.pdb
+E:\Visual Studio\source\Projects\Course19\DVLDProject\DVLDBusiness\obj\Release\DVLD Business.csproj.AssemblyReference.cache
+E:\Visual Studio\source\Projects\Course19\DVLDProject\DVLDBusiness\obj\Release\DVLD Business.csproj.CoreCompileInputs.cache
+E:\Visual Studio\source\Projects\Course19\DVLDProject\DVLDBusiness\obj\Release\DVLD Bus.13D7982A.Up2Date
+E:\Visual Studio\source\Projects\Course19\DVLDProject\DVLDBusiness\obj\Release\DVLDBusiness.dll
+E:\Visual Studio\source\Projects\Course19\DVLDProject\DVLDBusiness\obj\Release\DVLDBusiness.pdb
