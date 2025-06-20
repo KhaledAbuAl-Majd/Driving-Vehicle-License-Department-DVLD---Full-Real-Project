@@ -60,3 +60,5 @@ E:\Visual Studio\source\Projects\Course19\DVLDProject\DVLDPresentation\obj\Debug
 E:\Visual Studio\source\Projects\Course19\DVLDProject\DVLDPresentation\obj\Debug\DVLD Pre.B2200422.Up2Date
 E:\Visual Studio\source\Projects\Course19\DVLDProject\DVLDPresentation\obj\Debug\DVLDPresentation.exe
 E:\Visual Studio\source\Projects\Course19\DVLDProject\DVLDPresentation\obj\Debug\DVLDPresentation.pdb
+E:\Visual Studio\source\Projects\Course19\DVLDProject\DVLDPresentation\bin\Debug\DVLDConstant.dll
+E:\Visual Studio\source\Projects\Course19\DVLDProject\DVLDPresentation\bin\Debug\DVLDConstant.pdb

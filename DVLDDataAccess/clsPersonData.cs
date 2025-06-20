@@ -3,6 +3,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Runtime.InteropServices;
+using DVLDConstant;
 
 namespace DVLDDataAccess
 {
@@ -61,9 +62,11 @@ namespace DVLDDataAccess
 
                 reader.Close();
             }
-            catch 
+            catch (Exception ex)
             {
                 IsFound = false;
+
+                clsLogger.LogAtEventLog(ex.Message);
             }
             finally
             {
@@ -127,9 +130,11 @@ namespace DVLDDataAccess
 
                 reader.Close();
             }
-            catch
+            catch (Exception ex)
             {
                 IsFound = false;
+
+                clsLogger.LogAtEventLog(ex.Message);
             }
             finally
             {
@@ -196,6 +201,8 @@ namespace DVLDDataAccess
             {
                 //throw new Exception("Error Is" + ex.Message);
                 personID = -1;
+
+                clsLogger.LogAtEventLog(ex.Message);
             }
             finally
             {
@@ -257,6 +264,8 @@ namespace DVLDDataAccess
             catch (Exception ex)
             {
                 Result = false;
+
+                clsLogger.LogAtEventLog(ex.Message);
             }
             finally
             {
@@ -299,7 +308,7 @@ namespace DVLDDataAccess
             }
             catch(Exception ex)
             {
-
+                clsLogger.LogAtEventLog(ex.Message);
             }
             finally
             {
@@ -331,6 +340,8 @@ namespace DVLDDataAccess
             catch (Exception ex)
             {
                 Result = false;
+
+                clsLogger.LogAtEventLog(ex.Message);
             }
             finally
             {
@@ -367,6 +378,8 @@ namespace DVLDDataAccess
             catch (Exception ex)
             {
                 IsFound = false;
+
+                clsLogger.LogAtEventLog(ex.Message);
             }
             finally
             {
@@ -403,6 +416,8 @@ namespace DVLDDataAccess
             catch (Exception ex)
             {
                 IsFound = false;
+
+                clsLogger.LogAtEventLog(ex.Message);
             }
             finally
             {
@@ -411,8 +426,5 @@ namespace DVLDDataAccess
 
             return IsFound;
         }
-
-
-       
     }
 }

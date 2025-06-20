@@ -97,12 +97,16 @@ namespace DVLDPresentation.People
         private void _RefreshPeoplList()
         {
             DataTable _dtAllPeople = clsPerson.GetAllPeople();
+            if (_dtAllPeople.Rows.Count != 0)
+            {
+
             _dvPeople = _dtAllPeople.DefaultView.ToTable(false, "PersonID", "NationalNo",
                                                          "FirstName", "SecondName", "ThirdName", "LastName",
                                                          "GendorCaption", "DateOfBirth", "CountryName",
                                                          "Phone", "Email").DefaultView;
+            }
 
-            dgvPeople.DataSource = _dvPeople;
+                dgvPeople.DataSource = _dvPeople;
             gcbFilterBy.SelectedIndex = 0;
         }
         private void _FilterByGendor()

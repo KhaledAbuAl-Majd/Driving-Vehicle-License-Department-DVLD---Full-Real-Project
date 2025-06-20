@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DVLDConstant;
 
 namespace DVLDDataAccess
 {
@@ -40,7 +41,9 @@ namespace DVLDDataAccess
             }
             catch(Exception ex)
             {
-                IsFound = false;    
+                IsFound = false;
+
+                clsLogger.LogAtEventLog(ex.Message);
             }
             finally
             {
@@ -79,6 +82,8 @@ namespace DVLDDataAccess
             catch (Exception ex)
             {
                 IsFound = false;
+
+                clsLogger.LogAtEventLog(ex.Message);
             }
             finally
             {
@@ -110,7 +115,7 @@ namespace DVLDDataAccess
             }
             catch(Exception ex)
             {
-
+                clsLogger.LogAtEventLog(ex.Message);
             }
             finally
             {
