@@ -32,6 +32,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Guna.UI2, Version=2.0.4.7, Culture=neutral, PublicKeyToken=8b9d14aa5142e261, processorArchitecture=MSIL">
       <HintPath>packages\Guna.UI2.WinForms.2.0.4.7\lib\net472\Guna.UI2.dll</HintPath>
@@ -461,6 +464,7 @@
     <EmbeddedResource Include="Users\frmUserInfo.resx">
       <DependentUpon>frmUserInfo.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="app.manifest" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -491,6 +495,10 @@
     <ProjectReference Include="..\DVLDBusiness\DVLD Business.csproj">
       <Project>{ef75cff7-da8e-4352-8155-14fc3dcb47e9}</Project>
       <Name>DVLD Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DVLDConstant\DVLDConstant.csproj">
+      <Project>{cf508dc9-c57b-4ba2-9c24-58bcd1c3a9eb}</Project>
+      <Name>DVLDConstant</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

@@ -5,6 +5,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DVLDConstant;
 
 namespace DVLDDataAccess
 {
@@ -39,9 +40,11 @@ namespace DVLDDataAccess
 
                 reader.Close();
             }
-            catch
+            catch (Exception ex)
             {
                 IsFound = false;
+
+                clsLogger.LogAtEventLog(ex.Message);
             }
             finally
             {
@@ -81,9 +84,11 @@ namespace DVLDDataAccess
 
                 reader.Close();
             }
-            catch
+            catch (Exception ex)
             {
                 IsFound = false;
+
+                clsLogger.LogAtEventLog(ex.Message);
             }
             finally
             {
@@ -114,9 +119,9 @@ namespace DVLDDataAccess
 
                 reader.Close();
             }
-            catch
+            catch (Exception ex)
             {
-
+                clsLogger.LogAtEventLog(ex.Message);
             }
             finally
             {
@@ -156,9 +161,11 @@ namespace DVLDDataAccess
 
                 connection.Close();
             }
-            catch
+            catch (Exception ex)
             {
                 DriverID = -1;
+
+                clsLogger.LogAtEventLog(ex.Message);
             }
             finally
             {
@@ -171,7 +178,6 @@ namespace DVLDDataAccess
 
         public static bool UpdateDriver(int DriverID, int PersonID, int CreatedByUserID)
         {
-
             int rowsAffected = 0;
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
             //we dont update the createddate for the driver.
@@ -191,10 +197,11 @@ namespace DVLDDataAccess
                 connection.Open();
                 rowsAffected = command.ExecuteNonQuery();
             }
-            catch 
+            catch (Exception ex)
             {
-                //Console.WriteLine("Error: " + ex.Message);
-                return false;
+                rowsAffected = -1;
+
+                clsLogger.LogAtEventLog(ex.Message);
             }
 
             finally
@@ -225,9 +232,11 @@ namespace DVLDDataAccess
 
                 IsFound = (result != null);
             }
-            catch
+            catch (Exception ex)
             {
                 IsFound = false;
+
+                clsLogger.LogAtEventLog(ex.Message);
             }
             finally
             {

@@ -6,6 +6,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DVLDConstant;
 
 namespace DVLDDataAccess
 {
@@ -44,9 +45,11 @@ namespace DVLDDataAccess
                 else
                     IsFound = false;
             }
-            catch
+            catch (Exception ex)
             {
                 IsFound = false;
+
+                clsLogger.LogAtEventLog(ex.Message);
             }
             finally
             {
@@ -98,9 +101,11 @@ namespace DVLDDataAccess
                 else
                     IsFound = false;
             }
-            catch
+            catch (Exception ex)
             {
                 IsFound = false;
+
+                clsLogger.LogAtEventLog(ex.Message);
             }
             finally
             {
@@ -137,9 +142,11 @@ namespace DVLDDataAccess
 
             }
 
-            catch 
+            catch (Exception ex)
             {
                 // Console.WriteLine("Error: " + ex.Message);
+
+                clsLogger.LogAtEventLog(ex.Message);
             }
             finally
             {
@@ -187,9 +194,11 @@ namespace DVLDDataAccess
                 else
                     NewTestID = -1;
             }
-            catch
+            catch (Exception ex)
             {
                 NewTestID = -1;
+
+                clsLogger.LogAtEventLog(ex.Message);
             }
             finally
             {
@@ -226,8 +235,9 @@ namespace DVLDDataAccess
                 rowsAffected = command.ExecuteNonQuery();
 
             }
-            catch 
+            catch (Exception ex)
             {
+                clsLogger.LogAtEventLog(ex.Message);
                 //Console.WriteLine("Error: " + ex.Message);
                 return false;
             }
@@ -266,9 +276,9 @@ namespace DVLDDataAccess
                 }
             }
 
-            catch 
+            catch (Exception ex)
             {
-                //Console.WriteLine("Error: " + ex.Message);
+                clsLogger.LogAtEventLog(ex.Message);
 
             }
 
@@ -305,9 +315,11 @@ namespace DVLDDataAccess
 
                 IsPass = (result != null);
             }
-            catch
+            catch (Exception ex)
             {
                 IsPass = false;
+
+                clsLogger.LogAtEventLog(ex.Message);
             }
             finally
             {

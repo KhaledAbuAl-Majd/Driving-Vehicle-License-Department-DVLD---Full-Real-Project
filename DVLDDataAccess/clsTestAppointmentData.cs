@@ -7,6 +7,7 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using DVLDConstant;
 
 namespace DVLDDataAccess
 {
@@ -50,9 +51,11 @@ namespace DVLDDataAccess
 
                 reader.Close();
             }
-            catch
+            catch (Exception ex)
             {
                 IsFound = false;
+
+                clsLogger.LogAtEventLog(ex.Message);
             }
             finally
             {
@@ -102,9 +105,11 @@ namespace DVLDDataAccess
 
                 reader.Close();
             }
-            catch
+            catch (Exception ex)
             {
                 IsFound = false;
+
+                clsLogger.LogAtEventLog(ex.Message);
             }
             finally
             {
@@ -136,9 +141,9 @@ namespace DVLDDataAccess
 
                 reader.Close();
             }
-            catch
+            catch (Exception ex)
             {
-
+                clsLogger.LogAtEventLog(ex.Message);
             }
             finally
             {
@@ -175,9 +180,9 @@ namespace DVLDDataAccess
 
                 reader.Close();
             }
-            catch
+            catch (Exception ex)
             {
-
+                clsLogger.LogAtEventLog(ex.Message);
             }
             finally
             {
@@ -223,9 +228,11 @@ namespace DVLDDataAccess
                 else
                     TestAppointmentID = -1;
             }
-            catch
+            catch (Exception ex)
             {
                 TestAppointmentID = -1;
+
+                clsLogger.LogAtEventLog(ex.Message);
             }
             finally
             {
@@ -267,9 +274,11 @@ namespace DVLDDataAccess
 
                 Result = (NumOfRowsAffected > 0);
             }
-            catch
+            catch (Exception ex)
             {
                 Result = false;
+
+                clsLogger.LogAtEventLog(ex.Message);
             }
             finally
             {
@@ -301,13 +310,16 @@ namespace DVLDDataAccess
                 else
                     TestID = -1;
             }
-            catch
+            catch (Exception ex)
             {
                 TestID = -1;
+
+                clsLogger.LogAtEventLog(ex.Message);
             }
             finally
             {
                 connection.Close();
+
             }
 
             return TestID;
@@ -333,9 +345,11 @@ namespace DVLDDataAccess
 
                 Result = (NumOfRowsAffected > 0) ? true : false;
             }
-            catch
+            catch (Exception ex)
             {
                 Result = false;
+
+                clsLogger.LogAtEventLog(ex.Message);
             }
             finally
             {

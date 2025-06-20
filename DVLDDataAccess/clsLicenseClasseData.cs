@@ -5,6 +5,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DVLDConstant;
 
 namespace DVLDDataAccess
 {
@@ -40,9 +41,11 @@ namespace DVLDDataAccess
                 else
                     IsFound = false;    
             }
-            catch
+            catch (Exception ex)
             {
-                IsFound = false;    
+                IsFound = false;
+
+                clsLogger.LogAtEventLog(ex.Message);
             }
             finally
             {
@@ -81,9 +84,11 @@ namespace DVLDDataAccess
                 else
                     IsFound = false;    
             }
-            catch
+            catch (Exception ex)
             {
-                IsFound = false;    
+                IsFound = false;
+
+                clsLogger.LogAtEventLog(ex.Message);
             }
             finally
             {
@@ -113,9 +118,9 @@ namespace DVLDDataAccess
 
                 reader.Close();
             }
-            catch
+            catch (Exception ex)
             {
-
+                clsLogger.LogAtEventLog(ex.Message);
             }
             finally
             {

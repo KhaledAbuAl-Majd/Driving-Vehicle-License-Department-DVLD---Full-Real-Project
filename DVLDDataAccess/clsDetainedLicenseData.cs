@@ -6,6 +6,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DVLDConstant;
 
 namespace DVLDDataAccess
 {
@@ -58,9 +59,11 @@ namespace DVLDDataAccess
 
                 reader.Close();
             }
-            catch
+            catch (Exception ex)
             {
                 IsFound = true;
+
+                clsLogger.LogAtEventLog(ex.Message);
             }
             finally
             {
@@ -121,9 +124,11 @@ namespace DVLDDataAccess
 
                 reader.Close();
             }
-            catch
+            catch (Exception ex)
             {
                 IsFound = true;
+
+                clsLogger.LogAtEventLog(ex.Message);
             }
             finally
             {
@@ -154,9 +159,9 @@ namespace DVLDDataAccess
 
                 reader.Close();
             }
-            catch
+            catch (Exception ex)
             {
-
+                clsLogger.LogAtEventLog(ex.Message);
             }
             finally
             {
@@ -194,9 +199,11 @@ namespace DVLDDataAccess
                 else
                     DetainID = -1;
             }
-            catch
+            catch (Exception ex)
             {
                 DetainID = -1;
+
+                clsLogger.LogAtEventLog(ex.Message);
             }
             finally
             {
@@ -208,6 +215,7 @@ namespace DVLDDataAccess
 
         public static bool UpdateDetainedLicense(int DetainID, int LicenseID, DateTime DetainDate,float FineFees, int CreatedByUserID)
         {
+            bool Result = false;
             int rowsAffected = 0;
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
@@ -232,11 +240,13 @@ namespace DVLDDataAccess
                 connection.Open();
                 rowsAffected = command.ExecuteNonQuery();
 
+                Result = (rowsAffected > 0);
+
             }
-            catch 
+            catch (Exception ex)
             {
-                //Console.WriteLine("Error: " + ex.Message);
-                return false;
+                Result = false;
+                clsLogger.LogAtEventLog(ex.Message);
             }
 
             finally
@@ -244,7 +254,7 @@ namespace DVLDDataAccess
                 connection.Close();
             }
 
-            return (rowsAffected > 0);
+            return Result ;
         }
 
         public static bool ReleaseDetainedLicense(int DetainID, int ReleasedByUserID, int ReleaseApplicationID)
@@ -271,9 +281,11 @@ namespace DVLDDataAccess
 
                 Result = (NumOfRowsAffected > 0);
             }
-            catch
+            catch (Exception ex)
             {
                 Result = false;
+
+                clsLogger.LogAtEventLog(ex.Message);
             }
             finally
             {
@@ -302,9 +314,11 @@ namespace DVLDDataAccess
 
                 IsDetained = (result != null);
             }
-            catch
+            catch (Exception ex)
             {
                 IsDetained = false;
+
+                clsLogger.LogAtEventLog(ex.Message);
             }
             finally
             {

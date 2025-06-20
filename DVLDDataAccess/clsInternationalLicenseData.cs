@@ -6,6 +6,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
+using DVLDConstant;
 
 namespace DVLDDataAccess
 {
@@ -45,9 +46,11 @@ namespace DVLDDataAccess
 
                 reader.Close();
             }
-            catch
+            catch (Exception ex)
             {
                 IsFound = false;
+
+                clsLogger.LogAtEventLog(ex.Message);
             }
             finally
             {
@@ -80,9 +83,9 @@ namespace DVLDDataAccess
 
                 reader.Close();
             }
-            catch
+            catch (Exception ex)
             {
-
+                clsLogger.LogAtEventLog(ex.Message);
             }
             finally
             {
@@ -117,9 +120,9 @@ namespace DVLDDataAccess
 
                 reader.Close();
             }
-            catch
+            catch (Exception ex)
             {
-
+                clsLogger.LogAtEventLog(ex.Message);
             }
             finally
             {
@@ -166,9 +169,11 @@ namespace DVLDDataAccess
                 else
                     InternationalLicenseID = -1;
             }
-            catch
+            catch (Exception ex)
             {
                 InternationalLicenseID = -1;
+
+                clsLogger.LogAtEventLog(ex.Message);
             }
             finally
             {
@@ -214,10 +219,11 @@ namespace DVLDDataAccess
                 rowsAffected = command.ExecuteNonQuery();
 
             }
-            catch 
+            catch (Exception ex)
             {
-                //Console.WriteLine("Error: " + ex.Message);
-                return false;
+                rowsAffected = -1;
+
+                clsLogger.LogAtEventLog(ex.Message);
             }
 
             finally
@@ -256,9 +262,11 @@ namespace DVLDDataAccess
                 else
                     InternationalLicenseID = -1;
             }
-            catch
+            catch (Exception ex)
             {
                 InternationalLicenseID = -1;
+
+                clsLogger.LogAtEventLog(ex.Message);
             }
             finally
             {
@@ -291,9 +299,11 @@ namespace DVLDDataAccess
                 else
                     InternationalLicenseID = -1;
             }
-            catch
+            catch (Exception ex)
             {
                 InternationalLicenseID = -1;
+
+                clsLogger.LogAtEventLog(ex.Message);
             }
             finally
             {

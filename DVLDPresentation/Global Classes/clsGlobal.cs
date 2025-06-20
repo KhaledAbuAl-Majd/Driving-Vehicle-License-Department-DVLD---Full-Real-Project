@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DVLDBusiness;
+using DVLDConstant;
 using Microsoft.Win32;
 
 namespace DVLDPresentation
@@ -63,6 +64,8 @@ namespace DVLDPresentation
             catch (Exception ex)
             {
                 MessageBox.Show($"An error occurred: {ex.Message}");
+
+                clsLogger.LogAtEventLog(ex.Message);
                 return false;
             }
         }
@@ -92,6 +95,7 @@ namespace DVLDPresentation
             catch (Exception ex)
             {
                 MessageBox.Show($"An error occurred: {ex.Message}");
+                clsLogger.LogAtEventLog(ex.Message);
                 return false;
             }
         }

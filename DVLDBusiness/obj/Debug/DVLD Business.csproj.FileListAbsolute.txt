@@ -7,3 +7,5 @@ E:\Visual Studio\source\Projects\Course19\DVLDProject\DVLDBusiness\obj\Debug\DVL
 E:\Visual Studio\source\Projects\Course19\DVLDProject\DVLDBusiness\obj\Debug\DVLD Bus.13D7982A.Up2Date
 E:\Visual Studio\source\Projects\Course19\DVLDProject\DVLDBusiness\obj\Debug\DVLDBusiness.dll
 E:\Visual Studio\source\Projects\Course19\DVLDProject\DVLDBusiness\obj\Debug\DVLDBusiness.pdb
+E:\Visual Studio\source\Projects\Course19\DVLDProject\DVLDBusiness\bin\Debug\DVLDConstant.dll
+E:\Visual Studio\source\Projects\Course19\DVLDProject\DVLDBusiness\bin\Debug\DVLDConstant.pdb

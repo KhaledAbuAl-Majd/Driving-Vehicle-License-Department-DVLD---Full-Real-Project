@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DVLDConstant;
 
 namespace DVLDPresentation.Global_Classes
 {
@@ -28,6 +29,7 @@ namespace DVLDPresentation.Global_Classes
                 catch (Exception ex)
                 {
                     MessageBox.Show("Error creating folder: " + ex.Message);
+                    clsLogger.LogAtEventLog(ex.Message);
                     return false;
                 }
             }
@@ -60,6 +62,7 @@ namespace DVLDPresentation.Global_Classes
             catch (IOException iox)
             {
                 MessageBox.Show(iox.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                clsLogger.LogAtEventLog(iox.Message);
                 return false;
             }
 

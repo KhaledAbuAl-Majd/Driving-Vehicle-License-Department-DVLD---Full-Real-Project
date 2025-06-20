@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.CodeDom;
 using System.Diagnostics;
 using System.Diagnostics.Contracts;
+using DVLDConstant;
 
 namespace DVLDDataAccess
 {
@@ -41,9 +42,11 @@ namespace DVLDDataAccess
 
                 reader.Close();
             }
-            catch
+            catch (Exception ex)
             {
                 IsFound = false;
+
+                clsLogger.LogAtEventLog(ex.Message);
             }
             finally
             {
@@ -81,9 +84,11 @@ namespace DVLDDataAccess
 
                 reader.Close();
             }
-            catch
+            catch (Exception ex)
             {
                 IsFound = false;
+
+                clsLogger.LogAtEventLog(ex.Message);
             }
             finally
             {
@@ -114,9 +119,9 @@ namespace DVLDDataAccess
 
                 reader.Close();
             }
-            catch
+            catch (Exception ex)
             {
-
+                clsLogger.LogAtEventLog(ex.Message);
             }
             finally
             {
@@ -154,9 +159,11 @@ namespace DVLDDataAccess
                 else
                     LocalDrivingApplictionID = -1;
             }
-            catch
+            catch (Exception ex)
             {
                 LocalDrivingApplictionID = -1;
+
+                clsLogger.LogAtEventLog(ex.Message);
             }
             finally
             {
@@ -189,9 +196,11 @@ namespace DVLDDataAccess
 
                 Result = (NumOfRowsAffectd > 0);
             }
-            catch
+            catch (Exception ex)
             {
                 Result = false;
+
+                clsLogger.LogAtEventLog(ex.Message);
             }
             finally
             {
@@ -220,9 +229,11 @@ namespace DVLDDataAccess
 
                 Result = (NumOfRowsAffectd > 0);
             }
-            catch
+            catch (Exception ex)
             {
                 Result = false;
+
+                clsLogger.LogAtEventLog(ex.Message);
             }
             finally
             {
@@ -272,9 +283,11 @@ namespace DVLDDataAccess
                 // My Solution
                 //HasPassed = (result != null);
             }
-            catch
+            catch (Exception ex)
             {
                 HasPassed = false;
+
+                clsLogger.LogAtEventLog(ex.Message);
             }
             finally
             {
@@ -311,9 +324,11 @@ namespace DVLDDataAccess
                 IsFound = (result != null);
 
             }
-            catch
+            catch (Exception ex)
             {
                 IsFound = false;
+
+                clsLogger.LogAtEventLog(ex.Message);
             }
             finally
             {
@@ -351,8 +366,9 @@ namespace DVLDDataAccess
                 }
 
             }
-            catch
+            catch (Exception ex)
             {
+                clsLogger.LogAtEventLog(ex.Message);
             }
             finally
             {
@@ -387,9 +403,11 @@ namespace DVLDDataAccess
                 Result = (result != null);
              
             }
-            catch
+            catch (Exception ex)
             {
                 Result = false;
+
+                clsLogger.LogAtEventLog(ex.Message);
             }
             finally
             {

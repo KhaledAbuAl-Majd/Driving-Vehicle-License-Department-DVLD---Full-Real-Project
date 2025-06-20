@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DVLDConstant;
 
 namespace DVLDDataAccess
 {
@@ -44,9 +46,11 @@ namespace DVLDDataAccess
 
                 reader.Close();
             }
-            catch
+            catch (Exception ex)
             {
                 IsFound = false;
+
+                clsLogger.LogAtEventLog(ex.Message);
             }
             finally
             {
@@ -77,9 +81,9 @@ namespace DVLDDataAccess
 
                 reader.Close();
             }
-            catch
+            catch (Exception ex)
             {
-
+                clsLogger.LogAtEventLog(ex.Message);
             }
             finally
             {
@@ -125,9 +129,11 @@ namespace DVLDDataAccess
                 else
                     ApplicationID = -1;
             }
-            catch
+            catch (Exception ex)
             {
                 ApplicationID = -1;
+
+                clsLogger.LogAtEventLog(ex.Message);
             }
             finally
             {
@@ -168,9 +174,11 @@ namespace DVLDDataAccess
 
                 Result = (NumOfRowsAffectd > 0);
             }
-            catch
+            catch (Exception ex)
             {
                 Result = false;
+
+                clsLogger.LogAtEventLog(ex.Message);
             }
             finally
             {
@@ -199,9 +207,11 @@ namespace DVLDDataAccess
 
                 Result = (NumOfRowsAffectd > 0);
             }
-            catch
+            catch (Exception ex)
             {
                 Result = false;
+
+                clsLogger.LogAtEventLog(ex.Message);
             }
             finally
             {
@@ -230,9 +240,11 @@ namespace DVLDDataAccess
 
                 IsFound = (result != null);
             }
-            catch
+            catch (Exception ex)
             {
                 IsFound = false;
+
+                clsLogger.LogAtEventLog(ex.Message);
             }
             finally
             {
@@ -276,9 +288,11 @@ namespace DVLDDataAccess
                 else
                     ActiveApplicationID = -1;
             }
-            catch
+            catch (Exception ex)
             {
                 ActiveApplicationID = -1;
+
+                clsLogger.LogAtEventLog(ex.Message);
             }
             finally
             {
@@ -318,9 +332,11 @@ namespace DVLDDataAccess
                 else
                     ActiveApplicationID = -1;
             }
-            catch
+            catch (Exception ex)
             {
                 ActiveApplicationID = -1;
+
+                clsLogger.LogAtEventLog(ex.Message);
             }
             finally
             {
@@ -352,9 +368,11 @@ namespace DVLDDataAccess
 
                 Result = (NumOfRowsAffectd > 0);
             }
-            catch
+            catch (Exception ex)
             {
                 Result = false;
+
+                clsLogger.LogAtEventLog(ex.Message);
             }
             finally
             {
