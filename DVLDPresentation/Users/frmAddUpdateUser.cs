@@ -41,6 +41,12 @@ namespace DVLDPresentation.Users
         {
             gbtnSave.Enabled = value;
         }
+        void _ChangeEnaplityOfPasswordsPanel(bool value)
+        {
+            gpPasswordsPanel.Visible = value;
+            gbtnChangePassword.Visible = !value;
+            gbtnChangePassword.TabStop = !value;
+        }
         private void _ChangeHeader(string HeaderText)
         {
             lblHeader.Text = HeaderText;
@@ -57,14 +63,15 @@ namespace DVLDPresentation.Users
 
             _ChageEnaplityOfSaveButton(false);
             _ChangeEnaplityForLoginInfoPanel(false);
+            _ChangeEnaplityOfPasswordsPanel(true);
             ctrlPersonCardWithFilter1.FilterFocus();
         }
         void _LoadData()
         {
             lblUserID.Text = _User.UserID.ToString();
             gtxtUserName.Text = _User.UserName;
-            gtxtPassword.Text = _User.Password;
-            gtxtConfirmPassword.Text = _User.Password;
+            //gtxtPassword.Text = _User.Password;
+            //gtxtConfirmPassword.Text = _User.Password;
             gchkIsActive.Checked = _User.IsActive;
             ctrlPersonCardWithFilter1.LoadPersonInfo(_User.PersonID);
         }
@@ -84,6 +91,7 @@ namespace DVLDPresentation.Users
             _ChangeFormText("Update User");          
             _ChageEnaplityOfSaveButton(true);
             _ChangeEnaplityForLoginInfoPanel(true);
+            _ChangeEnaplityOfPasswordsPanel(false);
             _LoadData();
         }
 
@@ -129,6 +137,7 @@ namespace DVLDPresentation.Users
                 _Mode = enMode.Update;
                 _ChangeHeader("Update User");
                 _ChangeFormText("Update User");
+                _ChangeEnaplityOfPasswordsPanel(false);
                 _UserID = _User.UserID;
 
                 MessageBox.Show("Data Saved Successfully.", "Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -252,6 +261,13 @@ namespace DVLDPresentation.Users
                 _ChangeEnaplityForLoginInfoPanel(false);
                 ctrlPersonCardWithFilter1.FilterFocus();
             }
+        }
+
+        private void gbtnChangePassword_Click(object sender, EventArgs e)
+        {
+            frmChangePassword frm = new frmChangePassword(_UserID);
+
+            frm.ShowDialog();
         }
     }
 }

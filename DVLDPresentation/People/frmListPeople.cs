@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DVLDBusiness;
+using DVLDConstant;
 using DVLDPresentation.Applications.Manage_Applications.LocalDrivingLicenseApplications;
 using DVLDPresentation.Global_Classes;
 
@@ -267,10 +268,14 @@ namespace DVLDPresentation.People
         {
             if (MessageBox.Show("Are you sure you want to delete Person [" + dgvPeople.CurrentRow.Cells[0].Value + "]", "Confirm Delete", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
             {
+                clsPerson person = clsPerson.Find((int)dgvPeople.CurrentRow.Cells[0].Value);
+
                 if (clsPerson.DeletePerson(Convert.ToInt32(dgvPeople.CurrentRow.Cells[0].Value)))
                 {
                     MessageBox.Show("Person Deleted Successfully", "Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     _RefreshPeoplList();
+
+                    clsLogger.LogAtEventLog($"Person With PersonID = {person.PersonID}, Name = {person.FullName} has beed deleted by UserName = {clsGlobal.CurrentUser.UserName} At Time = {DateTime.Now}");
 
                 }
                 else

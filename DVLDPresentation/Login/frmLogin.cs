@@ -11,6 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DVLDBusiness;
+using DVLDConstant;
 using DVLDPresentation.Login_HomePage;
 using DVLDPresentation.Properties;
 
@@ -50,37 +51,50 @@ namespace DVLDPresentation.Login_MainPage
 
         private void gbtnLogin_Click(object sender, EventArgs e)
         {
-            clsUser User = clsUser.FindByUserNameAndPassword(gtxtUserName.Text.Trim(), gtxtPassword.Text.Trim());
+            string EnteredUserName = gtxtUserName.Text.Trim();
+            string Enteredpassword = gtxtPassword.Text.Trim();
 
-            if (User != null)
+            string Salt = clsUser.GetSaltByUserName(EnteredUserName);
+
+            if (Salt != null)
             {
-                if (!User.IsActive)
+                string Hashedpassword = clsSecurity.ComputeHash(clsSecurity.GetSaltedPassword(Enteredpassword, Salt));
+
+                clsUser User = clsUser.FindByUserNameAndPassword(EnteredUserName, Hashedpassword);
+
+                if (User != null)
                 {
-                    MessageBox.Show("Your accound is not Active, Contact Admin.", "In Active Account", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    if (!User.IsActive)
+                    {
+                        MessageBox.Show("Your account is not Active, Contact Admin.", "In Active Account", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        clsLogger.LogAtEventLog($"User With ID = {User.UserID} try to login But, He was refused to entry because he is not Active!");
+                        gtxtUserName.Focus();
+                        return;
+                    }
+
+                    if (gchkRemeberMe.Checked)
+                        clsGlobal.RememberUsernameAndPassword(EnteredUserName, Enteredpassword);
+                    else
+                    {
+                        _EmptyUserNamePassword();
+                        clsGlobal.RememberUsernameAndPassword(null, null);
+                    }
+
+                    clsLogger.LogAtEventLog($"[LOGIN SUCCESS] User ID = {User.UserID}, Username = {User.UserName}, Login Time = {DateTime.Now}",EventLogEntryType.Information);
+
+                    clsGlobal.CurrentUser = User;
+                    this.Hide();
+                    frmMain frm = new frmMain(this);
+                    frm.ShowDialog();
                     gtxtUserName.Focus();
+
                     return;
                 }
-
-                if (gchkRemeberMe.Checked)
-                    clsGlobal.RememberUsernameAndPassword(gtxtUserName.Text.Trim(), gtxtPassword.Text.Trim());
-                else
-                {
-                    _EmptyUserNamePassword();
-                    clsGlobal.RememberUsernameAndPassword(null, null);
-                }
-
-                clsGlobal.CurrentUser = User;
-                this.Hide();
-                frmMain frm = new frmMain(this);
-                frm.ShowDialog();
-                gtxtUserName.Focus();
-            }
-            else
-            {
-                MessageBox.Show("Invalid Username/Password.", "Wrong Credentials", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                gtxtUserName.Focus();
             }
 
+            MessageBox.Show("Invalid Username/Password.", "Wrong Credentials", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            clsLogger.LogAtEventLog($"Invalid login attempt. Username: {EnteredUserName}");
+            gtxtUserName.Focus();
         }
 
         private void frmLogin_Load(object sender, EventArgs e)

@@ -60,9 +60,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DVLDConstant\DVLDConstant.csproj">
+    <ProjectReference Include="..\DVLDConstant\DVLDCommon.csproj">
       <Project>{cf508dc9-c57b-4ba2-9c24-58bcd1c3a9eb}</Project>
-      <Name>DVLDConstant</Name>
+      <Name>DVLDCommon</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
