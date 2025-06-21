@@ -497,9 +497,9 @@
       <Project>{ef75cff7-da8e-4352-8155-14fc3dcb47e9}</Project>
       <Name>DVLD Business</Name>
     </ProjectReference>
-    <ProjectReference Include="..\DVLDConstant\DVLDConstant.csproj">
+    <ProjectReference Include="..\DVLDConstant\DVLDCommon.csproj">
       <Project>{cf508dc9-c57b-4ba2-9c24-58bcd1c3a9eb}</Project>
-      <Name>DVLDConstant</Name>
+      <Name>DVLDCommon</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DVLDBusiness;
+using DVLDConstant;
 using DVLDPresentation.Global_Classes;
 
 namespace DVLDPresentation.Users
@@ -217,12 +218,14 @@ namespace DVLDPresentation.Users
 
             if (MessageBox.Show("Are you sure you want to delete User With ID = [" + UserID+ "]", "Confirm Delete", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
             {
+                clsUser user = clsUser.FindByUserID(UserID);
                 //User ID
                 if (clsUser.DeleteUser(UserID))
                 {
                     MessageBox.Show("User has been deleted successfully", "Deleted", MessageBoxButtons.OK,
                         MessageBoxIcon.Information);
                     _RefreshUsersList();
+                    clsLogger.LogAtEventLog($"User With UserName = {user.UserName} has beed deleted by UserName = {clsGlobal.CurrentUser.UserName} At Time = {DateTime.Now}");
                 }
                 else
                     MessageBox.Show("User is not deleted due to data connected to it.", "Failed", MessageBoxButtons.OK,

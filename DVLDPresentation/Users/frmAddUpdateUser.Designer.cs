@@ -37,13 +37,15 @@
             this.gbtnNext = new Guna.UI2.WinForms.Guna2Button();
             this.gtpLoginInfo = new System.Windows.Forms.TabPage();
             this.pnlLoginInfo = new System.Windows.Forms.Panel();
-            this.gchkIsActive = new Guna.UI2.WinForms.Guna2CheckBox();
+            this.gpPasswordsPanel = new Guna.UI2.WinForms.Guna2Panel();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.label4 = new System.Windows.Forms.Label();
             this.gtxtConfirmPassword = new Guna.UI2.WinForms.Guna2TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.gtxtPassword = new Guna.UI2.WinForms.Guna2TextBox();
+            this.gbtnChangePassword = new Guna.UI2.WinForms.Guna2Button();
+            this.gchkIsActive = new Guna.UI2.WinForms.Guna2CheckBox();
             this.lblUserID = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
@@ -57,6 +59,7 @@
             this.gtpPersonInfo.SuspendLayout();
             this.gtpLoginInfo.SuspendLayout();
             this.pnlLoginInfo.SuspendLayout();
+            this.gpPasswordsPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -64,12 +67,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
-            // lblTitle
+            // lblHeader
             // 
             this.lblHeader.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.lblHeader.Location = new System.Drawing.Point(0, 49);
-            this.lblHeader.Name = "lblTitle";
+            this.lblHeader.Name = "lblHeader";
             this.lblHeader.Size = new System.Drawing.Size(1051, 33);
             this.lblHeader.TabIndex = 24;
             this.lblHeader.Text = "Add New Person";
@@ -170,13 +173,9 @@
             // 
             // pnlLoginInfo
             // 
+            this.pnlLoginInfo.Controls.Add(this.gbtnChangePassword);
+            this.pnlLoginInfo.Controls.Add(this.gpPasswordsPanel);
             this.pnlLoginInfo.Controls.Add(this.gchkIsActive);
-            this.pnlLoginInfo.Controls.Add(this.pictureBox3);
-            this.pnlLoginInfo.Controls.Add(this.pictureBox5);
-            this.pnlLoginInfo.Controls.Add(this.label4);
-            this.pnlLoginInfo.Controls.Add(this.gtxtConfirmPassword);
-            this.pnlLoginInfo.Controls.Add(this.label3);
-            this.pnlLoginInfo.Controls.Add(this.gtxtPassword);
             this.pnlLoginInfo.Controls.Add(this.lblUserID);
             this.pnlLoginInfo.Controls.Add(this.pictureBox1);
             this.pnlLoginInfo.Controls.Add(this.pictureBox2);
@@ -189,32 +188,23 @@
             this.pnlLoginInfo.Size = new System.Drawing.Size(982, 490);
             this.pnlLoginInfo.TabIndex = 33;
             // 
-            // gchkIsActive
+            // gpPasswordsPanel
             // 
-            this.gchkIsActive.Animated = true;
-            this.gchkIsActive.AutoSize = true;
-            this.gchkIsActive.Checked = true;
-            this.gchkIsActive.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.gchkIsActive.CheckedState.BorderRadius = 2;
-            this.gchkIsActive.CheckedState.BorderThickness = 1;
-            this.gchkIsActive.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.gchkIsActive.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.gchkIsActive.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.gchkIsActive.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gchkIsActive.Location = new System.Drawing.Point(276, 220);
-            this.gchkIsActive.Name = "gchkIsActive";
-            this.gchkIsActive.Size = new System.Drawing.Size(88, 24);
-            this.gchkIsActive.TabIndex = 32;
-            this.gchkIsActive.Text = "Is Active";
-            this.gchkIsActive.UncheckedState.BorderColor = System.Drawing.Color.Black;
-            this.gchkIsActive.UncheckedState.BorderRadius = 2;
-            this.gchkIsActive.UncheckedState.BorderThickness = 1;
-            this.gchkIsActive.UncheckedState.FillColor = System.Drawing.Color.White;
+            this.gpPasswordsPanel.Controls.Add(this.pictureBox3);
+            this.gpPasswordsPanel.Controls.Add(this.pictureBox5);
+            this.gpPasswordsPanel.Controls.Add(this.label4);
+            this.gpPasswordsPanel.Controls.Add(this.gtxtConfirmPassword);
+            this.gpPasswordsPanel.Controls.Add(this.label3);
+            this.gpPasswordsPanel.Controls.Add(this.gtxtPassword);
+            this.gpPasswordsPanel.Location = new System.Drawing.Point(26, 108);
+            this.gpPasswordsPanel.Name = "gpPasswordsPanel";
+            this.gpPasswordsPanel.Size = new System.Drawing.Size(440, 108);
+            this.gpPasswordsPanel.TabIndex = 33;
             // 
             // pictureBox3
             // 
             this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
-            this.pictureBox3.Location = new System.Drawing.Point(224, 171);
+            this.pictureBox3.Location = new System.Drawing.Point(198, 63);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(29, 26);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -224,7 +214,7 @@
             // pictureBox5
             // 
             this.pictureBox5.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox5.Image")));
-            this.pictureBox5.Location = new System.Drawing.Point(224, 126);
+            this.pictureBox5.Location = new System.Drawing.Point(198, 18);
             this.pictureBox5.Name = "pictureBox5";
             this.pictureBox5.Size = new System.Drawing.Size(29, 26);
             this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -235,7 +225,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(34, 171);
+            this.label4.Location = new System.Drawing.Point(8, 63);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(156, 20);
             this.label4.TabIndex = 28;
@@ -255,7 +245,7 @@
             this.gtxtConfirmPassword.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gtxtConfirmPassword.ForeColor = System.Drawing.Color.Black;
             this.gtxtConfirmPassword.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.gtxtConfirmPassword.Location = new System.Drawing.Point(273, 164);
+            this.gtxtConfirmPassword.Location = new System.Drawing.Point(247, 56);
             this.gtxtConfirmPassword.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.gtxtConfirmPassword.MaxLength = 255;
             this.gtxtConfirmPassword.Name = "gtxtConfirmPassword";
@@ -270,7 +260,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(93, 126);
+            this.label3.Location = new System.Drawing.Point(67, 18);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(97, 20);
             this.label3.TabIndex = 25;
@@ -290,7 +280,7 @@
             this.gtxtPassword.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gtxtPassword.ForeColor = System.Drawing.Color.Black;
             this.gtxtPassword.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.gtxtPassword.Location = new System.Drawing.Point(273, 118);
+            this.gtxtPassword.Location = new System.Drawing.Point(247, 10);
             this.gtxtPassword.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.gtxtPassword.MaxLength = 255;
             this.gtxtPassword.Name = "gtxtPassword";
@@ -300,6 +290,54 @@
             this.gtxtPassword.Size = new System.Drawing.Size(170, 36);
             this.gtxtPassword.TabIndex = 24;
             this.gtxtPassword.Validating += new System.ComponentModel.CancelEventHandler(this.gtxtPassword_Validating);
+            // 
+            // gbtnChangePassword
+            // 
+            this.gbtnChangePassword.Animated = true;
+            this.gbtnChangePassword.AutoRoundedCorners = true;
+            this.gbtnChangePassword.BackColor = System.Drawing.Color.Transparent;
+            this.gbtnChangePassword.BorderThickness = 1;
+            this.gbtnChangePassword.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.gbtnChangePassword.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.gbtnChangePassword.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.gbtnChangePassword.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.gbtnChangePassword.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.gbtnChangePassword.FillColor = System.Drawing.Color.White;
+            this.gbtnChangePassword.FocusedColor = System.Drawing.SystemColors.MenuHighlight;
+            this.gbtnChangePassword.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gbtnChangePassword.ForeColor = System.Drawing.Color.Black;
+            this.gbtnChangePassword.HoverState.FillColor = System.Drawing.Color.SlateBlue;
+            this.gbtnChangePassword.HoverState.ForeColor = System.Drawing.Color.White;
+            this.gbtnChangePassword.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.gbtnChangePassword.ImageSize = new System.Drawing.Size(35, 35);
+            this.gbtnChangePassword.Location = new System.Drawing.Point(411, 222);
+            this.gbtnChangePassword.Name = "gbtnChangePassword";
+            this.gbtnChangePassword.Size = new System.Drawing.Size(190, 45);
+            this.gbtnChangePassword.TabIndex = 28;
+            this.gbtnChangePassword.Text = "Change Password";
+            this.gbtnChangePassword.Click += new System.EventHandler(this.gbtnChangePassword_Click);
+            // 
+            // gchkIsActive
+            // 
+            this.gchkIsActive.Animated = true;
+            this.gchkIsActive.AutoSize = true;
+            this.gchkIsActive.Checked = true;
+            this.gchkIsActive.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.gchkIsActive.CheckedState.BorderRadius = 2;
+            this.gchkIsActive.CheckedState.BorderThickness = 1;
+            this.gchkIsActive.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.gchkIsActive.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.gchkIsActive.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.gchkIsActive.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gchkIsActive.Location = new System.Drawing.Point(531, 41);
+            this.gchkIsActive.Name = "gchkIsActive";
+            this.gchkIsActive.Size = new System.Drawing.Size(88, 24);
+            this.gchkIsActive.TabIndex = 32;
+            this.gchkIsActive.Text = "Is Active";
+            this.gchkIsActive.UncheckedState.BorderColor = System.Drawing.Color.Black;
+            this.gchkIsActive.UncheckedState.BorderRadius = 2;
+            this.gchkIsActive.UncheckedState.BorderThickness = 1;
+            this.gchkIsActive.UncheckedState.FillColor = System.Drawing.Color.White;
             // 
             // lblUserID
             // 
@@ -456,6 +494,8 @@
             this.gtpLoginInfo.ResumeLayout(false);
             this.pnlLoginInfo.ResumeLayout(false);
             this.pnlLoginInfo.PerformLayout();
+            this.gpPasswordsPanel.ResumeLayout(false);
+            this.gpPasswordsPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -490,5 +530,7 @@
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private DVLDPresentation.Controls.ctrlPersonCardWithFilter ctrlPersonCardWithFilter1;
         private System.Windows.Forms.Panel pnlLoginInfo;
+        private Guna.UI2.WinForms.Guna2Button gbtnChangePassword;
+        private Guna.UI2.WinForms.Guna2Panel gpPasswordsPanel;
     }
 }

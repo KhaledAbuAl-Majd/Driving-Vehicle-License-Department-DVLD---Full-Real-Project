@@ -7,6 +7,7 @@ using System.Reflection.Emit;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
+using DVLDConstant;
 using DVLDDataAccess;
 
 namespace DVLDBusiness
@@ -20,7 +21,17 @@ namespace DVLDBusiness
 
         public clsPerson PersonInfo;
         public string UserName { get; set; }
+
+        /// <summary>
+        /// HashedPassword
+        /// </summary>
         public string Password { get; set; }
+
+        /// <summary>
+        /// Salt to add to password before hashing
+        /// </summary>
+        public string Salt { get;private set; }
+
         public bool IsActive { get; set; }
 
         public clsUser()
@@ -33,36 +44,40 @@ namespace DVLDBusiness
             Mode = enMode.AddNew;
         }
 
-        private clsUser(int UserID,int PersonID,string UserName,string Password,bool IsActive)
+        private clsUser(int UserID,int PersonID,string UserName,string Password,string Salt,bool IsActive)
         {
             this.UserID = UserID;
             this.PersonID = PersonID;
             this.PersonInfo = clsPerson.Find(PersonID);
             this.UserName = UserName;
             this.Password = Password;
+            this.Salt = Salt;
             this.IsActive = IsActive;
             this.Mode = enMode.Update;
         }
 
         private bool _AddNewUser()
         {
-            UserID = clsUserData.AddNewUser(this.PersonID, this.UserName, this.Password, this.IsActive);
+            var result = clsSecurity.HashPasswordWithSalt(this.Password);
+            this.Salt = result.Salt;
+            this.Password = result.HashedPassword;
 
+            UserID = clsUserData.AddNewUser(this.PersonID, this.UserName, this.Password, this.Salt, this.IsActive);
             return (UserID != -1);
         }
         private bool _UpdateUser()
         {
-            return clsUserData.UpdateUser(this.UserID, this.PersonID,this.UserName, this.Password, this.IsActive);
+            return clsUserData.UpdateUser(this.UserID, this.PersonID,this.UserName, this.IsActive);
         }
         public static clsUser FindByUserID(int UserID)
         {
             int PersonID = -1;
-            string UserName = "", Password = "";
+            string UserName = "", Password = "",Salt = "";
             bool IsActive = false;
 
-            if (clsUserData.GetUserInfoByUserID(UserID, ref PersonID, ref UserName, ref Password, ref IsActive))
+            if (clsUserData.GetUserInfoByUserID(UserID, ref PersonID, ref UserName, ref Password,ref Salt, ref IsActive))
             {
-                return new clsUser(UserID, PersonID, UserName, Password, IsActive);
+                return new clsUser(UserID, PersonID, UserName, Password, Salt, IsActive);
             }
             else
                 return null;
@@ -70,24 +85,25 @@ namespace DVLDBusiness
         public static clsUser FindByPersonID(int PersonID)
         {
             int UserID = -1;
-            string UserName = "", Password = "";
+            string UserName = "", Password = "", Salt = "";
             bool IsActive = false;
 
-            if (clsUserData.GetUserInfoByPersonID(PersonID,ref UserID, ref UserName, ref Password, ref IsActive))
+            if (clsUserData.GetUserInfoByPersonID(PersonID, ref UserID, ref UserName, ref Password, ref Salt, ref IsActive))
             {
-                return new clsUser(UserID, PersonID, UserName, Password, IsActive);
+                return new clsUser(UserID, PersonID, UserName, Password, Salt, IsActive);
             }
             else
                 return null;
         }
-        public static clsUser FindByUserNameAndPassword(string UserName , string Password )
+        public static clsUser FindByUserNameAndPassword(string UserName, string Password)
         {
-            int UserID = -1 , PersonID = -1;        
+            int UserID = -1, PersonID = -1;
+            string Salt = "";
             bool IsActive = false;
 
-            if (clsUserData.GetUserInfoByUsernameAndPassword(UserName, Password, ref UserID, ref PersonID, ref IsActive))
+            if (clsUserData.GetUserInfoByUsernameAndPassword(UserName, Password, ref UserID, ref PersonID, ref Salt, ref IsActive))
             {
-                return new clsUser(UserID, PersonID, UserName, Password, IsActive);
+                return new clsUser(UserID, PersonID, UserName, Password, Salt, IsActive);
             }
             else
                 return null;
@@ -133,7 +149,16 @@ namespace DVLDBusiness
         }
         public bool ChangePassword()
         {
-            return clsUserData.ChangePassword(this.UserID, this.Password);
+            var result = clsSecurity.HashPasswordWithSalt(this.Password);
+            this.Salt = result.Salt;
+            this.Password = result.HashedPassword;
+
+            return clsUserData.ChangePassword(this.UserID, this.Password, this.Salt);
+        }
+
+        public static string GetSaltByUserName(string UserName)
+        {
+            return clsUserData.GetSaltByUserName(UserName);
         }
     }
 }

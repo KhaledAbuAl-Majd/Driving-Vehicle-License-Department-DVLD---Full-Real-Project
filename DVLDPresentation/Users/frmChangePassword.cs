@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DVLDBusiness;
+using DVLDConstant;
 using Guna.UI2.WinForms;
 
 namespace DVLDPresentation.Users
@@ -57,7 +58,7 @@ namespace DVLDPresentation.Users
                 return;
             }
 
-            if (gtxtCurrentPassword.Text.Trim() != _User.Password)
+            if (clsSecurity.ComputeHash(gtxtCurrentPassword.Text.Trim() + _User.Salt) != _User.Password)
             {
                 e.Cancel = true;
                 errorProvider1.SetError(gtxtCurrentPassword, "Current password is wrong!");
@@ -115,11 +116,15 @@ namespace DVLDPresentation.Users
                 MessageBox.Show("Password Changed Successfully.",
                   "Saved.", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 _ResetDefaultValues();
+                clsLogger.LogAtEventLog($"{_User.UserName}'s Password Changed by {_User.UserName} at {DateTime.Now}", System.Diagnostics.EventLogEntryType.Information);
             }
             else
             {
                 MessageBox.Show("An Error Occured, Password did not change.",
                   "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                clsLogger.LogAtEventLog($"{_User.UserName}'s Password failed to change by {_User.UserName} at {DateTime.Now}", System.Diagnostics.EventLogEntryType.Error);
+
             }
 
         }
