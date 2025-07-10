@@ -3,18 +3,16 @@
   "WorkspaceRootPath": "E:\\Visual Studio\\source\\Projects\\Course19\\DVLDProject\\DVLDPresentation\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{0ED341D7-871B-430D-AF5D-AC132FF6147A}|DVLD Presentation.csproj|e:\\visual studio\\source\\projects\\course19\\dvldproject\\dvldpresentation\\people\\frmlistpeople.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0ED341D7-871B-430D-AF5D-AC132FF6147A}|DVLD Presentation.csproj|solutionrelative:people\\frmlistpeople.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{0ED341D7-871B-430D-AF5D-AC132FF6147A}|DVLD Presentation.csproj|E:\\Visual Studio\\source\\Projects\\Course19\\DVLDProject\\DVLDPresentation\\login\\frmlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0ED341D7-871B-430D-AF5D-AC132FF6147A}|DVLD Presentation.csproj|solutionrelative:login\\frmlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0ED341D7-871B-430D-AF5D-AC132FF6147A}|DVLD Presentation.csproj|e:\\visual studio\\source\\projects\\course19\\dvldproject\\dvldpresentation\\people\\frmlistpeople.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{0ED341D7-871B-430D-AF5D-AC132FF6147A}|DVLD Presentation.csproj|solutionrelative:people\\frmlistpeople.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{0ED341D7-871B-430D-AF5D-AC132FF6147A}|DVLD Presentation.csproj|e:\\visual studio\\source\\projects\\course19\\dvldproject\\dvldpresentation\\global classes\\clsglobal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0ED341D7-871B-430D-AF5D-AC132FF6147A}|DVLD Presentation.csproj|solutionrelative:global classes\\clsglobal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1A8B2921-251A-489E-A8FA-03CB0BBF34B1}|..\\DVLDDataAccess\\DVLD Data Access.csproj|e:\\visual studio\\source\\projects\\course19\\dvldproject\\dvlddataaccess\\clsuserdata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CF508DC9-C57B-4BA2-9C24-58BCD1C3A9EB}|..\\DVLDConstant\\DVLDCommon.csproj|e:\\visual studio\\source\\projects\\course19\\dvldproject\\dvldconstant\\clssecurity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{0ED341D7-871B-430D-AF5D-AC132FF6147A}|DVLD Presentation.csproj|E:\\Visual Studio\\source\\Projects\\Course19\\DVLDProject\\DVLDPresentation\\login\\frmlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{0ED341D7-871B-430D-AF5D-AC132FF6147A}|DVLD Presentation.csproj|solutionrelative:login\\frmlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
   "DocumentGroupContainers": [
@@ -24,7 +22,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Bookmark",
@@ -44,54 +42,41 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "frmListPeople.cs",
-              "DocumentMoniker": "E:\\Visual Studio\\source\\Projects\\Course19\\DVLDProject\\DVLDPresentation\\People\\frmListPeople.cs",
-              "RelativeDocumentMoniker": "People\\frmListPeople.cs",
-              "ToolTip": "E:\\Visual Studio\\source\\Projects\\Course19\\DVLDProject\\DVLDPresentation\\People\\frmListPeople.cs",
-              "RelativeToolTip": "People\\frmListPeople.cs",
-              "ViewState": "AgIAAP8AAAAAAAAAAAAewBUBAABvAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "clsGlobal.cs",
+              "DocumentMoniker": "E:\\Visual Studio\\source\\Projects\\Course19\\DVLDProject\\DVLDPresentation\\Global Classes\\clsGlobal.cs",
+              "RelativeDocumentMoniker": "Global Classes\\clsGlobal.cs",
+              "ToolTip": "E:\\Visual Studio\\source\\Projects\\Course19\\DVLDProject\\DVLDPresentation\\Global Classes\\clsGlobal.cs",
+              "RelativeToolTip": "Global Classes\\clsGlobal.cs",
+              "ViewState": "AgIAAFIAAAAAAAAAAAA4wGsAAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-21T18:09:33.675Z",
+              "WhenOpened": "2025-07-10T11:40:27.648Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "frmListPeople.cs [Design]",
-              "DocumentMoniker": "E:\\Visual Studio\\source\\Projects\\Course19\\DVLDProject\\DVLDPresentation\\People\\frmListPeople.cs",
-              "RelativeDocumentMoniker": "People\\frmListPeople.cs",
-              "ToolTip": "E:\\Visual Studio\\source\\Projects\\Course19\\DVLDProject\\DVLDPresentation\\People\\frmListPeople.cs [Design]",
-              "RelativeToolTip": "People\\frmListPeople.cs [Design]",
+              "DocumentIndex": 0,
+              "Title": "frmLogin.cs",
+              "DocumentMoniker": "E:\\Visual Studio\\source\\Projects\\Course19\\DVLDProject\\DVLDPresentation\\Login\\frmLogin.cs",
+              "RelativeDocumentMoniker": "Login\\frmLogin.cs",
+              "ToolTip": "E:\\Visual Studio\\source\\Projects\\Course19\\DVLDProject\\DVLDPresentation\\Login\\frmLogin.cs",
+              "RelativeToolTip": "Login\\frmLogin.cs",
+              "ViewState": "AgIAAGMAAAAAAAAAAAAYwGQAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-21T18:09:30.462Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2025-07-10T11:38:52.903Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "clsUserData.cs",
-              "DocumentMoniker": "E:\\Visual Studio\\source\\Projects\\Course19\\DVLDProject\\DVLDDataAccess\\clsUserData.cs",
-              "RelativeDocumentMoniker": "..\\DVLDDataAccess\\clsUserData.cs",
-              "ToolTip": "E:\\Visual Studio\\source\\Projects\\Course19\\DVLDProject\\DVLDDataAccess\\clsUserData.cs",
-              "RelativeToolTip": "..\\DVLDDataAccess\\clsUserData.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAJMBAAApAAAAAAAAAA==",
+              "Title": "frmLogin.cs [Design]",
+              "DocumentMoniker": "E:\\Visual Studio\\source\\Projects\\Course19\\DVLDProject\\DVLDPresentation\\Login\\frmLogin.cs",
+              "RelativeDocumentMoniker": "Login\\frmLogin.cs",
+              "ToolTip": "E:\\Visual Studio\\source\\Projects\\Course19\\DVLDProject\\DVLDPresentation\\Login\\frmLogin.cs [Design]",
+              "RelativeToolTip": "Login\\frmLogin.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-21T14:38:50.092Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "clsSecurity.cs",
-              "DocumentMoniker": "E:\\Visual Studio\\source\\Projects\\Course19\\DVLDProject\\DVLDConstant\\clsSecurity.cs",
-              "RelativeDocumentMoniker": "..\\DVLDConstant\\clsSecurity.cs",
-              "ToolTip": "E:\\Visual Studio\\source\\Projects\\Course19\\DVLDProject\\DVLDConstant\\clsSecurity.cs",
-              "RelativeToolTip": "..\\DVLDConstant\\clsSecurity.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAuAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-21T14:09:11.675Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-10T11:38:36.882Z",
+              "EditorCaption": " [Design]"
             }
           ]
         }

@@ -58,7 +58,7 @@ namespace DVLDBusiness
 
         private bool _AddNewUser()
         {
-            var result = clsSecurity.HashPasswordWithSalt(this.Password);
+            var result = clsHashing.HashPasswordWithSalt(this.Password);
             this.Salt = result.Salt;
             this.Password = result.HashedPassword;
 
@@ -149,7 +149,7 @@ namespace DVLDBusiness
         }
         public bool ChangePassword()
         {
-            var result = clsSecurity.HashPasswordWithSalt(this.Password);
+            var result = clsHashing.HashPasswordWithSalt(this.Password);
             this.Salt = result.Salt;
             this.Password = result.HashedPassword;
 
