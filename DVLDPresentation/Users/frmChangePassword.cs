@@ -58,7 +58,7 @@ namespace DVLDPresentation.Users
                 return;
             }
 
-            if (clsSecurity.ComputeHash(gtxtCurrentPassword.Text.Trim() + _User.Salt) != _User.Password)
+            if (clsHashing.ComputeHash(gtxtCurrentPassword.Text.Trim() + _User.Salt) != _User.Password)
             {
                 e.Cancel = true;
                 errorProvider1.SetError(gtxtCurrentPassword, "Current password is wrong!");

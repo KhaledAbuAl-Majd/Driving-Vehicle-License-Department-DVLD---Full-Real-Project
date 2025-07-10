@@ -58,7 +58,7 @@ namespace DVLDPresentation.Login_MainPage
 
             if (Salt != null)
             {
-                string Hashedpassword = clsSecurity.ComputeHash(clsSecurity.GetSaltedPassword(Enteredpassword, Salt));
+                string Hashedpassword = clsHashing.ComputeHash(clsHashing.GetSaltedPassword(Enteredpassword, Salt));
 
                 clsUser User = clsUser.FindByUserNameAndPassword(EnteredUserName, Hashedpassword);
 

@@ -21,6 +21,8 @@ namespace DVLDPresentation
             public static string UserNameValueName = "UserName";
 
             public static string PasswordValueName = "Password";
+
+            public static string EnctyptionKey = "A@*a13!~k@+1k=&5";
         }
         public static clsUser CurrentUser { get; set; }
 
@@ -32,6 +34,11 @@ namespace DVLDPresentation
             }
         }
 
+        /// <summary>
+        /// Store UserName & Password After Encrypt it at Windows Registery 
+        /// If UserName Or Password = null, it will remove the old value from registery
+        /// </summary>
+        /// <returns>Success Value</returns>
         public static bool RememberUsernameAndPassword(string Username, string Password)
         {
             try
@@ -49,9 +56,12 @@ namespace DVLDPresentation
                             }
                             else
                             {
-                                key.SetValue(clsRegisteryConstants.UserNameValueName, Username, RegistryValueKind.String);
+                                string EncryptedUserName = clsEncryption.clsSymmetricEncryption.Encrypt(Username, clsRegisteryConstants.EnctyptionKey);
+                                string EncryptedPassword = clsEncryption.clsSymmetricEncryption.Encrypt(Password, clsRegisteryConstants.EnctyptionKey);
 
-                                key.SetValue(clsRegisteryConstants.PasswordValueName, Password, RegistryValueKind.String);
+                                key.SetValue(clsRegisteryConstants.UserNameValueName, EncryptedUserName, RegistryValueKind.String);
+
+                                key.SetValue(clsRegisteryConstants.PasswordValueName, EncryptedPassword, RegistryValueKind.String);
                             }
                         }
                         else
@@ -80,12 +90,15 @@ namespace DVLDPresentation
                     {
                         if (key != null)
                         {
-                            Username = key.GetValue(clsRegisteryConstants.UserNameValueName) as string;
+                           string EncryptedUsername = key.GetValue(clsRegisteryConstants.UserNameValueName) as string;
 
-                            Password = key.GetValue(clsRegisteryConstants.PasswordValueName) as string;
+                           string EncryptedPassword = key.GetValue(clsRegisteryConstants.PasswordValueName) as string;
 
-                            if (Username == null || Password == null)
+                            if (EncryptedUsername == null || EncryptedPassword == null)
                                 return false;
+
+                            Username = clsEncryption.clsSymmetricEncryption.Decrypt(EncryptedUsername, clsRegisteryConstants.EnctyptionKey);
+                            Password = clsEncryption.clsSymmetricEncryption.Decrypt(EncryptedPassword, clsRegisteryConstants.EnctyptionKey);
                         }
                     }
 
