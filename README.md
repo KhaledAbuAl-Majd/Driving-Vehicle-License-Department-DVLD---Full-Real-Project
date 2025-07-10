@@ -16,6 +16,16 @@ This project is a comprehensive **Driving & Vehicle License Department (DVLD)** 
 * **Database**: Microsoft SQL Server
 * **Architecture**: 3-Tier (Presentation, Business Logic, Data Access)
 * **Object-Oriented Programming (OOP)**: The project is built using Object-Oriented Programming (OOP) principles to ensure better structure, modularity, and code reusability.
+* **Security Enhancements**:
+
+  * 🔒 SHA-256 Hashing with Salt for password storage (with `Salt` column added to Users table)
+  * 🔒 AES Symmetric Encryption for storing credentials in Windows Registry
+  * 🔐 Event Logging using Windows Event Log for error tracking and diagnostics
+  * ⚙️ Windows Registry is used instead of plain text file for "Remember Me" credentials
+  * ⚙️ Connection string is now stored and managed via `App.config`
+
+---
+
 
 
 ## Key Features
@@ -33,9 +43,11 @@ This project is a comprehensive **Driving & Vehicle License Department (DVLD)** 
    * Ensure no duplicate or pending requests per user and per service
    * Calculate and record application fees (standard fee: \$5)
 3. **User & Person Management**
+   * CRUD for system users and roles
+   * Secure user registration with salted password hashing (SHA-256)
+   * Store usernames/passwords encrypted in Windows Registry (AES)
+   * Prevent duplicate national IDs
 
-   * CRUD operations for system users (roles)
-   * CRUD operations for personal records (no duplicate national IDs)
 4. **Testing & Validation**
 
    * Schedule and record vision, theoretical, and practical driving tests
@@ -48,7 +60,7 @@ This project is a comprehensive **Driving & Vehicle License Department (DVLD)** 
 6. **Audit & Logging**
 
    * Record every operation with timestamp and responsible user
-   * Filter and review actions for compliance
+   * Log errors and system issues via Windows Event Log
 7. **Search & Reporting**
 
    * Query licenses by national ID or license number
@@ -56,16 +68,21 @@ This project is a comprehensive **Driving & Vehicle License Department (DVLD)** 
 
 ## Installation & Setup
 
-1. **Clone the Repository** 
-2. **Restore Database**
-3. **Build & Run**
+1. **Clone the Repository**
+2. **Restore the SQL Server Database**
+3. **Configure the Project**
 
-   * Open DVLD Project File
-   * Open DVLDPresentation File
-   * Open the solution file `DVLDPresentation.sln` in Visual Studio.
-   * Change Connection String From Data Access -> clsDataAccessSettings
-   * Build the solution and run the application.
-   * Enter Username(Admin) , Password(1234)
+   * Open `DVLDPresentation.sln` in Visual Studio
+   * Update the connection string in `App.config` (no hard-coded strings)
+4. **Run the Application**
+
+   * Login using:
+
+     * Username: `Admin`
+     * Password: `1234` (stored securely via hashing)
+
+---
+
 
 ## Project Architecture
 
@@ -87,3 +104,14 @@ Presentation Layer (Windows Forms)  <--->  Business Logic Layer  <--->  Data Acc
 6. **Renewals & Replacements**: Process renewals, lost, or damaged license requests.
 7. **International Permits**: Issue or revoke international driving permits for valid class-3 license holders.
 8. **Administration**: Manage system users, adjust fees, license class rules, and audit logs.
+
+---
+## Security Features Summary
+
+| Feature                         | Description                                                       |
+|----------------------------------|-------------------------------------------------------------------|
+| Password Hashing                | SHA-256 + Salt (per user)                                        |
+| Credentials Storage             | Encrypted using AES and saved in Windows Registry                |
+| Error Logging                   | Written to Windows Event Log                                     |
+| Connection String               | Managed via `App.config` for security and flexibility            |
+| "Remember Me" Implementation    | Stores credentials in encrypted form in Registry (not plain text)|
