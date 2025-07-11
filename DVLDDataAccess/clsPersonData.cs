@@ -3,6 +3,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Runtime.InteropServices;
+using System.Threading.Tasks;
 using DVLDConstant;
 
 namespace DVLDDataAccess
@@ -275,7 +276,7 @@ namespace DVLDDataAccess
             return Result;
         }
 
-        public static DataTable GetAllPeople()
+        public static async Task<DataTable> GetAllPeople()
         {
             DataTable People = new DataTable();
 
@@ -295,13 +296,13 @@ namespace DVLDDataAccess
 
             try
             {
-                connection.Open();
+                await connection.OpenAsync();
 
-                SqlDataReader reader = command.ExecuteReader();
+                SqlDataReader reader = await command.ExecuteReaderAsync();
 
                 if (reader.HasRows)
                 {
-                    People.Load(reader);
+                    await Task.Run(() => People.Load(reader));
                 }
 
                 reader.Close();

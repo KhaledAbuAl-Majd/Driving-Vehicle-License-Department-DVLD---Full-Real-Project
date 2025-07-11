@@ -3,16 +3,15 @@
   "WorkspaceRootPath": "E:\\Visual Studio\\source\\Projects\\Course19\\DVLDProject\\DVLDPresentation\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{0ED341D7-871B-430D-AF5D-AC132FF6147A}|DVLD Presentation.csproj|E:\\Visual Studio\\source\\Projects\\Course19\\DVLDProject\\DVLDPresentation\\login\\frmlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0ED341D7-871B-430D-AF5D-AC132FF6147A}|DVLD Presentation.csproj|solutionrelative:login\\frmlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{0ED341D7-871B-430D-AF5D-AC132FF6147A}|DVLD Presentation.csproj|e:\\visual studio\\source\\projects\\course19\\dvldproject\\dvldpresentation\\people\\frmlistpeople.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0ED341D7-871B-430D-AF5D-AC132FF6147A}|DVLD Presentation.csproj|solutionrelative:people\\frmlistpeople.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0ED341D7-871B-430D-AF5D-AC132FF6147A}|DVLD Presentation.csproj|e:\\visual studio\\source\\projects\\course19\\dvldproject\\dvldpresentation\\global classes\\clsglobal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0ED341D7-871B-430D-AF5D-AC132FF6147A}|DVLD Presentation.csproj|solutionrelative:global classes\\clsglobal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{0ED341D7-871B-430D-AF5D-AC132FF6147A}|DVLD Presentation.csproj|E:\\Visual Studio\\source\\Projects\\Course19\\DVLDProject\\DVLDPresentation\\people\\frmlistpeople.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{0ED341D7-871B-430D-AF5D-AC132FF6147A}|DVLD Presentation.csproj|solutionrelative:people\\frmlistpeople.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0ED341D7-871B-430D-AF5D-AC132FF6147A}|DVLD Presentation.csproj|E:\\Visual Studio\\source\\Projects\\Course19\\DVLDProject\\DVLDPresentation\\login\\frmlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{0ED341D7-871B-430D-AF5D-AC132FF6147A}|DVLD Presentation.csproj|solutionrelative:login\\frmlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{EF75CFF7-DA8E-4352-8155-14FC3DCB47E9}|..\\DVLDBusiness\\DVLD Business.csproj|e:\\visual studio\\source\\projects\\course19\\dvldproject\\dvldbusiness\\clsperson.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -42,40 +41,40 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "clsGlobal.cs",
-              "DocumentMoniker": "E:\\Visual Studio\\source\\Projects\\Course19\\DVLDProject\\DVLDPresentation\\Global Classes\\clsGlobal.cs",
-              "RelativeDocumentMoniker": "Global Classes\\clsGlobal.cs",
-              "ToolTip": "E:\\Visual Studio\\source\\Projects\\Course19\\DVLDProject\\DVLDPresentation\\Global Classes\\clsGlobal.cs",
-              "RelativeToolTip": "Global Classes\\clsGlobal.cs",
-              "ViewState": "AgIAAFIAAAAAAAAAAAA4wGsAAAAMAAAAAAAAAA==",
+              "DocumentIndex": 2,
+              "Title": "clsPerson.cs",
+              "DocumentMoniker": "E:\\Visual Studio\\source\\Projects\\Course19\\DVLDProject\\DVLDBusiness\\clsPerson.cs",
+              "RelativeDocumentMoniker": "..\\DVLDBusiness\\clsPerson.cs",
+              "ToolTip": "E:\\Visual Studio\\source\\Projects\\Course19\\DVLDProject\\DVLDBusiness\\clsPerson.cs",
+              "RelativeToolTip": "..\\DVLDBusiness\\clsPerson.cs",
+              "ViewState": "AgIAAIgAAAAAAAAAAAAAwK4AAAAzAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-10T11:40:27.648Z",
+              "WhenOpened": "2025-07-11T18:09:25.272Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "frmLogin.cs",
-              "DocumentMoniker": "E:\\Visual Studio\\source\\Projects\\Course19\\DVLDProject\\DVLDPresentation\\Login\\frmLogin.cs",
-              "RelativeDocumentMoniker": "Login\\frmLogin.cs",
-              "ToolTip": "E:\\Visual Studio\\source\\Projects\\Course19\\DVLDProject\\DVLDPresentation\\Login\\frmLogin.cs",
-              "RelativeToolTip": "Login\\frmLogin.cs",
-              "ViewState": "AgIAAGMAAAAAAAAAAAAYwGQAAAAIAAAAAAAAAA==",
+              "Title": "frmListPeople.cs",
+              "DocumentMoniker": "E:\\Visual Studio\\source\\Projects\\Course19\\DVLDProject\\DVLDPresentation\\People\\frmListPeople.cs",
+              "RelativeDocumentMoniker": "People\\frmListPeople.cs",
+              "ToolTip": "E:\\Visual Studio\\source\\Projects\\Course19\\DVLDProject\\DVLDPresentation\\People\\frmListPeople.cs*",
+              "RelativeToolTip": "People\\frmListPeople.cs*",
+              "ViewState": "AgIAAHgAAAAAAAAAAAAcwO4AAAArAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-10T11:38:52.903Z",
+              "WhenOpened": "2025-07-11T17:58:00.846Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "frmLogin.cs [Design]",
-              "DocumentMoniker": "E:\\Visual Studio\\source\\Projects\\Course19\\DVLDProject\\DVLDPresentation\\Login\\frmLogin.cs",
-              "RelativeDocumentMoniker": "Login\\frmLogin.cs",
-              "ToolTip": "E:\\Visual Studio\\source\\Projects\\Course19\\DVLDProject\\DVLDPresentation\\Login\\frmLogin.cs [Design]",
-              "RelativeToolTip": "Login\\frmLogin.cs [Design]",
+              "DocumentIndex": 1,
+              "Title": "frmListPeople.cs [Design]",
+              "DocumentMoniker": "E:\\Visual Studio\\source\\Projects\\Course19\\DVLDProject\\DVLDPresentation\\People\\frmListPeople.cs",
+              "RelativeDocumentMoniker": "People\\frmListPeople.cs",
+              "ToolTip": "E:\\Visual Studio\\source\\Projects\\Course19\\DVLDProject\\DVLDPresentation\\People\\frmListPeople.cs [Design]*",
+              "RelativeToolTip": "People\\frmListPeople.cs [Design]*",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-10T11:38:36.882Z",
+              "WhenOpened": "2025-07-11T17:57:58.175Z",
               "EditorCaption": " [Design]"
             }
           ]

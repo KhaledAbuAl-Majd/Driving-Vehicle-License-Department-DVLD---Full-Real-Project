@@ -170,9 +170,9 @@ namespace DVLDBusiness
             return false;
         }
 
-        public static DataTable GetAllPeople()
+        public static async Task<DataTable> GetAllPeople()
         {
-            return clsPersonData.GetAllPeople();
+            return await clsPersonData.GetAllPeople();
         }
 
         static void _DeleteImageAfterDeletePerson(string ImagePath)
