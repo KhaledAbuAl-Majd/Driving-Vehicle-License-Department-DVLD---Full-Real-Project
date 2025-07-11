@@ -40,6 +40,7 @@
             this.dgvPeople = new System.Windows.Forms.DataGridView();
             this.cmpPeopleOptoins = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.showDetailsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.showPersonLicenseHistoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.addNewPersonToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -53,8 +54,8 @@
             this.gbtnClose = new Guna.UI2.WinForms.Guna2Button();
             this.btnAddPerson = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.showPersonLicenseHistoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnRefresh = new System.Windows.Forms.Button();
+            this.SearchAfterTimerFinish = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dgvPeople)).BeginInit();
             this.cmpPeopleOptoins.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -197,7 +198,7 @@
             this.sendEmailToolStripMenuItem,
             this.phoneCallToolStripMenuItem});
             this.cmpPeopleOptoins.Name = "cmpPeopleOptoins";
-            this.cmpPeopleOptoins.Size = new System.Drawing.Size(258, 304);
+            this.cmpPeopleOptoins.Size = new System.Drawing.Size(258, 282);
             // 
             // showDetailsToolStripMenuItem
             // 
@@ -208,6 +209,16 @@
             this.showDetailsToolStripMenuItem.Size = new System.Drawing.Size(257, 38);
             this.showDetailsToolStripMenuItem.Text = "Show Details";
             this.showDetailsToolStripMenuItem.Click += new System.EventHandler(this.showDetailsToolStripMenuItem_Click);
+            // 
+            // showPersonLicenseHistoryToolStripMenuItem
+            // 
+            this.showPersonLicenseHistoryToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.showPersonLicenseHistoryToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("showPersonLicenseHistoryToolStripMenuItem.Image")));
+            this.showPersonLicenseHistoryToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.showPersonLicenseHistoryToolStripMenuItem.Name = "showPersonLicenseHistoryToolStripMenuItem";
+            this.showPersonLicenseHistoryToolStripMenuItem.Size = new System.Drawing.Size(257, 38);
+            this.showPersonLicenseHistoryToolStripMenuItem.Text = "Show Person License History";
+            this.showPersonLicenseHistoryToolStripMenuItem.Click += new System.EventHandler(this.showPersonLicenseHistoryToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
@@ -362,27 +373,22 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
-            // button1
+            // btnRefresh
             // 
-            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Image = global::DVLDPresentation.Properties.Resources.reload__1_;
-            this.button1.Location = new System.Drawing.Point(1404, 264);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(47, 46);
-            this.button1.TabIndex = 23;
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnRefresh.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnRefresh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRefresh.Image = global::DVLDPresentation.Properties.Resources.reload__1_;
+            this.btnRefresh.Location = new System.Drawing.Point(1404, 264);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(47, 46);
+            this.btnRefresh.TabIndex = 23;
+            this.btnRefresh.UseVisualStyleBackColor = true;
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
-            // showPersonLicenseHistoryToolStripMenuItem
+            // SearchAfterTimerFinish
             // 
-            this.showPersonLicenseHistoryToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.showPersonLicenseHistoryToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("showPersonLicenseHistoryToolStripMenuItem.Image")));
-            this.showPersonLicenseHistoryToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.showPersonLicenseHistoryToolStripMenuItem.Name = "showPersonLicenseHistoryToolStripMenuItem";
-            this.showPersonLicenseHistoryToolStripMenuItem.Size = new System.Drawing.Size(257, 38);
-            this.showPersonLicenseHistoryToolStripMenuItem.Text = "Show Person License History";
-            this.showPersonLicenseHistoryToolStripMenuItem.Click += new System.EventHandler(this.showPersonLicenseHistoryToolStripMenuItem_Click);
+            this.SearchAfterTimerFinish.Interval = 400;
+            this.SearchAfterTimerFinish.Tick += new System.EventHandler(this.searchaftertimerfinish_Tick);
             // 
             // frmListPeople
             // 
@@ -391,7 +397,7 @@
             this.BackColor = System.Drawing.Color.White;
             this.CancelButton = this.gbtnClose;
             this.ClientSize = new System.Drawing.Size(1556, 762);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnRefresh);
             this.Controls.Add(this.gbtnClose);
             this.Controls.Add(this.lblRecordsCount);
             this.Controls.Add(this.label3);
@@ -440,7 +446,8 @@
         private Guna.UI2.WinForms.Guna2ComboBox gcbFilterByGendor;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnRefresh;
         private System.Windows.Forms.ToolStripMenuItem showPersonLicenseHistoryToolStripMenuItem;
+        private System.Windows.Forms.Timer SearchAfterTimerFinish;
     }
 }

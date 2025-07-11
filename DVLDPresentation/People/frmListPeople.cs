@@ -95,9 +95,12 @@ namespace DVLDPresentation.People
             else
                 _FilterData("");
         }
-        private void _RefreshPeoplList()
+        private async Task _RefreshPeoplList()
         {
-            DataTable _dtAllPeople = clsPerson.GetAllPeople();
+            btnRefresh.Enabled = false;
+            DataTable _dtAllPeople = await clsPerson.GetAllPeople();
+            btnRefresh.Enabled = true;
+
             if (_dtAllPeople.Rows.Count != 0)
             {
 
@@ -121,9 +124,9 @@ namespace DVLDPresentation.People
             else if (gcbFilterByGendor.Text == "Female")
                 _FilterData("GendorCaption = 'Female'");
         }
-        private void frmManagePeople_Load(object sender, EventArgs e)
+        private async void frmManagePeople_Load(object sender, EventArgs e)
         {
-            _RefreshPeoplList();
+           await _RefreshPeoplList();
 
             if (dgvPeople.Rows.Count > 0)
             {
@@ -168,7 +171,7 @@ namespace DVLDPresentation.People
 
         }
 
-        private void gtxtFilterValue_TextChanged(object sender, EventArgs e)
+        private void _SearchAt_gtxtFilterValue()
         {
             string FilterColumn = "";
 
@@ -228,6 +231,13 @@ namespace DVLDPresentation.People
             else
                 _FilterData($"{FilterColumn}  like '{gtxtFilterValue.Text.Trim()}%'");
         }
+        private void gtxtFilterValue_TextChanged(object sender, EventArgs e)
+        {
+            //_SearchAt_gtxtFilterValue();
+
+            SearchAfterTimerFinish.Stop();
+            SearchAfterTimerFinish.Start();
+        }
 
         private void gcmFilterBy_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -264,7 +274,7 @@ namespace DVLDPresentation.People
             clsUtil.FeatureIsNotImplemented();
         }
 
-        private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
+        private async void deleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Are you sure you want to delete Person [" + dgvPeople.CurrentRow.Cells[0].Value + "]", "Confirm Delete", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
             {
@@ -273,7 +283,7 @@ namespace DVLDPresentation.People
                 if (clsPerson.DeletePerson(Convert.ToInt32(dgvPeople.CurrentRow.Cells[0].Value)))
                 {
                     MessageBox.Show("Person Deleted Successfully", "Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    _RefreshPeoplList();
+                   await _RefreshPeoplList();
 
                     clsLogger.LogAtEventLog($"Person With PersonID = {person.PersonID}, Name = {person.FullName} has beed deleted by UserName = {clsGlobal.CurrentUser.UserName} At Time = {DateTime.Now}");
 
@@ -311,21 +321,28 @@ namespace DVLDPresentation.People
                 e.Handled = (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar));
         }
 
-        private void FrmAdd_UpdatePerson_OnCloseDataBack(object sender, int PersonID)
+        private async void FrmAdd_UpdatePerson_OnCloseDataBack(object sender, int PersonID)
         {
             //to refresh only if he save 
-            _RefreshPeoplList();
+           await _RefreshPeoplList();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private async void btnRefresh_Click(object sender, EventArgs e)
         {
-            _RefreshPeoplList();
+           await _RefreshPeoplList();
         }
 
         private void showPersonLicenseHistoryToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmShowPersonLicenseHistory frm = new frmShowPersonLicenseHistory(Convert.ToInt32(dgvPeople.CurrentRow.Cells[0].Value));
             frm.ShowDialog();
+        }
+
+        private void searchaftertimerfinish_Tick(object sender, EventArgs e)
+        {
+            SearchAfterTimerFinish.Stop();
+
+            _SearchAt_gtxtFilterValue();
         }
     }
 }

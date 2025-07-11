@@ -16,14 +16,28 @@ This project is a comprehensive **Driving & Vehicle License Department (DVLD)** 
 * **Database**: Microsoft SQL Server
 * **Architecture**: 3-Tier (Presentation, Business Logic, Data Access)
 * **Object-Oriented Programming (OOP)**: The project is built using Object-Oriented Programming (OOP) principles to ensure better structure, modularity, and code reusability.
+* **Asynchronous Programming** (async/await)
+* **Multithreading** (Task.Run for background data operations)
+* **Event Logging via Windows Event Log**
+* **Windows Registry for Remember Me feature**
 * **Security Enhancements**:
 
-  * 🔒 SHA-256 Hashing with Salt for password storage (with `Salt` column added to Users table)
-  * 🔒 AES Symmetric Encryption for storing credentials in Windows Registry
-  * 🔐 Event Logging using Windows Event Log for error tracking and diagnostics
-  * ⚙️ Windows Registry is used instead of plain text file for "Remember Me" credentials
-  * ⚙️ Connection string is now stored and managed via `App.config`
+  * SHA-256 Hashing with Salt for password storage (with `Salt` column added to Users table)
+  * AES Symmetric Encryption for storing credentials in Windows Registry
+  * Event Logging using Windows Event Log for error tracking and diagnostics
+  * Windows Registry is used instead of plain text file for "Remember Me" credentials
+  * Connection string is now stored and managed via `App.config`
 
+* **Optimized Search in People List**:
+
+   * Implemented real-time search with debounce mechanism to improve performance.
+   * Prevents lag when typing in the search box, even with large data sets (100,000+ records).
+   * Filtering is applied only after the user stops typing for a short period (e.g., 400ms).
+* **Optmize Performance Data Loading**:
+
+   * Uses `async` / `await` for non-blocking data access.
+   * Utilizes `Task.Run` and multithreading to prevent UI freezing while loading large datasets.
+   * Tested with more than 100,000 records in the People table.
 ---
 
 
@@ -43,6 +57,7 @@ This project is a comprehensive **Driving & Vehicle License Department (DVLD)** 
    * Ensure no duplicate or pending requests per user and per service
    * Calculate and record application fees (standard fee: \$5)
 3. **User & Person Management**
+
    * CRUD for system users and roles
    * Secure user registration with salted password hashing (SHA-256)
    * Store usernames/passwords encrypted in Windows Registry (AES)
@@ -65,6 +80,7 @@ This project is a comprehensive **Driving & Vehicle License Department (DVLD)** 
 
    * Query licenses by national ID or license number
    * Filter requests by status, date range, and type
+
 
 ## Installation & Setup
 
